@@ -1,0 +1,16 @@
+cd D:/noc_bypass
+set argv {-test U05};
+-test U05
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_slot_table (tests U05), seed 1: compiling
+run.tcl: tb_slot_table: elaborating
+run.tcl: tb_slot_table: simulating
+==========================================================================
+RESULT U05 PASS checks=24462 errors=0 seed=1
+==========================================================================
+$finish called at time : 816 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 22:56:24 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_slot_table        U05          PASS  checks=24462 errors=0   (9 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

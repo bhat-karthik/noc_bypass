@@ -1,0 +1,20 @@
+# S04: random configurations all work. Sixteen configurations of designs B-D chosen so that every value of
+# N (4, 8), V (1, 2, 4), B_MAX (5, 10, 15) and the subslot rule (SAFE, TIGHT) appears at least twice per design
+# group; each runs S01 for 30,000 cycles (+QUICK: a pattern switch every 10,000), every checker on. Counts
+# depend on the configuration and are not listed: the verdict is PASS.
+S04_01_B  tb_mesh_b  -  -define TB_NUM_VC=1 -define TB_B_MAX=5                                  -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_02_B  tb_mesh_b  -  -define TB_NUM_VC=2 -define TB_B_MAX=15 -define TB_SAFE                 -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_03_B  tb_mesh_b  -  -define TB_MESH_N=8 -define TB_NUM_VC=4 -define TB_B_MAX=5 -define TB_SAFE -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_04_B  tb_mesh_b  -  -define TB_NUM_VC=4 -define TB_B_MAX=10 -define TB_SAFE                 -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_05_B  tb_mesh_b  -  -define TB_MESH_N=8 -define TB_NUM_VC=2 -define TB_B_MAX=10             -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_06_C  tb_mesh_c  -  -define TB_NUM_VC=1 -define TB_B_MAX=10 -define TB_SAFE                 -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_07_C  tb_mesh_c  -  -define TB_NUM_VC=2 -define TB_B_MAX=5                                  -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_08_C  tb_mesh_c  -  -define TB_MESH_N=8 -define TB_NUM_VC=4 -define TB_B_MAX=15             -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_09_C  tb_mesh_c  -  -define TB_NUM_VC=4 -define TB_B_MAX=15 -define TB_SAFE                 -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_10_C  tb_mesh_c  -  -define TB_MESH_N=8 -define TB_NUM_VC=1 -define TB_B_MAX=5 -define TB_SAFE -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_11_D  tb_mesh_d  -  -define TB_NUM_VC=1 -define TB_B_MAX=15                                 -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_12_D  tb_mesh_d  -  -define TB_NUM_VC=2 -define TB_B_MAX=10 -define TB_SAFE                 -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_13_D  tb_mesh_d  -  -define TB_MESH_N=8 -define TB_NUM_VC=4 -define TB_B_MAX=10 -define TB_SAFE -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_14_D  tb_mesh_d  -  -define TB_NUM_VC=4 -define TB_B_MAX=5                                  -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_15_D  tb_mesh_d  -  -define TB_MESH_N=8 -define TB_NUM_VC=2 -define TB_B_MAX=15             -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000
+S04_16_D  tb_mesh_d  -  -define TB_NUM_VC=1 -define TB_B_MAX=5 -define TB_SAFE                  -plus +TEST=S01 -plus +QUICK -plus +S01_CYCLES=30000

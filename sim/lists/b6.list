@@ -1,0 +1,9 @@
+# B6 two-level timetable (design C; 4x4 with 2x2 regions): U11, TL01-TL06 one at a time and in one run
+U11       U11         21000067
+TL01      TL01        121888
+TL02      TL02        209153
+TL03      TL03        173700
+TL04      TL04        713502
+TL06      TL06        442714
+TL01-06   tb_mesh_c   1634484
+TL05      TL05        500649

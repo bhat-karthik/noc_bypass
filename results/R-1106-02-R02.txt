@@ -1,0 +1,73 @@
+[2026-11-06 18:13:32 UTC] vlib work && vlog '-timescale' '1ns/1ns' design.sv testbench.sv  && vsim -c -do "vsim +define+TEST_R02; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_router."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.3 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.7 [s]
+# SLP: Finished : 1.0 [s]
+# SLP: 0 primitives and 2077 (99.62%) other processes in SLP
+# SLP: 3746 (79.63%) signals in SLP and 126 (2.68%) interface signals
+# ELAB2: Elaboration final pass complete - time: 1.2 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 7352 kB (elbread=463 elab2=6832 kernel=56 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   R01-R04  router: ports, VCs, timing, back-pressure, interleaving, adaptive choice
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  T1 R02: back-pressure from random sink stalls
+# KERNEL: PHASE  T2 R02: back-pressure from random sink stalls
+# KERNEL: PHASE  T3 R02: back-pressure from random sink stalls
+# KERNEL: PHASE  T4 R02: back-pressure from random sink stalls
+# KERNEL: COVER  T2 R02 a packet found every input VC busy (cycles)   20982
+# KERNEL: COVER  T2 R02 an output had every VC taken (cycles)         10843
+# KERNEL: COVER  T2 R02 a sink held its reads (cycles)                8100
+# KERNEL: COVER  T2 R02 a sink VC buffer filled to 5 flits            211
+# KERNEL: INFO   T2 (V=4, adaptive): 1500 packets checked, 1500 VC-free credits
+# KERNEL: COVER  T1 R02 a packet found every input VC busy (cycles)   26049
+# KERNEL: COVER  T1 R02 an output had every VC taken (cycles)         12589
+# KERNEL: COVER  T1 R02 a sink held its reads (cycles)                9400
+# KERNEL: COVER  T1 R02 a sink VC buffer filled to 5 flits            230
+# KERNEL: INFO   T1 (V=4, XY): 1500 packets checked, 1500 VC-free credits
+# KERNEL: COVER  T3 R02 a packet found every input VC busy (cycles)   30324
+# KERNEL: COVER  T3 R02 an output had every VC taken (cycles)         13899
+# KERNEL: COVER  T3 R02 a sink held its reads (cycles)                8100
+# KERNEL: COVER  T3 R02 a sink VC buffer filled to 5 flits            154
+# KERNEL: INFO   T3 (V=2, adaptive): 1500 packets checked, 1500 VC-free credits
+# KERNEL: COVER  T4 R02 a packet found every input VC busy (cycles)   37391
+# KERNEL: COVER  T4 R02 an output had every VC taken (cycles)         17934
+# KERNEL: COVER  T4 R02 a sink held its reads (cycles)                10000
+# KERNEL: COVER  T4 R02 a sink VC buffer filled to 5 flits            84
+# KERNEL: INFO   T4 (V=1, XY): 1500 packets checked, 1500 VC-free credits
+# KERNEL: ==========================================================================
+# KERNEL: RESULT R02 PASS checks=282300 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (234): $finish called.
+# KERNEL: Time: 79125 ns,  Iteration: 1,  Instance: /tb_router,  Process: @INITIAL#2319_3@.
+# KERNEL: stopped at time: 79125 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

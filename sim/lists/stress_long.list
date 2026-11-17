@@ -1,0 +1,17 @@
+# S01-S03 and S05 in full. S01 is 10,000,000 cycles per design, 3-4 hours each on xsim: run overnight,
+# four Vivado windows side by side (-only S01_A* ... -only S01_D*), or on VCS. Its counts were not
+# pre-checked (Verilator would take about 2 hours per design), so the list expects PASS only.
+S01_A     tb_mesh     -   -plus +TEST=S01
+S01_B     tb_mesh_b   -   -plus +TEST=S01
+S01_C     tb_mesh_c   -   -plus +TEST=S01
+S01_D     tb_mesh_d   -   -plus +TEST=S01
+S02_B     tb_mesh_b   7251645 -plus +TEST=S02
+S02_C     tb_mesh_c   8199426 -plus +TEST=S02
+S02_D     tb_mesh_d   8166292 -plus +TEST=S02
+S03_B     tb_mesh_b   5304216 -define TB_NUM_VC=1 -plus +TEST=S03
+S03_C     tb_mesh_c   6133525 -define TB_NUM_VC=1 -plus +TEST=S03
+S03_D     tb_mesh_d   6167954 -define TB_NUM_VC=1 -plus +TEST=S03
+S05_A     tb_mesh     263175 -plus +TEST=S05
+S05_B     tb_mesh_b   374574 -plus +TEST=S05
+S05_C     tb_mesh_c   400824 -plus +TEST=S05
+S05_D     tb_mesh_d   400830 -plus +TEST=S05

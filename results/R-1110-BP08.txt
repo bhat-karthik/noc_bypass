@@ -1,0 +1,54 @@
+[2026-11-10 12:00:15 UTC] vlib work && vlog '+define+TEST_BP08' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_mesh_b."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.6 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.9 [s]
+# SLP: Finished : 1.5 [s]
+# SLP: 0 primitives and 9479 (99.61%) other processes in SLP
+# SLP: 21026 (88.70%) signals in SLP and 457 (1.93%) interface signals
+# ELAB2: Elaboration final pass complete - time: 2.1 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 15514 kB (elbread=503 elab2=9280 kernel=5729 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   BP01-BP10  mesh 4x4, 1 VC, adaptive routing, design B, B_MAX 10, TIGHT subslots of 18 cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  BP08 deadlock recovery: 1 VC, adaptive routing, uniform at 0.300 packets/node/cycle for 1000 cycles or until a cycle of waiting packets forms (at most 4000); a delivery at least once per round (790 cycles)
+# KERNEL: INFO   BP08: at cycle 956, 4 packets wait in a cycle, each for the input VC the next one holds: R10.N R9.E R5.S R6.W
+# KERNEL: INFO   BP08: cycles of waiting packets seen in 1 samples (first at cycle 956, 4 packets); all broken: 188 bursts carried 212 packets, every packet delivered
+# KERNEL: COVER  BP08 samples with a cycle of waiting packets         1
+# KERNEL: INFO   cycles simulated 5732
+# KERNEL: ==========================================================================
+# KERNEL: RESULT BP08 PASS checks=379431 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (407): $finish called.
+# KERNEL: Time: 57325 ns,  Iteration: 1,  Instance: /tb_mesh_b/u_bench,  Process: @INITIAL#1957_5@.
+# KERNEL: stopped at time: 57325 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

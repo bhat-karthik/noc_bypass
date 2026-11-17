@@ -1,0 +1,75 @@
+B0 pre-delivery checks, 2026-11-03 15:49 UTC
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v sv2v v0.0.12
+
+== 1. RTL lint: verilator --lint-only -Wall, every module and parameter set
+clean: -GN=1 --top-module rr_arbiter rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GN=2 --top-module rr_arbiter rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GN=3 --top-module rr_arbiter rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GN=5 --top-module rr_arbiter rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GN=8 --top-module rr_arbiter rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GN=20 --top-module rr_arbiter rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GDEPTH=1 -GWIDTH=16 --top-module sync_fifo rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GDEPTH=2 -GWIDTH=16 --top-module sync_fifo rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GDEPTH=5 -GWIDTH=16 --top-module sync_fifo rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GDEPTH=5 -GWIDTH=134 --top-module sync_fifo rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GDEPTH=25 -GWIDTH=16 --top-module sync_fifo rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=0 -GMESH_N=2 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=0 -GMESH_N=4 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=0 -GMESH_N=8 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=0 -GMESH_N=16 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=1 -GMESH_N=2 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=1 -GMESH_N=4 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=1 -GMESH_N=8 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=1 -GMESH_N=16 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=2 -GMESH_N=2 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=2 -GMESH_N=4 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=2 -GMESH_N=8 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+clean: -GALGO=2 -GMESH_N=16 --top-module route_compute rtl/pkg/noc_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv
+RTL lint result: 0 module/parameter sets with warnings
+
+== 2. Testbench lint: -Wall except the testbench style rules DECLFILENAME and BLKSEQ
+tb_rr_arbiter: clean, built
+tb_sync_fifo: clean, built
+tb_route_compute: clean, built
+
+== 3. Seed sweep: seeds 1-25 and three large seeds, every test
+tb_rr_arbiter: 28 passed, 0 failed
+tb_sync_fifo: 28 passed, 0 failed
+tb_route_compute: 28 passed, 0 failed
+
+Seed 1 result lines (the same numbers must appear on Riviera, xsim, VCS and Xcelium):
+RESULT U01 PASS checks=310493 errors=0 seed=1
+RESULT U02 PASS checks=196864 errors=0 seed=1
+RESULT U03 PASS checks=856450 errors=0 seed=1
+
+== 4. EDA Playground bundles: compiled in both file orders, every test selected by define
+[design.sv testbench.sv] +define+TEST_U01: RESULT U01 PASS checks=310493 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_U02: RESULT U02 PASS checks=196864 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_U03: RESULT U03 PASS checks=856450 errors=0 seed=1
+[testbench.sv design.sv] +define+TEST_U01: RESULT U01 PASS checks=310493 errors=0 seed=1
+[testbench.sv design.sv] +define+TEST_U02: RESULT U02 PASS checks=196864 errors=0 seed=1
+[testbench.sv design.sv] +define+TEST_U03: RESULT U03 PASS checks=856450 errors=0 seed=1
+[no define, top auto-detected]: RESULT U01 PASS checks=310493 errors=0 seed=1
+
+== 5. Synthesis: sv2v + Yosys 'synth' (generic gates), the fallback flow of D20
+rr_arbiter N=5: 99 cells, 7 flip-flops
+rr_arbiter N=20: 425 cells, 11 flip-flops
+sync_fifo WIDTH=134 DEPTH=5: 1266 cells, 679 flip-flops
+sync_fifo WIDTH=134 DEPTH=25: 6720 cells, 3365 flip-flops
+route_compute MESH_N=8 ALGO=0: 35 cells, 0 flip-flops
+route_compute MESH_N=8 ALGO=1: 61 cells, 0 flip-flops
+route_compute MESH_N=8 ALGO=2: 41 cells, 0 flip-flops
+route_compute MESH_N=16 ALGO=1: 63 cells, 0 flip-flops
+
+== 6. Addendum, 4 Nov: Vivado runner fix (issue of 4 Nov)
+Symptom on Vivado 2024.2 (Windows): xsim printed its option list, "Expected a switch but found 1"; no simulation ran.
+Cause: xsim.bat splits arguments at '=', so "--testplusarg SEED=1" arrived as "SEED" and "1".
+Fix: run.tcl passes such options through an options file (xsim <snapshot> --file simulate.args).
+Also fixed: two xelab warnings (XSIM 43-3373) from void'($value$plusargs()) in tb_pkg.sv.
+Check here: an xsim stub that splits arguments the way a batch file does reproduces the failure with the old run.tcl,
+and the new run.tcl gives:
+tb_rr_arbiter        U01          PASS  checks=310493 errors=0
+tb_sync_fifo         U02          PASS  checks=196864 errors=0
+tb_route_compute     U03          PASS  checks=856450 errors=0
+Testbench lint after the tb_pkg change: clean. Seed-1 counts unchanged. Bundles regenerated and rebuilt (U02 PASS, 196,864).
+The real Vivado run is the proof: R-1105-xx.

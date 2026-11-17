@@ -1,0 +1,15 @@
+set argv {-test U07};
+-test U07
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_group_to_router (tests U07), seed 1: compiling
+run.tcl: tb_group_to_router: elaborating
+run.tcl: tb_group_to_router: simulating
+==========================================================================
+RESULT U07 PASS checks=2269472 errors=0 seed=1
+==========================================================================
+$finish called at time : 622592 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 23:00:46 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_group_to_router   U07          PASS  checks=2269472 errors=0   (14 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

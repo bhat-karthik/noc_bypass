@@ -1,0 +1,61 @@
+[2026-11-13 02:33:34 UTC] vlib work && vlog '+define+TEST_TL06' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+WARNING VCP2910 "Conditional expression 4<=4 at ?: operator is constant." "tb_part4.sv" 2253  1
+WARNING VCP2910 "Conditional expression 4>=8 at ?: operator is constant." "tb_part4.sv" 2259  1
+MESSAGE "Unit top modules: tb_mesh_c."
+SUCCESS "Compile success 0 Errors 2 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.7 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.1 [s]
+# SLP: Finished : 1.9 [s]
+# SLP: 0 primitives and 16583 (99.78%) other processes in SLP
+# SLP: 27172 (89.50%) signals in SLP and 469 (1.54%) interface signals
+# ELAB2: Elaboration final pass complete - time: 2.7 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 29405 kB (elbread=524 elab2=10859 kernel=18022 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   TL01-TL06  mesh 4x4, 4 VC, adaptive routing, design C, 2x2 regions, k_L 3 from reset, epoch 2048, B_MAX 10, TIGHT subslots of 18 (local 10) cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  TL06 turn bounds: 2960 cycles of traffic (one schedule period is 10 frames = 1480 cycles); bounds: inside a region 148, across regions 1480
+# KERNEL: INFO   TL06: 5978 packets measured, latency avg 16.14 p99 35 max 49, offered 0.2956 accepted 0.2944 flits/node/cycle
+# KERNEL: INFO   TL06: inside a region turns every 31..148 cycles (bound 148, 48 pairs); across regions every 1480..1480 (one global round 1480, 192 pairs)
+# KERNEL: INFO   TL06: bypass share 0.49% of packets; 29 bursts in 1480 turns, none cancelled
+# KERNEL: COVER  TL06 pairs inside regions measured                   48
+# KERNEL: COVER  TL06 cross-region pairs measured                     192
+# KERNEL: INFO   design C run: 124 local and 80 global subslots checked tile by tile, 1000 local and 480 global turns, 20 local and 1 global rounds checked pair by pair
+# KERNEL: INFO   design C run: 19 frames checked, 0 k_L changes, 1237 local-phase cycles checked for containment, 35 lookaheads followed on links and 29 at NIs
+# KERNEL: INFO   design C run: 29 bursts (24 in local slots), 0 whose last flits landed in the other phase
+# KERNEL: INFO   cycles simulated 3007
+# KERNEL: ==========================================================================
+# KERNEL: RESULT TL06 PASS checks=296594 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (463): $finish called.
+# KERNEL: Time: 30075 ns,  Iteration: 1,  Instance: /tb_mesh_c/u_bench,  Process: @INITIAL#524_5@.
+# KERNEL: stopped at time: 30075 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

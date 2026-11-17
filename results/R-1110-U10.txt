@@ -1,0 +1,61 @@
+[2026-11-10 11:53:38 UTC] vlib work && vlog '+define+TEST_U10' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top tb_resv_ctrl."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.2 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.2 [s]
+# SLP: Finished : 2.4 [s]
+# SLP: 0 primitives and 51398 (100.00%) other processes in SLP
+# SLP: 81803 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 3.6 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 11764 kB (elbread=597 elab2=11149 kernel=17 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U10  resv_ctrl: reserve, re-check, cancel, shrink, release (six timetable shapes)
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: INFO   U10 N=2 B_MAX=5 TIGHT SPACE=18: 2699 cycles, 373 decisions: 326 accepted (168 of subslot 0, 140 while another waited), 47 cancelled (47 while the core stalled, 0 while it kept up); 116 no-shows, 209 shrunk at the lookahead; largest fill + reserved 18
+# KERNEL: COVER  U10 N=2 B_MAX=5 SPACE=18 cancels                     47
+# KERNEL: INFO   U10 N=4 B_MAX=10 TIGHT SPACE=28: 4423 cycles, 198 decisions: 171 accepted (43 of subslot 0, 106 while another waited), 27 cancelled (27 while the core stalled, 0 while it kept up); 48 no-shows, 123 shrunk at the lookahead; largest fill + reserved 28
+# KERNEL: COVER  U10 N=4 B_MAX=10 SPACE=28 cancels                    27
+# KERNEL: INFO   U10 N=4 B_MAX=10 TIGHT SPACE=10: 4423 cycles, 201 decisions: 79 accepted (38 of subslot 0, 0 while another waited), 122 cancelled (78 while the core stalled, 43 while it kept up); 18 no-shows, 61 shrunk at the lookahead; largest fill + reserved 10
+# KERNEL: COVER  U10 N=4 B_MAX=10 SPACE=10 cancels                    122
+# KERNEL: INFO   U10 N=4 B_MAX=10 SAFE SPACE=22: 5767 cycles, 199 decisions: 164 accepted (40 of subslot 0, 103 while another waited), 35 cancelled (34 while the core stalled, 0 while it kept up); 46 no-shows, 118 shrunk at the lookahead; largest fill + reserved 22
+# KERNEL: COVER  U10 N=4 B_MAX=10 SPACE=22 cancels                    35
+# KERNEL: INFO   U10 N=8 B_MAX=15 TIGHT SPACE=38: 18311 cycles, 406 decisions: 339 accepted (45 of subslot 0, 258 while another waited), 67 cancelled (66 while the core stalled, 0 while it kept up); 100 no-shows, 239 shrunk at the lookahead; largest fill + reserved 38
+# KERNEL: COVER  U10 N=8 B_MAX=15 SPACE=38 cancels                    67
+# KERNEL: INFO   U10 N=16 B_MAX=10 TIGHT SPACE=28: 60871 cycles, 801 decisions: 686 accepted (44 of subslot 0, 566 while another waited), 115 cancelled (114 while the core stalled, 0 while it kept up); 226 no-shows, 460 shrunk at the lookahead; largest fill + reserved 28
+# KERNEL: COVER  U10 N=16 B_MAX=10 SPACE=28 cancels                   115
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U10 PASS checks=289930 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (407): $finish called.
+# KERNEL: Time: 608741 ns,  Iteration: 1,  Instance: /tb_resv_ctrl,  Process: @INITIAL#1117_0@.
+# KERNEL: stopped at time: 608741 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

@@ -1,0 +1,71 @@
+[2026-11-13 20:58:27 UTC] vlib work && vlog '+define+TEST_U12' '-dbg' design.sv testbench.sv  && vsim -c -do "vsim +QUICK +MAXERR=60; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top tb_demand_counter."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 2[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.4 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.5 [s]
+# SLP: Finished : 2.9 [s]
+# SLP: 0 primitives and 58183 (100.00%) other processes in SLP
+# SLP: 82934 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 4.3 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 12455 kB (elbread=600 elab2=11767 kernel=87 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U12  demand_counter: occupied input VCs, local and cross-region sums every 16 cycles, saturation, latch at each tick
+# KERNEL: SEED   1 (default)
+# KERNEL: MAXERR 60 errors printed in full
+# KERNEL: ==========================================================================
+# KERNEL: INFO   U12 8x8/4 at (5, 2), 4 VCs: 25000 cycles, 40 ticks, 1567 samples, 15021 heads, 13959 VCs freed, 27889 flits that must not count, 332 head-and-free pairs
+# KERNEL: COVER  U12 8x8/4 at (5, 2), 4 VCs epochs latched            40
+# KERNEL: COVER  U12 8x8/4 at (5, 2), 4 VCs heads and free credits together 332
+# KERNEL: INFO   U12 4x4/2 at (1, 3), 4 VCs: 25000 cycles, 45 ticks, 1569 samples, 15068 heads, 14001 VCs freed, 28098 flits that must not count, 321 head-and-free pairs
+# KERNEL: COVER  U12 4x4/2 at (1, 3), 4 VCs epochs latched            45
+# KERNEL: COVER  U12 4x4/2 at (1, 3), 4 VCs heads and free credits together 321
+# KERNEL: INFO   U12 16x16/4 at (15, 15), 4 VCs: 25000 cycles, 44 ticks, 1570 samples, 14981 heads, 13913 VCs freed, 28006 flits that must not count, 291 head-and-free pairs
+# KERNEL: COVER  U12 16x16/4 at (15, 15), 4 VCs epochs latched        44
+# KERNEL: COVER  U12 16x16/4 at (15, 15), 4 VCs heads and free credits together 291
+# KERNEL: INFO   U12 16x16/8 at (7, 8), 2 VCs: 25000 cycles, 50 ticks, 1570 samples, 13444 heads, 12519 VCs freed, 28214 flits that must not count, 255 head-and-free pairs
+# KERNEL: COVER  U12 16x16/8 at (7, 8), 2 VCs epochs latched          50
+# KERNEL: COVER  U12 16x16/8 at (7, 8), 2 VCs heads and free credits together 255
+# KERNEL: INFO   U12 8x8/4 at (0, 0), 1 VCs: 25000 cycles, 46 ticks, 1572 samples, 11328 heads, 10563 VCs freed, 28232 flits that must not count, 232 head-and-free pairs
+# KERNEL: COVER  U12 8x8/4 at (0, 0), 1 VCs epochs latched            46
+# KERNEL: COVER  U12 8x8/4 at (0, 0), 1 VCs heads and free credits together 232
+# KERNEL: INFO   U12 8x8/2 at (6, 1) RST: 25000 cycles, 47 ticks, 1573 samples, 15154 heads, 14067 VCs freed, 28337 flits that must not count, 301 head-and-free pairs
+# KERNEL: COVER  U12 8x8/2 at (6, 1) RST epochs latched               47
+# KERNEL: INFO   U12 8x8/4 at (3, 3) SAT: 60000 cycles, 4 ticks, 3751 samples, 0 heads, 0 VCs freed, 0 flits that must not count, 0 head-and-free pairs
+# KERNEL: COVER  U12 8x8/4 at (3, 3) SAT epochs latched               4
+# KERNEL: COVER  U12 8x8/4 at (3, 3) SAT cycles with a saturated sum  3360
+# KERNEL: INFO   U12 counters: 8x8/4, 4x4/2, 16x16/4, 16x16/8 with 2 VCs, 8x8/4 with 1 VC, a saturation run, a reset run
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U12 PASS checks=210015 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (527): $finish called.
+# KERNEL: Time: 600030 ns,  Iteration: 1,  Instance: /tb_demand_counter,  Process: @INITIAL#1484_2@.
+# KERNEL: stopped at time: 600030 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

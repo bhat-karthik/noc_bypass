@@ -1,0 +1,115 @@
+[2026-11-08 17:39:34 UTC] vlib work && vlog '+define+TEST_U07' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top slot_table slot_counter tb_group_to_router."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.2 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.0 [s]
+# SLP: Finished : 2.2 [s]
+# SLP: 0 primitives and 44837 (99.98%) other processes in SLP
+# SLP: 75557 (99.04%) signals in SLP and 160 (0.21%) interface signals
+# ELAB2: Elaboration final pass complete - time: 3.6 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 14707 kB (elbread=619 elab2=14041 kernel=47 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U07  group_to_router: partners follow Eq. (2) and D37, tx and rx agree, Fig. 3 reproduced
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: COVER  2x2/2 router sends                                   12
+# KERNEL: COVER  2x2/2 router receives                                12
+# KERNEL: COVER  2x2/2 path by XY                                     8
+# KERNEL: COVER  2x2/2 path by YX                                     4
+# KERNEL: COVER  2x2/2 idle in subslot 0 of a same-group slot         4
+# KERNEL: COVER  2x2/2 router not active                              16
+# KERNEL: COVER  2x2/2 longest path, Hmax = 2 hops                    1
+# KERNEL: COVER  8x8/2 router sends                                   192
+# KERNEL: COVER  8x8/2 router receives                                192
+# KERNEL: COVER  8x8/2 path by XY                                     128
+# KERNEL: COVER  8x8/2 path by YX                                     64
+# KERNEL: COVER  8x8/2 idle in subslot 0 of a same-group slot         64
+# KERNEL: COVER  8x8/2 router not active                              256
+# KERNEL: COVER  8x8/2 longest path, Hmax = 2 hops                    1
+# KERNEL: INFO   U07 4x4 slot 8 reproduces Fig. 3 of [1]: subslot 0 R2-R3 R7-R4 R8-R9 R13-R14, subslot 1 R2-R14 R7-R3 R8-R4 R13-R9,
+# KERNEL: INFO       subslot 2 R2-R9 R7-R14 R8-R3 R13-R4, subslot 3 R2-R4 R7-R9 R8-R14 R13-R3
+# KERNEL: COVER  4x4 Fig. 3 pairs checked                             16
+# KERNEL: COVER  4x4/4 router sends                                   240
+# KERNEL: COVER  4x4/4 router receives                                240
+# KERNEL: COVER  4x4/4 path by XY                                     144
+# KERNEL: COVER  4x4/4 path by YX                                     96
+# KERNEL: COVER  4x4/4 idle in subslot 0 of a same-group slot         16
+# KERNEL: COVER  4x4/4 router not active                              256
+# KERNEL: COVER  4x4/4 longest path, Hmax = 6 hops                    1
+# KERNEL: COVER  16x16/2 router sends                                 768
+# KERNEL: COVER  16x16/2 router receives                              768
+# KERNEL: COVER  16x16/2 path by XY                                   512
+# KERNEL: COVER  16x16/2 path by YX                                   256
+# KERNEL: COVER  16x16/2 idle in subslot 0 of a same-group slot       256
+# KERNEL: COVER  16x16/2 router not active                            1024
+# KERNEL: COVER  16x16/2 longest path, Hmax = 2 hops                  1
+# KERNEL: COVER  8x8/4 router sends                                   960
+# KERNEL: COVER  8x8/4 router receives                                960
+# KERNEL: COVER  8x8/4 path by XY                                     576
+# KERNEL: COVER  8x8/4 path by YX                                     384
+# KERNEL: COVER  8x8/4 idle in subslot 0 of a same-group slot         64
+# KERNEL: COVER  8x8/4 router not active                              1024
+# KERNEL: COVER  8x8/4 longest path, Hmax = 6 hops                    1
+# KERNEL: COVER  16x16/4 router sends                                 3840
+# KERNEL: COVER  16x16/4 router receives                              3840
+# KERNEL: COVER  16x16/4 path by XY                                   2304
+# KERNEL: COVER  16x16/4 path by YX                                   1536
+# KERNEL: COVER  16x16/4 idle in subslot 0 of a same-group slot       256
+# KERNEL: COVER  16x16/4 router not active                            4096
+# KERNEL: COVER  16x16/4 longest path, Hmax = 6 hops                  1
+# KERNEL: COVER  8x8/8 router sends                                   4032
+# KERNEL: COVER  8x8/8 router receives                                4032
+# KERNEL: COVER  8x8/8 path by XY                                     2240
+# KERNEL: COVER  8x8/8 path by YX                                     1792
+# KERNEL: COVER  8x8/8 idle in subslot 0 of a same-group slot         64
+# KERNEL: COVER  8x8/8 router not active                              4096
+# KERNEL: COVER  8x8/8 longest path, Hmax = 14 hops                   1
+# KERNEL: COVER  16x16/8 router sends                                 3968
+# KERNEL: COVER  16x16/8 router receives                              3968
+# KERNEL: COVER  16x16/8 path by XY                                   2432
+# KERNEL: COVER  16x16/8 path by YX                                   1536
+# KERNEL: COVER  16x16/8 idle in subslot 0 of a same-group slot       128
+# KERNEL: COVER  16x16/8 router not active                            4096
+# KERNEL: COVER  16x16/8 longest path, Hmax = 14 hops                 1
+# KERNEL: COVER  16x16/16 router sends                                6832
+# KERNEL: COVER  16x16/16 router receives                             6832
+# KERNEL: COVER  16x16/16 path by XY                                  4016
+# KERNEL: COVER  16x16/16 path by YX                                  2816
+# KERNEL: COVER  16x16/16 idle in subslot 0 of a same-group slot      80
+# KERNEL: COVER  16x16/16 router not active                           6912
+# KERNEL: COVER  16x16/16 longest path, Hmax = 30 hops                1
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U07 PASS checks=423040 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (377): $finish called.
+# KERNEL: Time: 72448 ns,  Iteration: 0,  Instance: /tb_group_to_router,  Process: @INITIAL#1628_2@.
+# KERNEL: stopped at time: 72448 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

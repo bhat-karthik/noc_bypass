@@ -1,0 +1,15 @@
+# The 8x8 runs of the batch exit checks (long: hours on xsim; run overnight)
+N01-N08_8  tb_mesh     88332937   -define TB_MESH_N=8
+N05_8      N05         1413       -define TB_MESH_N=8
+BP01-10_8  tb_mesh_b   36516484   -define TB_MESH_N=8
+TL01_8     TL01        1967630    -define TB_MESH_N=8
+TL02_8     TL02        5207604    -define TB_MESH_N=8
+TL03_8     TL03        2094764    -define TB_MESH_N=8
+TL04_8     TL04        10367854   -define TB_MESH_N=8
+TL05_8     TL05        7545942    -define TB_MESH_N=8
+TL06_8     TL06        31799704   -define TB_MESH_N=8
+CT01_8     CT01        7611945    -define TB_MESH_N=8
+CT02_8     CT02        14377453   -define TB_MESH_N=8
+CT03_8     CT03        16635905   -define TB_MESH_N=8
+CT04_8     CT04        20335604   -define TB_MESH_N=8
+CT05_8     CT05        35060190   -define TB_MESH_N=8

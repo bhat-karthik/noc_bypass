@@ -1,0 +1,35 @@
+set argv {-test U11}
+-test U11
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_phase_sequencer (tests U11), seed 1: compiling
+run.tcl: tb_phase_sequencer: elaborating
+INFO: [VRFC 10-311] analyzing module tb_group_to_router
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/noc_bypass/tb/unit/tb_timetable_check.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_timetable_check
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/noc_bypass/tb/mesh/tb_mesh_b.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_mesh_b
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/noc_bypass/tb/unit/tb_resv_ctrl.sv" into library work
+INFO: [VRFC 10-311] analyzing module resv_tester
+INFO: [VRFC 10-311] analyzing module tb_resv_ctrl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/noc_bypass/tb/unit/tb_phase_sequencer.sv" into library work
+INFO: [VRFC 10-311] analyzing module ps_tester
+INFO: [VRFC 10-311] analyzing module tb_phase_sequencer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/noc_bypass/tb/mesh/tb_mesh_c.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_mesh_c
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/noc_bypass/tb/mesh/tb_mesh_cb.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_mesh_cb
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --debug off --timescale 1ns/1ps --snapshot tb_phase_sequencer_snap work.tb_phase_sequencer 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+ERROR: [XSIM 43-3356]  Could not open file xsim.dir/tb_phase_sequencer_snap/xsim.type for writing.
+ERROR: [XSIM 43-3915] Encountered a fatal error. Cannot continue. Exiting... 
+==================== run.tcl summary, seed 1 ====================
+tb_phase_sequencer   U11          BUILD FAILED: see D:/noc_bypass/sim/vivado/work/tb_phase_sequencer/compile.log and elaborate.log   (6 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

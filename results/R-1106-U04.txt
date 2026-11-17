@@ -1,0 +1,89 @@
+[2026-11-06 17:21:26 UTC] vlib work && vlog '-timescale' '1ns/1ns' design.sv testbench.sv  && vsim -c -do "vsim +define+TEST_U04; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: router tb_switch_allocator."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 0[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.2 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.7 [s]
+# SLP: Finished : 1.0 [s]
+# SLP: 0 primitives and 1155 (100.00%) other processes in SLP
+# SLP: 2414 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 1.1 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4988 kB (elbread=432 elab2=4541 kernel=14 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U04  switch_allocator: one grant per input and output, VCs, masks, no starvation
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: COVER  V=1 two or more inputs want one output               3016
+# KERNEL: COVER  V=1 a stage-1 winner loses its output                3498
+# KERNEL: COVER  V=1 head granted with a new output VC                7235
+# KERNEL: COVER  V=1 flit granted on its held output VC               7749
+# KERNEL: COVER  V=1 request blocked: no credit                       2841
+# KERNEL: COVER  V=1 request blocked: no idle output VC               2900
+# KERNEL: COVER  V=1 request blocked: input masked                    2212
+# KERNEL: COVER  V=1 request blocked: output masked                   2008
+# KERNEL: COVER  V=1 five grants in one cycle                         214
+# KERNEL: INFO   V=1 longest wait with persistent requests: 0 cycles (bound 5)
+# KERNEL: COVER  V=2 two or more inputs want one output               5904
+# KERNEL: COVER  V=2 a stage-1 winner loses its output                7787
+# KERNEL: COVER  V=2 head granted with a new output VC                9683
+# KERNEL: COVER  V=2 flit granted on its held output VC               10338
+# KERNEL: COVER  V=2 request blocked: no credit                       5912
+# KERNEL: COVER  V=2 request blocked: no idle output VC               5933
+# KERNEL: COVER  V=2 request blocked: input masked                    4303
+# KERNEL: COVER  V=2 request blocked: output masked                   4189
+# KERNEL: COVER  V=2 five grants in one cycle                         25
+# KERNEL: INFO   V=2 longest wait with persistent requests: 5 cycles (bound 10)
+# KERNEL: COVER  V=3 two or more inputs want one output               7816
+# KERNEL: COVER  V=3 a stage-1 winner loses its output                9555
+# KERNEL: COVER  V=3 head granted with a new output VC                12015
+# KERNEL: COVER  V=3 flit granted on its held output VC               12315
+# KERNEL: COVER  V=3 request blocked: no credit                       8674
+# KERNEL: COVER  V=3 request blocked: no idle output VC               8780
+# KERNEL: COVER  V=3 request blocked: input masked                    6533
+# KERNEL: COVER  V=3 request blocked: output masked                   5975
+# KERNEL: COVER  V=3 five grants in one cycle                         105
+# KERNEL: INFO   V=3 longest wait with persistent requests: 5 cycles (bound 15)
+# KERNEL: COVER  V=4 two or more inputs want one output               9111
+# KERNEL: COVER  V=4 a stage-1 winner loses its output                11407
+# KERNEL: COVER  V=4 head granted with a new output VC                12983
+# KERNEL: COVER  V=4 flit granted on its held output VC               13572
+# KERNEL: COVER  V=4 request blocked: no credit                       11668
+# KERNEL: COVER  V=4 request blocked: no idle output VC               11239
+# KERNEL: COVER  V=4 request blocked: input masked                    8959
+# KERNEL: COVER  V=4 request blocked: output masked                   7938
+# KERNEL: COVER  V=4 five grants in one cycle                         87
+# KERNEL: INFO   V=4 longest wait with persistent requests: 9 cycles (bound 20)
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U04 PASS checks=1121244 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (236): $finish called.
+# KERNEL: Time: 108040 ns,  Iteration: 2,  Instance: /tb_switch_allocator,  Process: @INITIAL#1594_3@.
+# KERNEL: stopped at time: 108040 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

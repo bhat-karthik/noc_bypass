@@ -1,0 +1,10 @@
+# B7 controller (design D; 4x4 with 2x2 regions): U12-U14, CT01-CT05 one at a time and in one run
+U12       U12         1320015
+U13       U13         3358679
+U14       U14         3044
+CT01      CT01        1257636
+CT02      CT02        2389921
+CT03      CT03        2756268
+CT04      CT04        3062877
+CT05      CT05        1606240
+CT01-05   tb_mesh_d   11075837

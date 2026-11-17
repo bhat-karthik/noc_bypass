@@ -1,0 +1,91 @@
+[2026-11-13 19:04:34 UTC] vlib work && vlog '+define+TEST_U12' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top tb_demand_counter."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.7 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.8 [s]
+# SLP: Finished : 3.6 [s]
+# SLP: 0 primitives and 52046 (100.00%) other processes in SLP
+# SLP: 82920 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 5.2 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 12091 kB (elbread=600 elab2=11472 kernel=18 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U12  demand_counter: occupied input VCs, local and cross-region sums every 16 cycles, saturation, latch at each tick
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: ERROR  [70000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 3: occupied 00001010001000000000 local 00001000000000000000 sums 0 0; model 00001010001000000000 00001000001000000000 0 0
+# KERNEL: ERROR  [80000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 4: occupied 00101011101000010000 local 00101000100000010000 sums 0 0; model 00101011101000010000 00101000101000010000 0 0
+# KERNEL: ERROR  [90000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 5: occupied 00101111101000010000 local 00101100100000010000 sums 0 0; model 00101111101000010000 00101100101000010000 0 0
+# KERNEL: ERROR  [100000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 6: occupied 00101111101000010000 local 00101100100000010000 sums 0 0; model 00101111101000010000 00101100101000010000 0 0
+# KERNEL: ERROR  [110000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 7: occupied 01101111101000010000 local 00101100100000010000 sums 0 0; model 01101111101000010000 00101100101000010000 0 0
+# KERNEL: ERROR  [110000] U12: U12 8x8/4 at (0, 0), 1 VCs cycle 7: occupied 11111 local 00011 sums 0 0; model 11111 00001 0 0
+# KERNEL: ERROR  [120000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 8: occupied 01101110101000010000 local 00101100100000010000 sums 0 0; model 01101110101000010000 00101100101000010000 0 0
+# KERNEL: ERROR  [120000] U12: U12 8x8/4 at (0, 0), 1 VCs cycle 8: occupied 01111 local 00011 sums 0 0; model 01111 00001 0 0
+# KERNEL: ERROR  [130000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 9: occupied 01101110101000010001 local 00101100100000010000 sums 0 0; model 01101110101000010001 00101100101000010000 0 0
+# KERNEL: ERROR  [130000] U12: U12 8x8/4 at (0, 0), 1 VCs cycle 9: occupied 01111 local 00011 sums 0 0; model 01111 00001 0 0
+# KERNEL: ERROR  [140000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 10: occupied 10101101101000000001 local 00101100100000000000 sums 0 0; model 10101101101000000001 00101100101000000000 0 0
+# KERNEL: ERROR  [140000] U12: U12 8x8/4 at (0, 0), 1 VCs cycle 10: occupied 01111 local 00011 sums 0 0; model 01111 00001 0 0
+# KERNEL: ERROR  [150000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 11: occupied 10101111101000000001 local 00101110100000000000 sums 0 0; model 10101111101000000001 00101110101000000000 0 0
+# KERNEL: ERROR  [150000] U12: U12 8x8/4 at (0, 0), 1 VCs cycle 11: occupied 01110 local 00010 sums 0 0; model 01110 00000 0 0
+# KERNEL: ERROR  [160000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 12: occupied 10101111101001000000 local 00101110100001000000 sums 0 0; model 10101111101001000000 00101110101001000000 0 0
+# KERNEL: ERROR  [170000] U12: U12 8x8/4 at (5, 2), 4 VCs cycle 13: occupied 01010001101100001111 local 00010001100000001100 sums 0 0; model 01010001101100001111 00010001100100001100 0 0
+# KERNEL: ERROR  [170000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 13: occupied 11101111101101000000 local 00101110100101000000 sums 0 0; model 11101111101101000000 00101110101101000000 0 0
+# KERNEL: ERROR  [180000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 14: occupied 11101110111101000000 local 00101110100101000000 sums 0 0; model 11101110111101000000 00101110101101000000 0 0
+# KERNEL: ERROR  [190000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 15: occupied 11100110111101000000 local 00100110100101000000 sums 0 0; model 11100110111101000000 00100110101101000000 0 0
+# KERNEL: ERROR  [200000] U12: U12 4x4/2 at (1, 3), 4 VCs cycle 16: occupied 11100110111101000000 local 00100110100101000000 sums 0 0; model 11100110111101000000 00100110101101000000 0 0
+# KERNEL: ERROR  [200000] U12: later errors are counted, not printed
+# KERNEL: INFO   U12 8x8/4 at (5, 2), 4 VCs: 25000 cycles, 44 ticks, 1570 samples, 15002 heads, 13953 VCs freed, 28100 flits that must not count, 293 head-and-free pairs
+# KERNEL: COVER  U12 8x8/4 at (5, 2), 4 VCs epochs latched            44
+# KERNEL: COVER  U12 8x8/4 at (5, 2), 4 VCs heads and free credits together 293
+# KERNEL: INFO   U12 4x4/2 at (1, 3), 4 VCs: 25000 cycles, 42 ticks, 1569 samples, 15033 heads, 13934 VCs freed, 28222 flits that must not count, 319 head-and-free pairs
+# KERNEL: COVER  U12 4x4/2 at (1, 3), 4 VCs epochs latched            42
+# KERNEL: COVER  U12 4x4/2 at (1, 3), 4 VCs heads and free credits together 319
+# KERNEL: INFO   U12 16x16/4 at (15, 15), 4 VCs: 25000 cycles, 44 ticks, 1568 samples, 14986 heads, 13927 VCs freed, 28007 flits that must not count, 285 head-and-free pairs
+# KERNEL: COVER  U12 16x16/4 at (15, 15), 4 VCs epochs latched        44
+# KERNEL: COVER  U12 16x16/4 at (15, 15), 4 VCs heads and free credits together 285
+# KERNEL: INFO   U12 16x16/8 at (7, 8), 2 VCs: 25000 cycles, 43 ticks, 1569 samples, 13497 heads, 12552 VCs freed, 28216 flits that must not count, 270 head-and-free pairs
+# KERNEL: COVER  U12 16x16/8 at (7, 8), 2 VCs epochs latched          43
+# KERNEL: COVER  U12 16x16/8 at (7, 8), 2 VCs heads and free credits together 270
+# KERNEL: INFO   U12 8x8/4 at (0, 0), 1 VCs: 25000 cycles, 45 ticks, 1570 samples, 11333 heads, 10562 VCs freed, 28259 flits that must not count, 230 head-and-free pairs
+# KERNEL: COVER  U12 8x8/4 at (0, 0), 1 VCs epochs latched            45
+# KERNEL: COVER  U12 8x8/4 at (0, 0), 1 VCs heads and free credits together 230
+# KERNEL: INFO   U12 8x8/2 at (6, 1) RST: 25000 cycles, 45 ticks, 1571 samples, 15055 heads, 13996 VCs freed, 28294 flits that must not count, 304 head-and-free pairs
+# KERNEL: COVER  U12 8x8/2 at (6, 1) RST epochs latched               45
+# KERNEL: INFO   U12 8x8/4 at (3, 3) SAT: 60000 cycles, 4 ticks, 3751 samples, 0 heads, 0 VCs freed, 0 flits that must not count, 0 head-and-free pairs
+# KERNEL: COVER  U12 8x8/4 at (3, 3) SAT epochs latched               4
+# KERNEL: COVER  U12 8x8/4 at (3, 3) SAT cycles with a saturated sum  3360
+# KERNEL: INFO   U12 counters: 8x8/4, 4x4/2, 16x16/4, 16x16/8 with 2 VCs, 8x8/4 with 1 VC, a saturation run, a reset run
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U12 FAIL checks=210015 errors=97829 seed=1
+# KERNEL: ==========================================================================
+# KERNEL: Fatal Error: testbench.sv (526): U12 failed
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (526): $finish called.
+# KERNEL: Time: 600030 ns,  Iteration: 1,  Instance: /tb_demand_counter,  Process: @INITIAL#1480_2@.
+# KERNEL: stopped at time: 600030 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.

@@ -1,0 +1,395 @@
+pwd
+D:/
+cd /noc_bypass
+pwd
+D:/noc_bypass
+vivado -mode batch -source sim/vivado/run.tcl -tclargs -test all
+WARNING: [Common 17-259] Unknown Tcl command 'vivado -mode batch -source sim/vivado/run.tcl -tclargs -test all' sending command to the OS shell for execution. It is recommended to use 'exec' to send the command to the OS shell.
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Wed Nov  4 23:09:07 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source sim/vivado/run.tcl
+# set nb_here [file dirname [file normalize [info script]]]
+# set nb_root [file normalize [file join $nb_here .. ..]]
+# set nb_opt(test) U01
+# set nb_opt(seed) 1
+# set nb_opt(plus) ""
+# set nb_opt(wave) 0
+# set nb_opt(gui)  0
+# if {![info exists argv]} { set argv {} }
+# for {set i 0} {$i < [llength $argv]} {incr i} {
+#   set a [lindex $argv $i]
+#   switch -- $a {
+#     -test   { incr i; set nb_opt(test) [lindex $argv $i] }
+#     -seed   { incr i; set nb_opt(seed) [lindex $argv $i] }
+#     -plus   { incr i; set nb_opt(plus) [lindex $argv $i] }
+#     -wave   { set nb_opt(wave) 1 }
+#     -gui    { set nb_opt(gui) 1 }
+#     default { error "run.tcl: unknown option '$a' (options: -test -seed -plus -wave -gui)" }
+#   }
+# }
+# proc nb_slurp {path} {
+#   set fh [open $path r]
+#   set txt [read $fh]
+#   close $fh
+#   return $txt
+# }
+# proc nb_read_flist {path root} {
+#   set srcs {}
+#   set incs {}
+#   set defs {}
+#   foreach line [split [nb_slurp $path] "\n"] {
+#     regsub {//.*$} $line {} line
+#     set line [string trim $line]
+#     if {$line eq ""} continue
+#     if {[string match {+incdir+*} $line]} {
+#       lappend incs [file join $root [string range $line 8 end]]
+#     } elseif {[string match {+define+*} $line]} {
+#       lappend defs [string range $line 8 end]
+#     } else {
+#       lappend srcs [file join $root $line]
+#     }
+#   }
+#   return [list $srcs $incs $defs]
+# }
+# proc nb_tests_of {path} {
+#   if {[regexp {//\s*@tests\s+([^\n]*)} [nb_slurp $path] -> ids]} { return [string trim $ids] }
+#   return {}
+# }
+# proc nb_tool {name} {
+#   set exe [auto_execok $name]
+#   if {$exe eq ""} {
+#     error "run.tcl: '$name' not found. Run from Vivado or the Vivado Tcl Shell, so that Vivado's bin directory is on the PATH."
+#   }
+#   return $exe
+# }
+# proc nb_exec {log cmd} {
+#   if {[catch {exec {*}$cmd >& $log}]} { return 0 }
+#   return 1
+# }
+# proc nb_count {log pattern} {
+#   if {![file exists $log]} { return 0 }
+#   set n 0
+#   foreach line [split [nb_slurp $log] "\n"] {
+#     if {[regexp $pattern $line]} { incr n }
+#   }
+#   return $n
+# }
+# proc nb_tail {log n} {
+#   if {![file exists $log]} { return "" }
+#   set lines [split [string trimright [nb_slurp $log] "\n"] "\n"]
+#   return [join [lrange $lines end-[expr {$n - 1}] end] "\n"]
+# }
+# lassign [nb_read_flist [file join $nb_root sim files_rtl.f] $nb_root] rtl_srcs rtl_incs rtl_defs
+# lassign [nb_read_flist [file join $nb_root sim files_tb.f]  $nb_root] tb_srcs  tb_incs  tb_defs
+# set nb_tops {}
+# foreach f $tb_srcs {
+#   set ids [nb_tests_of $f]
+#   if {[llength $ids] == 0} continue
+#   set mod [file rootname [file tail $f]]
+#   if {$nb_opt(test) eq "all" || $nb_opt(test) eq $mod || [lsearch -exact $ids $nb_opt(test)] >= 0} {
+#     lappend nb_tops [list $mod $ids]
+#   }
+# }
+# if {[llength $nb_tops] == 0} {
+#   error "run.tcl: no testbench in sim/files_tb.f runs '$nb_opt(test)'"
+# }
+# set xvlog [nb_tool xvlog]
+# set xelab [nb_tool xelab]
+# set xsim  [nb_tool xsim]
+# set vargs [list --sv]
+# foreach d [concat $rtl_incs $tb_incs] { lappend vargs --include $d }
+# foreach d [concat $rtl_defs $tb_defs] { lappend vargs --define $d }
+# set vargs [concat $vargs $rtl_srcs $tb_srcs]
+# set plus [list "SEED=$nb_opt(seed)"]
+# foreach p $nb_opt(plus) { lappend plus [string trimleft $p "+"] }
+# if {[regexp {^[A-Z]+[0-9]+$} $nb_opt(test)]} { lappend plus "TEST=$nb_opt(test)" }
+# set debug off
+# if {$nb_opt(wave) || $nb_opt(gui)} { set debug typical }
+# set nb_old [pwd]
+# set nb_summary {}
+# foreach t $nb_tops {
+#   lassign $t top ids
+#   set work [file join $nb_here work $top]
+#   file mkdir $work
+#   cd $work
+#   set t0 [clock seconds]
+#   puts "run.tcl: $top (tests $ids), seed $nb_opt(seed): compiling"
+#   set ok [nb_exec compile.log [concat $xvlog $vargs]]
+#   if {$ok} {
+#     puts "run.tcl: $top: elaborating"
+#     set ok [nb_exec elaborate.log [concat $xelab [list --debug $debug --timescale 1ns/1ps --snapshot ${top}_snap work.$top]]]
+#   }
+#   set wc [nb_count compile.log {^WARNING}]
+#   set we [nb_count elaborate.log {^WARNING}]
+#   if {!$ok} {
+#     set result "BUILD FAILED: see [file join $work compile.log] and elaborate.log"
+#     puts [nb_tail compile.log 15]
+#     puts [nb_tail elaborate.log 15]
+#   } else {
+#     set sargs [list ${top}_snap]
+#     foreach p $plus { lappend sargs --testplusarg $p }
+#     if {$nb_opt(gui)} {
+#       exec {*}$xsim {*}$sargs --gui &
+#       set result "xsim GUI opened"
+#     } else {
+#       if {$nb_opt(wave)} {
+#         set fh [open wave.tcl w]
+#         puts $fh "log_wave -recursive *"
+#         puts $fh "run all"
+#         puts $fh "quit"
+#         close $fh
+#         lappend sargs --tclbatch wave.tcl --wdb ${top}.wdb
+#       } else {
+#         lappend sargs --runall
+#       }
+#       puts "run.tcl: $top: simulating"
+#       nb_exec simulate.log [concat $xsim $sargs]
+#       puts [nb_tail simulate.log 12]
+#       set txt ""
+#       if {[file exists simulate.log]} { set txt [nb_slurp simulate.log] }
+#       if {[regexp {RESULT\s+(\S+)\s+(PASS|FAIL)\s+checks=(\d+)\s+errors=(\d+)} $txt -> tid verdict nchk nerr]} {
+#         set result "$verdict  checks=$nchk errors=$nerr"
+#       } else {
+#         set result "NO RESULT LINE (crash or timeout): see [file join $work simulate.log]"
+#       }
+#     }
+#   }
+#   set dt [expr {[clock seconds] - $t0}]
+#   lappend nb_summary [format "%-20s %-12s %s   (%d s; warnings: compile %d, elaborate %d)" $top $ids $result $dt $wc $we]
+#   cd $nb_old
+# }
+run.tcl: tb_rr_arbiter (tests U01), seed 1: compiling
+run.tcl: tb_rr_arbiter: elaborating
+run.tcl: tb_rr_arbiter: simulating
+    --stats              : Display memory and cpu stats upon exiting
+    --sv_seed            : seed for sv constraint random
+    --t                  : Specify the TCL file for batch mode execution
+    --tclbatch           : Specify the TCL file for batch mode execution
+    --tempDir            : Specify the temporary directory name
+    --testplusarg        : Specify plus args to be used by $test$plusargs and $value$plusargs system functions
+    --tl                 : Enable printing of file name and line number of statements being executed.
+    --tp                 : Enable printing of hierarchical names of process being executed.
+    --version            : Print the simulator version and quit.
+    --view               : Open a wave configuration file. This switch should be used together with -gui switch
+    --wdb                : Specify the waveform database output file.
+    --xsimdir            : Location of xsim.dir directory. Default location is "." i.e. current run directory.
+run.tcl: tb_sync_fifo (tests U02), seed 1: compiling
+run.tcl: tb_sync_fifo: elaborating
+run.tcl: tb_sync_fifo: simulating
+    --stats              : Display memory and cpu stats upon exiting
+    --sv_seed            : seed for sv constraint random
+    --t                  : Specify the TCL file for batch mode execution
+    --tclbatch           : Specify the TCL file for batch mode execution
+    --tempDir            : Specify the temporary directory name
+    --testplusarg        : Specify plus args to be used by $test$plusargs and $value$plusargs system functions
+    --tl                 : Enable printing of file name and line number of statements being executed.
+    --tp                 : Enable printing of hierarchical names of process being executed.
+    --version            : Print the simulator version and quit.
+    --view               : Open a wave configuration file. This switch should be used together with -gui switch
+    --wdb                : Specify the waveform database output file.
+    --xsimdir            : Location of xsim.dir directory. Default location is "." i.e. current run directory.
+run.tcl: tb_route_compute (tests U03), seed 1: compiling
+run.tcl: tb_route_compute: elaborating
+run.tcl: tb_route_compute: simulating
+    --stats              : Display memory and cpu stats upon exiting
+    --sv_seed            : seed for sv constraint random
+    --t                  : Specify the TCL file for batch mode execution
+    --tclbatch           : Specify the TCL file for batch mode execution
+    --tempDir            : Specify the temporary directory name
+    --testplusarg        : Specify plus args to be used by $test$plusargs and $value$plusargs system functions
+    --tl                 : Enable printing of file name and line number of statements being executed.
+    --tp                 : Enable printing of hierarchical names of process being executed.
+    --version            : Print the simulator version and quit.
+    --view               : Open a wave configuration file. This switch should be used together with -gui switch
+    --wdb                : Specify the waveform database output file.
+    --xsimdir            : Location of xsim.dir directory. Default location is "." i.e. current run directory.
+# puts "==================== run.tcl summary, seed $nb_opt(seed) ===================="
+==================== run.tcl summary, seed 1 ====================
+# foreach s $nb_summary { puts $s }
+tb_rr_arbiter        U01          NO RESULT LINE (crash or timeout): see D:/noc_bypass/sim/vivado/work/tb_rr_arbiter/simulate.log   (51 s; warnings: compile 0, elaborate 2)
+tb_sync_fifo         U02          NO RESULT LINE (crash or timeout): see D:/noc_bypass/sim/vivado/work/tb_sync_fifo/simulate.log   (34 s; warnings: compile 0, elaborate 2)
+tb_route_compute     U03          NO RESULT LINE (crash or timeout): see D:/noc_bypass/sim/vivado/work/tb_route_compute/simulate.log   (25 s; warnings: compile 0, elaborate 2)
+# puts "Logs: [file join $nb_here work]/<testbench>/"
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/
+INFO: [Common 17-206] Exiting Vivado at Wed Nov  4 23:10:59 2026...
+set argv {-test U01 -seed 1}
+-test U01 -seed 1
+source D:/noc_bypass/sim/vivado/run.tcl
+# set nb_here [file dirname [file normalize [info script]]]
+# set nb_root [file normalize [file join $nb_here .. ..]]
+# set nb_opt(test) U01
+# set nb_opt(seed) 1
+# set nb_opt(plus) ""
+# set nb_opt(wave) 0
+# set nb_opt(gui)  0
+# if {![info exists argv]} { set argv {} }
+# for {set i 0} {$i < [llength $argv]} {incr i} {
+#   set a [lindex $argv $i]
+#   switch -- $a {
+#     -test   { incr i; set nb_opt(test) [lindex $argv $i] }
+#     -seed   { incr i; set nb_opt(seed) [lindex $argv $i] }
+#     -plus   { incr i; set nb_opt(plus) [lindex $argv $i] }
+#     -wave   { set nb_opt(wave) 1 }
+#     -gui    { set nb_opt(gui) 1 }
+#     default { error "run.tcl: unknown option '$a' (options: -test -seed -plus -wave -gui)" }
+#   }
+# }
+# proc nb_slurp {path} {
+#   set fh [open $path r]
+#   set txt [read $fh]
+#   close $fh
+#   return $txt
+# }
+# proc nb_read_flist {path root} {
+#   set srcs {}
+#   set incs {}
+#   set defs {}
+#   foreach line [split [nb_slurp $path] "\n"] {
+#     regsub {//.*$} $line {} line
+#     set line [string trim $line]
+#     if {$line eq ""} continue
+#     if {[string match {+incdir+*} $line]} {
+#       lappend incs [file join $root [string range $line 8 end]]
+#     } elseif {[string match {+define+*} $line]} {
+#       lappend defs [string range $line 8 end]
+#     } else {
+#       lappend srcs [file join $root $line]
+#     }
+#   }
+#   return [list $srcs $incs $defs]
+# }
+# proc nb_tests_of {path} {
+#   if {[regexp {//\s*@tests\s+([^\n]*)} [nb_slurp $path] -> ids]} { return [string trim $ids] }
+#   return {}
+# }
+# proc nb_tool {name} {
+#   set exe [auto_execok $name]
+#   if {$exe eq ""} {
+#     error "run.tcl: '$name' not found. Run from Vivado or the Vivado Tcl Shell, so that Vivado's bin directory is on the PATH."
+#   }
+#   return $exe
+# }
+# proc nb_exec {log cmd} {
+#   if {[catch {exec {*}$cmd >& $log}]} { return 0 }
+#   return 1
+# }
+# proc nb_count {log pattern} {
+#   if {![file exists $log]} { return 0 }
+#   set n 0
+#   foreach line [split [nb_slurp $log] "\n"] {
+#     if {[regexp $pattern $line]} { incr n }
+#   }
+#   return $n
+# }
+# proc nb_tail {log n} {
+#   if {![file exists $log]} { return "" }
+#   set lines [split [string trimright [nb_slurp $log] "\n"] "\n"]
+#   return [join [lrange $lines end-[expr {$n - 1}] end] "\n"]
+# }
+# lassign [nb_read_flist [file join $nb_root sim files_rtl.f] $nb_root] rtl_srcs rtl_incs rtl_defs
+# lassign [nb_read_flist [file join $nb_root sim files_tb.f]  $nb_root] tb_srcs  tb_incs  tb_defs
+# set nb_tops {}
+# foreach f $tb_srcs {
+#   set ids [nb_tests_of $f]
+#   if {[llength $ids] == 0} continue
+#   set mod [file rootname [file tail $f]]
+#   if {$nb_opt(test) eq "all" || $nb_opt(test) eq $mod || [lsearch -exact $ids $nb_opt(test)] >= 0} {
+#     lappend nb_tops [list $mod $ids]
+#   }
+# }
+# if {[llength $nb_tops] == 0} {
+#   error "run.tcl: no testbench in sim/files_tb.f runs '$nb_opt(test)'"
+# }
+# set xvlog [nb_tool xvlog]
+# set xelab [nb_tool xelab]
+# set xsim  [nb_tool xsim]
+# set vargs [list --sv]
+# foreach d [concat $rtl_incs $tb_incs] { lappend vargs --include $d }
+# foreach d [concat $rtl_defs $tb_defs] { lappend vargs --define $d }
+# set vargs [concat $vargs $rtl_srcs $tb_srcs]
+# set plus [list "SEED=$nb_opt(seed)"]
+# foreach p $nb_opt(plus) { lappend plus [string trimleft $p "+"] }
+# if {[regexp {^[A-Z]+[0-9]+$} $nb_opt(test)]} { lappend plus "TEST=$nb_opt(test)" }
+# set debug off
+# if {$nb_opt(wave) || $nb_opt(gui)} { set debug typical }
+# set nb_old [pwd]
+# set nb_summary {}
+# foreach t $nb_tops {
+#   lassign $t top ids
+#   set work [file join $nb_here work $top]
+#   file mkdir $work
+#   cd $work
+#   set t0 [clock seconds]
+#   puts "run.tcl: $top (tests $ids), seed $nb_opt(seed): compiling"
+#   set ok [nb_exec compile.log [concat $xvlog $vargs]]
+#   if {$ok} {
+#     puts "run.tcl: $top: elaborating"
+#     set ok [nb_exec elaborate.log [concat $xelab [list --debug $debug --timescale 1ns/1ps --snapshot ${top}_snap work.$top]]]
+#   }
+#   set wc [nb_count compile.log {^WARNING}]
+#   set we [nb_count elaborate.log {^WARNING}]
+#   if {!$ok} {
+#     set result "BUILD FAILED: see [file join $work compile.log] and elaborate.log"
+#     puts [nb_tail compile.log 15]
+#     puts [nb_tail elaborate.log 15]
+#   } else {
+#     set sargs [list ${top}_snap]
+#     foreach p $plus { lappend sargs --testplusarg $p }
+#     if {$nb_opt(gui)} {
+#       exec {*}$xsim {*}$sargs --gui &
+#       set result "xsim GUI opened"
+#     } else {
+#       if {$nb_opt(wave)} {
+#         set fh [open wave.tcl w]
+#         puts $fh "log_wave -recursive *"
+#         puts $fh "run all"
+#         puts $fh "quit"
+#         close $fh
+#         lappend sargs --tclbatch wave.tcl --wdb ${top}.wdb
+#       } else {
+#         lappend sargs --runall
+#       }
+#       puts "run.tcl: $top: simulating"
+#       nb_exec simulate.log [concat $xsim $sargs]
+#       puts [nb_tail simulate.log 12]
+#       set txt ""
+#       if {[file exists simulate.log]} { set txt [nb_slurp simulate.log] }
+#       if {[regexp {RESULT\s+(\S+)\s+(PASS|FAIL)\s+checks=(\d+)\s+errors=(\d+)} $txt -> tid verdict nchk nerr]} {
+#         set result "$verdict  checks=$nchk errors=$nerr"
+#       } else {
+#         set result "NO RESULT LINE (crash or timeout): see [file join $work simulate.log]"
+#       }
+#     }
+#   }
+#   set dt [expr {[clock seconds] - $t0}]
+#   lappend nb_summary [format "%-20s %-12s %s   (%d s; warnings: compile %d, elaborate %d)" $top $ids $result $dt $wc $we]
+#   cd $nb_old
+# }
+run.tcl: tb_rr_arbiter (tests U01), seed 1: compiling
+run.tcl: tb_rr_arbiter: elaborating
+run.tcl: tb_rr_arbiter: simulating
+    --stats              : Display memory and cpu stats upon exiting
+    --sv_seed            : seed for sv constraint random
+    --t                  : Specify the TCL file for batch mode execution
+    --tclbatch           : Specify the TCL file for batch mode execution
+    --tempDir            : Specify the temporary directory name
+    --testplusarg        : Specify plus args to be used by $test$plusargs and $value$plusargs system functions
+    --tl                 : Enable printing of file name and line number of statements being executed.
+    --tp                 : Enable printing of hierarchical names of process being executed.
+    --version            : Print the simulator version and quit.
+    --view               : Open a wave configuration file. This switch should be used together with -gui switch
+    --wdb                : Specify the waveform database output file.
+    --xsimdir            : Location of xsim.dir directory. Default location is "." i.e. current run directory.
+# puts "==================== run.tcl summary, seed $nb_opt(seed) ===================="
+==================== run.tcl summary, seed 1 ====================
+# foreach s $nb_summary { puts $s }
+tb_rr_arbiter        U01          NO RESULT LINE (crash or timeout): see D:/noc_bypass/sim/vivado/work/tb_rr_arbiter/simulate.log   (25 s; warnings: compile 0, elaborate 2)
+# puts "Logs: [file join $nb_here work]/<testbench>/"
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

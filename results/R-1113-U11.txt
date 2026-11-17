@@ -1,0 +1,153 @@
+[2026-11-13 02:34:58 UTC] vlib work && vlog '+define+TEST_U11' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top tb_phase_sequencer."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.1 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.6 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.6 [s]
+# SLP: Finished : 3.3 [s]
+# SLP: 0 primitives and 51729 (99.98%) other processes in SLP
+# SLP: 82044 (98.77%) signals in SLP and 167 (0.20%) interface signals
+# ELAB2: Elaboration final pass complete - time: 5.3 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 16828 kB (elbread=630 elab2=16126 kernel=71 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U11  phase_sequencer: frames, resumed counters, epoch and plan switch equal the frame reference every cycle
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: INFO   U11 4x4/2 TIGHT B10: 25000 cycles, 151 frames, 25 plan changes applied, local/global slots 23/79 cycles
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 frame starts                     151
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 epoch ticks                      49
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 new k_L applied at a frame start 25
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 frames with k_L = 0 (global only) 85
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 frames with k_L = K_MAX          12
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 local -> global at a slot end    65
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 global -> local at a frame start 65
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 sample in a frame's last cycle, applied at once 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 4x4/2 TIGHT B10 sample in a frame's last cycle, applied at once
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 sample replaced before taking effect 2
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 frames with k_L = 63 (register limit) 2
+# KERNEL: COVER  U11 4x4/2 TIGHT B10 global slot number wraps to 0    15
+# KERNEL: INFO   U11 4x4 one pointer: 25000 cycles, 317 frames, 0 plan changes applied, local/global slots 79/79 cycles
+# KERNEL: COVER  U11 4x4 one pointer frame starts                     317
+# KERNEL: COVER  U11 4x4 one pointer epoch ticks                      49
+# KERNEL: COVER  U11 4x4 one pointer global slot number wraps to 0    31
+# KERNEL: INFO   U11 8x8/4 TIGHT B10: 50000 cycles, 72 frames, 10 plan changes applied, local/global slots 79/287 cycles
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 frame starts                     72
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 epoch ticks                      13
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 new k_L applied at a frame start 10
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 frames with k_L = 0 (global only) 13
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 frames with k_L = K_MAX          12
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 local -> global at a slot end    59
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 global -> local at a frame start 58
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 sample in a frame's last cycle, applied at once 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/4 TIGHT B10 sample in a frame's last cycle, applied at once
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 sample replaced before taking effect 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/4 TIGHT B10 sample replaced before taking effect
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 frames with k_L = 63 (register limit) 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/4 TIGHT B10 frames with k_L = 63 (register limit)
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 global slot number wraps to 0    2
+# KERNEL: INFO   U11 8x8/4 SAFE B10: 50000 cycles, 72 frames, 31 plan changes applied, local/global slots 103/335 cycles
+# KERNEL: COVER  U11 8x8/4 SAFE B10 frame starts                      72
+# KERNEL: COVER  U11 8x8/4 SAFE B10 epoch ticks                       49
+# KERNEL: COVER  U11 8x8/4 SAFE B10 new k_L applied at a frame start  31
+# KERNEL: COVER  U11 8x8/4 SAFE B10 frames with k_L = 0 (global only) 40
+# KERNEL: COVER  U11 8x8/4 SAFE B10 frames with k_L = K_MAX           7
+# KERNEL: COVER  U11 8x8/4 SAFE B10 local -> global at a slot end     32
+# KERNEL: COVER  U11 8x8/4 SAFE B10 global -> local at a frame start  31
+# KERNEL: COVER  U11 8x8/4 SAFE B10 sample in a frame's last cycle, applied at once 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/4 SAFE B10 sample in a frame's last cycle, applied at once
+# KERNEL: COVER  U11 8x8/4 SAFE B10 sample replaced before taking effect 7
+# KERNEL: COVER  U11 8x8/4 SAFE B10 frames with k_L = 63 (register limit) 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/4 SAFE B10 frames with k_L = 63 (register limit)
+# KERNEL: COVER  U11 8x8/4 SAFE B10 global slot number wraps to 0     2
+# KERNEL: INFO   U11 8x8/2 TIGHT B5: 50000 cycles, 149 frames, 22 plan changes applied, local/global slots 13/247 cycles
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 frame starts                      149
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 epoch ticks                       25
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 new k_L applied at a frame start  22
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 frames with k_L = 0 (global only) 39
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 frames with k_L = K_MAX           14
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 local -> global at a slot end     109
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 global -> local at a frame start  109
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 sample in a frame's last cycle, applied at once 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/2 TIGHT B5 sample in a frame's last cycle, applied at once
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 sample replaced before taking effect 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 8x8/2 TIGHT B5 sample replaced before taking effect
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 frames with k_L = 63 (register limit) 2
+# KERNEL: COVER  U11 8x8/2 TIGHT B5 global slot number wraps to 0     5
+# KERNEL: INFO   U11 8x8 one pointer: 50000 cycles, 175 frames, 0 plan changes applied, local/global slots 287/287 cycles
+# KERNEL: COVER  U11 8x8 one pointer frame starts                     175
+# KERNEL: COVER  U11 8x8 one pointer epoch ticks                      49
+# KERNEL: COVER  U11 8x8 one pointer global slot number wraps to 0    4
+# KERNEL: INFO   U11 8x8/4 TIGHT B10 k0 epoch 1148: 50000 cycles, 61 frames, 30 plan changes applied, local/global slots 79/287 cycles
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 frame starts       61
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 epoch ticks        44
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 new k_L applied at a frame start 30
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 frames with k_L = 0 (global only) 23
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 frames with k_L = K_MAX 5
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 local -> global at a slot end 37
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 global -> local at a frame start 38
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 sample in a frame's last cycle, applied at once 1
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 sample replaced before taking effect 7
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 frames with k_L = 63 (register limit) 2
+# KERNEL: COVER  U11 8x8/4 TIGHT B10 k0 epoch 1148 global slot number wraps to 0 1
+# KERNEL: INFO   U11 16x16/4 TIGHT B10: 75000 cycles, 28 frames, 22 plan changes applied, local/global slots 79/1087 cycles
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 frame starts                   28
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 epoch ticks                    37
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 new k_L applied at a frame start 22
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 frames with k_L = 0 (global only) 6
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 frames with k_L = K_MAX        2
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 local -> global at a slot end  21
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 global -> local at a frame start 21
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 sample in a frame's last cycle, applied at once 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 16x16/4 TIGHT B10 sample in a frame's last cycle, applied at once
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 sample replaced before taking effect 11
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 frames with k_L = 63 (register limit) 2
+# KERNEL: COVER  U11 16x16/4 TIGHT B10 global slot number wraps to 0  1
+# KERNEL: INFO   U11 16x16/8 SAFE B15: 75000 cycles, 8 frames, 6 plan changes applied, local/global slots 375/1263 cycles
+# KERNEL: COVER  U11 16x16/8 SAFE B15 frame starts                    8
+# KERNEL: COVER  U11 16x16/8 SAFE B15 epoch ticks                     10
+# KERNEL: COVER  U11 16x16/8 SAFE B15 new k_L applied at a frame start 6
+# KERNEL: COVER  U11 16x16/8 SAFE B15 frames with k_L = 0 (global only) 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 16x16/8 SAFE B15 frames with k_L = 0 (global only)
+# KERNEL: COVER  U11 16x16/8 SAFE B15 frames with k_L = K_MAX         1
+# KERNEL: COVER  U11 16x16/8 SAFE B15 local -> global at a slot end   7
+# KERNEL: COVER  U11 16x16/8 SAFE B15 global -> local at a frame start 7
+# KERNEL: COVER  U11 16x16/8 SAFE B15 sample in a frame's last cycle, applied at once 0
+# KERNEL: INFO   coverage goal not reached in this run: U11 16x16/8 SAFE B15 sample in a frame's last cycle, applied at once
+# KERNEL: COVER  U11 16x16/8 SAFE B15 sample replaced before taking effect 3
+# KERNEL: COVER  U11 16x16/8 SAFE B15 frames with k_L = 63 (register limit) 1
+# KERNEL: COVER  U11 16x16/8 SAFE B15 global slot number wraps to 0   1
+# KERNEL: INFO   U11 sequencers: 8x8/4 TIGHT and SAFE, 8x8/2 B5, 16x16/4, 16x16/8 SAFE B15, 4x4/2, one pointer on 4x4 and 8x8, a sample at a frame's end
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U11 PASS checks=2625053 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (463): $finish called.
+# KERNEL: Time: 750010 ns,  Iteration: 1,  Instance: /tb_phase_sequencer,  Process: @INITIAL#2208_2@.
+# KERNEL: stopped at time: 750010 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

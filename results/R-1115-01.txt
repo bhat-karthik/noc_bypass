@@ -1,0 +1,26 @@
+cd D:/noc_bypass
+set argv {-list stress -only S05*}; source -notrace sim/vivado/regress.tcl
+regress.tcl: 4 entries from stress, seed 1
+regress.tcl: S05_A_q: building tb_mesh 
+regress.tcl: S05_A_q: tb_mesh: built (0 warnings)
+regress.tcl: S05_A_q: simulating
+S05_A_q        tb_mesh tb_mesh                PASS    checks=145,256 errors=0 (expected 145,256), 1,264 cycles, 7 s
+regress.tcl: S05_B_q: building tb_mesh_b 
+regress.tcl: S05_B_q: tb_mesh_b: built (0 warnings)
+regress.tcl: S05_B_q: simulating
+S05_B_q        tb_mesh_b tb_mesh_b              PASS    checks=207,433 errors=0 (expected 207,433), 1,265 cycles, 9 s
+regress.tcl: S05_C_q: building tb_mesh_c 
+regress.tcl: S05_C_q: tb_mesh_c: built (0 warnings)
+regress.tcl: S05_C_q: simulating
+S05_C_q        tb_mesh_c tb_mesh_c              PASS    checks=222,333 errors=0 (expected 222,333), 1,266 cycles, 7 s
+regress.tcl: S05_D_q: building tb_mesh_d 
+regress.tcl: S05_D_q: tb_mesh_d: built (0 warnings)
+regress.tcl: S05_D_q: simulating
+S05_D_q        tb_mesh_d tb_mesh_d              PASS    checks=222,337 errors=0 (expected 222,337), 1,266 cycles, 9 s
+==================== regress.tcl summary: stress, seed 1 ====================
+S05_A_q        tb_mesh tb_mesh                PASS    checks=145,256 errors=0 (expected 145,256), 1,264 cycles, 7 s
+S05_B_q        tb_mesh_b tb_mesh_b              PASS    checks=207,433 errors=0 (expected 207,433), 1,265 cycles, 9 s
+S05_C_q        tb_mesh_c tb_mesh_c              PASS    checks=222,333 errors=0 (expected 222,333), 1,266 cycles, 7 s
+S05_D_q        tb_mesh_d tb_mesh_d              PASS    checks=222,337 errors=0 (expected 222,337), 1,266 cycles, 9 s
+4 entries: 4 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 2 min
+Summary file: D:/noc_bypass/sim/vivado/work/regress_stress_seed1.txt

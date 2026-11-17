@@ -1,0 +1,57 @@
+B2 mutation check, 2026-11-07 06:06 UTC
+Each mutant injects one bug into a copy of the RTL; tb_mesh (4x4) runs every test with +SEED=1 +N03_REPS=1 +N08_CYCLES=20000.
+full    = RTL assertions on (normal build)
+tb-only = RTL assertions compiled out (+define+SYNTHESIS): only testbench checks can kill it
+Killed = the run fails (RESULT FAIL, a $fatal, a hang, or no RESULT line). 'in Nxx' = the last test the run reached:
+for a $fatal that is where it stopped; after an ERROR the run goes on to the end (N08), and the ERROR line names
+what failed. M10 survives tb-only as expected: a body flit 're-allocates' the VC its packet already holds, which
+changes no state; only the output unit's allocation assertion sees it (an equivalent mutant).
+
+M01 full KILLED   tb-only KILLED   ni.sv        NI: a tail's credit never frees its VC
+     full:    in N01: ERROR  [20525000] N01-N08: N01: the burst did not drain (deadlock or more than 200000 cycles)
+     tb-only: in N01: ERROR  [20525000] N01-N08: N01: the burst did not drain (deadlock or more than 200000 cycles)
+M02 full KILLED   tb-only KILLED   ni.sv        NI: credit sent when a flit arrives, not when the core takes it
+     full:    in N01: [165000] %Fatal: output_unit.sv:132: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[2].g_col[3].u_tile.u_router.g_port[4].u_out.unnamedblk5: TOP.tb_mesh.u_bench.dut.g_
+     tb-only: in N01: ERROR  [20675000] N01-N08: N01: the burst did not drain (deadlock or more than 200000 cycles)
+M03 full KILLED   tb-only KILLED   ni.sv        NI: a head is taken without an idle Local VC
+     full:    in N01: [145000] %Fatal: output_unit.sv:126: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[3].g_col[1].u_tile.u_ni.u_inj: TOP.tb_mesh.u_bench.dut.g_row[3].g_col[1].u_tile.u_n
+     tb-only: in N01: ERROR  [470000] N01-N08: node 2 VC 3: body or tail flit without a head
+M04 full KILLED   tb-only KILLED   ni.sv        NI: body flits go on the VC offered now, not the packet's VC
+     full:    in N01: [75000] %Fatal: output_unit.sv:134: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[1].g_col[0].u_tile.u_ni.u_inj.unnamedblk5: TOP.tb_mesh.u_bench.dut.g_row[1].g_col[0]
+     tb-only: in N01: ERROR  [340000] N01-N08: node 14 VC 0: flit 1 of packet 13.0 is corrupt
+M05 full KILLED   tb-only KILLED   ni.sv        NI: never notices a tail, so it takes no second packet
+     full:    in N01: [75000] %Fatal: ni.sv:191: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[0].g_col[0].u_tile.u_ni: TOP.tb_mesh.u_bench.dut.g_row[0].g_col[0].u_tile.u_ni: core offered 
+     tb-only: in N01: ERROR  [20395000] N01-N08: N01: the burst did not drain (deadlock or more than 200000 cycles)
+M06 full KILLED   tb-only KILLED   ni.sv        NI: pops the ejection FIFO even when the core is not ready
+     full:    in N06: ERROR  [802960000] N01-N08: node 11: the NI gave flit 00/VC 0/4d1ac696424c254aeb8dabbbdff2fa56, but flit 01/VC 0/0032f19c1000013997000015f2a1030b arrived first
+     tb-only: in N06: ERROR  [802960000] N01-N08: node 11: the NI gave flit 00/VC 0/4d1ac696424c254aeb8dabbbdff2fa56, but flit 01/VC 0/0032f19c1000013997000015f2a1030b arrived first
+M07 full KILLED   tb-only KILLED   ni.sv        NI: every ejected flit and its credit name VC 0
+     full:    in N01: ERROR  [170000] N01-N08: node 8: the NI gave flit 01/VC 0/00cd44d5b00000000600000000a10908, but flit 01/VC 1/00cd44d5b00000000600000000a10908 arrived first
+     tb-only: in N01: ERROR  [170000] N01-N08: node 8: the NI gave flit 01/VC 0/00cd44d5b00000000600000000a10908, but flit 01/VC 1/00cd44d5b00000000600000000a10908 arrived first
+M08 full KILLED   tb-only KILLED   ni.sv        NI: one data bit inverted on ejection
+     full:    in N08: ERROR  [140000] N01-N08: node 11: the NI gave flit 11/VC 0/009105e9050000000600000001200b0a, but flit 11/VC 0/009105e9050000000600000001200b0b arrived first
+     tb-only: in N08: ERROR  [140000] N01-N08: node 11: the NI gave flit 11/VC 0/009105e9050000000600000001200b0a, but flit 11/VC 0/009105e9050000000600000001200b0b arrived first
+M09 full KILLED   tb-only KILLED   ni.sv        NI: every injected flit on VC 0 whatever VC was allocated
+     full:    in N01: [85000] %Fatal: input_unit.sv:215: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[0].g_col[0].u_tile.u_router.g_port[4].u_in.unnamedblk3: TOP.tb_mesh.u_bench.dut.g_row
+     tb-only: in N01: ERROR  [150000] N01-N08: node 15: packet 15.1 for node 13 delivered here
+M10 full KILLED   tb-only SURVIVED ni.sv        NI: every flit, not only the head, allocates a VC
+     full:    in N01: [75000] %Fatal: output_unit.sv:126: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[1].g_col[0].u_tile.u_ni.u_inj: TOP.tb_mesh.u_bench.dut.g_row[1].g_col[0].u_tile.u_ni
+     tb-only: RESULT N01-N08 PASS checks=2834194 errors=0 seed=1
+M11 full KILLED   tb-only KILLED   ni.sv        NI: one extra cycle before a flit is taken (latency + 1, protocol still correct)
+     full:    in N08: ERROR  [125965000] N01-N08: N02 transpose: only 0.0% of packets at exactly the zero-load latency
+     tb-only: in N08: ERROR  [125965000] N01-N08: N02 transpose: only 0.0% of packets at exactly the zero-load latency
+M12 full KILLED   tb-only KILLED   tile.sv      tile: the NI's credits never reach the router
+     full:    in N01: ERROR  [20525000] N01-N08: N01: the burst did not drain (deadlock or more than 200000 cycles)
+     tb-only: in N01: ERROR  [20525000] N01-N08: N01: the burst did not drain (deadlock or more than 200000 cycles)
+M13 full KILLED   tb-only KILLED   mesh_top.sv  mesh: East input wired to the neighbour's East output
+     full:    in N01: [135000] %Fatal: output_unit.sv:132: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[1].g_col[1].u_tile.u_router.g_port[3].u_out.unnamedblk5: TOP.tb_mesh.u_bench.dut.g_
+     tb-only: in N02: ERROR  [250000] N01-N08: node 11: packet 10.0 is unknown or was delivered before
+M14 full KILLED   tb-only KILLED   mesh_top.sv  mesh: North output takes the wrong credit link
+     full:    in N01: [175000] %Fatal: output_unit.sv:138: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[3].g_col[0].u_tile.u_router.g_port[0].u_out.unnamedblk5: TOP.tb_mesh.u_bench.dut.g_
+     tb-only: in N01: ERROR  [320000] N01-N08: node 4 VC 0: flit 3 of packet 9.1 is corrupt
+M15 full KILLED   tb-only KILLED   mesh_top.sv  mesh: east-edge credit tie-off gives a credit every cycle
+     full:    in N01: [55000] %Fatal: output_unit.sv:132: Assertion failed in TOP.tb_mesh.u_bench.dut.g_row[0].g_col[3].u_tile.u_router.g_port[1].u_out.unnamedblk5: TOP.tb_mesh.u_bench.dut.g_r
+     tb-only: in N08: ERROR  [955000] N01-N08: N01: mesh not idle afterwards, busy tiles 1000100010001000
+
+Killed with RTL assertions on:  15 of 15
+Killed by the testbenches alone: 14 of 15

@@ -1,0 +1,60 @@
+[2026-11-09 17:10:39 UTC] vlib work && vlog '+define+TEST_BP04' design.sv testbench.sv  && vsim -c -do "vsim ; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_mesh_b."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.8 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.4 [s]
+# SLP: Finished : 2.2 [s]
+# SLP: 0 primitives and 14966 (99.76%) other processes in SLP
+# SLP: 23127 (90.64%) signals in SLP and 431 (1.69%) interface signals
+# ELAB2: Elaboration final pass complete - time: 3.1 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 20332 kB (elbread=521 elab2=9559 kernel=10252 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   BP01-BP05  mesh 4x4, 4 VC, adaptive routing, design B, B_MAX 10, TIGHT subslots of 18 cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  BP04 the burst limit: more eligible flits than B_MAX = 10
+# KERNEL: INFO   BP04 a: R10 -> R0 at cycle 48 (slot 0 subslot 2, XY): 4 five-flit packets waiting
+# KERNEL: INFO   BP04 a: 2 of 4 waiting packets sent, 10 flits; 0 of them from another router's packets
+# KERNEL: INFO   BP04 a: the 2 packets left out arrived later, 2 of them by the regular path
+# KERNEL: INFO   BP04 b: R13 -> R12 at cycle 328; R14's packets for R12 wait in R13's East input
+# KERNEL: INFO   BP04 b: 2 of 3 waiting packets sent, 6 flits; 2 of them from another router's packets
+# KERNEL: COVER  BP04 packets bypassed from a mesh input of a router on their path 2
+# KERNEL: INFO   BP04 c: slot 1 subslot 2 at cycle 917: R0 -> R11 passes R1, entering on its W input, while R1 sends to R10 a packet from R0 waiting in that same input
+# KERNEL: INFO   BP04 c: R0's burst of 10 flits crossed R1 at cycles 920-929 while R1's own flits left at 918-922
+# KERNEL: COVER  BP04 cycles a source read a mesh input that a passing burst crossed (D38 rule) 3
+# KERNEL: INFO   cycles simulated 953
+# KERNEL: ==========================================================================
+# KERNEL: RESULT BP04 PASS checks=1109 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (419): $finish called.
+# KERNEL: Time: 9535 ns,  Iteration: 1,  Instance: /tb_mesh_b/u_bench,  Process: @INITIAL#1728_3@.
+# KERNEL: stopped at time: 9535 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

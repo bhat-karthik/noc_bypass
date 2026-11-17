@@ -1,0 +1,78 @@
+B1 mutation check, 2026-11-05 18:58 UTC
+Each mutant injects one bug into a copy of the RTL; the listed tests run with seed 1.
+full    = RTL assertions on (normal build)
+tb-only = RTL assertions compiled out (+define+SYNTHESIS): only testbench checks can kill it
+Killed = a test fails (RESULT FAIL, a $fatal, a hang, or no RESULT line).
+
+B01 full KILLED   tb-only KILLED   input_unit.sv        input unit: the tail credit never says the VC is free
+     full:    R: RESULT R01-R04 FAIL checks=9409 errors=1002 seed=1 | first: ERROR  [2035000] R01-R04: T1 R01: not idle after 200 cycles, 0 packets still in flight
+     tb-only: R: RESULT R01-R04 FAIL checks=9409 errors=1002 seed=1 | first: ERROR  [2035000] R01-R04: T1 R01: not idle after 200 cycles, 0 packets still in flight
+B02 full KILLED   tb-only KILLED   input_unit.sv        input unit: every credit names VC 0
+     full:    R: RESULT R01-R04 FAIL checks=84081 errors=951 seed=1 | first: ERROR  [220000] R01-R04: T3 port 0 VC 0: 6 credits
+     tb-only: R: RESULT R01-R04 FAIL checks=84081 errors=951 seed=1 | first: ERROR  [220000] R01-R04: T3 port 0 VC 0: 6 credits
+B03 full KILLED   tb-only KILLED   input_unit.sv        input unit: a head that wins stays ROUTED, so each flit takes a new VC
+     full:    R: RESULT R01-R04 FAIL checks=9237 errors=1004 seed=1 | first: ERROR  [150000] R01-R04: T3 output 0 VC 1: body or tail without a head
+     tb-only: R: RESULT R01-R04 FAIL checks=9237 errors=1004 seed=1 | first: ERROR  [150000] R01-R04: T3 output 0 VC 1: body or tail without a head
+B04 full KILLED   tb-only KILLED   input_unit.sv        input unit: the output VC of a packet is not remembered
+     full:    R: no RESULT | first: ERROR  [8110000] R01-R04: T3 output 3 VC 0: flit 2 of packet 03200014 is corrupt
+     tb-only: R: RESULT R01-R04 FAIL checks=311250 errors=1088 seed=1 | first: ERROR  [8110000] R01-R04: T3 output 3 VC 0: flit 2 of packet 03200014 is corrupt
+B05 full KILLED   tb-only KILLED   input_unit.sv        input unit: every flit, not only the head, rewrites the route
+     full:    R: no RESULT | first: [125000] %Fatal: output_unit.sv:134: Assertion failed in TOP.tb_router.t_v2_ad.dut.g_port[2].u_out.unnamedblk5: TOP.tb_router.t_v2_ad.dut.g_port[2].u_
+     tb-only: R: RESULT R01-R04 FAIL checks=13368 errors=1399 seed=1 | first: ERROR  [150000] R01-R04: T4 output 1 VC 0: body or tail without a head
+B06 full KILLED   tb-only KILLED   input_unit.sv        input unit: a waiting head is routed again each cycle (breaks D26)
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=8 seed=1 | first: ERROR  [81495000] R01-R04: T3 R04: the probe left on port 2 before its own port 1 had a free VC
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=8 seed=1 | first: ERROR  [81495000] R01-R04: T3 R04: the probe left on port 2 before its own port 1 had a free VC
+B07 full KILLED   tb-only KILLED   input_unit.sv        input unit: heads are dropped at the SA->ST register
+     full:    R: RESULT R01-R04 FAIL checks=9244 errors=1022 seed=1 | first: ERROR  [2035000] R01-R04: T1 R01: not idle after 200 cycles, 1 packets still in flight
+     tb-only: R: RESULT R01-R04 FAIL checks=9244 errors=1022 seed=1 | first: ERROR  [2035000] R01-R04: T1 R01: not idle after 200 cycles, 1 packets still in flight
+B08 full KILLED   tb-only KILLED   input_unit.sv        input unit: every flit is written into VC 0
+     full:    R: RESULT R01-R04 FAIL checks=84081 errors=951 seed=1 | first: ERROR  [220000] R01-R04: T3 port 0 VC 0: 6 credits
+     tb-only: R: RESULT R01-R04 FAIL checks=84081 errors=951 seed=1 | first: ERROR  [220000] R01-R04: T3 port 0 VC 0: 6 credits
+B09 full KILLED   tb-only KILLED   output_unit.sv       output unit: offers the highest idle VC, not the lowest (Garnet)
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=500 seed=1 | first: ERROR  [80000] R01-R04: T3 output 0: at zero load a head takes VC 0, not 1
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=500 seed=1 | first: ERROR  [80000] R01-R04: T3 output 0: at zero load a head takes VC 0, not 1
+B10 full KILLED   tb-only KILLED   output_unit.sv       output unit: a VC is never freed
+     full:    R: RESULT R01-R04 FAIL checks=9529 errors=998 seed=1 | first: ERROR  [140000] R01-R04: T3 output 0: at zero load a head takes VC 0, not 1
+     tb-only: R: RESULT R01-R04 FAIL checks=9529 errors=998 seed=1 | first: ERROR  [140000] R01-R04: T3 output 0: at zero load a head takes VC 0, not 1
+B11 full KILLED   tb-only KILLED   output_unit.sv       output unit: a VC is not marked busy when a head takes it
+     full:    R: no RESULT | first: [95000] %Fatal: output_unit.sv:136: Assertion failed in TOP.tb_router.t_v2_ad.dut.g_port[0].u_out.unnamedblk5: TOP.tb_router.t_v2_ad.dut.g_port[0].u_o
+     tb-only: R: RESULT R01-R04 FAIL checks=318368 errors=52287 seed=1 | first: ERROR  [4090000] R01-R04: T4 output 3 VC 0: new head while the VC still holds a packet
+B12 full KILLED   tb-only KILLED   output_unit.sv       output unit: no LT register, 3 cycles per hop
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=1650 seed=1 | first: ERROR  [70000] R01-R04: T4 packet 04000000 flit 0: 3 cycles from input 0 to output 0, expected 4 at zero load
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=1650 seed=1 | first: ERROR  [70000] R01-R04: T4 packet 04000000 flit 0: 3 cycles from input 0 to output 0, expected 4 at zero load
+B13 full KILLED   tb-only KILLED   output_unit.sv       output unit: counts busy VCs as free (adaptive input)
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=52 seed=1 | first: ERROR  [78785000] R01-R04: T3 R04 adaptive: free VCs 2 behind port 1, 1 behind port 2: probe left on 2, expected 1
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=52 seed=1 | first: ERROR  [78785000] R01-R04: T3 R04 adaptive: free VCs 2 behind port 1, 1 behind port 2: probe left on 2, expected 1
+B14 full KILLED   tb-only KILLED   output_unit.sv       output unit: a credit and a flit in the same cycle add a credit
+     full:    R: no RESULT | first: [195000] %Fatal: output_unit.sv:132: Assertion failed in TOP.tb_router.t_v2_ad.dut.g_port[0].u_out.unnamedblk5: TOP.tb_router.t_v2_ad.dut.g_port[0].u_
+     tb-only: R: RESULT R01-R04 FAIL checks=349742 errors=1791 seed=1 | first: ERROR  [3370000] R01-R04: T4 port 4 VC 0: credit after 6 cycles, expected 2 at zero load
+B15 full KILLED   tb-only KILLED   switch_allocator.sv  switch allocator: input pointer moves even when the output is lost
+     full:    U04: RESULT U04 FAIL checks=1121556 errors=63810 seed=1 | first: ERROR  [111000] U04: V=4 input 3: VC 2 outVC 2, model VC 1 outVC 2 || R: RESULT R01-R04 PASS checks=349970 errors=0 seed=1
+     tb-only: U04: RESULT U04 FAIL checks=1121556 errors=63810 seed=1 | first: ERROR  [111000] U04: V=4 input 3: VC 2 outVC 2, model VC 1 outVC 2 || R: RESULT R01-R04 PASS checks=349970 errors=0 seed=1
+B16 full KILLED   tb-only KILLED   switch_allocator.sv  switch allocator: a head may win without a free output VC
+     full:    U04: RESULT U04 FAIL checks=1136527 errors=128994 seed=1 | first: ERROR  [51000] U04: V=2 input 4: in_gnt 1, model 0 || R: no RESULT | first: [4065000] %Fatal: output_unit.sv:126: Assertion failed in TOP.tb_router.t_v1_xy.dut.g_port[3].u_out: TOP.tb_router.t_v1_xy.dut.g_port[3].u_out: head g
+     tb-only: U04: RESULT U04 FAIL checks=1136527 errors=128994 seed=1 | first: ERROR  [51000] U04: V=2 input 4: in_gnt 1, model 0 || R: RESULT R01-R04 FAIL checks=334620 errors=43724 seed=1 | first: ERROR  [4090000] R01-R04: T4 output 3 VC 0: new head while the VC still holds a packet
+B17 full KILLED   tb-only KILLED   switch_allocator.sv  switch allocator: a body flit is sent on a newly offered VC
+     full:    U04: RESULT U04 FAIL checks=1121244 errors=71268 seed=1 | first: ERROR  [41000] U04: V=4 input 2: VC 3 outVC 1, model VC 3 outVC 2 || R: no RESULT | first: [125000] %Fatal: output_unit.sv:134: Assertion failed in TOP.tb_router.t_v2_ad.dut.g_port[0].u_out.unnamedblk5: TOP.tb_router.t_v2_ad.dut.g_port[0].u_
+     tb-only: U04: RESULT U04 FAIL checks=1121244 errors=71268 seed=1 | first: ERROR  [41000] U04: V=4 input 2: VC 3 outVC 1, model VC 3 outVC 2 || R: RESULT R01-R04 FAIL checks=349095 errors=1257 seed=1 | first: ERROR  [150000] R01-R04: T3 output 0 VC 1: body or tail without a head
+B18 full KILLED   tb-only KILLED   switch_allocator.sv  switch allocator: an output arbiter ignores which port a VC wants
+     full:    U04: RESULT U04 FAIL checks=1028734 errors=427712 seed=1 | first: ERROR  [41000] U04: V=2 output 1: out_gnt 1, model winner -1 || R: no RESULT | first: [115000] %Fatal: output_unit.sv:126: Assertion failed in TOP.tb_router.t_v2_ad.dut.g_port[1].u_out: TOP.tb_router.t_v2_ad.dut.g_port[1].u_out: head gi
+     tb-only: U04: RESULT U04 FAIL checks=1028734 errors=427712 seed=1 | first: ERROR  [41000] U04: V=2 output 1: out_gnt 1, model winner -1 || R: RESULT R01-R04 FAIL checks=26789 errors=1188 seed=1 | first: ERROR  [400000] R01-R04: T3 output 1: at zero load a head takes VC 0, not 1
+B19 full KILLED   tb-only KILLED   switch_allocator.sv  switch allocator: bypass masks ignored (design A drives them to 0)
+     full:    U04: RESULT U04 FAIL checks=1141797 errors=103732 seed=1 | first: ERROR  [61000] U04: V=2 input 0: in_gnt 1, model 0 || R: RESULT R01-R04 PASS checks=349970 errors=0 seed=1
+     tb-only: U04: RESULT U04 FAIL checks=1141797 errors=103732 seed=1 | first: ERROR  [61000] U04: V=2 input 0: in_gnt 1, model 0 || R: RESULT R01-R04 PASS checks=349970 errors=0 seed=1
+B20 full KILLED   tb-only KILLED   crossbar.sv          crossbar: bypass select inverted
+     full:    R: RESULT R01-R04 FAIL checks=9164 errors=1002 seed=1 | first: ERROR  [2035000] R01-R04: T1 R01: not idle after 200 cycles, 1 packets still in flight
+     tb-only: R: RESULT R01-R04 FAIL checks=9164 errors=1002 seed=1 | first: ERROR  [2035000] R01-R04: T1 R01: not idle after 200 cycles, 1 packets still in flight
+B21 full KILLED   tb-only KILLED   crossbar.sv          crossbar: no ST register, 3 cycles per hop
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=1650 seed=1 | first: ERROR  [70000] R01-R04: T4 packet 04000000 flit 0: 3 cycles from input 0 to output 0, expected 4 at zero load
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=1650 seed=1 | first: ERROR  [70000] R01-R04: T4 packet 04000000 flit 0: 3 cycles from input 0 to output 0, expected 4 at zero load
+B22 full KILLED   tb-only KILLED   router.sv            router: route computation never sees free VCs
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=26 seed=1 | first: ERROR  [79325000] R01-R04: T3 R04 adaptive: free VCs 1 behind port 1, 2 behind port 2: probe left on 1, expected 2
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=26 seed=1 | first: ERROR  [79325000] R01-R04: T3 R04 adaptive: free VCs 1 behind port 1, 2 behind port 2: probe left on 1, expected 2
+B23 full KILLED   tb-only KILLED   route_compute.sv     route compute: XY routing goes Y first
+     full:    R: RESULT R01-R04 FAIL checks=349970 errors=66 seed=1 | first: ERROR  [85705000] R01-R04: T1 R04 XY: free VCs 4 behind port 1, 4 behind port 2: probe left on 2, expected 1
+     tb-only: R: RESULT R01-R04 FAIL checks=349970 errors=66 seed=1 | first: ERROR  [85705000] R01-R04: T1 R04 XY: free VCs 4 behind port 1, 4 behind port 2: probe left on 2, expected 1
+
+Killed with RTL assertions on:  23 of 23
+Killed by the testbenches alone: 23 of 23

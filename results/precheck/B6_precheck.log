@@ -1,0 +1,427 @@
+B6 pre-delivery checks, 2026-11-11 04:21 UTC
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v sv2v v0.0.12
+Final state: every run below uses the delivered sources (round 2, after the four fixes of section 7).
+
+== 0. Portability scans (D30, D36, D41)
+Size casts inside indices: none
+?: between string literals of different lengths: none (PASS/FAIL and XY/YX have equal lengths)
+Recursive functions: none
+tb/common/run_ctrl.sv:58:    while (sb_pkg::outstanding() != 0) begin
+tb/common/tb_pkg.sv:73:    while (r.len() < w) r = {r, " "};
+tb/unit/tb_router.sv:489:    while (!(sb_left == 0 && all_idle()) && t < timeout) begin
+tb/unit/tb_router.sv:610:    while (sb_tsend.exists({32'h0, id} * 8) == 0 && t < 100) begin
+tb/mesh/tests_func.svh:303:        while (steps <= NN * NPORTS && waits(t, p)) begin
+Calls in loop conditions: FOUND (review each)
+Casts of a system function's result (rule 9, D45): none
+SystemVerilog keywords used as names in the B6 files (cross, inside, bins, ...): none
+Defines of the mesh tops (a define in one file stays defined in every file compiled after it, so all must agree):
+  tb/mesh/tb_mesh.sv:18:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_b.sv:26:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_c.sv:35:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_c.sv:38:  `define TB_REGION_N ((`TB_MESH_N <= 4) ? 2 : 4)
+  tb/mesh/tb_mesh_cb.sv:22:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_dl.sv:21:  `define TB_MESH_N 4
+Simulation-only hooks the testbench writes or reads (tb_hold, turn and coverage counters), which must sit outside the synthesis-off pragmas:
+  rtl/router/router.sv: 4 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_source.sv: 10 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/cancel_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/ni/resv_ctrl.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/sched/phase_sequencer.sv: 0 hook lines (declarations and uses) outside, 0 inside
+translate_off/on outside the pragma form: none
+
+== 1. RTL lint: verilator --lint-only -Wall, every module and parameter set
+RTL lint: 519 module/parameter sets (200 with the bypass or the reservation of designs B-D, 144 of them design C's), 0 with warnings
+
+== 2. Testbench lint and build: -Wall except the testbench style rules DECLFILENAME and BLKSEQ
+(every bench below was built with these warnings on; [] after 'ok' means no warning; a warning fails the build)
+build U11: ok [] (57 s)
+build U10: ok [] (58 s)
+build tb_rr_arbiter: ok [] (162 s)
+build tb_sync_fifo: ok [] (123 s)
+build tb_route_compute: ok [] (105 s)
+build tb_switch_allocator: ok [] (107 s)
+build tb_router: ok [] (198 s)
+build tb_slot_table: ok [] (41 s)
+build tb_slot_counter: ok [] (29 s)
+build tb_group_to_router: ok [] (47 s)
+build tb_timetable_check: ok [] (9 s)
+build design C 4x4, 2x2 regions: ok [] (152 s)
+build TL05 4x4 (one region, D50): ok [] (458 s)
+build TL05 8x8 (k_L = 0): ok [] (1106 s)
+build design C 4x4/2 SAFE: ok [] (277 s)
+build design C 4x4/2 B_MAX 5: ok [] (152 s)
+build design C 4x4/2 B_MAX 15: ok [] (279 s)
+build design C 4x4/2 2 VCs: ok [] (238 s)
+build design C 4x4/2 XY routing: ok [] (281 s)
+build design A tb_mesh 4x4: ok [] (199 s)
+build design A tb_mesh_dl 4x4: ok [] (143 s)
+build design B tb_mesh_b 4x4: ok [] (314 s)
+build design B 1 VC: ok [] (414 s)
+build design B 2x2: ok [] (151 s)
+build design C 8x8 (run8.sh, the same flags): ok
+U01-U10 and R01-R04 were built in the first round. The fixes since touched mesh_checker (a package every bench
+compiles: clean in each bench built since), tests_two and mesh_bench (mesh benches only, all rebuilt) and U11 (rebuilt).
+
+== 3a. U11 (tb_phase_sequencer): seed 1, full and +QUICK; seeds 1-10 and three large seeds
+U11 : RESULT U11 PASS checks=21000067 errors=0 seed=1  (23.2 s)
+U11 +QUICK: RESULT U11 PASS checks=2625053 errors=0 seed=1  (2.9 s)
+seeds: U11 at seeds 1-10 and three large seeds: 13 passed, 0 failed
+All INFO lines of the full run:
+INFO   U11 4x4/2 TIGHT B10: 200000 cycles, 1151 frames, 227 plan changes applied, local/global slots 23/79 cycles
+INFO   U11 4x4 one pointer: 200000 cycles, 2532 frames, 0 plan changes applied, local/global slots 79/79 cycles
+INFO   U11 8x8/4 TIGHT B10: 400000 cycles, 608 frames, 86 plan changes applied, local/global slots 79/287 cycles
+INFO   coverage goal not reached in this run: U11 8x8/4 TIGHT B10 sample in a frame's last cycle, applied at once
+INFO   coverage goal not reached in this run: U11 8x8/4 TIGHT B10 sample replaced before taking effect
+INFO   U11 8x8/4 SAFE B10: 400000 cycles, 416 frames, 220 plan changes applied, local/global slots 103/335 cycles
+INFO   U11 8x8/2 TIGHT B5: 400000 cycles, 1237 frames, 173 plan changes applied, local/global slots 13/247 cycles
+INFO   coverage goal not reached in this run: U11 8x8/2 TIGHT B5 sample replaced before taking effect
+INFO   U11 8x8 one pointer: 400000 cycles, 1394 frames, 0 plan changes applied, local/global slots 287/287 cycles
+INFO   U11 8x8/4 TIGHT B10 k0 epoch 1148: 400000 cycles, 560 frames, 260 plan changes applied, local/global slots 79/287 cycles
+INFO   U11 16x16/4 TIGHT B10: 600000 cycles, 236 frames, 173 plan changes applied, local/global slots 79/1087 cycles
+INFO   coverage goal not reached in this run: U11 16x16/4 TIGHT B10 sample in a frame's last cycle, applied at once
+INFO   U11 16x16/8 SAFE B15: 600000 cycles, 97 frames, 48 plan changes applied, local/global slots 375/1263 cycles
+INFO   coverage goal not reached in this run: U11 16x16/8 SAFE B15 sample in a frame's last cycle, applied at once
+INFO   U11 sequencers: 8x8/4 TIGHT and SAFE, 8x8/2 B5, 16x16/4, 16x16/8 SAFE B15, 4x4/2, one pointer on 4x4 and 8x8, a sample at a frame's end
+RESULT U11 PASS checks=21000067 errors=0 seed=1
+
+== 3b. Design C on 4x4 with 2x2 regions (tb_mesh_c defaults: TIGHT, B_MAX 10, 4 VCs, adaptive): the default run
+       (TL01-TL04, TL06), each test alone, full and +QUICK; every TL test at 13 seeds; the regular tests on design C;
+       TL06 for 100,000 cycles
+default : RESULT TL01-TL06 PASS checks=1634484 errors=0 seed=1  [19149 cycles]  (6.8 s)
+default +QUICK: RESULT TL01-TL06 PASS checks=1461178 errors=0 seed=1  [17666 cycles]  (6.1 s)
++TEST=TL01 : RESULT TL01 PASS checks=121888 errors=0 seed=1  [1407 cycles]  (0.5 s)
++TEST=TL01 +QUICK: RESULT TL01 PASS checks=68078 errors=0 seed=1  [819 cycles]  (0.3 s)
++TEST=TL02 : RESULT TL02 PASS checks=209153 errors=0 seed=1  [3047 cycles]  (0.9 s)
++TEST=TL02 +QUICK: RESULT TL02 PASS checks=209153 errors=0 seed=1  [3047 cycles]  (0.9 s)
++TEST=TL03 : RESULT TL03 PASS checks=173700 errors=0 seed=1  [2106 cycles]  (0.7 s)
++TEST=TL03 +QUICK: RESULT TL03 PASS checks=82787 errors=0 seed=1  [1106 cycles]  (0.3 s)
++TEST=TL04 : RESULT TL04 PASS checks=713431 errors=0 seed=1  [8554 cycles]  (2.9 s)
++TEST=TL04 +QUICK: RESULT TL04 PASS checks=713431 errors=0 seed=1  [8554 cycles]  (2.8 s)
++TEST=TL06 : RESULT TL06 PASS checks=442714 errors=0 seed=1  [4485 cycles]  (1.4 s)
++TEST=TL06 +QUICK: RESULT TL06 PASS checks=296594 errors=0 seed=1  [3007 cycles]  (0.9 s)
+seeds: TL01, TL02, TL03, TL04, TL06 at seeds 1-10 and three large seeds: 65 passed, 0 failed
+design C N01 +QUICK: RESULT N01 PASS checks=10280 errors=0 seed=1  [98 cycles]  (0.0 s)
+design C N03 +QUICK: RESULT N03 PASS checks=394896 errors=0 seed=1  [4445 cycles]  (1.4 s)
+design C N06 +QUICK: RESULT N06 PASS checks=221057 errors=0 seed=1  [2004 cycles]  (0.7 s)
+design C N07 +QUICK: RESULT N07 PASS checks=108771 errors=0 seed=1  [1177 cycles]  (0.5 s)
+design C PERF +MEASURE=4000: RESULT PERF PASS checks=598965 errors=0 seed=1  [6043 cycles]  (1.8 s)
+TL06 +TL06_CYCLES=100000: RESULT TL06 PASS checks=9984090 errors=0 seed=1  [100043 cycles]  (30.8 s)
+All PHASE, INFO and COVER lines of the default run:
+TEST   TL01-TL06  mesh 4x4, 4 VC, adaptive routing, design C, 2x2 regions, k_L 3 from reset, epoch 2048, B_MAX 10, TIGHT subslots of 18 (local 10) cycles
+PHASE  TL01 regions are isolated: 4 regions of 2x2, k_L 3
+INFO   TL01 a: 5 packets, 5 bursts, every packet by bypass in its own turn
+INFO   TL01 b: region traffic, 70% inside the region, 0.1028 packets/node/cycle, 1164 cycles
+INFO   TL01 b: 1894 packets measured, latency avg 13.77 p99 30 max 38, offered 0.2370 accepted 0.2336 flits/node/cycle
+INFO   TL01: 497 local-phase cycles checked on every region-crossing link, 392 local turns stayed in their regions, 12 bypass flits crossed a region boundary in global slots
+COVER  TL01 bursts inside regions in local slots (a)        5
+COVER  TL01 bypass flits crossing regions in global slots (a, b) 12
+COVER  TL01 local bursts in region 0 (a, b)                 2
+COVER  TL01 local bursts in region 1 (a, b)                 3
+COVER  TL01 local bursts in region 2 (a, b)                 5
+COVER  TL01 local bursts in region 3 (a, b)                 4
+PHASE  TL02 every pair is covered: 240 ordered pairs, the global round from cycle 1554 (1480 cycles at k_L 3)
+INFO   TL02: 44 pairs have their first turn in a local slot, 196 in a global slot
+INFO   TL02: 240 packets, 240 bursts, every packet by bypass in its own turn
+INFO   TL02: 2 global and 11 local rounds checked: every pair once per global round, every pair inside a region once per local round
+COVER  TL02 pairs served first by a local turn              44
+COVER  TL02 pairs served first by a global turn             196
+PHASE  TL03 frames follow the timing rules: k_L = 2 (frames of 125 cycles: 2 local slots of 23, one global slot of 79)
+INFO   TL03: plan 2 reached the tiles in cycle 3049, was sampled at the end of cycle 4356, and runs from the frame starting at 4445
+INFO   TL03: 2 packets R0 -> R5 (2 hops) for the last subslot of the last local slot, cycle 4606
+INFO   TL03: 2 packets R15 -> R1 (5 hops) for the last subslot of the global slot, cycle 4677
+INFO   TL03 boundaries: 4 packets, 2 bursts, every packet by bypass in its own turn
+INFO   TL03 frames: 2436 packets measured, latency avg 15.89 p99 35 max 49, offered 0.2367 accepted 0.2345 flits/node/cycle
+INFO   TL03: 12 frames of k_L 2 checked: lengths, setup windows, resumed slot numbers
+COVER  TL03 bursts whose last flits land in the other phase 2
+PHASE  TL04 plan changes are clean: k_L 2 -> 0 -> 15 -> 1 -> 3, each at a random point of an epoch of 2048 cycles
+INFO   TL04: plan 0 reached the tiles in cycle 7539, sampled at the end of cycle 8452; every tile switched at the frame start 8570; 0 flits reserved then, up to 160 in the first slot after
+INFO   TL04: plan 15 reached the tiles in cycle 9578, sampled at the end of cycle 10500; every tile switched at the frame start 10545; 0 flits reserved then, up to 80 in the first slot after
+INFO   TL04: plan 1 reached the tiles in cycle 11815, sampled at the end of cycle 12548; every tile switched at the frame start 12665; 0 flits reserved then, up to 80 in the first slot after
+INFO   TL04: plan 3 reached the tiles in cycle 12701, sampled at the end of cycle 14596; every tile switched at the frame start 14603; 0 flits reserved then, up to 320 in the first slot after
+INFO   TL04: 4 plan switches, 3740 reservations accepted and 0 cancelled meanwhile, none lost
+COVER  TL04 plan switches with every tile in step           4
+COVER  TL04 switches followed by reservations of the new phase 4
+COVER  TL04 switches with reservations open from before     0
+INFO   coverage goal not reached in this run: TL04 switches with reservations open from before
+COVER  TL04 turns cancelled by a full NI meanwhile          0
+INFO   coverage goal not reached in this run: TL04 turns cancelled by a full NI meanwhile
+PHASE  TL06 turn bounds: 4440 cycles of traffic (one schedule period is 10 frames = 1480 cycles); bounds: inside a region 148, across regions 1480
+INFO   TL06: 9103 packets measured, latency avg 16.03 p99 35 max 56, offered 0.2950 accepted 0.2943 flits/node/cycle
+INFO   TL06: inside a region turns every 31..148 cycles (bound 148, 48 pairs); across regions every 1480..1480 (one global round 1480, 192 pairs)
+INFO   TL06: bypass share 0.58% of packets; 52 bursts in 2164 turns, none cancelled
+COVER  TL06 pairs inside regions measured                   48
+COVER  TL06 cross-region pairs measured                     192
+INFO   design C run: 686 local and 570 global subslots checked tile by tile, 5480 local and 3408 global turns, 114 local and 14 global rounds checked pair by pair
+INFO   design C run: 141 frames checked, 5 k_L changes, 6860 local-phase cycles checked for containment, 823 lookaheads followed on links and 361 at NIs
+INFO   design C run: 361 bursts (132 in local slots), 13 whose last flits landed in the other phase
+INFO   cycles simulated 19149
+RESULT TL01-TL06 PASS checks=1634484 errors=0 seed=1
+
+== 3c. Other design-C configurations on 4x4 with 2x2 regions: the default run at seed 1, every TL test at seeds 2-3
+       (B_MAX 5: at 13 seeds)
+-- SAFE subslots
+default: RESULT TL01-TL06 PASS checks=2325004 errors=0 seed=1  [27164 cycles]  (17.9 s)
+seeds 2,3, every TL test: 10 passed, 0 failed
+-- B_MAX 5
+default: RESULT TL01-TL06 PASS checks=1732278 errors=0 seed=1  [20464 cycles]  (6.5 s)
+seeds 1,2,3,4,5,6,7,8,9,10,4242,123456789,4000000000, every TL test: 65 passed, 0 failed
+-- B_MAX 15
+default: RESULT TL01-TL06 PASS checks=2293099 errors=0 seed=1  [26807 cycles]  (17.5 s)
+seeds 2,3, every TL test: 10 passed, 0 failed
+-- 2 VCs
+default: RESULT TL01-TL06 PASS checks=1412808 errors=0 seed=1  [19149 cycles]  (8.3 s)
+seeds 2,3, every TL test: 10 passed, 0 failed
+-- XY regular routing
+default: RESULT TL01-TL06 PASS checks=1634357 errors=0 seed=1  [19149 cycles]  (12.7 s)
+seeds 2,3, every TL test: 10 passed, 0 failed
+
+== 3d. TL05 (tb_mesh_cb): design C beside design B, every NI output and link compared every cycle
+-- 4x4: one 4x4 region (D50); seed 1 full and +QUICK, 13 seeds
+TL05 : RESULT TL05 PASS checks=500650 errors=0 seed=1  [5731 cycles]  (8.4 s)
+TL05 +QUICK: RESULT TL05 PASS checks=146658 errors=0 seed=1  [1571 cycles]  (2.5 s)
+seeds: TL05 at seeds 1-10 and three large seeds: 13 passed, 0 failed
+TEST   TL05  mesh 4x4, 4 VC, adaptive routing, design C with one 4x4 region (D50), B_MAX 10, TIGHT subslots of 18 cycles
+PHASE  TL05 design C with one 4x4 region (D50) against design B, every output and link every cycle, 4000 cycles of traffic
+INFO   TL05: 8087 packets measured, latency avg 66.84 p99 480 max 553, offered 0.2974 accepted 0.2954 flits/node/cycle
+PHASE  BP06 cancellation: R15's sink stalled for a round while every other node holds 2 packets for it
+INFO   BP06: 2 of 15 turns to R15 accepted while its sink was stalled, then 13 cancelled (its bypass space peaked at 23 of 28 flits); the checker matched 42 cancel tokens on their links; every cancelled source skipped its turn and its packets arrived after the stall
+COVER  BP06 turns cancelled                                 13
+INFO   TL05: design C and design B agreed on every output and link for 5726 cycles; 84 bursts, 23 turns cancelled
+COVER  TL05 bursts in both meshes                           84
+COVER  TL05 turns cancelled in both meshes                  23
+INFO   design C run: 0 local and 290 global subslots checked tile by tile, 0 local and 1728 global turns, 0 local and 7 global rounds checked pair by pair
+INFO   design C run: 71 frames checked, 0 k_L changes, 0 local-phase cycles checked for containment, 178 lookaheads followed on links and 84 at NIs
+INFO   design C run: 84 bursts (0 in local slots), 0 whose last flits landed in the other phase
+INFO   cycles simulated 5731
+RESULT TL05 PASS checks=500650 errors=0 seed=1
+-- 8x8: 4x4 regions, k_L = 0 from reset
+TL05: RESULT TL05 PASS checks=7545943 errors=0 seed=1  [31739 cycles]  (122.0 s)
+TL05 +QUICK: RESULT TL05 PASS checks=1169051 errors=0 seed=1  [4081 cycles]  (15.9 s)
+TEST   TL05  mesh 8x8, 4 VC, adaptive routing, design C, 4x4 regions, k_L 0 from reset, epoch 32768, B_MAX 10, TIGHT subslots of 34 (local 18) cycles
+PHASE  TL05 design C with k_L = 0 against design B, every output and link every cycle, 12000 cycles of traffic
+INFO   TL05: 52418 packets measured, latency avg 38.29 p99 411 max 582, offered 0.1599 accepted 0.1596 flits/node/cycle
+PHASE  BP06 cancellation: R63's sink stalled for a round while every other node holds 2 packets for it
+INFO   BP06: 2 of 63 turns to R63 accepted while its sink was stalled, then 61 cancelled (its bypass space peaked at 22 of 28 flits); the checker matched 442 cancel tokens on their links; every cancelled source skipped its turn and its packets arrived after the stall
+COVER  BP06 turns cancelled                                 61
+INFO   TL05: design C and design B agreed on every output and link for 31734 cycles; 48 bursts, 62 turns cancelled
+COVER  TL05 bursts in both meshes                           48
+COVER  TL05 turns cancelled in both meshes                  62
+INFO   design C run: 0 local and 885 global subslots checked tile by tile, 0 local and 12312 global turns, 0 local and 3 global rounds checked pair by pair
+INFO   design C run: 109 frames checked, 0 k_L changes, 0 local-phase cycles checked for containment, 169 lookaheads followed on links and 48 at NIs
+INFO   design C run: 48 bursts (0 in local slots), 0 whose last flits landed in the other phase
+INFO   cycles simulated 31739
+RESULT TL05 PASS checks=7545943 errors=0 seed=1
+
+== 3e. Design C on 8x8 (-define TB_MESH_N=8: 4x4 regions, k_L 4, epochs of 8,192 cycles): each test alone, then all in one run
+build 8x8: 587 s
+TL01: RESULT TL01 PASS checks=1967630 errors=0 seed=1 [cycles simulated 7254] (11.998239679 s)
+TL02: RESULT TL02 PASS checks=5207604 errors=0 seed=1 [cycles simulated 22042] (37.030441022 s)
+TL03: RESULT TL03 PASS checks=2094764 errors=0 seed=1 [cycles simulated 8029] (13.481941373 s)
+TL04: RESULT TL04 PASS checks=10367590 errors=0 seed=1 [cycles simulated 41701] (68.324746708 s)
+INFO   coverage goal not reached in this run: TL04 switches with reservations open from before
+INFO   coverage goal not reached in this run: TL04 turns cancelled by a full NI meanwhile
+TL06: RESULT TL06 PASS checks=31799704 errors=0 seed=1 [cycles simulated 108612] (181.429684195 s)
+ALL: RESULT TL01-TL06 PASS checks=55587325 errors=0 seed=1 [cycles simulated 207395] (341.653259406 s)
+INFO   coverage goal not reached in this run: TL04 switches with reservations open from before
+INFO   coverage goal not reached in this run: TL04 turns cancelled by a full NI meanwhile
+All PHASE, INFO and COVER lines of the one run:
+TEST   TL01-TL06  mesh 8x8, 4 VC, adaptive routing, design C, 4x4 regions, k_L 4 from reset, epoch 8192, B_MAX 10, TIGHT subslots of 34 (local 18) cycles
+PHASE  TL01 regions are isolated: 4 regions of 4x4, k_L 4
+INFO   TL01 a: 5 packets, 5 bursts, every packet by bypass in its own turn
+INFO   TL01 b: region traffic, 70% inside the region, 0.0548 packets/node/cycle, 6778 cycles
+INFO   TL01 b: 23528 packets measured, latency avg 21.69 p99 53 max 77, offered 0.1271 accepted 0.1268 flits/node/cycle
+INFO   TL01: 3175 local-phase cycles checked on every region-crossing link, 4304 local turns stayed in their regions, 10 bypass flits crossed a region boundary in global slots
+COVER  TL01 bursts inside regions in local slots (a)        5
+COVER  TL01 bypass flits crossing regions in global slots (a, b) 10
+COVER  TL01 local bursts in region 0 (a, b)                 10
+COVER  TL01 local bursts in region 1 (a, b)                 6
+COVER  TL01 local bursts in region 2 (a, b)                 10
+COVER  TL01 local bursts in region 3 (a, b)                 7
+PHASE  TL02 every pair is covered: 4032 ordered pairs, the global round from cycle 22029 (21708 cycles at k_L 4)
+INFO   TL02: 936 pairs have their first turn in a local slot, 3096 in a global slot
+INFO   TL02: 4032 packets, 4032 bursts, every packet by bypass in its own turn
+INFO   TL02: 2 global and 25 local rounds checked: every pair once per global round, every pair inside a region once per local round
+COVER  TL02 pairs served first by a local turn              936
+COVER  TL02 pairs served first by a global turn             3096
+PHASE  TL03 frames follow the timing rules: k_L = 3 (frames of 524 cycles: 3 local slots of 79, one global slot of 287)
+INFO   TL03: plan 3 reached the tiles in cycle 43752, was sampled at the end of cycle 49412, and runs from the frame starting at 49451
+INFO   TL03: 2 packets R0 -> R11 (4 hops) for the last subslot of the last local slot, cycle 50194
+INFO   TL03: 2 packets R56 -> R4 (11 hops) for the last subslot of the global slot, cycle 50465
+INFO   TL03 boundaries: 4 packets, 2 bursts, every packet by bypass in its own turn
+INFO   TL03 frames: 22117 packets measured, latency avg 24.75 p99 56 max 81, offered 0.1290 accepted 0.1284 flits/node/cycle
+INFO   TL03: 12 frames of k_L 3 checked: lengths, setup windows, resumed slot numbers
+COVER  TL03 bursts whose last flits land in the other phase 2
+PHASE  TL04 plan changes are clean: k_L 3 -> 0 -> 15 -> 1 -> 3, each at a random point of an epoch of 8192 cycles
+INFO   TL04: plan 0 reached the tiles in cycle 58161, sampled at the end of cycle 65796; every tile switched at the frame start 66219; 0 flits reserved then, up to 320 in the first slot after
+INFO   TL04: plan 15 reached the tiles in cycle 73579, sampled at the end of cycle 73988; every tile switched at the frame start 74255; 0 flits reserved then, up to 640 in the first slot after
+INFO   TL04: plan 1 reached the tiles in cycle 75581, sampled at the end of cycle 82180; every tile switched at the frame start 83087; 0 flits reserved then, up to 640 in the first slot after
+INFO   TL04: plan 3 reached the tiles in cycle 85227, sampled at the end of cycle 90372; every tile switched at the frame start 90407; 0 flits reserved then, up to 640 in the first slot after
+INFO   TL04: 4 plan switches, 23840 reservations accepted and 0 cancelled meanwhile, none lost
+COVER  TL04 plan switches with every tile in step           4
+COVER  TL04 switches followed by reservations of the new phase 4
+COVER  TL04 switches with reservations open from before     0
+INFO   coverage goal not reached in this run: TL04 switches with reservations open from before
+COVER  TL04 turns cancelled by a full NI meanwhile          0
+INFO   coverage goal not reached in this run: TL04 turns cancelled by a full NI meanwhile
+PHASE  TL06 turn bounds: 108540 cycles of traffic (one schedule period is 180 frames = 108540 cycles); bounds: inside a region 1651, across regions 21708
+INFO   TL06: 475388 packets measured, latency avg 25.24 p99 57 max 81, offered 0.1600 accepted 0.1599 flits/node/cycle
+INFO   TL06: inside a region turns every 59..1651 cycles (bound 1651, 960 pairs); across regions every 21708..21708 (one global round 21708, 3072 pairs)
+INFO   TL06: bypass share 0.12% of packets; 566 bursts in 89328 turns, none cancelled
+COVER  TL06 pairs inside regions measured                   960
+COVER  TL06 cross-region pairs measured                     3072
+INFO   design C run: 5212 local and 2912 global subslots checked tile by tile, 125024 local and 40688 global turns, 130 local and 10 global rounds checked pair by pair
+INFO   design C run: 363 frames checked, 6 k_L changes, 93802 local-phase cycles checked for containment, 23110 lookaheads followed on links and 4747 at NIs
+INFO   design C run: 4747 bursts (1562 in local slots), 5 whose last flits landed in the other phase
+INFO   cycles simulated 207395
+RESULT TL01-TL06 PASS checks=55587325 errors=0 seed=1
+
+== 3f. 16x16: not run here. Verilator ran out of memory on a 16x16 design-C mesh (killed by the kernel; this machine has
+       8 GB, and the 8x8 build alone peaks at about 2.3 GB). The exit check's 16x16 run is TL01 on xsim (-define TB_MESH_N=16).
+
+== 3g. Regression: B0-B5 benches rebuilt from the delivered sources (counts must equal B5's)
+tb_rr_arbiter: RESULT U01 PASS checks=310493 errors=0 seed=1  (0.8 s)
+tb_sync_fifo: RESULT U02 PASS checks=196864 errors=0 seed=1  (0.5 s)
+tb_route_compute: RESULT U03 PASS checks=856450 errors=0 seed=1  (0.8 s)
+tb_switch_allocator: RESULT U04 PASS checks=1121244 errors=0 seed=1  (0.7 s)
+tb_router: RESULT R01-R04 PASS checks=357967 errors=0 seed=1  (0.4 s)
+tb_slot_table +QUICK: RESULT U05 PASS checks=24462 errors=0 seed=1  (0.0 s)
+tb_slot_counter +QUICK: RESULT U06 PASS checks=99202 errors=0 seed=1  (0.5 s)
+tb_group_to_router +QUICK: RESULT U07 PASS checks=423040 errors=0 seed=1  (0.2 s)
+tb_timetable_check +QUICK: RESULT U08-U09 PASS checks=756567 errors=0 seed=1  (1.0 s)
+U10 : RESULT U10 PASS checks=869821 errors=0 seed=1  (7.7 s)
+U10 +QUICK: RESULT U10 PASS checks=289930 errors=0 seed=1  (2.5 s)
+tb_mesh +QUICK: RESULT N01-N08 PASS checks=444704 errors=0 seed=1  [14811 cycles]  (4.3 s)
+N05: RESULT N05 PASS checks=1949 errors=0 seed=1  [4153 cycles]  (0.2 s)
+BP08 (design A): RESULT BP08 PASS checks=9551 errors=0 seed=1  [2616 cycles]  (0.2 s)
+tb_mesh_b: RESULT BP01-BP10 PASS checks=2573286 errors=0 seed=1  [29475 cycles]  (18.8 s)
+tb_mesh_b +QUICK: RESULT BP01-BP10 PASS checks=1026210 errors=0 seed=1  [16113 cycles]  (14.6 s)
+BP08: RESULT BP08 PASS checks=1173542 errors=0 seed=1  [17937 cycles]  (7.5 s)
+tb_mesh_b 2x2: RESULT BP01-BP10 PASS checks=1137611 errors=0 seed=1  [34565 cycles]  (2.0 s)
+B5's counts: U01 310,493, U02 196,864, U03 856,450, U04 1,121,244, R01-R04 357,967, U05 24,462, U06 99,202 (+QUICK),
+U07 423,040 (+QUICK), U08-U09 756,567 (+QUICK), U10 869,821 (+QUICK 289,930), tb_mesh +QUICK 444,704, N05 1,949,
+BP08 design A 9,551, tb_mesh_b 2,573,286 (+QUICK 1,026,210), BP08 1 VC 1,173,542, tb_mesh_b 2x2 1,137,611
+
+== 4. EDA Playground bundles (Riviera-PRO), regenerated, and each B6 test built from the bundle as EDA Playground would
+       (Verilator, the bundle's two top files only; Riviera itself runs on EDA Playground)
+make_bundle: tests U01, U02, U03, U04, R01, R02, R03, R04, N01, N02, N03, N04, N06, N07, N08, PERF, N05, U05, U06, U07, U08, U09, BP01, BP02, BP03, BP04, BP05, BP06, BP07, BP08, BP09, BP10, U10, U11, TL01, TL02, TL03, TL04, TL06, TL05
+make_bundle: design pane    design.sv (97065 characters), design_part2.sv (25726 characters)
+make_bundle: testbench pane testbench.sv (92210 characters), tb_part2.sv (71547 characters), tb_part3.sv (96746 characters), tb_part4.sv (93731 characters)
+make_bundle: sizes counted with CRLF line ends; at most 99000 per file (EDA Playground: under 100,000)
++define+TEST_U11 +QUICK: RESULT U11 PASS checks=2625053 errors=0 seed=1  (5.8 s)
++define+TEST_TL01 +QUICK: RESULT TL01 PASS checks=68078 errors=0 seed=1  [819 cycles]  (2.0 s)
++define+TEST_TL02 +QUICK: RESULT TL02 PASS checks=209153 errors=0 seed=1  [3047 cycles]  (5.7 s)
++define+TEST_TL03 +QUICK: RESULT TL03 PASS checks=82787 errors=0 seed=1  [1106 cycles]  (1.9 s)
++define+TEST_TL04 +QUICK: RESULT TL04 PASS checks=246013 errors=0 seed=1  [2962 cycles]  (5.4 s)
++define+TEST_TL06 +QUICK: RESULT TL06 PASS checks=296594 errors=0 seed=1  [3007 cycles]  (5.3 s)
++define+TEST_TL05 +QUICK: RESULT TL05 PASS checks=146658 errors=0 seed=1  [1571 cycles]  (5.1 s)
++define+TEST_BP03 : RESULT BP03 PASS checks=103930 errors=0 seed=1  [1623 cycles]  (1.8 s)
++define+TEST_U10 +QUICK: RESULT U10 PASS checks=289930 errors=0 seed=1  (1.6 s)
++define+TEST_N05 +TEST=BP08: RESULT BP08 PASS checks=9551 errors=0 seed=1  [2616 cycles]  (0.9 s)
+
+== 5. Vivado runner (run.tcl) against xvlog/xelab/xsim stubs that split arguments like Windows batch files
+(the stub xsim runs the 4x4 binary whatever the define, so -define TB_MESH_N=8 or 16 prints 4x4's counts; what
+this checks is the argument handling, the test-to-testbench mapping and the work folder names)
+--- set argv {-test U11}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_phase_sequencer   U11          PASS  checks=21000067 errors=0   (16 s; warnings: compile 0, elaborate 0)
+tb_phase_sequencer
+--- set argv {-test TL03}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_c            TL01 TL02 TL03 TL04 TL06 PASS  checks=173700 errors=0, 2106 cycles in 0.9 s = 2345 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+tb_mesh_c
+--- set argv {-test tb_mesh_c}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_c            TL01 TL02 TL03 TL04 TL06 PASS  checks=1634484 errors=0, 19149 cycles in 8.4 s = 2283 cycles/s   (9 s; warnings: compile 0, elaborate 0)
+tb_mesh_c
+--- set argv {-test TL05}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_cb           TL05         PASS  checks=500650 errors=0, 5731 cycles in 6.5 s = 886 cycles/s   (6 s; warnings: compile 0, elaborate 0)
+tb_mesh_cb
+--- set argv {-test TL01 -define TB_MESH_N=16}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1, defines TB_MESH_N=16 ====================
+tb_mesh_c            TL01 TL02 TL03 TL04 TL06 PASS  checks=121888 errors=0, 1407 cycles in 0.6 s = 2273 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+tb_mesh_c__TB_MESH_N_16
+--- set argv {-test TL06 -plus {+TL06_CYCLES=20000}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_c            TL01 TL02 TL03 TL04 TL06 PASS  checks=1997051 errors=0, 20043 cycles in 9.5 s = 2114 cycles/s   (9 s; warnings: compile 0, elaborate 0)
+tb_mesh_c
+--- set argv {-test BP06}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_b            BP01 BP02 BP03 BP04 BP05 BP06 BP07 BP08 BP09 BP10 PASS  checks=88864 errors=0, 1781 cycles in 0.7 s = 2391 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+tb_mesh_b
+--- set argv {-test tb_mesh_dl -plus {+TEST=BP08}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_dl           N05          PASS  checks=9551 errors=0, 2616 cycles in 0.1 s = 21983 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh_dl
+
+== 6. Synthesis: sv2v + Yosys 'synth' (generic gates), the fallback flow of D20; MESH_N 8, 4 VCs, B_MAX 10, TIGHT
+phase_sequencer MESH_N=8 REGION_N=4 T_SUB_G=34 T_SUB_L=18 K_INIT=4 EPOCH=32768: 406 cells, 75 flip-flops
+phase_sequencer MESH_N=16 REGION_N=4 T_SUB_G=66 T_SUB_L=18 K_INIT=14 EPOCH=262144: 425 cells, 78 flip-flops
+slot_counter TT_N=8 T_SUB=34 S_SETUP=15: 115 cells, 20 flip-flops
+resv_ctrl B_MAX=10 SPACE=28 GAP0=15 GAPK=34: 323 cells, 28 flip-flops
+resv_ctrl B_MAX=10 SPACE=28 GAP0=15 GAPK=34 GAP0_L=7 GAPK_L=18: 331 cells, 28 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=0: 44882 cells, 18925 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=1: 63775 cells, 22356 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=2 REGION_N=4 K_INIT=4 EPOCH=32768: 64390 cells, 22426 flip-flops
+B5 for comparison: resv_ctrl 323 cells / 28 flip-flops; design-A tile 44,882 / 18,925; design-B tile 63,761 / 22,356
+
+== 7. Findings of the first pre-check round (10 Nov, 20:40-21:35 UTC), all on the test side, fixed before delivery
+The first round ran the same RTL as above. Its failures, and what changed:
+1. TL01's coverage bins 'local bursts in region r' were empty at 5 of 13 seeds on 4x4 with 2x2 regions (seed 1 with
+   +QUICK; seeds 2, 3, 5, 6 and 8), at seeds 2-3 with SAFE, B_MAX 15, 2 VCs and XY routing, and at seed 1 with B_MAX 15
+   and 2 VCs. The bins counted only part b, the region traffic, whose packets rarely travel by bypass (0.1-0.8% of
+   packets here: the open question of B5, for E0). Fix (tests_two.svh): the bins count from the start of part a,
+   whose held packets give every region one local burst by design; part b adds those it happens to make.
+2. With B_MAX 5, TL02 failed at every seed: 'cycle 1374: 1 NIs where bypass writes and the NI lookahead disagree;
+   first R15, write 1, announced cycles 1377..1381', then all 16 NIs in cycles 1379-1381. mesh_checker kept one
+   announced window per NI. With B_MAX 5 a 2x2 region's subslot is 5 cycles, so 5-flit bursts reach an NI in
+   consecutive subslots, and its next lookahead (3 cycles before the first write) came while the last burst was
+   still being written, replacing that burst's window. Fix (mesh_checker.sv): one bit per announced cycle for every
+   link and NI, shifted every cycle, so any number of bursts can be announced; an announcement that overlaps one
+   already made is still a collision.
+3. With B_MAX 5, TL04 failed at seeds 2 and 3: 'at the end of the slot before cycle 8551, 10 flits stay reserved, 2
+   reservations wait for a lookahead (model)'. TL04 required no open reservation in a slot's last cycle. With B_MAX 5
+   and TIGHT subslots T = 2*Hmax + 1, so the lookahead of the last subslot's longest path is due exactly in the
+   slot's last cycle, and its reservation is open in that cycle (released at its end), in the RTL and the model
+   alike. Fix (tests_two.svh): no reservation may be due after its slot ends (ni_checker's due cycles), and the RTL
+   may hold B_MAX flits for each open reservation and nothing else.
+4. Design A's benches (tb_mesh, tb_mesh_dl) did not build: -Wall found plan_req unused, since only design C's
+   checker block reads it. Fix (mesh_bench.sv): a lint waiver on its declaration.
+No check count at seed 1 changed (a coverage bin counts as one check either way, and the masks check the same
+cycles). After the fixes every TL test passes at 13 seeds on 4x4 and with B_MAX 5, the other configurations at
+seeds 1-3, and design A builds clean with B5's counts. The RTL did not change between the rounds.
+
+== Review (by hand, 11 Nov)
+- RTL changed in B6: sched_pkg (frame numbers, k_L), phase_sequencer (new), resv_ctrl and ni (local gaps, dec_loc),
+  tile (the second timetable under the sequencer, the plan input), mesh_top (REGION_N, K_FIXED, EPOCH, plan_i).
+  Designs A and B: tile and mesh_top tie dec_loc to 0 and ignore the plan, so their behaviour is B5's: every U, R,
+  N and BP count above equals B5's. Yosys gives design A's tile B5's 44,882 cells exactly; design B's 63,775 against
+  B5's 63,761 (+0.02%, ABC mapping a slightly different netlist of the same logic).
+- D50: with REGION_N = MESH_N the sequencer keeps one counter (g_one), checked against design B on every link and
+  cycle by TL05 on 4x4. D52: the sample in an epoch's cycle 255 and the frame-start rule are checked by U11 (every
+  cycle against frame_ref, a sample in a frame's last cycle included) and by TL03-TL04 in the mesh.
+- Section 0's five calls in loop conditions are the ones reviewed since B1-B2 (queues and states read in the
+  condition, no function with loops of its own); none is in a B6 file.
+- Mutation check (B6_mutation.log): the first run killed 22 of 24. S10 is equivalent; P02, an epoch sized at
+  k_L = 3, gave the same power of two as k_L = 4 in every configuration U11 checked. U11 gained a thirteenth
+  package check (the epoch on 8x8 with B_MAX 5: 2^15, where k_L = 3 would give 2^14), which moved U11's counts
+  by one (21,000,066 to 21,000,067; +QUICK 2,625,052 to 2,625,053), and a mutant S13 was added. The final run
+  kills all 24 non-equivalent mutants, every one by the testbench alone.
+- The 16x16 functional run cannot be made here (memory); it is the one exit check left to xsim alone.

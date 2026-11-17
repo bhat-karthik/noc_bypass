@@ -1,0 +1,99 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Thu Nov  5 23:13:24 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_route_compute_snap/xsim_script.tcl
+# xsim {tb_route_compute_snap} -testplusarg SEED=1 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==========================================================================
+TEST   U03  route_compute: minimal ports; adaptive by free VCs, ties to X; XY and YX exact
+SEED   1 (from +SEED)
+==========================================================================
+COVER  2x2 XY chooses N                                     2
+COVER  2x2 YX chooses N                                     4
+COVER  2x2 adaptive chooses N                               3
+COVER  2x2 XY chooses E                                     4
+COVER  2x2 YX chooses E                                     2
+COVER  2x2 adaptive chooses E                               3
+COVER  2x2 XY chooses S                                     2
+COVER  2x2 YX chooses S                                     4
+COVER  2x2 adaptive chooses S                               2
+COVER  2x2 XY chooses W                                     4
+COVER  2x2 YX chooses W                                     2
+COVER  2x2 adaptive chooses W                               4
+COVER  2x2 XY chooses L                                     4
+COVER  2x2 YX chooses L                                     4
+COVER  2x2 adaptive chooses L                               4
+COVER  2x2 adaptive: Y has more free VCs                    40
+COVER  2x2 adaptive: tie goes to X                          20
+COVER  2x2 adaptive: X has more free VCs                    40
+COVER  2x2 only one productive direction                    8
+COVER  4x4 XY chooses N                                     24
+COVER  4x4 YX chooses N                                     96
+COVER  4x4 adaptive chooses N                               52
+COVER  4x4 XY chooses E                                     96
+COVER  4x4 YX chooses E                                     24
+COVER  4x4 adaptive chooses E                               68
+COVER  4x4 XY chooses S                                     24
+COVER  4x4 YX chooses S                                     96
+COVER  4x4 adaptive chooses S                               55
+COVER  4x4 XY chooses W                                     96
+COVER  4x4 YX chooses W                                     24
+COVER  4x4 adaptive chooses W                               65
+COVER  4x4 XY chooses L                                     16
+COVER  4x4 YX chooses L                                     16
+COVER  4x4 adaptive chooses L                               16
+COVER  4x4 adaptive: Y has more free VCs                    1440
+COVER  4x4 adaptive: tie goes to X                          720
+COVER  4x4 adaptive: X has more free VCs                    1440
+COVER  4x4 only one productive direction                    96
+COVER  8x8 XY chooses N                                     224
+COVER  8x8 YX chooses N                                     1792
+COVER  8x8 adaptive chooses N                               830
+COVER  8x8 XY chooses E                                     1792
+COVER  8x8 YX chooses E                                     224
+COVER  8x8 adaptive chooses E                               1208
+COVER  8x8 XY chooses S                                     224
+COVER  8x8 YX chooses S                                     1792
+COVER  8x8 adaptive chooses S                               821
+COVER  8x8 XY chooses W                                     1792
+COVER  8x8 YX chooses W                                     224
+COVER  8x8 adaptive chooses W                               1173
+COVER  8x8 XY chooses L                                     64
+COVER  8x8 YX chooses L                                     64
+COVER  8x8 adaptive chooses L                               64
+COVER  8x8 adaptive: Y has more free VCs                    31360
+COVER  8x8 adaptive: tie goes to X                          15680
+COVER  8x8 adaptive: X has more free VCs                    31360
+COVER  8x8 only one productive direction                    896
+COVER  16x16 XY chooses N                                   1920
+COVER  16x16 YX chooses N                                   30720
+COVER  16x16 adaptive chooses N                             13495
+COVER  16x16 XY chooses E                                   30720
+COVER  16x16 YX chooses E                                   1920
+COVER  16x16 adaptive chooses E                             19206
+COVER  16x16 XY chooses S                                   1920
+COVER  16x16 YX chooses S                                   30720
+COVER  16x16 adaptive chooses S                             13500
+COVER  16x16 XY chooses W                                   30720
+COVER  16x16 YX chooses W                                   1920
+COVER  16x16 adaptive chooses W                             19079
+COVER  16x16 XY chooses L                                   256
+COVER  16x16 YX chooses L                                   256
+COVER  16x16 adaptive chooses L                             256
+COVER  16x16 adaptive: Y has more free VCs                  23155
+COVER  16x16 adaptive: tie goes to X                        11443
+COVER  16x16 adaptive: X has more free VCs                  23002
+COVER  16x16 only one productive direction                  7680
+==========================================================================
+RESULT U03 PASS checks=856450 errors=0 seed=1
+==========================================================================
+$finish called at time : 188672 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 109
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Nov  5 23:13:32 2026...

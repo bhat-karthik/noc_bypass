@@ -1,0 +1,371 @@
+B8 pre-delivery checks, 2026-11-13/14 (runs 20:40 UTC 13 Nov - 18:52 UTC 14 Nov)
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Tcl 8.6; LibreOffice (workbook recalculation)
+Every run below goes through the delivered scripts: regress.tcl and sweep.tcl run unchanged under tclsh with
+stand-ins for xvlog, xelab and xsim that build the same testbench with the same defines in Verilator and run it
+with the same plusargs (a Verilator build per testbench and define set, like xsim's work folders). The VCS and
+Xcelium scripts ran the same way with stand-ins for vcs and xrun. Nothing below ran on xsim, VCS or Xcelium.
+
+== 0. Merge
+B8's testbench work (begun before B7 closed) was merged onto the final B7 files: tests_perf, stats, perf_probe,
+tests_stress (new), mesh_bench, mesh_top, sched_ref, ctrl_checker, tests_ctrl, tb_mesh_d. B7's last fixes
+(tb_demand_counter, tb_sched_ctrl, tb_ctrl_chain, the README, the bundle, xsim_lib's TRACE support) kept.
+
+== 1. Portability scans (README Section 2, rules 1, 9 and 10) on the B8 files
+Rule 9: no cast of a call, field, array element or negation inside an expression in the lines B8 adds.
+Two loops without a fixed bound in tasks (time passes in every iteration): tests_stress.svh:64 (S01's segments,
+each waits wait_cycles) and tests_perf.svh:216 (the TRACE loop, @(posedge clk) each turn). Every other finding
+is in lines unchanged since B2-B7. No keywords as names, no empty string parameters, no translate_off outside
+the pragma form. Rule 1: no random draw on the right of && in tests_stress (one draw per statement).
+A comment line that begins with the word Verilator is read by Verilator as a directive (/*verilator ...*/):
+one such line in tests_stress.svh broke the first build and was reworded (Verilator only; xsim ignores it).
+
+== 2. RTL lint (verilator --lint-only -Wall): mesh_top with its new clamp parameters
+mesh_top defaults; design D 8x8; K_LO=0; K_HI=7; K_HI=31; REGION_N=2 with K_HI=19; 4x4/2 with K_HI=3: clean,
+except K_LO=0 (E7's ablation only): UNSIGNED on sched_ctrl.sv:99, `kt < kl_t'(K_LO)` is constant with K_LO=0,
+so the lower clamp does nothing, as intended. Not changed: sched_ctrl is a closed B7 file and its default
+configuration is clean. The 16x16 design-D mesh does not fit Verilator on this machine (as in B6 and B7).
+
+== 3. The controller's clamp through mesh_top (K_LO, K_HI; E7 and E8), CT04 and CT05 on 4x4
+K_HI = 7 (-define TB_K_MAX=7): CT04 PASS checks=3048318 errors=0; CT05 PASS checks=1058053 errors=0: k_L reaches 7 and
+the bound holds at 7. A mutant of mesh_top that gives sched_ctrl D18's K_MAX (15) instead of K_HI: CT04
+FAIL checks=3062875 errors=28 (the checker's plans stop at 7, the controller's at 15).
+K_LO = 0 (-define TB_K_MIN=0): CT04 failed at the end of c), 'k_L 1 after 6 epochs of traffic across regions,
+expected K_MIN 0'. Not the clamp: the controller checker agreed with every plan. On 4x4 with 2x2 regions a packet
+spends its last hops in its destination's region, so traffic only across regions still makes share bin 7 (local
+demand 7/16 to 8/16 of the total), whose table entry is 1 (0 needs a bin of 3 or less). CT04 c) took K_MIN from the
+mesh's clamp in B8 and expected it exactly; it now expects the table's entry for the last epoch's bin, which must
+be at most max(K_MIN, 1): the same check as before with D18's K_MIN of 1 (one TB_CHECK, so every count stays).
+After the change:
+  CT04           CT04   tb_mesh_d              PASS    checks=3,062,877 errors=0 (expected 3,062,877), 34,863 cycles, 247 s
+  kmin0 CT04: RESULT CT04 PASS checks=3062877 errors=0 seed=1
+  CT04 c) across regions: plans 4 2 1 1 1 1; share bin of the last epoch 7, the table's entry 1
+  kmax7 CT04: RESULT CT04 PASS checks=3048318 errors=0 seed=1
+  CT04 c) across regions: plans 2 1 1 1 1 1; share bin of the last epoch 7, the table's entry 1
+  CT04_8         CT04   tb_mesh_d              PASS    checks=20,335,604 errors=0 (expected 20,335,604), 77,901 cycles, 509 s
+  8x8 (CT04_8): CT04 c) across regions: plans 1 1 1 1 1 1; share bin of the last epoch 7, the table's entry 1
+On 8x8 too, traffic only across regions makes bin 7, whose entry there is also 1 (0 needs a bin of 4 or less).
+A mutant that gives sched_ctrl D18's K_MIN instead of K_LO is not caught on 4x4: with K_LO = 0 it failed the old
+CT04 c) exactly as the delivered sources did (FAIL checks=3062877 errors=1), since the tests' lowest local share on 4x4
+(CT04 c)) makes bin 7, where K_LO = 0 and 1 give the same plans. On 8x8 see E7's K_MIN 0 points in section 8.
+
+== 4. B0-B7 unchanged: every count of the B7 close, rebuilt from the merged sources
+  U01: PASS checks=310493 SAME (0 s)
+  U02: PASS checks=196864 SAME (0 s)
+  U03: PASS checks=856450 SAME (0 s)
+  U04: PASS checks=1121244 SAME (0 s)
+  R01-R04: PASS checks=357967 SAME (0 s)
+  U05: PASS checks=24462 SAME (0 s)
+  U06: PASS checks=837406 SAME (0 s)
+  U07: PASS checks=2269472 SAME (0 s)
+  U10: PASS checks=869821 SAME (1 s)
+  U11: PASS checks=21000067 SAME (2 s)
+  U12: PASS checks=1320015 SAME (1 s)
+  U13: PASS checks=3358679 SAME (1 s)
+  U14: PASS checks=3044 SAME (1 s)
+  A4-QUICK: PASS checks=444704 SAME (2 s)
+  N05: PASS checks=1949 SAME (0 s)
+  B4-ALL: PASS checks=2573286 SAME (8 s)
+  C4-ALL: PASS checks=1634484 SAME (6 s)
+  C4-QUICK: PASS checks=1461178 SAME (5 s)
+  TL05: PASS checks=500649 SAME (3 s)
+  D4-ALL: PASS checks=11075837 SAME (42 s)
+  D4-QUICK: PASS checks=9043644 SAME (34 s)
+  U08-U09: PASS checks=4786564 SAME (21 s)
+List all (regress.tcl -list all), every entry against its expected count:
+  U01            U01    tb_rr_arbiter          PASS    checks=310,493 errors=0 (expected 310,493), 0 s
+  U02            U02    tb_sync_fifo           PASS    checks=196,864 errors=0 (expected 196,864), 0 s
+  U03            U03    tb_route_compute       PASS    checks=856,450 errors=0 (expected 856,450), 0 s
+  U04            U04    tb_switch_allocator    PASS    checks=1,121,244 errors=0 (expected 1,121,244), 0 s
+  R01-R04        tb_router tb_router              PASS    checks=357,967 errors=0 (expected 357,967), 0 s
+  N01-N08        tb_mesh tb_mesh                PASS    checks=46,273,022 errors=0 (expected 46,273,022), 1,231,461 cycles, 161 s
+  N05            N05    tb_mesh_dl             PASS    checks=1,949 errors=0 (expected 1,949), 4,153 cycles, 0 s
+  U05            U05    tb_slot_table          PASS    checks=24,462 errors=0 (expected 24,462), 0 s
+  U06            U06    tb_slot_counter        PASS    checks=837,406 errors=0 (expected 837,406), 1 s
+  U07            U07    tb_group_to_router     PASS    checks=2,269,472 errors=0 (expected 2,269,472), 0 s
+  U08-U09        tb_timetable_check tb_timetable_check     PASS    checks=4,786,564 errors=0 (expected 4,786,564), 18 s
+  BP01-10        tb_mesh_b tb_mesh_b              PASS    checks=2,573,286 errors=0 (expected 2,573,286), 29,475 cycles, 8 s
+  BP08_B         BP08   tb_mesh_b              PASS    checks=1,173,542 errors=0 (expected 1,173,542), 17,937 cycles, 2 s
+  BP08_A         tb_mesh_dl tb_mesh_dl             PASS    checks=9,551 errors=0 (expected 9,551), 2,616 cycles, 0 s
+  U10            U10    tb_resv_ctrl           PASS    checks=869,821 errors=0 (expected 869,821), 0 s
+  U11            U11    tb_phase_sequencer     PASS    checks=21,000,067 errors=0 (expected 21,000,067), 2 s
+  TL01-06        tb_mesh_c tb_mesh_c              PASS    checks=1,634,484 errors=0 (expected 1,634,484), 19,149 cycles, 6 s
+  TL05           TL05   tb_mesh_cb             PASS    checks=500,649 errors=0 (expected 500,649), 5,731 cycles, 4 s
+  U12            U12    tb_demand_counter      PASS    checks=1,320,015 errors=0 (expected 1,320,015), 1 s
+  U13            U13    tb_sched_ctrl          PASS    checks=3,358,679 errors=0 (expected 3,358,679), 1 s
+  U14            U14    tb_ctrl_chain          PASS    checks=3,044 errors=0 (expected 3,044), 1 s
+  CT01-05        tb_mesh_d tb_mesh_d              PASS    checks=11,075,837 errors=0 (expected 11,075,837), 123,839 cycles, 43 s
+List quick (regress.tcl -list quick):
+  U01            U01    tb_rr_arbiter          PASS    checks=310,493 errors=0 (expected 310,493), 79 s
+  U02            U02    tb_sync_fifo           PASS    checks=196,864 errors=0 (expected 196,864), 0 s
+  U03            U03    tb_route_compute       PASS    checks=856,450 errors=0 (expected 856,450), 53 s
+  U04            U04    tb_switch_allocator    PASS    checks=1,121,244 errors=0 (expected 1,121,244), 81 s
+  R01-R04        tb_router tb_router              PASS    checks=357,967 errors=0 (expected 357,967), 161 s
+  N01-N08_q      tb_mesh tb_mesh                PASS    checks=444,704 errors=0 (expected 444,704), 14,811 cycles, 3 s
+  N05            N05    tb_mesh_dl             PASS    checks=1,949 errors=0 (expected 1,949), 4,153 cycles, 85 s
+  U05            U05    tb_slot_table          PASS    checks=24,462 errors=0 (expected 24,462), 40 s
+  U06_q          U06    tb_slot_counter        PASS    checks=99,202 errors=0 (expected 99,202), 16 s
+  U07_q          U07    tb_group_to_router     PASS    checks=423,040 errors=0 (expected 423,040), 24 s
+  U08-U09_q      tb_timetable_check tb_timetable_check     PASS    checks=756,567 errors=0 (expected 756,567), 9 s
+  BP01-10_q      tb_mesh_b tb_mesh_b              PASS    checks=1,026,210 errors=0 (expected 1,026,210), 16,113 cycles, 4 s
+  BP08_B_q       BP08   tb_mesh_b              PASS    checks=379,431 errors=0 (expected 379,431), 5,732 cycles, 1 s
+  BP08_A         tb_mesh_dl tb_mesh_dl             PASS    checks=9,551 errors=0 (expected 9,551), 2,616 cycles, 0 s
+  U10_q          U10    tb_resv_ctrl           PASS    checks=289,930 errors=0 (expected 289,930), 15 s
+  U11_q          U11    tb_phase_sequencer     PASS    checks=2,625,053 errors=0 (expected 2,625,053), 17 s
+  TL01-06_q      tb_mesh_c tb_mesh_c              PASS    checks=1,461,178 errors=0 (expected 1,461,178), 17,666 cycles, 5 s
+  TL05_q         TL05   tb_mesh_cb             PASS    checks=146,657 errors=0 (expected 146,657), 1,571 cycles, 240 s
+  U12_q          U12    tb_demand_counter      PASS    checks=210,015 errors=0 (expected 210,015), 22 s
+  U13_q          U13    tb_sched_ctrl          PASS    checks=419,900 errors=0 (expected 419,900), 16 s
+  U14_q          U14    tb_ctrl_chain          COUNT   checks=420 errors=0 (expected 407), 25 s
+  CT01-05_q      tb_mesh_d tb_mesh_d              PASS    checks=9,043,644 errors=0 (expected 9,043,644), 101,805 cycles, 36 s
+  U14_q's COUNT was the list's error: it said 407, U14 +QUICK gives 420 (README and R-1113-U14). Fixed;
+  all.list and b7.list also still had U14's count from before its B7 fix (3,024, now 3,044).
+
+== 5. Stress tests on 4x4 (regress.tcl -list stress; -list stress_long without S01)
+  S01_A_q        tb_mesh tb_mesh                PASS    checks=7,808,915 errors=0, 200,113 cycles, 86 s
+  S01_B_q        tb_mesh_b tb_mesh_b              PASS    checks=17,741,895 errors=0, 200,050 cycles, 142 s
+  S01_C_q        tb_mesh_c tb_mesh_c              PASS    checks=20,035,432 errors=0, 200,050 cycles, 142 s
+  S01_D_q        tb_mesh_d tb_mesh_d              PASS    checks=19,920,852 errors=0, 200,050 cycles, 155 s
+  S02_B_q        tb_mesh_b tb_mesh_b              PASS    checks=1,245,842 errors=0, 14,176 cycles, 4 s
+  S02_C_q        tb_mesh_c tb_mesh_c              PASS    checks=1,409,802 errors=0, 14,176 cycles, 4 s
+  S02_D_q        tb_mesh_d tb_mesh_d              PASS    checks=1,404,594 errors=0, 14,176 cycles, 5 s
+  S03_B_q        tb_mesh_b tb_mesh_b              PASS    checks=1,151,346 errors=0, 17,837 cycles, 74 s
+  S03_C_q        tb_mesh_c tb_mesh_c              PASS    checks=1,335,771 errors=0, 17,477 cycles, 66 s
+  S03_D_q        tb_mesh_d tb_mesh_d              PASS    checks=1,368,403 errors=0, 18,234 cycles, 68 s
+  S05_A_q        tb_mesh tb_mesh                PASS    checks=145,256 errors=0, 1,264 cycles, 0 s
+  S05_B_q        tb_mesh_b tb_mesh_b              PASS    checks=207,433 errors=0, 1,265 cycles, 0 s
+  S05_C_q        tb_mesh_c tb_mesh_c              PASS    checks=222,333 errors=0, 1,266 cycles, 0 s
+  S05_D_q        tb_mesh_d tb_mesh_d              PASS    checks=222,337 errors=0, 1,266 cycles, 0 s
+  S02_B          tb_mesh_b tb_mesh_b              PASS    checks=7,251,645 errors=0, 82,156 cycles, 24 s
+  S02_C          tb_mesh_c tb_mesh_c              PASS    checks=8,199,426 errors=0, 82,156 cycles, 26 s
+  S02_D          tb_mesh_d tb_mesh_d              PASS    checks=8,166,292 errors=0, 82,156 cycles, 28 s
+  S03_B          tb_mesh_b tb_mesh_b              PASS    checks=5,304,216 errors=0, 82,219 cycles, 10 s
+  S03_C          tb_mesh_c tb_mesh_c              PASS    checks=6,133,525 errors=0, 80,221 cycles, 13 s
+  S03_D          tb_mesh_d tb_mesh_d              PASS    checks=6,167,954 errors=0, 82,096 cycles, 14 s
+  S05_A          tb_mesh tb_mesh                PASS    checks=263,175 errors=0, 2,264 cycles, 0 s
+  S05_B          tb_mesh_b tb_mesh_b              PASS    checks=374,574 errors=0, 2,264 cycles, 1 s
+  S05_C          tb_mesh_c tb_mesh_c              PASS    checks=400,824 errors=0, 2,264 cycles, 1 s
+  S05_D          tb_mesh_d tb_mesh_d              PASS    checks=400,830 errors=0, 2,264 cycles, 1 s
+S01 in full (10,000,000 cycles per design) was not run here: about two hours per design on Verilator. Instead
+design D ran S01 for 2,000,000 cycles (+S01_CYCLES=2000000): PASS checks=199,415,241, 2,000,038 cycles, 15m8.465s.
+The S03 times above include the build of the one-VC testbench.
+
+== 6. S04: sixteen configurations of designs B-D (regress.tcl -list s04)
+  S04_01_B       tb_mesh_b tb_mesh_b              PASS    checks=1,989,973 errors=0, 32,919 cycles, 77 s
+  S04_02_B       tb_mesh_b tb_mesh_b              PASS    checks=2,057,570 errors=0, 30,054 cycles, 85 s
+  S04_03_B       tb_mesh_b tb_mesh_b              PASS    checks=8,805,024 errors=0, 32,455 cycles, 341 s
+  S04_04_B       tb_mesh_b tb_mesh_b              PASS    checks=2,666,323 errors=0, 30,245 cycles, 98 s
+  S04_05_B       tb_mesh_b tb_mesh_b              PASS    checks=7,071,052 errors=0, 30,071 cycles, 277 s
+  S04_06_C       tb_mesh_c tb_mesh_c              PASS    checks=2,465,315 errors=0, 35,647 cycles, 69 s
+  S04_07_C       tb_mesh_c tb_mesh_c              PASS    checks=2,511,509 errors=0, 30,053 cycles, 77 s
+  S04_08_C       tb_mesh_c tb_mesh_c              PASS    checks=9,310,934 errors=0, 32,749 cycles, 377 s
+  S04_09_C       tb_mesh_c tb_mesh_c              PASS    checks=2,980,904 errors=0, 30,516 cycles, 92 s
+  S04_10_C       tb_mesh_c tb_mesh_c              PASS    checks=15,888,711 errors=0, 72,575 cycles, 305 s
+  S04_11_D       tb_mesh_d tb_mesh_d              PASS    checks=2,352,122 errors=0, 33,927 cycles, 70 s
+  S04_12_D       tb_mesh_d tb_mesh_d              PASS    checks=2,369,531 errors=0, 30,053 cycles, 78 s
+  S04_13_D       tb_mesh_d tb_mesh_d              PASS    checks=9,210,071 errors=0, 32,433 cycles, 389 s
+  S04_14_D       tb_mesh_d tb_mesh_d              PASS    checks=3,049,791 errors=0, 30,064 cycles, 95 s
+  S04_15_D       tb_mesh_d tb_mesh_d              PASS    checks=7,455,811 errors=0, 30,080 cycles, 315 s
+  S04_16_D       tb_mesh_d tb_mesh_d              PASS    checks=2,370,774 errors=0, 33,858 cycles, 74 s
+  (S04_16_D first ended without a RESULT line when this machine's disk filled during its build; rebuilt and
+  rerun from the same sources.)
+
+== 7. S06 and compare_csv.tcl
+sweep.tcl -sweep S06: 16 points written; the same sweep in two parts side by side (-part 1/2, -part 2/2):
+its merged CSV is byte for byte the serial one. compare_csv.tcl: the CSV against itself and against the
+folder of logs: 16 SAME, 'S06 PASS'; with one value changed: 15 SAME, 1 DIFF, 'S06 FAIL'.
+results/precheck/S06_verilator.csv holds these rows for your xsim comparison.
+The EDA bundle gives S06_B_uniform_f0.30's and S06_C_transpose_f0.70's rows unchanged (+define+TEST_BP01 and
+TEST_TL01 with Run Options +TEST=PERF ...), and S05 +QUICK the counts of section 4 on designs A, B and C.
+After CT04's change the bundle was made again (only tb_part4.sv changed; 569,351 characters in all) and
++define+TEST_CT04 with +QUICK gives PASS checks=768301 errors=0 (README: 768,301).
+
+== 8. Sweeps
+make_sweeps.tcl now gives designs C and D on 8x8 and 16x16 D19's epoch (D60): 14 sweeps, 1,776 points.
+Trial: the first point of each of 19 builds of E0-E10 (the rest are their 4x4 or default twins), with a
+1,500-cycle warm-up and window (sweep.tcl -sweep of a scratch file; not delivered):
+  2026-11-14 05:55:59 T_E0_B_bitrot_V1_p0.000_b5_r0.02 PASS checks=160947 errors=0 cycles=3033 1 s
+  2026-11-14 05:56:00 T_E0_B_bitrot_V1_p0.000_b15_r0.02 PASS checks=158970 errors=0 cycles=3033 145 s
+  2026-11-14 05:58:25 T_E10_D_V1_st0.00_f0.50 PASS checks=216587 errors=0 cycles=3043 1 s
+  2026-11-14 05:58:25 T_E1_8x8_A_uniform_f0.10_s1 PASS checks=49365 errors=0 cycles=3054 259 s
+  2026-11-14 06:02:45 T_E1_8x8_B_uniform_f0.10_s1 PASS checks=639096 errors=0 cycles=3054 325 s
+  2026-11-14 06:08:09 T_E1_8x8_C_uniform_f0.10_s1 PASS checks=687685 errors=0 cycles=3054 964 s
+  2026-11-14 06:24:13 T_E1_8x8_D_uniform_f0.10_s1 PASS checks=687689 errors=0 cycles=3054 491 s
+  2026-11-14 06:32:24 T_E3_4x4_D_V2_uniform_f0.25 PASS checks=213273 errors=0 cycles=3044 232 s
+  2026-11-14 06:36:16 T_E3_8x8_A_V1_uniform_f0.25 PASS checks=33572 errors=0 cycles=3069 249 s
+  2026-11-14 06:40:25 T_E3_8x8_D_V1_uniform_f0.25 PASS checks=675117 errors=0 cycles=3069 763 s
+  2026-11-14 06:53:09 T_E3_8x8_D_V2_uniform_f0.25 PASS checks=699424 errors=0 cycles=3051 295 s
+  2026-11-14 06:58:03 T_E7_D_kmin0_uniform_f0.20 PASS checks=738460 errors=0 cycles=3068 5 s
+  2026-11-14 06:58:09 T_E8_D_ep8192_uniform_f0.40 PASS checks=839066 errors=0 cycles=3066 349 s
+  2026-11-14 07:03:58 T_E8_D_ep131072_uniform_f0.40 PASS checks=839066 errors=0 cycles=3066 354 s
+  2026-11-14 07:09:52 T_E8_D_kmax7_uniform_f0.40 PASS checks=839066 errors=0 cycles=3066 355 s
+  2026-11-14 07:15:47 T_E8_D_kmax31_uniform_f0.40 PASS checks=839066 errors=0 cycles=3066 354 s
+  2026-11-14 07:21:41 T_E8_D_reg2_uniform_f0.40 PASS checks=859802 errors=0 cycles=3066 354 s
+  2026-11-14 07:27:35 T_E8_D_bmax5_uniform_f0.40 PASS checks=847508 errors=0 cycles=3071 349 s
+  2026-11-14 07:37:24 T_E8_D_bmax15_uniform_f0.40 PASS checks=833218 errors=0 cycles=3066 352 s
+  (all 19 points PASS; the last one ran after a restart, sweep.tcl skipping the points already done)
+Two full-length 8x8 points with D19's epoch (E1_8x8's C and D at 0.5 of saturation, uniform):
+  2026-11-14 05:38:06 E1_8x8_C_uniform_f0.50_s1 PASS checks=3525015 errors=0 cycles=12071 350 s (about 5 min left)
+  2026-11-14 05:43:56 E1_8x8_D_uniform_f0.50_s1 PASS checks=50598641 errors=0 cycles=173912 723 s (about 0 min left)
+E7's K_MIN 0 variant on 8x8 with D19's epoch, full length (E7_D_kmin0 at 0.4 of saturation):
+  2026-11-14 06:05:21 E7_D_kmin0_uniform_f0.40 PASS checks=47693806 errors=0 cycles=173909 835 s (about 13 min left)
+  2026-11-14 06:19:16 E7_D_kmin0_hotspot_f0.40 PASS checks=84271169 errors=0 cycles=345509 633 s (about 0 min left)
+  E7_D_kmin0_uniform_f0.40: plans 4 2 1 1 1 1 (k_L 1..4), latency 28.856, bypass share 0.0007
+  E7_D_kmin0_hotspot_f0.40: plans 4 2 1 1 1 1 1 1 1 1 0 (k_L 0..4), latency 91580.372, bypass share 0.0257
+  Uniform: the plans are E1_8x8_D's with K_MIN 1 (4 2 1 1 1 1): on 8x8 uniform traffic makes share bins whose
+  table entry is 1 (bins 5-8; 0 needs a bin of 4 or less), so K_MIN 0 is not reached below saturation and E7's
+  K_MIN 0 points would repeat D_PROP's. Hotspot: k_L reached 0 in the last epoch only, with the mesh past
+  saturation (accepted 0.0673 of 0.1271 flits/node/cycle offered, sat = 1, mean latency 91,580 cycles: the
+  source queues held the backlog of five epochs of warm-up, so the run took 345,509 cycles instead of 173,909).
+  Hotspot's RATE_FRAC is a share of uniform saturation (sat_rate() depends only on N and V), but one node that
+  receives 20 % of all packets saturates far earlier: its ejection port takes 1 flit per cycle, so on 8x8
+  (0.2 x 63 + 0.8) x 2.32 flits x rate <= 1 gives rate <= 0.032 packets/node/cycle, 0.24 of sat_rate()'s 0.137
+  (4x4: 0.11, about 0.44 of 0.257). E1's hotspot points from 0.3 (8x8) or 0.5 (4x4), E7's from 0.4 and all 12 of
+  E9's (0.5 and 0.9) are past saturation. Not changed here: the experiment plan is yours (see the delivery message).
+
+== 9. Scripts
+regress.tcl: the lists above. sweep.tcl: S06 serial and in parts, the example sweep (121 points), the trial.
+VCS and Xcelium through stand-ins: make TEST=tb_mesh_b PLUS="+TEST=S05 +QUICK" and TEST=S05 BENCH=tb_mesh_b: PASS
+207,433; regress.sh on a four-entry list (a define, a unit test): 4 PASS with VCS and with SIM=xrun; sweep.sh S06
+in two parts side by side and with SIM=xrun: compare_csv against the Verilator rows: S06 PASS, same order.
+After their last edits (-only, a second merge at the end of a part, the dry-run listing) sweep.tcl and sweep.sh
+ran S06 again: serial, the same CSV byte for byte; three parts side by side, the same CSV in the same order;
+-only '*_D_*' in two parts, the 4 design-D rows, each the same as the full run's; sweep.sh (VCS stand-in) in two
+parts, the same CSV in the same order; sweep.sh SIM=xrun with '*_A_*', the 4 design-A rows.
+
+== 10. Chart workbook (results/templates/sweep_charts.xlsx)
+Built from the example sweep (4x4, designs A-D and design D's SQRT and no-damping variants, uniform and
+transpose at 0.1-1.0 of saturation, and one phase-traffic point with +TRACE=1024); recalculated in LibreOffice:
+42,703 formulas, no error value; Excel 2007 functions only (no MINIFS or MAXIFS). Charts checked as rendered.
+What the example shows: under transpose design A (XY) saturates at 0.6 of saturation while B-D (adaptive)
+carry 1.0; under uniform traffic the bypass carries 0.1-0.5 % of packets on 4x4; under phase traffic design D's
+k_L goes 2 -> 9 -> 12 -> 14 -> 15 within four epochs when the traffic turns region-local and back to 2.
+
+== 11. After your xsim runs of 14 Nov (R-1114-01 to 10)
+Passed as here: quick 22 of 22, S01-S03 short and S02, S03 full, s04 16 of 16, S06 (16 SAME, 'S06 PASS'), CT04.
+Two failures, both in B8's tests, not in the RTL, and both out of Verilator's sight:
+- S05 failed on every design from cycle 6 (R-1114-02, 04), with Verilator's check counts. It checked whole records
+  for X; but like buffer storage the data fields of output registers have no reset and hold X until first written,
+  and a port at the mesh's edge never writes them. Verilator is two-state and has no X, so it could not see this.
+  S05 now checks every valid bit and every field of a record whose valid bit is 1 (still five checks per tile and
+  cycle, so every count stays).
+- S01 in full stopped on every design at 6,000,000 cycles (R-1114-07 to 10): the bench's safety net fails a run
+  still going after 5,000,000 cycles plus N08's length, and S01 runs 10,000,000. Verilator ran S01 for 2,000,000
+  only. The net now adds S01's length (10,000,000 or +S01_CYCLES) when +TEST=S01: a stand-alone check of the new
+  initial block gives 16,000,000 cycles for S01, 8,000,000 with +S01_CYCLES=2000000, 6,000,000 for every other test.
+Verilator after the fixes (counts checked against the lists):
+  S01_A_q        tb_mesh tb_mesh                PASS    checks=7,808,915 errors=0 (expected 7,808,915), 200,113 cycles, 81 s
+  S01_B_q        tb_mesh_b tb_mesh_b              PASS    checks=17,741,895 errors=0 (expected 17,741,895), 200,050 cycles, 133 s
+  S01_C_q        tb_mesh_c tb_mesh_c              PASS    checks=20,035,432 errors=0 (expected 20,035,432), 200,050 cycles, 133 s
+  S01_D_q        tb_mesh_d tb_mesh_d              PASS    checks=19,920,852 errors=0 (expected 19,920,852), 200,050 cycles, 134 s
+  S02_B_q        tb_mesh_b tb_mesh_b              PASS    checks=1,245,842 errors=0 (expected 1,245,842), 14,176 cycles, 3 s
+  S02_C_q        tb_mesh_c tb_mesh_c              PASS    checks=1,409,802 errors=0 (expected 1,409,802), 14,176 cycles, 4 s
+  S02_D_q        tb_mesh_d tb_mesh_d              PASS    checks=1,404,594 errors=0 (expected 1,404,594), 14,176 cycles, 4 s
+  S03_B_q        tb_mesh_b tb_mesh_b              PASS    checks=1,151,346 errors=0 (expected 1,151,346), 17,837 cycles, 63 s
+  S03_C_q        tb_mesh_c tb_mesh_c              PASS    checks=1,335,771 errors=0 (expected 1,335,771), 17,477 cycles, 58 s
+  S03_D_q        tb_mesh_d tb_mesh_d              PASS    checks=1,368,403 errors=0 (expected 1,368,403), 18,234 cycles, 60 s
+  S05_A_q        tb_mesh tb_mesh                PASS    checks=145,256 errors=0 (expected 145,256), 1,264 cycles, 0 s
+  S05_B_q        tb_mesh_b tb_mesh_b              PASS    checks=207,433 errors=0 (expected 207,433), 1,265 cycles, 0 s
+  S05_C_q        tb_mesh_c tb_mesh_c              PASS    checks=222,333 errors=0 (expected 222,333), 1,266 cycles, 0 s
+  S05_D_q        tb_mesh_d tb_mesh_d              PASS    checks=222,337 errors=0 (expected 222,337), 1,266 cycles, 0 s
+  14 entries: 14 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 11 min
+  S05_A          tb_mesh tb_mesh                PASS    checks=263,175 errors=0 (expected 263,175), 2,264 cycles, 0 s
+  S05_B          tb_mesh_b tb_mesh_b              PASS    checks=374,574 errors=0 (expected 374,574), 2,264 cycles, 1 s
+  S05_C          tb_mesh_c tb_mesh_c              PASS    checks=400,824 errors=0 (expected 400,824), 2,264 cycles, 1 s
+  S05_D          tb_mesh_d tb_mesh_d              PASS    checks=400,830 errors=0 (expected 400,830), 2,264 cycles, 1 s
+  4 entries: 4 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 0 min
+  U01            U01    tb_rr_arbiter          PASS    checks=310,493 errors=0 (expected 310,493), 34 s
+  U02            U02    tb_sync_fifo           PASS    checks=196,864 errors=0 (expected 196,864), 28 s
+  U03            U03    tb_route_compute       PASS    checks=856,450 errors=0 (expected 856,450), 23 s
+  U04            U04    tb_switch_allocator    PASS    checks=1,121,244 errors=0 (expected 1,121,244), 24 s
+  R01-R04        tb_router tb_router              PASS    checks=357,967 errors=0 (expected 357,967), 43 s
+  N01-N08_q      tb_mesh tb_mesh                PASS    checks=444,704 errors=0 (expected 444,704), 14,811 cycles, 2 s
+  N05            N05    tb_mesh_dl             PASS    checks=1,949 errors=0 (expected 1,949), 4,153 cycles, 36 s
+  U05            U05    tb_slot_table          PASS    checks=24,462 errors=0 (expected 24,462), 18 s
+  U06_q          U06    tb_slot_counter        PASS    checks=99,202 errors=0 (expected 99,202), 14 s
+  U07_q          U07    tb_group_to_router     PASS    checks=423,040 errors=0 (expected 423,040), 23 s
+  U08-U09_q      tb_timetable_check tb_timetable_check     PASS    checks=756,567 errors=0 (expected 756,567), 7 s
+  BP01-10_q      tb_mesh_b tb_mesh_b              PASS    checks=1,026,210 errors=0 (expected 1,026,210), 16,113 cycles, 4 s
+  BP08_B_q       BP08   tb_mesh_b              PASS    checks=379,431 errors=0 (expected 379,431), 5,732 cycles, 0 s
+  BP08_A         tb_mesh_dl tb_mesh_dl             PASS    checks=9,551 errors=0 (expected 9,551), 2,616 cycles, 0 s
+  U10_q          U10    tb_resv_ctrl           PASS    checks=289,930 errors=0 (expected 289,930), 14 s
+  U11_q          U11    tb_phase_sequencer     PASS    checks=2,625,053 errors=0 (expected 2,625,053), 15 s
+  TL01-06_q      tb_mesh_c tb_mesh_c              PASS    checks=1,461,178 errors=0 (expected 1,461,178), 17,666 cycles, 5 s
+  TL05_q         TL05   tb_mesh_cb             PASS    checks=146,657 errors=0 (expected 146,657), 1,571 cycles, 120 s
+  U12_q          U12    tb_demand_counter      PASS    checks=210,015 errors=0 (expected 210,015), 18 s
+  U13_q          U13    tb_sched_ctrl          PASS    checks=419,900 errors=0 (expected 419,900), 13 s
+  U14_q          U14    tb_ctrl_chain          PASS    checks=420 errors=0 (expected 420), 21 s
+  CT01-05_q      tb_mesh_d tb_mesh_d              PASS    checks=9,043,644 errors=0 (expected 9,043,644), 101,805 cycles, 30 s
+  22 entries: 22 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 8 min
+  EDA TEST_N01 +TEST=S05 +QUICK: RESULT S05 PASS checks=145256 errors=0 seed=1 | cycles simulated 1264 (0 s)
+  EDA TEST_BP01 +TEST=S05 +QUICK: RESULT S05 PASS checks=207433 errors=0 seed=1 | cycles simulated 1265 (1 s)
+  EDA TEST_TL01 +TEST=S05 +QUICK: RESULT S05 PASS checks=222333 errors=0 seed=1 | cycles simulated 1266 (0 s)
+  EDA S05 DONE 18:52:01
+
+== 12. Knees (D61) and what happens past them
+Design B, seed 1, 34 configurations (every pattern, mesh, VC count, packet mix and sink stall chance the sweeps
+use): a grid of ten rates from 0.15 to 2.4 of the old scale, then four points inside each bracket; the knee is where
+accepted/offered crosses 0.95. results/precheck/B8_knees.csv (one row per configuration) and B8_knee_points.csv
+(every point, with the comparison runs below). Knees, packets/node/cycle:
+  4x4 V1 p_data 0.333 transpose                     knee 0.0867   peak accepted 0.1920, most accepted past it 0.2238 flits/node/cycle
+  4x4 V1 p_data 0.333 uniform                       knee 0.0602   peak accepted 0.1379, most accepted past it 0.1445 flits/node/cycle
+  4x4 V1 p_data 0.333 uniform   stall 0.05          knee 0.0579   peak accepted 0.1330, most accepted past it 0.1356 flits/node/cycle
+  4x4 V1 p_data 0.333 uniform   stall 0.10          knee 0.0636   peak accepted 0.1473, most accepted past it 0.1305 flits/node/cycle
+  4x4 V1 p_data 0.333 uniform   stall 0.20          knee 0.0619   peak accepted 0.1424, most accepted past it 0.1340 flits/node/cycle
+  4x4 V2 p_data 0.333 transpose                     knee 0.1908   peak accepted 0.4163, most accepted past it 0.4550 flits/node/cycle
+  4x4 V2 p_data 0.333 uniform                       knee 0.1610   peak accepted 0.3602, most accepted past it 0.3660 flits/node/cycle
+  4x4 V4 p_data 0.333 bitcomp                       knee 0.1353   peak accepted 0.2989, most accepted past it 0.3166 flits/node/cycle
+  4x4 V4 p_data 0.333 bitrot                        knee 0.3300   peak accepted 0.7300, most accepted past it 0.7522 flits/node/cycle
+  4x4 V4 p_data 0.333 hotspot                       knee 0.1059   peak accepted 0.2311, most accepted past it 0.2414 flits/node/cycle
+  4x4 V4 p_data 0.333 region    p_local 0.50        knee 0.3185   peak accepted 0.7034, most accepted past it 0.7125 flits/node/cycle
+  4x4 V4 p_data 0.333 shuffle                       knee 0.3082   peak accepted 0.6711, most accepted past it 0.8050 flits/node/cycle
+  4x4 V4 p_data 0.333 transpose                     knee 0.3126   peak accepted 0.6908, most accepted past it 0.7190 flits/node/cycle
+  4x4 V4 p_data 0.333 uniform                       knee 0.2763   peak accepted 0.6121, most accepted past it 0.6201 flits/node/cycle
+  4x4 V4 p_data 0.333 uniform   stall 0.05          knee 0.2756   peak accepted 0.6117, most accepted past it 0.6175 flits/node/cycle
+  4x4 V4 p_data 0.333 uniform   stall 0.10          knee 0.2728   peak accepted 0.6064, most accepted past it 0.6092 flits/node/cycle
+  4x4 V4 p_data 0.333 uniform   stall 0.20          knee 0.2632   peak accepted 0.5862, most accepted past it 0.5917 flits/node/cycle
+  8x8 V1 p_data 0.333 transpose                     knee 0.0340   peak accepted 0.0753, most accepted past it 0.1147 flits/node/cycle
+  8x8 V1 p_data 0.333 uniform                       knee 0.0272   peak accepted 0.0642, most accepted past it 0.0403 flits/node/cycle
+  8x8 V2 p_data 0.333 transpose                     knee 0.0799   peak accepted 0.1764, most accepted past it 0.2347 flits/node/cycle
+  8x8 V2 p_data 0.333 uniform                       knee 0.0714   peak accepted 0.1659, most accepted past it 0.0704 flits/node/cycle
+  8x8 V4 p_data 0.000 uniform                       knee 0.2242   peak accepted 0.2242, most accepted past it 0.0254 flits/node/cycle
+  8x8 V4 p_data 0.333 bitcomp                       knee 0.0639   peak accepted 0.1419, most accepted past it 0.1324 flits/node/cycle
+  8x8 V4 p_data 0.333 bitrot                        knee 0.1641   peak accepted 0.3599, most accepted past it 0.3879 flits/node/cycle
+  8x8 V4 p_data 0.333 hotspot                       knee 0.0303   peak accepted 0.0679, most accepted past it 0.0675 flits/node/cycle
+  8x8 V4 p_data 0.333 region    p_local 0.00        knee 0.1084   peak accepted 0.2442, most accepted past it 0.1127 flits/node/cycle
+  8x8 V4 p_data 0.333 region    p_local 0.25        knee 0.1293   peak accepted 0.3007, most accepted past it 0.1453 flits/node/cycle
+  8x8 V4 p_data 0.333 region    p_local 0.50        knee 0.1650   peak accepted 0.3854, most accepted past it 0.1052 flits/node/cycle
+  8x8 V4 p_data 0.333 region    p_local 0.75        knee 0.2178   peak accepted 0.5036, most accepted past it 0.4041 flits/node/cycle
+  8x8 V4 p_data 0.333 region    p_local 0.90        knee 0.2582   peak accepted 0.5735, most accepted past it 0.5750 flits/node/cycle
+  8x8 V4 p_data 0.333 shuffle                       knee 0.1448   peak accepted 0.3195, most accepted past it 0.3726 flits/node/cycle
+  8x8 V4 p_data 0.333 transpose                     knee 0.1356   peak accepted 0.2980, most accepted past it 0.4050 flits/node/cycle
+  8x8 V4 p_data 0.333 uniform                       knee 0.1332   peak accepted 0.3049, most accepted past it 0.0807 flits/node/cycle
+  8x8 V4 p_data 0.500 uniform                       knee 0.1078   peak accepted 0.3171, most accepted past it 0.2844 flits/node/cycle
+Past the knee on 8x8, designs B-D collapse (uniform, design B: 0.305 accepted at 0.1330, 0.056 at 0.1371). The same
+8x8 uniform points on other designs:
+  X8_BXY_uniform_m0.85         rate 0.1164  offered 0.2722 accepted 0.2721  sat 0  latency 35.190  cycles 12072
+  X8_BXY_uniform_m1.00         rate 0.1370  offered 0.3197 accepted 0.3135  sat 0  latency 173.764  cycles 12881
+  X8_BXY_uniform_m1.20         rate 0.1644  offered 0.3846 accepted 0.3201  sat 1  latency 1432.684  cycles 16249
+  X8_BXY_uniform_m1.50         rate 0.2055  offered 0.4802 accepted 0.3193  sat 1  latency 3543.717  cycles 20140
+  X8_BXY_uniform_m2.40         rate 0.3288  offered 0.7687 accepted 0.3143  sat 1  latency 9974.647  cycles 31426
+  X8_A_uniform_m0.85           rate 0.1164  offered 0.2722 accepted 0.2721  sat 0  latency 35.146  cycles 12073
+  X8_A_uniform_m1.00           rate 0.1370  offered 0.3197 accepted 0.3148  sat 0  latency 159.388  cycles 12975
+  X8_A_uniform_m1.20           rate 0.1644  offered 0.3846 accepted 0.3207  sat 1  latency 1414.383  cycles 16050
+  X8_A_uniform_m1.50           rate 0.2055  offered 0.4802 accepted 0.3176  sat 1  latency 3575.061  cycles 19747
+  X8_A_uniform_m2.40           rate 0.3288  offered 0.7687 accepted 0.3154  sat 1  latency 10023.042  cycles 31767
+  Y8_C_uniform_b0.85           rate 0.1000  offered 0.2334 accepted 0.2334  sat 0  latency 32.158  cycles 12058
+  Y8_C_uniform_b0.95           rate 0.1118  offered 0.2609 accepted 0.2608  sat 0  latency 34.382  cycles 12049
+  Y8_C_uniform_b1.05           rate 0.1236  offered 0.2883 accepted 0.2880  sat 0  latency 39.621  cycles 12089
+  Y8_D_uniform_b0.85           rate 0.1000  offered 0.2328 accepted 0.2329  sat 0  latency 32.122  cycles 173895
+  Y8_D_uniform_b0.95           rate 0.1118  offered 0.2599 accepted 0.2599  sat 0  latency 34.197  cycles 173909
+  Y8_D_uniform_b1.05           rate 0.1236  offered 0.2867 accepted 0.2867  sat 0  latency 38.507  cycles 173905
+  Y8_C_uniform_r0.12886        rate 0.1289  offered 0.3006 accepted 0.2997  sat 0  latency 54.969  cycles 12161
+  Y8_C_uniform_r0.13298        rate 0.1330  offered 0.3102 accepted 0.1032  sat 1  latency 11970.793  cycles 35868
+  Y8_C_uniform_r0.13710        rate 0.1371  offered 0.3199 accepted 0.0891  sat 1  latency 15615.501  cycles 38195
+  Y8_D_uniform_r0.12886        rate 0.1289  offered 0.2988 accepted 0.0901  sat 1  latency 17556.620  cycles 208382
+  2026-11-14 12:50:30 Y8_D_uniform_r0.13298 FAIL checks=91005076 errors=2 cycles=- 688 s (about 4 min left)  (not drained within 200,000 cycles)
+  2026-11-14 13:01:59 Y8_D_uniform_r0.13710 FAIL checks=91467253 errors=2 cycles=- 689 s (about 0 min left)  (not drained within 200,000 cycles)
+Design A and design B with XY routing (deadlock-free) level off at 0.32. Minimal adaptive routing on every VC lets
+cycles of waiting packets form once the mesh saturates, and only the bypass timetable breaks them (D06, BP08), when
+the waiting pair's turn comes: in design B about every 800 cycles on 4x4 and 10,500 on 8x8 (C and D across regions
+1,250-1,480 and 13,000-22,000). On 4x4 no design collapses. Design D collapses at 0.97 of B's knee and, five epochs
+of warm-up behind it, fails to drain past it: its 8x8 sweep points stop at 0.95 of the knee (D61). Tracker: Issues.

@@ -1,0 +1,56 @@
+[2026-11-10 12:03:59 UTC] vlib work && vlog '+define+TEST_BP10' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_mesh_b."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.8 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.3 [s]
+# SLP: Finished : 2.1 [s]
+# SLP: 0 primitives and 15767 (99.77%) other processes in SLP
+# SLP: 25346 (90.44%) signals in SLP and 457 (1.63%) interface signals
+# ELAB2: Elaboration final pass complete - time: 3.0 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 23423 kB (elbread=522 elab2=10136 kernel=12765 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   BP01-BP10  mesh 4x4, 4 VC, adaptive routing, design B, B_MAX 10, TIGHT subslots of 18 cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  BP10 bypass share: uniform at 0.200 packets/node/cycle (78% of design A's saturation), 1500 cycles measured
+# KERNEL: INFO   BP10: 4620 packets measured, latency avg 21.95 p99 48 max 69, offered 0.4608 accepted 0.4618 flits/node/cycle
+# KERNEL: INFO   BP10: bypass share 0.35% of packets, 0.25% of flits; 19 bursts in 552 turns (3.44%), none cancelled; [1] reports 49-73% (open question for E0)
+# KERNEL: CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+# KERNEL: CSV,BP10_N4_V4,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.2000,1,21.953,21,48,69,0.4608,0.4618,0.0035,0.0025,0.9977,41.333,0,0,4620,0,1500,552,19,0,0,32,20,560,560,0,529,408
+# KERNEL: COVER  BP10 packets by bypass                               20
+# KERNEL: INFO   cycles simulated 1852
+# KERNEL: ==========================================================================
+# KERNEL: RESULT BP10 PASS checks=199316 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (407): $finish called.
+# KERNEL: Time: 18525 ns,  Iteration: 1,  Instance: /tb_mesh_b/u_bench,  Process: @INITIAL#1957_5@.
+# KERNEL: stopped at time: 18525 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

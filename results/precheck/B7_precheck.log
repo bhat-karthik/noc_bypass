@@ -1,0 +1,208 @@
+B7 pre-delivery checks, 2026-11-13 (runs 09:10-15:30 UTC)
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v v0.0.12
+Final state: every run below uses the delivered sources, except where section 7 says a bench changed after it
+(and then the run was repeated with the final bench).
+
+== 0. Portability scans (D30, D36, D41, D45, D53; README Section 2, rules 9 and 10)
+Rule 9 in the files B7 adds or changes (casts of a call, field, array element or negation inside an expression or
+as an argument; loops without a fixed bound in functions):
+  tb/mesh/tests_ctrl.svh:104: loop without a fixed bound in a function: while (cyc + 1 < t) @(posedge clk);
+  tb/mesh/tests_ctrl.svh:157: loop without a fixed bound in a function: while (cyc + 1 < t_end) begin
+  tb/mesh/tests_ctrl.svh:335: loop without a fixed bound in a function: while (k != CT_KMAX && tries < lim) begin
+  -> 3 finding(s) in 12 files
+  The three findings are waits inside tasks (time passes in each iteration; the last is bounded by tries < lim),
+  not zero-time loops. Before the fixes of section 7 this scan found six casts in tb_sched_ctrl, tb_ctrl_chain and
+  tests_ctrl. The older files B7 touches only by @support tags (sink_node, tg_node, run_ctrl) and the older parts
+  of mesh_bench and sched_ref still hold such casts; they have given Verilator's counts on xsim since B2-B6.
+Empty string parameters: none
+Casts of a system function's result (rule 9, D45): none
+translate_off/on outside the pragma form: none
+Defines of the mesh tops (a define in one file stays defined in every file compiled after it, so all must agree):
+  tb/mesh/tb_mesh.sv:18:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_b.sv:26:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_c.sv:35:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_c.sv:38:  `define TB_REGION_N ((`TB_MESH_N <= 4) ? 2 : 4)
+  tb/mesh/tb_mesh_cb.sv:22:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_d.sv:27:  `define TB_MESH_N 4
+  tb/mesh/tb_mesh_d.sv:30:  `define TB_REGION_N ((`TB_MESH_N <= 4) ? 2 : 4)
+  tb/mesh/tb_mesh_dl.sv:21:  `define TB_MESH_N 4
+Simulation-only code in the B7 RTL: the ctrl_node and sched_ctrl elaboration and overflow checks, inside
+`ifndef SYNTHESIS with the translate_off/on pragmas; no testbench hooks.
+
+== 1. RTL lint: verilator --lint-only -Wall, every module with its defaults and module/parameter sets of the B7
+   modules, tile (every design, 1, 2 and 4 VCs, XY and adaptive, 4x4/2 and 8x8/4) and mesh_top (2x2-16x16)
+WARN mesh_top MESH_N=16 REGION_N=4 DESIGN=3 ALGO=1
+%Error: Verilator threw signal 9. Suggest trying --debug --gdbbt
+%Error: Command Failed ulimit -s unlimited 2>/dev/null; exec /usr/bin/verilator_bin --lint-only -Wall rtl/pkg/noc_pkg.sv rtl/pkg/sched_pkg.sv rtl/common/rr_arbiter.sv rtl/common/sync_fifo.sv rtl/router/route_compute.sv rtl/router/input_unit.sv rtl/router/output_unit.sv rtl/router/switch_allocator.sv rtl/router/crossbar.sv rtl/router/router.sv rtl/ni/ni.sv rtl/top/tile.sv rtl/top/mesh_top.sv rtl/sched/slot_table.sv rtl/sched/slot_counter.sv rtl/sched/group_to_router.sv rtl/router/bypass_source.sv rtl/router/bypass_relay.sv rtl/ni/resv_ctrl.sv rtl/router/cancel_relay.sv rtl/sched/phase_sequencer.sv rtl/ctrl/demand_counter.sv rtl/ctrl/ctrl_node.sv rtl/ctrl/sched_ctrl.sv --top-module mesh_top -GMESH_N=16 -GREGION_N=4 -GDESIGN=3 -GALGO=1
+RTL lint: 173 module/parameter sets (100 of them design D's or its controller's): 172 clean, 0 with warnings;
+the 16x16 design-D mesh_top did not finish (Verilator killed by the kernel: out of memory on this 8 GB machine, which
+ran other pre-check jobs at the time; B6's 16x16 build ended the same way); every controller module at MESH_N = 16
+lints clean above
+
+== 2. Testbench lint and build: -Wall except the testbench style rules DECLFILENAME and BLKSEQ; a warning fails
+   the build. Every bench of sim/files_tb.f was rebuilt from the delivered sources for section 3f and built clean,
+   as were the design-D configurations of section 3d, the 8x8 design-D mesh of 3e and the final U13 and U14.
+
+== 3a. U12-U14: seed 1 full and +QUICK; seeds 2-10 and 4,000,000,000 with +QUICK (final benches)
+U12 seed 1: PASS checks=1,320,015; +QUICK 210,015
+  seeds 2-10, 4000000000: 10 runs, all PASS; checks 210,015, 210,015, 210,015, 210,015, 210,015, 210,015, 210,015, 210,015, 210,015, 210,015
+U13 seed 1: PASS checks=3,358,679; +QUICK 419,900
+  seeds 2-10, 4000000000: 10 runs, all PASS; checks 419,801, 419,630, 419,797, 418,079, 419,771, 419,255, 419,169, 418,139, 418,126, 420,261
+U14 seed 1: PASS checks=3,044; +QUICK 420
+  seeds 2-10, 4000000000: 10 runs, all PASS; checks 418, 418, 428, 417, 420, 423, 410, 412, 420, 417
+Before the U14 fix of section 7, U14 +QUICK failed at seeds 2, 3 and 4 on a coverage hole each (epochs without
+cross-region demand in the 4x4 and the 16x16 network; epochs at the largest sums in the 4x4 network).
+
+== 3b. Design D on 4x4 with 2x2 regions (tb_mesh_d defaults: epochs of 2,048 cycles, PROP with damping, TIGHT,
+   B_MAX 10, 4 VCs, adaptive): each test alone, full and +QUICK, then all in one run
+CT01 full   RESULT CT01 PASS checks=1257636 errors=0 seed=1 | cycles simulated 14381 (8 s)
+CT01 +QUICK RESULT CT01 PASS checks=1257636 errors=0 seed=1 | cycles simulated 14381 (9 s)
+CT02 full   RESULT CT02 PASS checks=2389921 errors=0 seed=1 | cycles simulated 26664 (21 s)
+CT02 +QUICK RESULT CT02 PASS checks=1823944 errors=0 seed=1 | cycles simulated 20520 (15 s)
+CT03 full   RESULT CT03 PASS checks=2756268 errors=0 seed=1 | cycles simulated 30760 (19 s)
+CT03 +QUICK RESULT CT03 PASS checks=2008703 errors=0 seed=1 | cycles simulated 22575 (12 s)
+CT04 full   RESULT CT04 PASS checks=3062877 errors=0 seed=1 | cycles simulated 34863 (19 s)
+CT04 +QUICK RESULT CT04 PASS checks=2688476 errors=0 seed=1 | cycles simulated 30763 (17 s)
+CT05 full   RESULT CT05 PASS checks=1606240 errors=0 seed=1 | cycles simulated 17235 (10 s)
+CT05 +QUICK RESULT CT05 PASS checks=1270771 errors=0 seed=1 | cycles simulated 13626 (7 s)
+one run       : PASS checks=11,075,837
+one run +QUICK: PASS checks=9,043,644
+What the controller chose in the one run (INFO lines):
+  CT01: plans of epochs 1..6: 3 2 2 2 2 2; 1 switches, 344..344 cycles after the tick; every tile had each new plan by cycle 40 (bound 40)
+  CT02 (PROP, damping 1): plans uniform 2 2 2 2 | region 2 4 5 5 | uniform 5 3 2 2
+  CT03 (PROP): plans with damping 2 3 3 3 3 3 3 3 3 3 (settled 3..3); without 3 3 3 3 (3..3)
+  CT04 a) inside regions: plans 3 9 12 14 15 15; cross-region demand 0
+  CT04 c) across regions: plans 4 2 1 1 1 1
+  CT05: plans of epochs 56..60: 15 15 15 15 15; across regions turns every 4240..4240 cycles (192 pairs), bound 4240; inside regions every 31..148
+
+== 3c. Design D on 4x4: the one run at seeds 2-6; policy and damping at seed 1
+seed2: RESULT CT01-CT05 PASS checks=11068173 errors=0 seed=2 | cycles simulated 123817 (45 s)
+seed3: RESULT CT01-CT05 PASS checks=11073997 errors=0 seed=3 | cycles simulated 123843 (45 s)
+seed4: RESULT CT01-CT05 PASS checks=11070504 errors=0 seed=4 | cycles simulated 123843 (47 s)
+seed5: RESULT CT01-CT05 PASS checks=11075471 errors=0 seed=5 | cycles simulated 123815 (45 s)
+seed6: RESULT CT01-CT05 PASS checks=11079304 errors=0 seed=6 | cycles simulated 123836 (46 s)
+sqrt: RESULT CT01-CT05 PASS checks=11236379 errors=0 seed=1 | cycles simulated 125758 (45 s)
+nodamp: RESULT CT01-CT05 PASS checks=10485093 errors=0 seed=1 | cycles simulated 117584 (43 s)
+sqrt_nodamp: RESULT CT01-CT05 PASS checks=10660908 errors=0 seed=1 | cycles simulated 119648 (44 s)
+
+== 3d. Other design-D configurations on 4x4 with 2x2 regions: the one run at seed 1, and +QUICK at seed 2
+cfg_safe: RESULT CT01-CT05 PASS checks=21365343 errors=0 seed=1 | cycles simulated 242913 (92 s)
+cfg_safe_s2: RESULT CT01-CT05 PASS checks=17538455 errors=0 seed=2 | cycles simulated 200688 (75 s)
+cfg_b5: RESULT CT01-CT05 PASS checks=11030799 errors=0 seed=1 | cycles simulated 120248 (58 s)
+cfg_b5_s2: RESULT CT01-CT05 PASS checks=9084973 errors=0 seed=2 | cycles simulated 99738 (41 s)
+cfg_b15: RESULT CT01-CT05 PASS checks=21324633 errors=0 seed=1 | cycles simulated 242055 (124 s)
+cfg_b15_s2: RESULT CT01-CT05 PASS checks=17505673 errors=0 seed=2 | cycles simulated 199949 (85 s)
+cfg_vc2: RESULT CT01-CT05 PASS checks=9309150 errors=0 seed=1 | cycles simulated 123834 (30 s)
+cfg_vc2_s2: RESULT CT01-CT05 PASS checks=7611670 errors=0 seed=2 | cycles simulated 101758 (25 s)
+cfg_xy: RESULT CT01-CT05 PASS checks=11071791 errors=0 seed=1 | cycles simulated 123826 (47 s)
+cfg_xy_s2: RESULT CT01-CT05 PASS checks=9036392 errors=0 seed=2 | cycles simulated 101777 (40 s)
+
+== 3e. Design D on 8x8 (-define TB_MESH_N=8: 4x4 regions, epochs of 4,096 cycles): each test alone, then all in one run
+d8_CT01: RESULT CT01 PASS checks=7611945 errors=0 seed=1 | cycles simulated 28740 (84 s)
+d8_CT02: RESULT CT02 PASS checks=14377453 errors=0 seed=1 | cycles simulated 53319 (192 s)
+d8_CT03: RESULT CT03 PASS checks=16635905 errors=0 seed=1 | cycles simulated 61501 (196 s)
+d8_CT04: RESULT CT04 PASS checks=20335604 errors=0 seed=1 | cycles simulated 77901 (224 s)
+d8_CT05: RESULT CT05 PASS checks=35060190 errors=0 seed=1 | cycles simulated 125926 (327 s)
+d8_all: RESULT CT01-CT05 PASS checks=93009953 errors=0 seed=1 | cycles simulated 342947 (996 s)
+What the controller chose on 8x8 (INFO lines of the tests alone):
+  CT01: plans of epochs 1..6: 4 2 1 1 1 1; 2 switches, 317..853 cycles after the tick; every tile had each new plan by cycle 58 (bound 58)
+  CT02 (PROP, damping 1): plans uniform 4 2 1 1 | region 1 3 4 4 | uniform 4 2 1 1
+  CT03 (PROP): plans with damping 4 3 2 2 2 2 2 2 2 2 (settled 2..2); without 2 2 2 2 (2..2)
+  CT04 a) inside regions: plans 4 10 13 14 15 15; cross-region demand 0
+  CT04 c) across regions: plans 1 1 1 1 1 1
+  CT05: plans of epochs 4..30: 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15; across regions turns every 52992..52992 cycles (3072 pairs), bound 52992; inside r
+
+== 3f. Regression: every bench rebuilt from the delivered sources (B0-B6 counts must be unchanged)
+U01: PASS checks=310493 SAME (1 s)
+U02: PASS checks=196864 SAME (0 s)
+U03: PASS checks=856450 SAME (0 s)
+U04: PASS checks=1121244 SAME (1 s)
+R01-R04: PASS checks=357967 SAME (0 s)
+U05: PASS checks=24462 SAME (0 s)
+U06: PASS checks=837406 SAME (1 s)
+U07: PASS checks=2269472 SAME (0 s)
+U10: PASS checks=869821 SAME (1 s)
+U11: PASS checks=21000067 SAME (2 s)
+U12: PASS checks=1320015 SAME (2 s)
+U13: PASS checks=3358679 SAME (1 s)   (the benches before the fixes of section 7; final counts in 3a)
+U14: PASS checks=3024 SAME (1 s)   (the benches before the fixes of section 7; final counts in 3a)
+A4-QUICK: PASS checks=444704 SAME (2 s)
+N05: PASS checks=1949 SAME (0 s)
+B4-ALL: PASS checks=2573286 SAME (11 s)
+C4-ALL: PASS checks=1634484 SAME (9 s)
+C4-QUICK: PASS checks=1461178 SAME (6 s)
+TL05: PASS checks=500649 SAME (5 s)
+U08-U09: PASS checks=4786564 SAME (36 s)
+[exited with code 0]
+
+== 4. EDA Playground bundle (Riviera-PRO): regenerated (tclsh sim/eda/make_bundle.tcl), each B7 test built from
+   the bundle as EDA Playground does (+define+TEST_<ID>, every tab through design.sv and testbench.sv) and run with +QUICK
+make_bundle: design pane    design.sv (92215 characters), design_part2.sv (47808 characters)
+make_bundle: testbench pane testbench.sv (94907 characters), tb_part2.sv (81358 characters), tb_part3.sv (77964 characters), tb_part4.sv (84482 characters), tb_part5.sv (75665 characters)
+EDA U12 : RESULT U12 PASS checks=210015 errors=0 seed=1
+EDA U13 : RESULT U13 PASS checks=419900 errors=0 seed=1
+EDA U14 : RESULT U14 PASS checks=420 errors=0 seed=1
+EDA CT01: RESULT CT01 PASS checks=314806 errors=0 seed=1 (3,629 cycles)
+EDA CT02: RESULT CT02 PASS checks=456604 errors=0 seed=1 (5,169 cycles)
+EDA CT03: RESULT CT03 PASS checks=502317 errors=0 seed=1 (5,676 cycles)
+EDA CT04: RESULT CT04 PASS checks=768301 errors=0 seed=1 (9,256 cycles)
+EDA CT05: RESULT CT05 PASS checks=720347 errors=0 seed=1 (7,737 cycles)
+
+== 5. Vivado runner (run.tcl): unchanged since B6 (md5 a631b7e4bdf0d1b12fe36bdf5cc0464f). The new IDs reach their
+   benches through the '@tests' lines it reads, and -test CT0x adds +TEST=CT0x as for TL0x:
+  tb/unit/tb_demand_counter.sv:9:// @tests    U12
+  tb/unit/tb_sched_ctrl.sv:11:// @tests    U13
+  tb/unit/tb_ctrl_chain.sv:10:// @tests    U14
+  tb/mesh/tb_mesh_d.sv:21:// @tests CT01 CT02 CT03 CT04 CT05
+   Not re-run against the xvlog/xelab/xsim stubs of B6.
+
+== 6. Synthesis: sv2v + Yosys 'synth -flatten' (generic gates), the fallback flow of D20; one netlist of every RTL file
+demand_counter MESH_N=8 REGION_N=4 NUM_VC=4: 1027 cells, 100 flip-flops
+demand_counter MESH_N=16 REGION_N=4 NUM_VC=4: 1031 cells, 100 flip-flops
+ctrl_node MESH_N=8: 243 cells, 20 flip-flops
+ctrl_node MESH_N=16: 233 cells, 20 flip-flops
+sched_ctrl MESH_N=8 REGION_N=4: 1143 cells, 102 flip-flops
+sched_ctrl MESH_N=16 REGION_N=4 K_INIT=14: 1197 cells, 110 flip-flops
+phase_sequencer : 405 cells, 75 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=3 REGION_N=4 K_INIT=4 EPOCH=32768: 65513 cells, 22546 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=2 REGION_N=4 K_INIT=4 EPOCH=32768: 64398 cells, 22426 flip-flops
+The design-D tile is 1,115 cells (1.7%) above design C's: its demand_counter and ctrl_node; sched_ctrl (one per
+mesh) sits in mesh_top. Yosys's ABC step depends on the whole netlist it reads, which now holds the B7 modules:
+phase_sequencer gives 405 cells against B6's 406 and the design-C tile 64,398 against 64,390, with their RTL
+unchanged and the same flip-flops.
+
+== 7. Findings of the pre-check, all on the test side
+1. The rule-9 scan (section 0) found casts that xsim has misread before (README rule 9): int'(call) + 1 and
+   CS + 8 + int'(call) in tb_sched_ctrl, int'(ppol) passed to ref_next_kl in tb_sched_ctrl and tb_ctrl_chain, casts
+   inside ep_of, ep_t0 and CT05's checks in tests_ctrl. Each now casts into a variable first. No count changed
+   (U13 3,358,679 and 419,900; the 4x4 one run 11,075,837, built after the fix).
+2. The mutation check (B7_mutation.log) left M16, the clamp after damping, alive: U13's 8x8/2 controller was meant
+   to start above K_MAX but took k_fixed(8, 2, 10, TIGHT), which is 12, not 19, and its epoch 0 was not always
+   damped. It now starts at 19 and epoch 0 always damps; M16 is killed. U13's counts did not change.
+3. U14 +QUICK (40 epochs per network) failed at seeds 2-4 on coverage holes (section 3a). Epochs 1-3 are now
+   always the corners (every node at its largest sums, no cross-region demand, one node only). U14's counts
+   change: 3,024 to 3,044, +QUICK 407 to 420; 16 seeds pass.
+4. While B7 was built: U14 first changed the nodes' latched sums at the falling edge, unlike demand_counter, and
+   the least significant bit of the network's sums came out wrong; it now changes them with the tick at the rising
+   edge, as demand_counter does. CT03-CT05 first read the plan history one epoch off. Both fixed before these runs.
+
+== Mutation check: results/precheck/B7_mutation.log
+
+== Addendum 14 Nov: after the B7 runs (xsim R-1113-03-01 to 03-10; Riviera-PRO R-1113-U12 to CT01, R-1114-*)
+1. U12's stimulus on Verilator. Verilator 5.020 evaluated chance() on the right of && in tb_demand_counter's
+   stimulus even when the left side was false (two statements), so its U12 stimulus differed from xsim's while
+   every count matched (xsim 8x8/4 at (5, 2): 355 ticks; Verilator 358). Both statements now draw inside an if
+   (README Section 2, rule 1). Verilator's U12 INFO lines now equal xsim's (R-1113-03-01) for all seven counters,
+   e.g. 8x8/4 at (5, 2): 355 ticks, 12542 samples, 120903 heads, 112537 VCs freed, 225027 flits that must not
+   count, 2423 head-and-free pairs (200,000 cycles); +QUICK: 40 ticks, 1567 samples, 15021 heads, 13959 VCs freed.
+   U12 seed 1: PASS checks=1,320,015; +QUICK 210,015 (unchanged). Only sim/eda/tb_part5.sv of the bundle changed.
+   M01-M07 (the demand_counter mutants) rerun with the new stimulus: all killed (B7_mutation.log).
+2. Riviera-PRO 2025.04 EDU (EDA Playground) failed U12 (97,829 errors, R-1113-U12) and U13 (21,631 errors,
+   R-1113-U13) on values their testbenches computed: in U12 the model called a head for node 0 local on the 4x4
+   counter while the DUT, right, called it cross-region; in U13 sched_ref::ref_next_kl returned 1 for an epoch
+   without demand whose plan must stay 2, while the DUT gave 2. A diagnostic U12 with rewritten model forms
+   failed the same way (R-1114-U12diag). Compiled with -dbg (Riviera's debug compile, optimizer turned down) both
+   pass: U12 210,015 and U13 419,900 checks, every INFO line equal to xsim's and Verilator's (R-1114-U12dbg,
+   R-1114-U13dbg). U14 passes without it (R-1113-U14: 420). README Sections 3 and 9.
+3. CT01-CT05 do not fit in EDA Playground: CT01's short form (+define+TEST_CT01, 3,629 cycles of the 4x4 design-D
+   mesh) was stopped at the 60 s run limit (R-1113-CT01, exit code 137). They pass on xsim with Verilator's counts.

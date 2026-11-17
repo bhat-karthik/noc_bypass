@@ -1,0 +1,30 @@
+# Simulator outputs
+sim/vivado/work/
+obj_dir/
+xsim.dir/
+*.jou
+*.pb
+*.wdb
+*.vcd
+*.fsdb
+simv*
+csrc/
+*.daidir/
+xcelium.d/
+INCA_libs/
+.Xil/
+work/
+# Vivado GUI project files (keep local)
+*.xpr
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.runs/
+*.gen/
+vivado*.jou
+vivado*.log
+# Delivery archives and sync folders (the history in git replaces them)
+*.zip
+*.md5
+_sync/

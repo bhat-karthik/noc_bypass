@@ -1,0 +1,109 @@
+set argv {-sweep S06}; source -notrace sim/vivado/sweep.tcl
+sweep.tcl: S06: 16 points in the sweep, 0 already done, 16 to run here
+sweep.tcl: building tb_mesh 
+sweep.tcl: tb_mesh: up to date
+sweep.tcl: [1/16] 2026-11-14 16:03:14 S06_A_uniform_f0.30 PASS checks=57492 errors=0 cycles=2536 5 s (about 1 min left)
+sweep.tcl: [2/16] 2026-11-14 16:03:19 S06_A_uniform_f0.70 PASS checks=133484 errors=0 cycles=2560 7 s (about 1 min left)
+sweep.tcl: [3/16] 2026-11-14 16:03:26 S06_A_transpose_f0.30 PASS checks=57868 errors=0 cycles=2544 5 s (about 1 min left)
+sweep.tcl: [4/16] 2026-11-14 16:03:31 S06_A_transpose_f0.70 PASS checks=131984 errors=0 cycles=3355 6 s (about 1 min left)
+sweep.tcl: building tb_mesh_b 
+sweep.tcl: tb_mesh_b: up to date
+sweep.tcl: [5/16] 2026-11-14 16:03:38 S06_B_uniform_f0.30 PASS checks=182102 errors=0 cycles=2536 6 s (about 1 min left)
+sweep.tcl: [6/16] 2026-11-14 16:03:43 S06_B_uniform_f0.70 PASS checks=259429 errors=0 cycles=2559 7 s (about 1 min left)
+sweep.tcl: [7/16] 2026-11-14 16:03:51 S06_B_transpose_f0.30 PASS checks=182806 errors=0 cycles=2544 6 s (about 0 min left)
+sweep.tcl: [8/16] 2026-11-14 16:03:56 S06_B_transpose_f0.70 PASS checks=257707 errors=0 cycles=2554 7 s (about 0 min left)
+sweep.tcl: building tb_mesh_c 
+sweep.tcl: tb_mesh_c: up to date
+sweep.tcl: [9/16] 2026-11-14 16:04:04 S06_C_uniform_f0.30 PASS checks=211338 errors=0 cycles=2536 6 s (about 0 min left)
+sweep.tcl: [10/16] 2026-11-14 16:04:10 S06_C_uniform_f0.70 PASS checks=289148 errors=0 cycles=2559 8 s (about 0 min left)
+sweep.tcl: [11/16] 2026-11-14 16:04:18 S06_C_transpose_f0.30 PASS checks=212206 errors=0 cycles=2544 6 s (about 0 min left)
+sweep.tcl: [12/16] 2026-11-14 16:04:24 S06_C_transpose_f0.70 PASS checks=287173 errors=0 cycles=2554 8 s (about 0 min left)
+sweep.tcl: building tb_mesh_d 
+sweep.tcl: tb_mesh_d: up to date
+sweep.tcl: [13/16] 2026-11-14 16:04:31 S06_D_uniform_f0.30 PASS checks=211337 errors=0 cycles=2536 6 s (about 0 min left)
+sweep.tcl: [14/16] 2026-11-14 16:04:38 S06_D_uniform_f0.70 PASS checks=289001 errors=0 cycles=2559 9 s (about 0 min left)
+sweep.tcl: [15/16] 2026-11-14 16:04:46 S06_D_transpose_f0.30 PASS checks=212215 errors=0 cycles=2544 6 s (about 0 min left)
+sweep.tcl: [16/16] 2026-11-14 16:04:53 S06_D_transpose_f0.70 PASS checks=287110 errors=0 cycles=2554 8 s (about 0 min left)
+==================== sweep.tcl S06: 16 points written, 0 not, 2 min ====================
+CSV: D:/noc_bypass/results/S06/S06.csv
+Log of every point: D:/noc_bypass/results/S06/sweep.txt
+set argv {results/S06/S06.csv results/precheck/S06_verilator.csv}; source sim/compare_csv.tcl
+# proc cc_read {path} {
+#   set fh [open $path r]
+#   set t [read $fh]
+#   close $fh
+#   return $t
+# }
+# proc cc_rows {src} {
+#   set files {}
+#   if {[file isdirectory $src]} {
+#     set files [lsort [concat [glob -nocomplain -directory $src *.csv] [glob -nocomplain -directory $src *.log]]]
+#   } else {
+#     set files [list $src]
+#   }
+#   set hdr {}
+#   set rows [dict create]
+#   foreach f $files {
+#     set lines {}
+#     foreach l [split [cc_read $f] "\n"] {
+#       set l [string trimright $l "\r"]
+#       if {[string match "CSV,*" $l]} { set l [string range $l 4 end] } elseif {![string match "*.csv" $f]} continue
+#       if {$l eq ""} continue
+#       lappend lines $l
+#     }
+#     foreach l $lines {
+#       set v [split $l ","]
+#       if {[lindex $v 0] eq "run_id"} { set hdr $v; continue }
+#       dict set rows [lindex $v 0] $v
+#     }
+#   }
+#   return [list $hdr $rows]
+# }
+# if {![info exists argv] || [llength $argv] != 2} { error "compare_csv.tcl: give two sources: set argv {<a> <b>}" }
+# lassign [cc_rows [lindex $argv 0]] ha ra
+# lassign [cc_rows [lindex $argv 1]] hb rb
+# if {$ha ne $hb && [llength $ha] && [llength $hb]} { puts "compare_csv: WARNING: the two headers differ" }
+# set hdr [expr {[llength $ha] ? $ha : $hb}]
+# set n_same 0
+# set n_diff 0
+# set n_only 0
+# foreach id [lsort [lsort -unique [concat [dict keys $ra] [dict keys $rb]]]] {
+#   if {![dict exists $rb $id]} { puts [format "%-40s ONLY A" $id]; incr n_only; continue }
+#   if {![dict exists $ra $id]} { puts [format "%-40s ONLY B" $id]; incr n_only; continue }
+#   set a [dict get $ra $id]
+#   set b [dict get $rb $id]
+#   set d {}
+#   for {set i 0} {$i < max([llength $a], [llength $b])} {incr i} {
+#     if {[lindex $a $i] ne [lindex $b $i]} {
+#       set col [expr {$i < [llength $hdr] ? [lindex $hdr $i] : "column [expr {$i + 1}]"}]
+#       lappend d "$col [lindex $a $i] / [lindex $b $i]"
+#     }
+#   }
+#   if {[llength $d]} {
+#     puts [format "%-40s DIFF  %s" $id [join $d {; }]]
+#     incr n_diff
+#   } else {
+#     puts [format "%-40s SAME" $id]
+#     incr n_same
+#   }
+# }
+S06_A_transpose_f0.30                    SAME
+S06_A_transpose_f0.70                    SAME
+S06_A_uniform_f0.30                      SAME
+S06_A_uniform_f0.70                      SAME
+S06_B_transpose_f0.30                    SAME
+S06_B_transpose_f0.70                    SAME
+S06_B_uniform_f0.30                      SAME
+S06_B_uniform_f0.70                      SAME
+S06_C_transpose_f0.30                    SAME
+S06_C_transpose_f0.70                    SAME
+S06_C_uniform_f0.30                      SAME
+S06_C_uniform_f0.70                      SAME
+S06_D_transpose_f0.30                    SAME
+S06_D_transpose_f0.70                    SAME
+S06_D_uniform_f0.30                      SAME
+S06_D_uniform_f0.70                      SAME
+# puts "compare_csv: $n_same SAME, $n_diff DIFF, $n_only in one source only"
+compare_csv: 16 SAME, 0 DIFF, 0 in one source only
+# if {$n_diff == 0 && $n_only == 0 && $n_same > 0} { puts "S06 PASS: every row is identical" } else { puts "S06 FAIL" }
+S06 PASS: every row is identical

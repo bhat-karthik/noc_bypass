@@ -1,0 +1,7 @@
+# B1 router core: switch allocator, the four router configurations alone and together
+U04      U04         1121244
+R01      R01         28058
+R02      R02         282300
+R03      R03         35513
+R04      R04         12108
+R01-R04  tb_router   357967

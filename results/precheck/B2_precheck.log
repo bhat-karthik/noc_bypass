@@ -1,0 +1,296 @@
+B2 pre-delivery checks, 2026-11-06 20:08 UTC
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v sv2v v0.0.12
+
+== 0. Portability scans (D30, D36)
+Size casts inside indices: none
+?: between string literals of different lengths: none (PASS/FAIL have equal length)
+Recursive functions: none
+
+== 1. RTL lint: verilator --lint-only -Wall, every module and parameter set
+RTL lint: 133 module/parameter sets, 0 with warnings
+
+== 2. Testbench lint and build: -Wall except the testbench style rules DECLFILENAME and BLKSEQ
+tb_rr_arbiter: clean, built
+tb_sync_fifo: clean, built
+tb_route_compute: clean, built
+tb_switch_allocator: clean, built
+tb_router: clean, built
+tb_mesh : clean, built
+tb_mesh +define+TB_MESH_N=8: clean, built
+tb_mesh +define+TB_MESH_N=2: clean, built
+tb_mesh +define+TB_NUM_VC=1: clean, built
+tb_mesh_dl : clean, built
+tb_mesh_dl +define+TB_MESH_N=8: clean, built
+
+== 3a. Unit and router tests: seeds 1-25 and three large seeds (unchanged since B1; rerun because tb_pkg's neighbours changed)
+tb_rr_arbiter: 28 passed, 0 failed
+tb_sync_fifo: 28 passed, 0 failed
+tb_route_compute: 28 passed, 0 failed
+tb_switch_allocator: 28 passed, 0 failed
+tb_router: 28 passed, 0 failed
+RESULT U01 PASS checks=310493 errors=0 seed=1
+RESULT U02 PASS checks=196864 errors=0 seed=1
+RESULT U03 PASS checks=856450 errors=0 seed=1
+RESULT U04 PASS checks=1121244 errors=0 seed=1
+RESULT R01-R04 PASS checks=357967 errors=0 seed=1
+
+== 3b. Mesh tests, seed 1, one test at a time (the counts the README lists)
+m2    RESULT N01 PASS checks=374 errors=0 seed=1   (46 cycles, 0.0 s)
+m2    RESULT N02 PASS checks=13224 errors=0 seed=1   (150041 cycles, 1.7 s)
+m2    RESULT N03 PASS checks=8321759 errors=0 seed=1   (610546 cycles, 8.4 s)
+m2    RESULT N04 PASS checks=513732 errors=0 seed=1   (26677 cycles, 0.4 s)
+m2    RESULT N06 PASS checks=31867 errors=0 seed=1   (2950 cycles, 0.0 s)
+m2    RESULT N07 PASS checks=251491 errors=0 seed=1   (18106 cycles, 0.3 s)
+m2    RESULT N08 PASS checks=12618509 errors=0 seed=1   (1000034 cycles, 13.6 s)
+m4    RESULT N01 PASS checks=4526 errors=0 seed=1   (95 cycles, 0.0 s)
+m4    RESULT N02 PASS checks=13227 errors=0 seed=1   (37569 cycles, 4.1 s)
+m4    RESULT N03 PASS checks=6436890 errors=0 seed=1   (176672 cycles, 23.6 s)
+m4    RESULT N04 PASS checks=396571 errors=0 seed=1   (6897 cycles, 1.0 s)
+m4    RESULT N06 PASS checks=150814 errors=0 seed=1   (3950 cycles, 0.6 s)
+m4    RESULT N07 PASS checks=190766 errors=0 seed=1   (5637 cycles, 0.7 s)
+m4    RESULT N08 PASS checks=39069420 errors=0 seed=1   (1000039 cycles, 137.4 s)
+m8    RESULT N01 PASS checks=79262 errors=0 seed=1   (563 cycles, 0.5 s)
+m8    RESULT N02 PASS checks=14808 errors=0 seed=1   (10602 cycles, 8.5 s)
+m8    RESULT N03 PASS checks=3438402 errors=0 seed=1   (59643 cycles, 49.1 s)
+m8    RESULT N04 PASS checks=208864 errors=0 seed=1   (1983 cycles, 1.7 s)
+m8    RESULT N06 PASS checks=1226930 errors=0 seed=1   (10706 cycles, 9.2 s)
+m8    RESULT N07 PASS checks=102986 errors=0 seed=1   (1996 cycles, 1.6 s)
+m8    RESULT N08 PASS checks=83286723 errors=0 seed=1   (1000076 cycles, 832.3 s)
+d4 RESULT N05 PASS checks=1949 errors=0 seed=1
+d8 RESULT N05 PASS checks=1413 errors=0 seed=1
+v1m4 (1 VC, XY): RESULT N01-N08 FAIL checks=4216282 errors=1 seed=1
+Mesh tests took 1109 s
+
+tb_mesh 4x4 seed 1, every test in one run (no +TEST): coverage and INFO lines
+PHASE  N01 all pairs: 16 x 16 nodes, one packet per ordered pair, all at once
+INFO   N01: 256 packets delivered by cycle 83
+PHASE  N02 zero-load latency: 1 packet/node every 500 cycles, 1-flit, 25 periods
+INFO   N02 transpose: average latency 15.000 cycles, expected 15.000; 100.0% of 400 packets at exactly zero-load
+INFO   N02 bitrot: average latency 13.000 cycles, expected 13.000; 100.0% of 400 packets at exactly zero-load
+INFO   N02 shuffle: average latency 13.002 cycles, expected 13.000; 99.8% of 400 packets at exactly zero-load
+PHASE  N03 random traffic: 10 patterns x 3 loads (0.064 0.129 0.231 packets/node/cycle) x 5, 1000 cycles each
+COVER  N03 uniform packets delivered                        33993
+INFO   N03 uniform: 33993 packets, worst latency 144 cycles
+COVER  N03 transpose packets delivered                      33919
+INFO   N03 transpose: 33919 packets, worst latency 864 cycles
+COVER  N03 bitcomp packets delivered                        34019
+INFO   N03 bitcomp: 34019 packets, worst latency 478 cycles
+COVER  N03 bitrot packets delivered                         33858
+INFO   N03 bitrot: 33858 packets, worst latency 302 cycles
+COVER  N03 shuffle packets delivered                        33669
+INFO   N03 shuffle: 33669 packets, worst latency 351 cycles
+COVER  N03 tornado packets delivered                        33832
+INFO   N03 tornado: 33832 packets, worst latency 46 cycles
+COVER  N03 neighbor packets delivered                       33937
+INFO   N03 neighbor: 33937 packets, worst latency 52 cycles
+COVER  N03 hotspot packets delivered                        33773
+INFO   N03 hotspot: 33773 packets, worst latency 1983 cycles
+COVER  N03 region packets delivered                         33769
+INFO   N03 region: 33769 packets, worst latency 103 cycles
+COVER  N03 phase packets delivered                          33862
+INFO   N03 phase: 33862 packets, worst latency 720 cycles
+PHASE  N04 saturation: uniform at 0.5 and 1.2 x 0.257 packets/node/cycle, 1000 + 2000 cycles
+INFO   N04 0.5 x saturation: 4120 packets measured, latency avg 18.78 p99 41 max 62, offered 0.3038 accepted 0.3057 flits/node/cycle
+INFO   N04 1.2 x saturation: 9705 packets measured, latency avg 371.91 p99 887 max 941, offered 0.7078 accepted 0.6035 flits/node/cycle, saturated
+PHASE  N06 back-pressure: uniform at 0.129, 10% sink stalls; node 10 stops for 1000 cycles, then every node for 420
+COVER  N06 packets delivered while one sink was stopped     487
+INFO   N06: every sink stopped: 128 packets (292 flits) inside the mesh, at most 320 fit (one per VC); every source blocked, 6720 cycles in all
+COVER  N06 source cycles blocked while every sink was stopped 6720
+COVER  N06 sink stall cycles                                13276
+INFO   N06 steps 1-2: 4205 packets measured, latency avg 471.13 p99 1415 max 1543, offered 0.3012 accepted 0.1772 flits/node/cycle, saturated
+PHASE  N07 data packets only: uniform, bitcomp, hotspot at 0.077 packets/node/cycle, 1500 cycles each
+INFO   N07 uniform: 1887 packets measured, latency avg 26.10 p99 50 max 64, offered 0.3931 accepted 0.3869 flits/node/cycle
+INFO   N07 bitcomp: 1849 packets measured, latency avg 43.02 p99 99 max 123, offered 0.3852 accepted 0.3770 flits/node/cycle
+INFO   N07 hotspot: 1814 packets measured, latency avg 351.64 p99 1522 max 1633, offered 0.3779 accepted 0.2673 flits/node/cycle, saturated
+COVER  N07 packets interleaved at a sink                    11085
+PHASE  N08 endurance: 1000000 cycles, uniform at 0.129 packets/node/cycle, then drain
+INFO   N08: 100000 of 1000000 cycles, 582858 packets delivered
+INFO   N08: 200000 of 1000000 cycles, 788569 packets delivered
+INFO   N08: 300000 of 1000000 cycles, 993897 packets delivered
+INFO   N08: 400000 of 1000000 cycles, 1199353 packets delivered
+INFO   N08: 500000 of 1000000 cycles, 1405175 packets delivered
+INFO   N08: 600000 of 1000000 cycles, 1610729 packets delivered
+INFO   N08: 700000 of 1000000 cycles, 1816763 packets delivered
+INFO   N08: 800000 of 1000000 cycles, 2022707 packets delivered
+INFO   N08: 900000 of 1000000 cycles, 2228271 packets delivered
+INFO   N08: 2054858 packets measured, latency avg 18.50 p99 39 max 92, offered 0.2999 accepted 0.2999 flits/node/cycle
+INFO   cycles simulated 1231461
+RESULT N01-N08 PASS checks=46273022 errors=0 seed=1
+
+tb_mesh_dl 4x4 seed 1 (N05):
+PHASE  N05 deadlock: adaptive routing, 1 VC, uniform at 0.600 packets/node/cycle, up to 200000 cycles
+INFO   N05: deadlock detected at cycle 2153; last delivery at cycle 152, 147 cycles after the load started
+INFO   N05: 109 packets delivered before it; 20409 created and not delivered, most still in source queues
+INFO   N05: 6 packets wait in a cycle, each for the input VC the next one holds: R9.N R10.W R11.W R7.S R6.E R5.E
+COVER  N05 cycles to deadlock                               147
+INFO   cycles simulated 4153
+RESULT N05 PASS checks=1949 errors=0 seed=1
+
+== 3c. Mesh seeds 2-10, short runs (N03_REPS=1, N08_CYCLES=20000)
+m2: 10 passed, 0 failed
+m4: 10 passed, 0 failed
+m8: 10 passed, 0 failed
+  FAIL v1m4 seed 2: RESULT N01-N08 FAIL checks=808134 errors=1 seed=2
+  FAIL v1m4 seed 3: RESULT N01-N08 FAIL checks=812676 errors=1 seed=3
+  FAIL v1m4 seed 4: RESULT N01-N08 FAIL checks=814903 errors=1 seed=4
+  FAIL v1m4 seed 5: RESULT N01-N08 FAIL checks=815114 errors=1 seed=5
+  FAIL v1m4 seed 6: RESULT N01-N08 FAIL checks=823790 errors=1 seed=6
+  FAIL v1m4 seed 7: RESULT N01-N08 FAIL checks=807157 errors=1 seed=7
+  FAIL v1m4 seed 8: RESULT N01-N08 FAIL checks=812122 errors=1 seed=8
+  FAIL v1m4 seed 9: RESULT N01-N08 FAIL checks=810821 errors=1 seed=9
+  FAIL v1m4 seed 10: RESULT N01-N08 FAIL checks=805844 errors=1 seed=10
+  FAIL v1m4 seed 4000000000: RESULT N01-N08 FAIL checks=810759 errors=1 seed=4000000000
+v1m4: 0 passed, 10 failed
+d4: 10 passed, 0 failed
+
+== 3d. PERF: a point per pattern on 4x4 at half the saturation load, CSV rows
+CSV,pc_uniform,A,4,4,uniform,0.3333,-,-,-,-,0.0600,1,17.144,17,33,39,0.1375,0.1382,0,0,0.9928,31.350,0,0,3751,0,5019 RESULT PERF PASS checks=89956 errors=0 seed=1 
+CSV,pc_transpose,A,4,4,transpose,0.3333,-,-,-,-,0.0600,1,17.326,17,40,59,0.1378,0.1381,0,0,0.9929,32.178,0,0,3790,0,5030 RESULT PERF PASS checks=89884 errors=0 seed=1 
+CSV,pc_bitcomp,A,4,4,bitcomp,0.3333,-,-,-,-,0.0600,1,23.403,21,39,51,0.1378,0.1384,0,0,0.9929,31.653,0,0,3790,0,5030 RESULT PERF PASS checks=89884 errors=0 seed=1 
+CSV,pc_bitrot,A,4,4,bitrot,0.3333,-,-,-,-,0.0600,1,14.977,14,28,43,0.1378,0.1381,0,0,0.9929,23.307,0,0,3790,0,5022 RESULT PERF PASS checks=89884 errors=0 seed=1 
+CSV,pc_shuffle,A,4,4,shuffle,0.3333,-,-,-,-,0.0600,1,14.778,13,28,35,0.1378,0.1381,0,0,0.9929,23.065,0,0,3790,0,5018 RESULT PERF PASS checks=89884 errors=0 seed=1 
+CSV,pc_tornado,A,4,4,tornado,0.3333,-,-,-,-,0.0600,1,18.550,17,33,37,0.1378,0.1381,0,0,0.9929,30.512,0,0,3790,0,5022 RESULT PERF PASS checks=89884 errors=0 seed=1 
+CSV,pc_neighbor,A,4,4,neighbor,0.3333,-,-,-,-,0.0600,1,18.550,17,33,37,0.1378,0.1381,0,0,0.9929,30.512,0,0,3790,0,5022 RESULT PERF PASS checks=89884 errors=0 seed=1 
+CSV,pc_hotspot,A,4,4,hotspot,0.3333,-,-,-,-,0.0600,1,17.331,17,36,64,0.1386,0.1381,0,0,0.9947,31.750,0,0,3737,0,5024 RESULT PERF PASS checks=90289 errors=0 seed=1 
+CSV,pc_region,A,4,4,region,0.3333,-,-,-,-,0.0600,1,14.976,13,31,37,0.1378,0.1379,0,0,0.9954,31.750,0,0,3726,0,5024 RESULT PERF PASS checks=90024 errors=0 seed=1 
+CSV,pc_phase,A,4,4,phase,0.3333,-,-,-,-,0.0600,1,17.153,17,37,46,0.1353,0.1352,0,0,0.9932,31.886,0,0,3769,0,5031 RESULT PERF PASS checks=88766 errors=0 seed=1 
+
+== 4. EDA Playground bundles (Riviera-PRO): every test selected by its define
++define+TEST_U01: RESULT U01 PASS checks=310493 errors=0 seed=1
++define+TEST_U02: RESULT U02 PASS checks=196864 errors=0 seed=1
++define+TEST_U03: RESULT U03 PASS checks=856450 errors=0 seed=1
++define+TEST_U04: RESULT U04 PASS checks=1121244 errors=0 seed=1
++define+TEST_R01: RESULT R01 PASS checks=28058 errors=0 seed=1
++define+TEST_N01: RESULT N01 PASS checks=4526 errors=0 seed=1
++define+TEST_N02: RESULT N02 PASS checks=13227 errors=0 seed=1
++define+TEST_N04: RESULT N04 PASS checks=396571 errors=0 seed=1
++define+TEST_N06: RESULT N06 PASS checks=150814 errors=0 seed=1
++define+TEST_N07: RESULT N07 PASS checks=190766 errors=0 seed=1
++define+TEST_PERF: RESULT PERF PASS checks=469102 errors=0 seed=1
++define+TEST_N05: RESULT N05 PASS checks=1949 errors=0 seed=1
++define+TEST_N01 +define+TB_MESH_N=8: INFO   N01: 4096 packets delivered by cycle 551
+RESULT N01 PASS checks=79262 errors=0 seed=1
+Tops the bundle leaves for a simulator to find (should be exactly one per test):
+%Warning-MULTITOP: testbench.sv:1315:8: Multiple top level modules
+                   ... For warning description see https://verilator.org/warn/MULTITOP?v=5.020
+                   ... Use "/* verilator lint_off MULTITOP */" and lint_on around source to disable this message.
+  TEST_U01: 3 MULTITOP warnings
+  TEST_N03: 0 MULTITOP warnings
+  TEST_N05: 0 MULTITOP warnings
+
+== 5. Vivado runner (run.tcl) against xvlog/xelab/xsim stubs that split arguments like Windows batch files
+--- set argv {-test U04}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_switch_allocator  U04          PASS  checks=1121244 errors=0   (0 s; warnings: compile 0, elaborate 0)
+tb_switch_allocator
+--- set argv {-test R02 -seed 3}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 3 ====================
+tb_router            R01 R02 R03 R04 PASS  checks=281832 errors=0   (0 s; warnings: compile 0, elaborate 0)
+tb_router
+--- set argv {-test N02}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=13227 errors=0, 37569 cycles in 3.9 s = 9523 cycles/s   (4 s; warnings: compile 0, elaborate 0)
+tb_mesh
+--- set argv {-test N05}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_dl           N05          PASS  checks=1949 errors=0, 4153 cycles in 0.1 s = 36430 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+tb_mesh_dl
+--- set argv {-test PERF -plus {+RATE=0.05 +MEASURE=3000}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=75006 errors=0, 5040 cycles in 0.7 s = 7252 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh
+--- set argv {-test N01 -define TB_MESH_N=8}; source run.tcl
+==================== run.tcl summary, seed 1, defines TB_MESH_N=8 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF BUILD FAILED: see /home/claude/noc_bypass/sim/vivado/work/tb_mesh__TB_MESH_N_8/compile.log and elaborate.log   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh__TB_MESH_N_8
+compile options file: --define TB_MESH_N=8 
+
+== 6. Synthesis: sv2v + Yosys 'synth' (generic gates), the fallback flow of D20
+ni NUM_VC=4: 6938 cells, 3475 flip-flops
+ni NUM_VC=1: 6809 cells, 3459 flip-flops
+tile NUM_VC=4 ALGO=0 MESH_N=8: 44506 cells, 18925 flip-flops
+tile NUM_VC=4 ALGO=1 MESH_N=8: 44685 cells, 18925 flip-flops
+tile NUM_VC=1 ALGO=0 MESH_N=8: 21975 cells, 8839 flip-flops
+router NUM_VC=4 ALGO=0 MESH_N=8: 37952 cells, 15450 flip-flops
+
+== 7. Rerun after the two fixes of 7 Nov, 2026-11-07 05:15 UTC
+Above, two failures: (a) v1m4 (1 VC) fails N07 on every seed with 'coverage hole: N07 packets
+interleaved at a sink': with one VC packets cannot interleave, so N07 now checks that none did;
+(b) run.tcl with -define failed against the stubs: it put the whole xvlog command in an options
+file, a path B1 never used. Now the command line is as in B1 and only the defines go in the
+options file; the xvlog stub now splits arguments like a Windows batch file and reads --file.
+Unchanged since the run above: every RTL file, and every testbench line that runs with 4 VCs.
+
+-- 7a. Lint and build from the final source
+tb_mesh : clean, built
+tb_mesh +define+TB_MESH_N=8: clean, built
+tb_mesh +define+TB_MESH_N=2: clean, built
+tb_mesh +define+TB_NUM_VC=1: clean, built
+tb_mesh +define+TB_NUM_VC=1 +define+TB_MESH_N=8: clean, built
+tb_mesh_dl : clean, built
+
+-- 7b. One VC (XY), seed 1, every test in one run, N08 at 200,000 cycles
+INFO   N06: every sink stopped: 42 packets (82 flits) inside the mesh, at most 80 fit (one per VC); every source blocked, 2868 cycles in all
+INFO   N06 steps 1-2: 1092 packets measured, latency avg 310.41 p99 1178 max 1232, offered 0.0828 accepted 0.0524 flits/node/cycle, saturated
+INFO   N07 uniform: 525 packets measured, latency avg 22.68 p99 47 max 65, offered 0.1094 accepted 0.1072 flits/node/cycle
+INFO   N07 bitcomp: 456 packets measured, latency avg 30.11 p99 56 max 66, offered 0.0950 accepted 0.0938 flits/node/cycle
+INFO   N07 hotspot: 502 packets measured, latency avg 40.75 p99 247 max 303, offered 0.1046 accepted 0.0971 flits/node/cycle, saturated
+RESULT N01-N08 PASS checks=4216282 errors=0 seed=1
+-- 7c. One VC, seeds 2-10 and 4000000000, short runs (N03_REPS=1, N08_CYCLES=20000)
+v1m4: 10 passed, 0 failed
+v1m8: 10 passed, 0 failed
+-- 7d. Four VCs: N07 alone and N05 with the final binaries (counts must equal the table above)
+m2 RESULT N07 PASS checks=251491 errors=0 seed=1
+m4 RESULT N07 PASS checks=190766 errors=0 seed=1
+m8 RESULT N07 PASS checks=102986 errors=0 seed=1
+d4 RESULT N05 PASS checks=1949 errors=0 seed=1
+m4 every test in one run: RESULT N01-N08 PASS checks=46273022 errors=0 seed=1
+-- 7e. Short forms on 4x4 for EDA Playground
+N03 +N03_REPS=1: RESULT N03 PASS checks=1291501 errors=0 seed=1
+N08 +N08_CYCLES=50000: RESULT N08 PASS checks=1957628 errors=0 seed=1
+
+-- 7f. EDA bundle regenerated; N07 on 4x4 and with one VC
++define+TEST_N07: RESULT N07 PASS checks=190766 errors=0 seed=1
++define+TEST_N07 +define+TB_NUM_VC=1: RESULT N07 PASS checks=54651 errors=0 seed=1
+
+-- 7g. run.tcl against the stubs, every case
+--- set argv {-test U04}; source run.tcl
+==================== run.tcl summary, seed 1 ====================
+tb_switch_allocator  U04          PASS  checks=1121244 errors=0   (1 s; warnings: compile 0, elaborate 0)
+  work folder tb_switch_allocator; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: 
+--- set argv {-test R02 -seed 3}; source run.tcl
+==================== run.tcl summary, seed 3 ====================
+tb_router            R01 R02 R03 R04 PASS  checks=281832 errors=0   (0 s; warnings: compile 0, elaborate 0)
+  work folder tb_router; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: 
+--- set argv {-test N02}; source run.tcl
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=13227 errors=0, 37569 cycles in 3.4 s = 11073 cycles/s   (3 s; warnings: compile 0, elaborate 0)
+  work folder tb_mesh; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: 
+--- set argv {-test N05}; source run.tcl
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_dl           N05          PASS  checks=1949 errors=0, 4153 cycles in 0.1 s = 45141 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+  work folder tb_mesh_dl; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: 
+--- set argv {-test PERF -plus {+RATE=0.05 +MEASURE=3000}}; source run.tcl
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=75006 errors=0, 5040 cycles in 0.6 s = 8984 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+  work folder tb_mesh; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: 
+--- set argv {-test N01 -define TB_MESH_N=8}; source run.tcl
+==================== run.tcl summary, seed 1, defines TB_MESH_N=8 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=4526 errors=0, 95 cycles in 0.0 s = 5588 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+  work folder tb_mesh__TB_MESH_N_8; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: --define TB_MESH_N=8 
+--- set argv {-test N02 -define TB_MESH_N=8 -define TB_NUM_VC=1}; source run.tcl
+==================== run.tcl summary, seed 1, defines TB_MESH_N=8 TB_NUM_VC=1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=13227 errors=0, 37569 cycles in 3.6 s = 10395 cycles/s   (4 s; warnings: compile 0, elaborate 0)
+  work folder tb_mesh__TB_MESH_N_8__TB_NUM_VC_1; xvlog: xvlog --sv --include /home/claude/noc_by...; defines in options file: --define TB_MESH_N=8 --define TB_NUM_VC=1 
+
+Section 7 done 05:28 UTC

@@ -1,0 +1,24 @@
+start_gui
+open_project D:/noc_bypass/noc_bypass.xpr
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'D:/noc_bypass/noc_bypass.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2024.2/data/ip'.
+cd D:/noc_bypass
+set argv {-test tb_mesh};
+-test tb_mesh
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_mesh (tests N01 N02 N03 N04 N06 N07 N08 PERF), seed 1: compiling
+run.tcl: tb_mesh: elaborating
+run.tcl: tb_mesh: simulating
+==========================================================================
+$finish called at time : 12314615 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+run: Time (s): cpu = 00:00:02 ; elapsed = 00:23:42 . Memory (MB): peak = 211.742 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 44812 KB (Peak: 44812 KB), Simulation CPU Usage: 1414827 ms
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 17:33:49 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=46273022 errors=0, 1231461 cycles in 1426.3 s = 863 cycles/s   (1443 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

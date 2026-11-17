@@ -1,0 +1,76 @@
+B4 mutation check, 2026-11-09 15:25 UTC
+Each mutant injects one bug into a copy of the repository; tb_mesh_b (4x4, design B) is rebuilt and BP01, BP04,
+BP02 and BP05 (+QUICK) run at seed 1, in that order, until one fails. Every RTL $fatal is turned into $display, so
+the RTL assertions report but cannot stop the run: only the testbench (router_checker, sinks, scoreboard, idle
+checks) can kill a mutant. A survivor is run again with the assertions on.
+Killed = a run fails (RESULT FAIL, $fatal, hang, or no RESULT line); the reason is the first error.
+
+B01   KILLED   bypass_source.sv     a burst stops one flit short of B_MAX
+      tb-only  by BP04: ERROR  [900000] BP04: BP04 a: the burst R10->R0 at cycle 48 has 5 flits, expected 10
+B02   KILLED   bypass_source.sv     a burst may exceed B_MAX by one flit
+      tb-only  by BP04: ERROR  [3300000] BP04: burst R13->R12 (slot 4 subslot 0, t=328, 1 hops): lookahead on its first link says R12, mode 1, vc 0, 11 flits (B_MAX 10)
+B03   KILLED   bypass_source.sv     packets for any destination go to the partner
+      tb-only  by BP01: ERROR  [6690000] BP01: burst R2->R14 (slot 8 subslot 1, t=662, 3 hops): flit 0 should start a whole packet for R14: type 01, length 5, destination 9, burst 5 flits
+B04   KILLED   bypass_source.sv     chosen packets stay in switch allocation at t
+      tb-only  by BP04: ERROR  [9240000] BP04: burst R1->R10 (slot 1 subslot 2, t=917, 3 hops): flit 4 (link 1) expected on link S of R1 at cycle 924 (t+7), not there
+B05   KILLED   bypass_source.sv     Local input not masked at t
+      tb-only  by BP05: ERROR  [3120000] BP05: node 5 VC 2: flit 3 of packet 10.62 is corrupt
+B06   KILLED   bypass_source.sv     first-hop output not masked at t
+      tb-only  by BP05: ERROR  [940000] BP05: burst R5->R6 (slot 1 subslot 0, t=91, 1 hops): flit 0 on link E of R5 has vc 2
+B07   KILLED   bypass_source.sv     first-hop output unmasked one cycle early
+      tb-only  by BP05: ERROR  [980000] BP05: burst R5->R6 (slot 1 subslot 0, t=91, 1 hops): flit 4 on link E of R5 has vc 2
+B08   KILLED   bypass_source.sv     the port being read is not masked (two pops, one credit)
+      tb-only  by BP04: ERROR  [1005000] BP04: BP04 a: mesh not idle afterwards, busy tiles 0000010000000000
+B09   KILLED   bypass_source.sv     bypass flits leave without the bypass bit
+      tb-only  by BP01: ERROR  [6830000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): flit 0 (link 1) expected on link W of R2 at cycle 683 (t+3), not there
+B10   KILLED   bypass_source.sv     lookahead announces one flit too many
+      tb-only  by BP01: ERROR  [6880000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): flit 5 (link 1) expected on link W of R2 at cycle 688 (t+8), not there
+B11   KILLED   bypass_source.sv     bypass flits keep their old VC number
+      tb-only  by BP04: ERROR  [560000] BP04: burst R10->R0 (slot 0 subslot 2, t=48, 4 hops): flit 5 on link W of R10 has vc 1
+B12   KILLED   bypass_source.sv     the source moves to the next VC after every flit
+      tb-only  by BP01: ERROR  [6840000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): flit 1 (link 1) expected on link W of R2 at cycle 684 (t+4), not there
+B13   KILLED   bypass_relay.sv      relay input not masked in the lookahead cycle
+      tb-only  by BP05: ERROR  [1130000] BP05: node 12 VC 2: flit 1 of packet 6.20 is corrupt
+B14   KILLED   bypass_relay.sv      relay output not masked in the lookahead cycle
+      tb-only  by BP05: ERROR  [960000] BP05: burst R5->R6 (slot 1 subslot 0, t=91, 1 hops): flit 0 on Local output (NI write) of R6 has vc 1
+B15   KILLED   bypass_relay.sv      relay masks end one cycle early
+      tb-only  by BP05: ERROR  [1000000] BP05: burst R5->R6 (slot 1 subslot 0, t=91, 1 hops): flit 4 on Local output (NI write) of R6 has vc 2
+B16   KILLED   bypass_relay.sv      relay routes every burst XY
+      tb-only  by BP04: ERROR  [9210000] BP04: burst R1->R10 (slot 1 subslot 2, t=917, 3 hops): lookahead (link 2) expected on lookahead link S of R5 at cycle 921 (t+4), not there
+B17   KILLED   bypass_relay.sv      relay passes one flit too few
+      tb-only  by BP01: ERROR  [6890000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): flit 4 (link 2) expected on link S of R1 at cycle 689 (t+9), not there
+B18   KILLED   bypass_relay.sv      lookaheads are not forwarded
+      tb-only  by BP01: ERROR  [6840000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): lookahead (link 2) expected on lookahead link S of R1 at cycle 684 (t+4), not there
+B19   KILLED   bypass_relay.sv      lookahead skips a register: one cycle early
+      tb-only  by BP01: ERROR  [6810000] BP01: unexpected lookahead on lookahead link W of R2 at cycle 681: R9 mode 0 5 flits
+B20   KILLED   input_unit.sv        packets offered before they are whole
+      tb-only  by BP05: ERROR  [3390000] BP05: node 2: packet 0.71 (5 flits, 2 hops, bypass 1) took 15 cycles, below its least latency 17
+B21   KILLED   input_unit.sv        no credit for a flit that leaves by bypass
+      tb-only  by BP01: ERROR  [7075000] BP01: BP01: mesh not idle afterwards, busy tiles 0000000000000100
+B22   KILLED   input_unit.sv        a bypassed tail does not free its VC upstream
+      tb-only  by BP01: ERROR  [7075000] BP01: BP01: mesh not idle afterwards, busy tiles 0000000000000100
+B23   KILLED   input_unit.sv        a VC stays BYPASS after its packet left
+      tb-only  by BP01: ERROR  [7075000] BP01: BP01: mesh not idle afterwards, busy tiles 0000000000000100
+B24   KILLED   input_unit.sv        a VC taken at t still requests the switch at t
+      tb-only  by BP04: ERROR  [9240000] BP04: burst R1->R10 (slot 1 subslot 2, t=917, 3 hops): flit 4 (link 1) expected on link S of R1 at cycle 924 (t+7), not there
+B25   KILLED   ni.sv                the NI returns a credit for a bypass flit
+      tb-only  by BP01: ERROR  [7075000] BP01: BP01: mesh not idle afterwards, busy tiles 0000001000000000
+B26   KILLED   ni.sv                the NI drops the bypass bit
+      tb-only  by BP01: ERROR  [6910000] BP01: node 9: the NI gave flit 01/VC 0/byp 0/00a3440b250000028b00000000a10209, but flit 01/VC 0/byp 1/00a3440b250000028b00000000a10209 arrived first
+B27   KILLED   router.sv            the source's output masks are lost
+      tb-only  by BP05: ERROR  [940000] BP05: burst R5->R6 (slot 1 subslot 0, t=91, 1 hops): flit 0 on link E of R5 has vc 2
+B28   KILLED   tile.sv              routers send in subslots where they have no partner
+      tb-only  by BP02: ERROR  [8040000] BP02: unexpected lookahead on lookahead link W of R15 at cycle 804: R0 mode 0 6 flits
+B29   KILLED   tile.sv              the tile timetable runs one cycle per subslot slow
+      tb-only  by BP01: ERROR  [7020000] BP01: BP01: the burst R2->R9 at cycle 680 has 0 flits, expected 5
+M21   KILLED   sched_pkg.sv         timing contract with 1-cycle hops (B3 survivor)
+      tb-only  by BP01: ERROR  [6820000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): flit 0 (link 1) expected on link W of R2 at cycle 682 (t+2), not there
+M21b  KILLED   sched_pkg.sv         contract: lookahead one cycle later
+      tb-only  by BP01: ERROR  [6820000] BP01: unexpected lookahead on lookahead link W of R2 at cycle 682: R9 mode 0 5 flits
+M21c  KILLED   sched_pkg.sv         contract: NI write one cycle earlier
+      tb-only  by BP01: ERROR  [6880000] BP01: burst R2->R9 (slot 8 subslot 2, t=680, 3 hops): flit 0 (link 4) expected on Local output (NI write) of R9 at cycle 688 (t+8), not there
+
+Killed: 32 of 32
+
+Rerun: B27 first failed to build because the disk was full ('No space left on device'),
+which says nothing about the bug; the line above is the rerun with space free.

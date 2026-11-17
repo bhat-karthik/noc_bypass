@@ -1,0 +1,85 @@
+set argv {-list s04}; source -notrace sim/vivado/regress.tcl
+regress.tcl: 16 entries from s04, seed 1
+regress.tcl: S04_01_B: building tb_mesh_b TB_NUM_VC=1 TB_B_MAX=5
+regress.tcl: S04_01_B: tb_mesh_b: built (0 warnings)
+regress.tcl: S04_01_B: simulating
+S04_01_B       tb_mesh_b tb_mesh_b              PASS    checks=1,989,973 errors=0, 32,919 cycles, 20 s
+regress.tcl: S04_02_B: building tb_mesh_b TB_NUM_VC=2 TB_B_MAX=15 TB_SAFE
+regress.tcl: S04_02_B: tb_mesh_b: built (0 warnings)
+regress.tcl: S04_02_B: simulating
+S04_02_B       tb_mesh_b tb_mesh_b              PASS    checks=2,057,570 errors=0, 30,054 cycles, 27 s
+regress.tcl: S04_03_B: building tb_mesh_b TB_MESH_N=8 TB_NUM_VC=4 TB_B_MAX=5 TB_SAFE
+regress.tcl: S04_03_B: tb_mesh_b: built (0 warnings)
+regress.tcl: S04_03_B: simulating
+S04_03_B       tb_mesh_b tb_mesh_b              PASS    checks=8,805,024 errors=0, 32,455 cycles, 352 s
+regress.tcl: S04_04_B: building tb_mesh_b TB_NUM_VC=4 TB_B_MAX=10 TB_SAFE
+regress.tcl: S04_04_B: tb_mesh_b: built (0 warnings)
+regress.tcl: S04_04_B: simulating
+S04_04_B       tb_mesh_b tb_mesh_b              PASS    checks=2,666,323 errors=0, 30,245 cycles, 57 s
+regress.tcl: S04_05_B: building tb_mesh_b TB_MESH_N=8 TB_NUM_VC=2 TB_B_MAX=10
+regress.tcl: S04_05_B: tb_mesh_b: built (0 warnings)
+regress.tcl: S04_05_B: simulating
+S04_05_B       tb_mesh_b tb_mesh_b              PASS    checks=7,071,052 errors=0, 30,071 cycles, 194 s
+regress.tcl: S04_06_C: building tb_mesh_c TB_NUM_VC=1 TB_B_MAX=10 TB_SAFE
+regress.tcl: S04_06_C: tb_mesh_c: built (0 warnings)
+regress.tcl: S04_06_C: simulating
+S04_06_C       tb_mesh_c tb_mesh_c              PASS    checks=2,465,315 errors=0, 35,647 cycles, 28 s
+regress.tcl: S04_07_C: building tb_mesh_c TB_NUM_VC=2 TB_B_MAX=5
+regress.tcl: S04_07_C: tb_mesh_c: built (0 warnings)
+regress.tcl: S04_07_C: simulating
+S04_07_C       tb_mesh_c tb_mesh_c              PASS    checks=2,511,509 errors=0, 30,053 cycles, 38 s
+regress.tcl: S04_08_C: building tb_mesh_c TB_MESH_N=8 TB_NUM_VC=4 TB_B_MAX=15
+regress.tcl: S04_08_C: tb_mesh_c: built (0 warnings)
+regress.tcl: S04_08_C: simulating
+S04_08_C       tb_mesh_c tb_mesh_c              PASS    checks=9,310,934 errors=0, 32,749 cycles, 373 s
+regress.tcl: S04_09_C: building tb_mesh_c TB_NUM_VC=4 TB_B_MAX=15 TB_SAFE
+regress.tcl: S04_09_C: tb_mesh_c: built (0 warnings)
+regress.tcl: S04_09_C: simulating
+S04_09_C       tb_mesh_c tb_mesh_c              PASS    checks=2,980,904 errors=0, 30,516 cycles, 59 s
+regress.tcl: S04_10_C: building tb_mesh_c TB_MESH_N=8 TB_NUM_VC=1 TB_B_MAX=5 TB_SAFE
+regress.tcl: S04_10_C: tb_mesh_c: built (0 warnings)
+regress.tcl: S04_10_C: simulating
+S04_10_C       tb_mesh_c tb_mesh_c              PASS    checks=15,888,711 errors=0, 72,575 cycles, 186 s
+regress.tcl: S04_11_D: building tb_mesh_d TB_NUM_VC=1 TB_B_MAX=15
+regress.tcl: S04_11_D: tb_mesh_d: built (0 warnings)
+regress.tcl: S04_11_D: simulating
+S04_11_D       tb_mesh_d tb_mesh_d              PASS    checks=2,352,122 errors=0, 33,927 cycles, 29 s
+regress.tcl: S04_12_D: building tb_mesh_d TB_NUM_VC=2 TB_B_MAX=10 TB_SAFE
+regress.tcl: S04_12_D: tb_mesh_d: built (0 warnings)
+regress.tcl: S04_12_D: simulating
+S04_12_D       tb_mesh_d tb_mesh_d              PASS    checks=2,369,531 errors=0, 30,053 cycles, 39 s
+regress.tcl: S04_13_D: building tb_mesh_d TB_MESH_N=8 TB_NUM_VC=4 TB_B_MAX=10 TB_SAFE
+regress.tcl: S04_13_D: tb_mesh_d: built (0 warnings)
+regress.tcl: S04_13_D: simulating
+S04_13_D       tb_mesh_d tb_mesh_d              PASS    checks=9,210,071 errors=0, 32,433 cycles, 404 s
+regress.tcl: S04_14_D: building tb_mesh_d TB_NUM_VC=4 TB_B_MAX=5
+regress.tcl: S04_14_D: tb_mesh_d: built (0 warnings)
+regress.tcl: S04_14_D: simulating
+S04_14_D       tb_mesh_d tb_mesh_d              PASS    checks=3,049,791 errors=0, 30,064 cycles, 65 s
+regress.tcl: S04_15_D: building tb_mesh_d TB_MESH_N=8 TB_NUM_VC=2 TB_B_MAX=15
+regress.tcl: S04_15_D: tb_mesh_d: built (0 warnings)
+regress.tcl: S04_15_D: simulating
+S04_15_D       tb_mesh_d tb_mesh_d              PASS    checks=7,455,811 errors=0, 30,080 cycles, 224 s
+regress.tcl: S04_16_D: building tb_mesh_d TB_NUM_VC=1 TB_B_MAX=5 TB_SAFE
+regress.tcl: S04_16_D: tb_mesh_d: built (0 warnings)
+regress.tcl: S04_16_D: simulating
+S04_16_D       tb_mesh_d tb_mesh_d              PASS    checks=2,370,774 errors=0, 33,858 cycles, 29 s
+==================== regress.tcl summary: s04, seed 1 ====================
+S04_01_B       tb_mesh_b tb_mesh_b              PASS    checks=1,989,973 errors=0, 32,919 cycles, 20 s
+S04_02_B       tb_mesh_b tb_mesh_b              PASS    checks=2,057,570 errors=0, 30,054 cycles, 27 s
+S04_03_B       tb_mesh_b tb_mesh_b              PASS    checks=8,805,024 errors=0, 32,455 cycles, 352 s
+S04_04_B       tb_mesh_b tb_mesh_b              PASS    checks=2,666,323 errors=0, 30,245 cycles, 57 s
+S04_05_B       tb_mesh_b tb_mesh_b              PASS    checks=7,071,052 errors=0, 30,071 cycles, 194 s
+S04_06_C       tb_mesh_c tb_mesh_c              PASS    checks=2,465,315 errors=0, 35,647 cycles, 28 s
+S04_07_C       tb_mesh_c tb_mesh_c              PASS    checks=2,511,509 errors=0, 30,053 cycles, 38 s
+S04_08_C       tb_mesh_c tb_mesh_c              PASS    checks=9,310,934 errors=0, 32,749 cycles, 373 s
+S04_09_C       tb_mesh_c tb_mesh_c              PASS    checks=2,980,904 errors=0, 30,516 cycles, 59 s
+S04_10_C       tb_mesh_c tb_mesh_c              PASS    checks=15,888,711 errors=0, 72,575 cycles, 186 s
+S04_11_D       tb_mesh_d tb_mesh_d              PASS    checks=2,352,122 errors=0, 33,927 cycles, 29 s
+S04_12_D       tb_mesh_d tb_mesh_d              PASS    checks=2,369,531 errors=0, 30,053 cycles, 39 s
+S04_13_D       tb_mesh_d tb_mesh_d              PASS    checks=9,210,071 errors=0, 32,433 cycles, 404 s
+S04_14_D       tb_mesh_d tb_mesh_d              PASS    checks=3,049,791 errors=0, 30,064 cycles, 65 s
+S04_15_D       tb_mesh_d tb_mesh_d              PASS    checks=7,455,811 errors=0, 30,080 cycles, 224 s
+S04_16_D       tb_mesh_d tb_mesh_d              PASS    checks=2,370,774 errors=0, 33,858 cycles, 29 s
+16 entries: 16 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 41 min
+Summary file: D:/noc_bypass/sim/vivado/work/regress_s04_seed1.txt

@@ -1,0 +1,46 @@
+# E2_16x16: 45 points (written by make_sweeps.tcl; run with sweep.tcl -sweep E2_16x16)
+E2_16x16_B_uniform_k0.20                     tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01332
+E2_16x16_B_uniform_k0.50                     tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03330
+E2_16x16_B_uniform_k0.80                     tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E2_16x16_B_uniform_k1.00                     tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06660
+E2_16x16_B_uniform_k1.20                     tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07992
+E2_16x16_B_transpose_k0.20                   tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.01356
+E2_16x16_B_transpose_k0.50                   tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03390
+E2_16x16_B_transpose_k0.80                   tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05424
+E2_16x16_B_transpose_k1.00                   tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06780
+E2_16x16_B_transpose_k1.20                   tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08136
+E2_16x16_B_region_k0.20                      tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.01650 -plus +PLOCAL=0.5
+E2_16x16_B_region_k0.50                      tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.04125 -plus +PLOCAL=0.5
+E2_16x16_B_region_k0.80                      tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E2_16x16_B_region_k1.00                      tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.08250 -plus +PLOCAL=0.5
+E2_16x16_B_region_k1.20                      tb_mesh_b  -seed 1 -define TB_MESH_N=16 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.09900 -plus +PLOCAL=0.5
+E2_16x16_C_uniform_k0.20                     tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01332
+E2_16x16_C_uniform_k0.50                     tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03330
+E2_16x16_C_uniform_k0.80                     tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E2_16x16_C_uniform_k1.00                     tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06660
+E2_16x16_C_uniform_k1.20                     tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07992
+E2_16x16_C_transpose_k0.20                   tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.01356
+E2_16x16_C_transpose_k0.50                   tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03390
+E2_16x16_C_transpose_k0.80                   tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05424
+E2_16x16_C_transpose_k1.00                   tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06780
+E2_16x16_C_transpose_k1.20                   tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08136
+E2_16x16_C_region_k0.20                      tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.01650 -plus +PLOCAL=0.5
+E2_16x16_C_region_k0.50                      tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.04125 -plus +PLOCAL=0.5
+E2_16x16_C_region_k0.80                      tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E2_16x16_C_region_k1.00                      tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.08250 -plus +PLOCAL=0.5
+E2_16x16_C_region_k1.20                      tb_mesh_c  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.09900 -plus +PLOCAL=0.5
+E2_16x16_D_uniform_k0.20                     tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01332
+E2_16x16_D_uniform_k0.50                     tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03330
+E2_16x16_D_uniform_k0.80                     tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E2_16x16_D_uniform_k0.85                     tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05661
+E2_16x16_D_uniform_k0.95                     tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06327
+E2_16x16_D_transpose_k0.20                   tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.01356
+E2_16x16_D_transpose_k0.50                   tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03390
+E2_16x16_D_transpose_k0.80                   tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05424
+E2_16x16_D_transpose_k0.85                   tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05763
+E2_16x16_D_transpose_k0.95                   tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06441
+E2_16x16_D_region_k0.20                      tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.01650 -plus +PLOCAL=0.5
+E2_16x16_D_region_k0.50                      tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.04125 -plus +PLOCAL=0.5
+E2_16x16_D_region_k0.80                      tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E2_16x16_D_region_k0.85                      tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.07013 -plus +PLOCAL=0.5
+E2_16x16_D_region_k0.95                      tb_mesh_d  -seed 1 -define TB_MESH_N=16 -define TB_EPOCH=262144 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.07838 -plus +PLOCAL=0.5

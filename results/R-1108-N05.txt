@@ -1,0 +1,55 @@
+[2026-11-08 12:49:32 UTC] vlib work && vlog '+define+TEST_N05' design.sv testbench.sv  && vsim -c -do "vsim ; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_mesh_dl."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.1 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.4 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.7 [s]
+# SLP: Finished : 1.2 [s]
+# SLP: 0 primitives and 7205 (99.54%) other processes in SLP
+# SLP: 14790 (90.43%) signals in SLP and 409 (2.50%) interface signals
+# ELAB2: Elaboration final pass complete - time: 1.9 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 9854 kB (elbread=488 elab2=7513 kernel=1852 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   N05  mesh 4x4, 1 VC, adaptive routing, design A
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  N05 deadlock: adaptive routing, 1 VC, uniform at 0.600 packets/node/cycle, up to 200000 cycles
+# KERNEL: INFO   N05: deadlock detected at cycle 2153; last delivery at cycle 152, 147 cycles after the load started
+# KERNEL: INFO   N05: 109 packets delivered before it; 20409 created and not delivered, most still in source queues
+# KERNEL: INFO   N05: 6 packets wait in a cycle, each for the input VC the next one holds: R9.N R10.W R11.W R7.S R6.E R5.E
+# KERNEL: COVER  N05 cycles to deadlock                               147
+# KERNEL: INFO   cycles simulated 4153
+# KERNEL: ==========================================================================
+# KERNEL: RESULT N05 PASS checks=1949 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (337): $finish called.
+# KERNEL: Time: 41535 ns,  Iteration: 1,  Instance: /tb_mesh_dl/u_bench,  Process: @INITIAL#2060_2@.
+# KERNEL: stopped at time: 41535 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

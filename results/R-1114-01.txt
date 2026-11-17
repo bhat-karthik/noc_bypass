@@ -1,0 +1,116 @@
+cd D:/noc_bypass
+pwd
+D:/noc_bypass
+set argv {-list quick}; source -notrace sim/vivado/regress.tcl
+regress.tcl: 22 entries from quick, seed 1
+regress.tcl: U01: building tb_rr_arbiter 
+regress.tcl: U01: tb_rr_arbiter: built (0 warnings)
+regress.tcl: U01: simulating
+U01            U01    tb_rr_arbiter          PASS    checks=310,493 errors=0 (expected 310,493), 5 s
+regress.tcl: U02: building tb_sync_fifo 
+regress.tcl: U02: tb_sync_fifo: built (0 warnings)
+regress.tcl: U02: simulating
+U02            U02    tb_sync_fifo           PASS    checks=196,864 errors=0 (expected 196,864), 4 s
+regress.tcl: U03: building tb_route_compute 
+regress.tcl: U03: tb_route_compute: built (0 warnings)
+regress.tcl: U03: simulating
+U03            U03    tb_route_compute       PASS    checks=856,450 errors=0 (expected 856,450), 6 s
+regress.tcl: U04: building tb_switch_allocator 
+regress.tcl: U04: tb_switch_allocator: built (0 warnings)
+regress.tcl: U04: simulating
+U04            U04    tb_switch_allocator    PASS    checks=1,121,244 errors=0 (expected 1,121,244), 7 s
+regress.tcl: R01-R04: building tb_router 
+regress.tcl: R01-R04: tb_router: built (0 warnings)
+regress.tcl: R01-R04: simulating
+R01-R04        tb_router tb_router              PASS    checks=357,967 errors=0 (expected 357,967), 5 s
+regress.tcl: N01-N08_q: building tb_mesh 
+regress.tcl: N01-N08_q: tb_mesh: built (0 warnings)
+regress.tcl: N01-N08_q: simulating
+N01-N08_q      tb_mesh tb_mesh                PASS    checks=444,704 errors=0 (expected 444,704), 14,811 cycles, 15 s
+regress.tcl: N05: building tb_mesh_dl 
+regress.tcl: N05: tb_mesh_dl: built (0 warnings)
+regress.tcl: N05: simulating
+N05            N05    tb_mesh_dl             PASS    checks=1,949 errors=0 (expected 1,949), 4,153 cycles, 5 s
+regress.tcl: U05: building tb_slot_table 
+regress.tcl: U05: tb_slot_table: built (0 warnings)
+regress.tcl: U05: simulating
+U05            U05    tb_slot_table          PASS    checks=24,462 errors=0 (expected 24,462), 4 s
+regress.tcl: U06_q: building tb_slot_counter 
+regress.tcl: U06_q: tb_slot_counter: built (0 warnings)
+regress.tcl: U06_q: simulating
+U06_q          U06    tb_slot_counter        PASS    checks=99,202 errors=0 (expected 99,202), 4 s
+regress.tcl: U07_q: building tb_group_to_router 
+regress.tcl: U07_q: tb_group_to_router: built (0 warnings)
+regress.tcl: U07_q: simulating
+U07_q          U07    tb_group_to_router     PASS    checks=423,040 errors=0 (expected 423,040), 4 s
+regress.tcl: U08-U09_q: building tb_timetable_check 
+regress.tcl: U08-U09_q: tb_timetable_check: built (0 warnings)
+regress.tcl: U08-U09_q: simulating
+U08-U09_q      tb_timetable_check tb_timetable_check     PASS    checks=756,567 errors=0 (expected 756,567), 6 s
+regress.tcl: BP01-10_q: building tb_mesh_b 
+regress.tcl: BP01-10_q: tb_mesh_b: built (0 warnings)
+regress.tcl: BP01-10_q: simulating
+BP01-10_q      tb_mesh_b tb_mesh_b              PASS    checks=1,026,210 errors=0 (expected 1,026,210), 16,113 cycles, 13 s
+regress.tcl: BP08_B_q: building tb_mesh_b TB_NUM_VC=1
+regress.tcl: BP08_B_q: tb_mesh_b: built (0 warnings)
+regress.tcl: BP08_B_q: simulating
+BP08_B_q       BP08   tb_mesh_b              PASS    checks=379,431 errors=0 (expected 379,431), 5,732 cycles, 7 s
+regress.tcl: BP08_A: simulating
+BP08_A         tb_mesh_dl tb_mesh_dl             PASS    checks=9,551 errors=0 (expected 9,551), 2,616 cycles, 4 s
+regress.tcl: U10_q: building tb_resv_ctrl 
+regress.tcl: U10_q: tb_resv_ctrl: built (0 warnings)
+regress.tcl: U10_q: simulating
+U10_q          U10    tb_resv_ctrl           PASS    checks=289,930 errors=0 (expected 289,930), 4 s
+regress.tcl: U11_q: building tb_phase_sequencer 
+regress.tcl: U11_q: tb_phase_sequencer: built (0 warnings)
+regress.tcl: U11_q: simulating
+U11_q          U11    tb_phase_sequencer     PASS    checks=2,625,053 errors=0 (expected 2,625,053), 7 s
+regress.tcl: TL01-06_q: building tb_mesh_c 
+regress.tcl: TL01-06_q: tb_mesh_c: built (0 warnings)
+regress.tcl: TL01-06_q: simulating
+TL01-06_q      tb_mesh_c tb_mesh_c              PASS    checks=1,461,178 errors=0 (expected 1,461,178), 17,666 cycles, 19 s
+regress.tcl: TL05_q: building tb_mesh_cb 
+regress.tcl: TL05_q: tb_mesh_cb: built (0 warnings)
+regress.tcl: TL05_q: simulating
+TL05_q         TL05   tb_mesh_cb             PASS    checks=146,657 errors=0 (expected 146,657), 1,571 cycles, 9 s
+regress.tcl: U12_q: building tb_demand_counter 
+regress.tcl: U12_q: tb_demand_counter: built (0 warnings)
+regress.tcl: U12_q: simulating
+U12_q          U12    tb_demand_counter      PASS    checks=210,015 errors=0 (expected 210,015), 10 s
+regress.tcl: U13_q: building tb_sched_ctrl 
+regress.tcl: U13_q: tb_sched_ctrl: built (0 warnings)
+regress.tcl: U13_q: simulating
+U13_q          U13    tb_sched_ctrl          PASS    checks=419,900 errors=0 (expected 419,900), 4 s
+regress.tcl: U14_q: building tb_ctrl_chain 
+regress.tcl: U14_q: tb_ctrl_chain: built (0 warnings)
+regress.tcl: U14_q: simulating
+U14_q          U14    tb_ctrl_chain          PASS    checks=420 errors=0 (expected 420), 6 s
+regress.tcl: CT01-05_q: building tb_mesh_d 
+regress.tcl: CT01-05_q: tb_mesh_d: built (0 warnings)
+regress.tcl: CT01-05_q: simulating
+CT01-05_q      tb_mesh_d tb_mesh_d              PASS    checks=9,043,644 errors=0 (expected 9,043,644), 101,805 cycles, 123 s
+==================== regress.tcl summary: quick, seed 1 ====================
+U01            U01    tb_rr_arbiter          PASS    checks=310,493 errors=0 (expected 310,493), 5 s
+U02            U02    tb_sync_fifo           PASS    checks=196,864 errors=0 (expected 196,864), 4 s
+U03            U03    tb_route_compute       PASS    checks=856,450 errors=0 (expected 856,450), 6 s
+U04            U04    tb_switch_allocator    PASS    checks=1,121,244 errors=0 (expected 1,121,244), 7 s
+R01-R04        tb_router tb_router              PASS    checks=357,967 errors=0 (expected 357,967), 5 s
+N01-N08_q      tb_mesh tb_mesh                PASS    checks=444,704 errors=0 (expected 444,704), 14,811 cycles, 15 s
+N05            N05    tb_mesh_dl             PASS    checks=1,949 errors=0 (expected 1,949), 4,153 cycles, 5 s
+U05            U05    tb_slot_table          PASS    checks=24,462 errors=0 (expected 24,462), 4 s
+U06_q          U06    tb_slot_counter        PASS    checks=99,202 errors=0 (expected 99,202), 4 s
+U07_q          U07    tb_group_to_router     PASS    checks=423,040 errors=0 (expected 423,040), 4 s
+U08-U09_q      tb_timetable_check tb_timetable_check     PASS    checks=756,567 errors=0 (expected 756,567), 6 s
+BP01-10_q      tb_mesh_b tb_mesh_b              PASS    checks=1,026,210 errors=0 (expected 1,026,210), 16,113 cycles, 13 s
+BP08_B_q       BP08   tb_mesh_b              PASS    checks=379,431 errors=0 (expected 379,431), 5,732 cycles, 7 s
+BP08_A         tb_mesh_dl tb_mesh_dl             PASS    checks=9,551 errors=0 (expected 9,551), 2,616 cycles, 4 s
+U10_q          U10    tb_resv_ctrl           PASS    checks=289,930 errors=0 (expected 289,930), 4 s
+U11_q          U11    tb_phase_sequencer     PASS    checks=2,625,053 errors=0 (expected 2,625,053), 7 s
+TL01-06_q      tb_mesh_c tb_mesh_c              PASS    checks=1,461,178 errors=0 (expected 1,461,178), 17,666 cycles, 19 s
+TL05_q         TL05   tb_mesh_cb             PASS    checks=146,657 errors=0 (expected 146,657), 1,571 cycles, 9 s
+U12_q          U12    tb_demand_counter      PASS    checks=210,015 errors=0 (expected 210,015), 10 s
+U13_q          U13    tb_sched_ctrl          PASS    checks=419,900 errors=0 (expected 419,900), 4 s
+U14_q          U14    tb_ctrl_chain          PASS    checks=420 errors=0 (expected 420), 6 s
+CT01-05_q      tb_mesh_d tb_mesh_d              PASS    checks=9,043,644 errors=0 (expected 9,043,644), 101,805 cycles, 123 s
+22 entries: 22 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 8 min
+Summary file: D:/noc_bypass/sim/vivado/work/regress_quick_seed1.txt

@@ -1,0 +1,54 @@
+[2026-11-08 12:44:37 UTC] vlib work && vlog '+define+TEST_N02' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_mesh."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.6 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.0 [s]
+# SLP: Finished : 1.6 [s]
+# SLP: 0 primitives and 12533 (99.74%) other processes in SLP
+# SLP: 19110 (92.43%) signals in SLP and 409 (1.98%) interface signals
+# ELAB2: Elaboration final pass complete - time: 2.2 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 12933 kB (elbread=506 elab2=8223 kernel=4203 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   N01-N08  mesh 4x4, 4 VC, XY routing, design A
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  N02 zero-load latency: 1 packet/node every 500 cycles, 1-flit, 2 periods
+# KERNEL: INFO   N02 transpose: average latency 15.000 cycles, expected 15.000; 100.0% of 32 packets at exactly zero-load
+# KERNEL: INFO   N02 bitrot: average latency 13.000 cycles, expected 13.000; 100.0% of 32 packets at exactly zero-load
+# KERNEL: INFO   N02 shuffle: average latency 13.000 cycles, expected 13.000; 100.0% of 32 packets at exactly zero-load
+# KERNEL: INFO   cycles simulated 3060
+# KERNEL: ==========================================================================
+# KERNEL: RESULT N02 PASS checks=1083 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (337): $finish called.
+# KERNEL: Time: 30605 ns,  Iteration: 1,  Instance: /tb_mesh/u_bench,  Process: @INITIAL#2060_2@.
+# KERNEL: stopped at time: 30605 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

@@ -1,0 +1,67 @@
+B6 mutation check, 2026-11-11 03:55 UTC
+Each mutant injects one bug into a copy of the repository. Mutants of phase_sequencer and sched_pkg run U11
+first (+QUICK, then the full run if the short form misses it); the others, and any that U11 misses, rebuild
+tb_mesh_c (4x4, 2x2 regions) and run TL01, TL02, TL03, TL04 and TL06 at seed 1, in that order, until one fails.
+Every RTL $fatal is turned into $display, so the RTL assertions report but cannot stop the run: only the testbench
+(frame_ref, mesh_checker, sched_monitor, router_checker, ni_checker, sinks, scoreboard, idle checks) can kill a
+mutant. A survivor is run again with the assertions on. Killed = a run fails (RESULT FAIL, $fatal, hang, or no
+RESULT line); the reason is the first error. P02 and M01 were run again alone to print their whole first error.
+
+The first run (03:12 UTC) killed 22 of 24: S10 is equivalent (below), and P02, an epoch sized at k_L = 3, gave the
+same power of two as k_L = 4 in every configuration U11 checked. U11 then gained a thirteenth package check, the
+epoch on 8x8 with B_MAX 5, where the two differ (2^15 against 2^14), and S13 was added.
+
+S01   KILLED   phase_sequencer.sv   plan sampled one cycle late
+      tb-only  by U11 +QUICK: ERROR  [2890000] U11: 8x8/4 TIGHT B10 k0 epoch 1148 cycle 287: phase 0 k_L 0 local slots done 0; expected 1 5 0
+S02   KILLED   phase_sequencer.sv   a sample in the frame's last cycle not applied at once
+      tb-only  by U11 +QUICK: ERROR  [2890000] U11: 8x8/4 TIGHT B10 k0 epoch 1148 cycle 287: phase 0 k_L 0 local slots done 0; expected 1 5 0
+S03   KILLED   phase_sequencer.sv   one local slot too many per frame
+      tb-only  by U11 +QUICK: ERROR  [710000] U11: 4x4/2 TIGHT B10 cycle 69: phase 1 k_L 3 local slots done 3; expected 0 3 0
+S04   KILLED   phase_sequencer.sv   k_L = 0 frames start a local slot
+      tb-only  by U11 +QUICK: ERROR  [11860000] U11: 4x4/2 TIGHT B10 cycle 1184: phase 1 k_L 0 local slots done 0; expected 0 0 0
+S05   KILLED   phase_sequencer.sv   global counter runs in the local phase
+      tb-only  by U11 +QUICK: ERROR  [30000] U11: 8x8/4 TIGHT B10 cycle 1: global counter setup 1 subslot 0 cycle 1 slot 0; expected 1 0 0 0
+S06   KILLED   phase_sequencer.sv   epoch one cycle short
+      tb-only  by U11 +QUICK: ERROR  [5130000] U11: 4x4/2 TIGHT B10 cycle 511: loc 1 k_L 3 sub_go 0 nxt_go 0 tick 1; expected 1 3 0 0 0
+S07   KILLED   phase_sequencer.sv   epoch tick one cycle late
+      tb-only  by U11 +QUICK: ERROR  [20000] U11: 8x8/4 TIGHT B10 cycle 0: loc 1 k_L 4 sub_go 0 nxt_go 1 tick 0; expected 1 4 0 1 1
+S08   KILLED   phase_sequencer.sv   no decisions in local slots
+      tb-only  by U11 +QUICK: ERROR  [20000] U11: 8x8/4 TIGHT B10 cycle 0: loc 1 k_L 4 sub_go 0 nxt_go 0 tick 1; expected 1 4 0 1 1
+S09   KILLED   phase_sequencer.sv   wrong k_L from reset
+      tb-only  by U11 +QUICK: ERROR  [20000] U11: 8x8/4 TIGHT B10 cycle 0: phase 1 k_L 5 local slots done 0; expected 1 4 0
+S10   EQUIVALENT phase_sequencer.sv a plan applied at once stays pending
+      tb-only  every test passed
+      full     every test passed
+      why      when a sample falls in a frame's last cycle it is applied at once; the mutant also leaves it waiting, so the next frame start applies the same k_L again (k_L can change only at frame starts), unless a newer sample replaces it first, which the design does too: k_L, the phase, both counters and every output stay the same
+S11   KILLED   phase_sequencer.sv   turns during the paused global setup
+      tb-only  by U11 +QUICK: ERROR  [20000] U11: 8x8/4 TIGHT B10 cycle 0: loc 1 k_L 4 sub_go 1 nxt_go 1 tick 1; expected 1 4 0 1 1
+S12   KILLED   phase_sequencer.sv   one pointer: an extra decision at slot ends
+      tb-only  by U11 +QUICK: ERROR  [800000] U11: 4x4 one pointer cycle 78: loc 0 k_L 0 sub_go 0 nxt_go 1 tick 0; expected 0 0 0 0 0
+S13   KILLED   phase_sequencer.sv   a waiting plan not replaced by a newer sample
+      tb-only  by U11 +QUICK: ERROR  [43880000] U11: 16x16/4 TIGHT B10 cycle 4386: phase 1 k_L 36 local slots done 0; expected 1 32 0
+P01   KILLED   sched_pkg.sv         K_FIXED one too large
+      tb-only  by U11 +QUICK: ERROR  [0] U11: U11 sched_pkg number 0 (K_FIXED 8x8, 16x16, SAFE 8x8, 16x16; frames k 4, 3, 15, 16x16 k 14; epochs; K_MAX; epoch 8x8 B_MAX 5): 5, the tracker says 4
+P02   KILLED   sched_pkg.sv         epoch sized at k_L = 3
+      tb-only  by U11 +QUICK: ERROR  [0] U11: U11 sched_pkg number 12 (K_FIXED 8x8, 16x16, SAFE 8x8, 16x16; frames k 4, 3, 15, 16x16 k 14; epochs; K_MAX; epoch 8x8 B_MAX 5): 16384, the tracker says 32768
+P03   KILLED   sched_pkg.sv         frame length one cycle short
+      tb-only  by U11 +QUICK: ERROR  [0] U11: U11 sched_pkg number 4 (K_FIXED 8x8, 16x16, SAFE 8x8, 16x16; frames k 4, 3, 15, 16x16 k 14; epochs; K_MAX; epoch 8x8 B_MAX 5): 602, the tracker says 603
+T01   KILLED   tile.sv              local decisions take the global subslot number for s0
+      tb-only  by TL01: ERROR  [80000] TL01: cycle 8 (local slot 0, deciding subslot 1): R0 should decide for R5, mode 0, 2 hops; tile says dec 1 from R5 mode 0 2 hops s0 1 local 1
+T02   KILLED   tile.sv              local decisions use the global gaps
+      tb-only  by TL01: ERROR  [80000] TL01: cycle 8 (local slot 0, deciding subslot 1): R0 should decide for R5, mode 0, 2 hops; tile says dec 1 from R5 mode 0 2 hops s0 0 local 0
+T03   KILLED   tile.sv              local table loaded with the global group
+      tb-only  by TL01: ERROR  [80000] TL01: cycle 8 (local slot 0, deciding subslot 1): R2 should decide for R7, mode 0, 2 hops; tile says dec 0 from R0 mode 0 0 hops s0 0 local 1
+T04   KILLED   tile.sv              local decisions for this subslot, not the next
+      tb-only  by TL01: ERROR  [80000] TL01: cycle 8 (local slot 0, deciding subslot 1): R0 should decide for R5, mode 0, 2 hops; tile says dec 0 from R0 mode 0 0 hops s0 0 local 1
+T05   KILLED   tile.sv              local turns given to the global partner
+      tb-only  by TL01: ERROR  [180000] TL01: cycle 18 (local slot 0 subslot 1): R0 should send to R5 by XY; tile gives turn 0 to R0 mode 0
+N01   KILLED   resv_ctrl.sv         local gaps swapped
+      tb-only  by TL01: ERROR  [160000] TL01: NI R0 at cycle 16: reserved 0, bypass flits in the FIFO 0; the model says 10 and 0
+N02   KILLED   tile.sv              local setup window one cycle long in the NI
+      tb-only  by TL01: ERROR  [340000] TL01: NI R0 at cycle 34: reserved 20, bypass flits in the FIFO 0; the model says 10 and 0
+N03   KILLED   tile.sv              local subslot one cycle short in the NI
+      tb-only  by TL01: ERROR  [220000] TL01: NI R0 at cycle 22: reserved 0, bypass flits in the FIFO 0; the model says 10 and 0
+M01   KILLED   mesh_top.sv          the tiles ignore the plan input
+      tb-only  by TL03: ERROR  [3010000] TL03: cycle 301: the sequencers are at phase 1 k_L 3 done 0 | local 1/0/0 slot 0 | global 1/0/0 slot 2; the frame reference says phase 1 k_L 2 done 0 | local 1/0/0 slot 0 | global 1/0/0 slot 2
+
+24 of 24 mutants killed (1 equivalent: no test can tell them from the design); by the testbench alone: 24

@@ -1,0 +1,23 @@
+# The short forms of every batch (EDA Playground's +QUICK where a test has one): a smoke regression in minutes
+U01        U01                  310493
+U02        U02                  196864
+U03        U03                  856450
+U04        U04                  1121244
+R01-R04    tb_router            357967
+N01-N08_q  tb_mesh              444704    -plus +QUICK
+N05        N05                  1949
+U05        U05                  24462     -plus +QUICK
+U06_q      U06                  99202     -plus +QUICK
+U07_q      U07                  423040    -plus +QUICK
+U08-U09_q  tb_timetable_check   756567    -plus +QUICK
+BP01-10_q  tb_mesh_b            1026210   -plus +QUICK
+BP08_B_q   BP08                 379431    -define TB_NUM_VC=1 -plus +QUICK
+BP08_A     tb_mesh_dl           9551      -plus +TEST=BP08
+U10_q      U10                  289930    -plus +QUICK
+U11_q      U11                  2625053   -plus +QUICK
+TL01-06_q  tb_mesh_c            1461178   -plus +QUICK
+TL05_q     TL05                 146657    -plus +QUICK
+U12_q      U12                  210015    -plus +QUICK
+U13_q      U13                  419900    -plus +QUICK
+U14_q      U14                  420       -plus +QUICK
+CT01-05_q  tb_mesh_d            9043644   -plus +QUICK

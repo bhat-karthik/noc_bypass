@@ -1,0 +1,59 @@
+[2026-11-13 02:32:18 UTC] vlib work && vlog '+define+TEST_TL05' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+WARNING VCP2910 "Conditional expression 4<=4 at ?: operator is constant." "tb_part4.sv" 2310  1
+MESSAGE "Unit top modules: tb_mesh_cb."
+SUCCESS "Compile success 0 Errors 1 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.0 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.8 [s]
+# SLP: Finished : 2.8 [s]
+# SLP: 0 primitives and 30425 (99.88%) other processes in SLP
+# SLP: 51711 (94.19%) signals in SLP and 474 (0.86%) interface signals
+# ELAB2: Elaboration final pass complete - time: 4.1 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 32876 kB (elbread=569 elab2=13714 kernel=18592 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   TL05  mesh 4x4, 4 VC, adaptive routing, design C with one 4x4 region (D50), B_MAX 10, TIGHT subslots of 18 cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  TL05 design C with one 4x4 region (D50) against design B, every output and link every cycle, 1333 cycles of traffic
+# KERNEL: INFO   TL05: 2647 packets measured, latency avg 163.78 p99 515 max 559, offered 0.2908 accepted 0.2263 flits/node/cycle, saturated
+# KERNEL: INFO   TL05: design C and design B agreed on every output and link for 1566 cycles; 75 bursts, 21 turns cancelled
+# KERNEL: COVER  TL05 bursts in both meshes                           75
+# KERNEL: COVER  TL05 turns cancelled in both meshes                  21
+# KERNEL: INFO   design C run: 0 local and 80 global subslots checked tile by tile, 0 local and 480 global turns, 0 local and 1 global rounds checked pair by pair
+# KERNEL: INFO   design C run: 18 frames checked, 0 k_L changes, 0 local-phase cycles checked for containment, 173 lookaheads followed on links and 75 at NIs
+# KERNEL: INFO   design C run: 75 bursts (0 in local slots), 0 whose last flits landed in the other phase
+# KERNEL: INFO   cycles simulated 1571
+# KERNEL: ==========================================================================
+# KERNEL: RESULT TL05 PASS checks=146657 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (463): $finish called.
+# KERNEL: Time: 15715 ns,  Iteration: 1,  Instance: /tb_mesh_cb/u_bench,  Process: @INITIAL#524_5@.
+# KERNEL: stopped at time: 15715 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

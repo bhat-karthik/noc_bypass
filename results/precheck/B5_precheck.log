@@ -1,0 +1,283 @@
+B5 pre-delivery checks, 2026-11-09 20:28 UTC
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v sv2v v0.0.12
+
+== 0. Portability scans (D30, D36, D41)
+Size casts inside indices: none
+tb/unit/tb_resv_ctrl.sv:220:                                   cx.vld ? "cancels" : "accepts", acc ? "accepts" : "cancels"))
+tb/unit/tb_resv_ctrl.sv:293:                           N, BM, (TMODE == TM_TIGHT) ? "TIGHT" : "SAFE ", SPACE, c, n_dec, n_acc, n_acc0, n_two, n_cx, n_cx_stall, n_ready_cx, n_nosh, n_shr, max_sum));
+?: between string literals: FOUND
+Recursive functions: none
+tb/common/run_ctrl.sv:58:    while (sb_pkg::outstanding() != 0) begin
+tb/common/tb_pkg.sv:73:    while (r.len() < w) r = {r, " "};
+tb/unit/tb_router.sv:489:    while (!(sb_left == 0 && all_idle()) && t < timeout) begin
+tb/unit/tb_router.sv:610:    while (sb_tsend.exists({32'h0, id} * 8) == 0 && t < 100) begin
+tb/mesh/tests_func.svh:303:        while (steps <= NN * NPORTS && waits(t, p)) begin
+Calls in loop conditions: FOUND (review each)
+Casts of a system function's result (rule 9, D45): none
+Simulation-only hooks the testbench writes or reads (tb_hold, turn and coverage counters), which must sit outside the synthesis-off pragmas:
+  rtl/router/router.sv: 4 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_source.sv: 10 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/cancel_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/ni/resv_ctrl.sv: 1 hook lines (declarations and uses) outside, 0 inside
+translate_off/on outside the pragma form: none
+
+== 1. RTL lint: verilator --lint-only -Wall, every module and parameter set
+RTL lint: 375 module/parameter sets (200 of them with the bypass or the reservation), 0 with warnings
+
+== 2. Testbench lint and build: -Wall except the testbench style rules DECLFILENAME and BLKSEQ
+tb_rr_arbiter: clean, built
+tb_sync_fifo: clean, built
+tb_route_compute: clean, built
+tb_switch_allocator: clean, built
+tb_router: clean, built
+tb_slot_table: clean, built
+tb_slot_counter: clean, built
+tb_group_to_router: clean, built
+tb_timetable_check: clean, built
+tb_resv_ctrl: clean, built
+tb_mesh : clean, built
+tb_mesh_dl : clean, built
+tb_mesh_b : clean, built
+tb_mesh_b +define+TB_MESH_N=8: clean, built
+tb_mesh_b +define+TB_MESH_N=2: clean, built
+tb_mesh_b +define+TB_NUM_VC=1: clean, built
+tb_mesh_b +define+TB_NUM_VC=2: clean, built
+tb_mesh_b +define+TB_B_MAX=5: clean, built
+tb_mesh_b +define+TB_B_MAX=15: clean, built
+tb_mesh_b +define+TB_SAFE: clean, built
+tb_mesh_b +define+TB_XY: clean, built
+
+== 3. Runs, final (10 Nov, after the fixes below; Verilator 5.020, every bench rebuilt from the delivered sources
+       with -Wall: "[]" after "ok" means no warning)
+The first run of section 3 (9 Nov, 20:28 UTC) passed every 4x4 test at seed 1 but was stopped in 3b by the
+machine's time limit. Its results with the earlier test code are superseded; the problems the rest of that run and
+these runs found were all in the tests or the bundle generator, none in the RTL, and are fixed:
+  - BP06 failed on 2x2: every packet was injected 120 cycles before the round, a 2x2 round is 69 cycles, so packets
+    left by bypass one round early. Now each source's packets are injected 30 cycles before its own turn, as many as
+    one burst takes (two with B_MAX 10), so the bursts overfill the 28-flit bypass space on 2x2 too.
+  - BP08 +QUICK failed at seeds 4, 7, 10 and 4000000000: no cycle of waiting packets formed in 1,000 cycles. The
+    load now goes on until one forms (at most 4x); with +QUICK a cycle forming is a coverage goal (seed 4 forms none
+    in 4,000 cycles), in the full form a check.
+  - BP10 passed on 8x8 with the mesh saturated (0.20 packets/node/cycle > 0.137). It now runs at 0.20 on 4x4 with
+    4 VCs and at the same 78% of design A's saturation elsewhere.
+  - The B_MAX 5 run failed BP04's bin "packets bypassed from a mesh input": with B_MAX 5 a burst holds one packet and
+    the scan's start decides where it comes from. A coverage goal for B_MAX 5 (the check stays for B_MAX >= 10).
+  - make_bundle.tcl stopped: the mesh bench with its four test files is one chunk of 120,165 characters, over the
+    99,000 limit. Bundles now leave out comment lines (pragmas kept): 89,266 characters for that chunk.
+  - Design-B CSV rows now record b_max and t_mode (stats.sv csv_row; PERF and BP10).
+
+-- 4x4 (TIGHT, B_MAX 10, 4 VCs, adaptive): the one run, each test alone (full and +QUICK), seeds, regular tests on design B
+build 4x4: ok [] (166 s)
+default : RESULT BP01-BP10 PASS checks=2573286 errors=0 seed=1  [29475 cycles]  (9.4 s)
+default +QUICK: RESULT BP01-BP10 PASS checks=1026210 errors=0 seed=1  [16113 cycles]  (4.7 s)
++TEST=BP01 : RESULT BP01 PASS checks=34722 errors=0 seed=1  [707 cycles]  (0.2 s)
++TEST=BP01 +QUICK: RESULT BP01 PASS checks=34722 errors=0 seed=1  [707 cycles]  (0.2 s)
++TEST=BP02 : RESULT BP02 PASS checks=42758 errors=0 seed=1  [854 cycles]  (0.2 s)
++TEST=BP02 +QUICK: RESULT BP02 PASS checks=42758 errors=0 seed=1  [854 cycles]  (0.3 s)
++TEST=BP03 : RESULT BP03 PASS checks=103930 errors=0 seed=1  [1623 cycles]  (0.5 s)
++TEST=BP03 +QUICK: RESULT BP03 PASS checks=103930 errors=0 seed=1  [1623 cycles]  (0.5 s)
++TEST=BP04 : RESULT BP04 PASS checks=47496 errors=0 seed=1  [953 cycles]  (0.3 s)
++TEST=BP04 +QUICK: RESULT BP04 PASS checks=47496 errors=0 seed=1  [953 cycles]  (0.3 s)
++TEST=BP05 : RESULT BP05 PASS checks=599829 errors=0 seed=1  [5068 cycles]  (1.6 s)
++TEST=BP05 +QUICK: RESULT BP05 PASS checks=152566 errors=0 seed=1  [1305 cycles]  (0.4 s)
++TEST=BP06 : RESULT BP06 PASS checks=88864 errors=0 seed=1  [1781 cycles]  (0.5 s)
++TEST=BP06 +QUICK: RESULT BP06 PASS checks=88864 errors=0 seed=1  [1781 cycles]  (0.5 s)
++TEST=BP07 : RESULT BP07 PASS checks=239570 errors=0 seed=1  [4839 cycles]  (1.5 s)
++TEST=BP07 +QUICK: RESULT BP07 PASS checks=239570 errors=0 seed=1  [4839 cycles]  (1.5 s)
++TEST=BP09 : RESULT BP09 PASS checks=85066 errors=0 seed=1  [1623 cycles]  (0.5 s)
++TEST=BP09 +QUICK: RESULT BP09 PASS checks=85066 errors=0 seed=1  [1623 cycles]  (0.5 s)
++TEST=BP10 : RESULT BP10 PASS checks=1326332 errors=0 seed=1  [12048 cycles]  (3.9 s)
++TEST=BP10 +QUICK: RESULT BP10 PASS checks=199316 errors=0 seed=1  [1852 cycles]  (0.6 s)
+seeds: BP05, BP06, BP07, BP10 (+QUICK) at seeds 1-10 and three large seeds: 52 passed, 0 failed
+design B N01 +QUICK: RESULT N01 PASS checks=9071 errors=0 seed=1  [98 cycles]  (0.0 s)
+design B N03 +QUICK: RESULT N03 PASS checks=345219 errors=0 seed=1  [4471 cycles]  (1.4 s)
+design B N06 +QUICK: RESULT N06 PASS checks=198954 errors=0 seed=1  [2031 cycles]  (0.8 s)
+design B N07 +QUICK: RESULT N07 PASS checks=95496 errors=0 seed=1  [1181 cycles]  (0.4 s)
+design B PERF +MEASURE=4000: RESULT PERF PASS checks=529155 errors=0 seed=1  [6043 cycles]  (2.2 s)
+
+-- 1 VC: BP08 (design B), seeds, the one run
+build 1 VC (BP08 short-form goal): ok
+BP08 : INFO   cycles simulated 17937 RESULT BP08 PASS checks=1173542 errors=0 seed=1 
+BP08 +QUICK: INFO   cycles simulated 5732 RESULT BP08 PASS checks=379431 errors=0 seed=1 
+  seed 4 +QUICK: no cycle formed (goal)
+seeds: BP08 +QUICK at seeds 1-10 and three large seeds, BP08 full at seeds 2-10: 22 passed, 0 failed
+default (1 VC): INFO   cycles simulated 29468 RESULT BP01-BP10 PASS checks=1789461 errors=0 seed=1 
+design A (tb_mesh_dl +TEST=BP08, unchanged): RESULT BP08 PASS checks=9551 (+QUICK: 9551), deadlock at cycle 615
+
+-- U10
+build U10: ok [] (23 s)
+U10 : RESULT U10 PASS checks=869821 errors=0 seed=1  (3.8 s)
+U10 +QUICK: RESULT U10 PASS checks=289930 errors=0 seed=1  (1.2 s)
+seeds: U10 at seeds 1-10 and three large seeds: 13 passed, 0 failed
+
+-- 2x2
+build 2x2: ok [] (72 s)
+default: RESULT BP01-BP10 PASS checks=1137611 errors=0 seed=1  [34565 cycles]  (1.1 s)
++TEST=BP01: RESULT BP01 PASS checks=1160 errors=0 seed=1  [89 cycles]  (0.0 s)
++TEST=BP02: RESULT BP02 PASS checks=2030 errors=0 seed=1  [117 cycles]  (0.0 s)
++TEST=BP03: RESULT BP03 PASS checks=4842 errors=0 seed=1  [311 cycles]  (0.0 s)
++TEST=BP04: RESULT BP04 PASS checks=2990 errors=0 seed=1  [202 cycles]  (0.0 s)
++TEST=BP05: RESULT BP05 PASS checks=710914 errors=0 seed=1  [20069 cycles]  (0.7 s)
++TEST=BP06: RESULT BP06 PASS checks=4673 errors=0 seed=1  [341 cycles]  (0.0 s)
++TEST=BP07: RESULT BP07 PASS checks=14631 errors=0 seed=1  [1078 cycles]  (0.0 s)
++TEST=BP09: RESULT BP09 PASS checks=4262 errors=0 seed=1  [311 cycles]  (0.0 s)
++TEST=BP10: RESULT BP10 PASS checks=387403 errors=0 seed=1  [12035 cycles]  (0.4 s)
+default +QUICK: RESULT BP01-BP10 PASS checks=139139 errors=0 seed=1  [5599 cycles]  (0.2 s)
+
+-- 8x8
+build 8x8: ok [] (649 s)
+default: RESULT BP01-BP10 PASS checks=36516484 errors=0 seed=1  [167107 cycles]  (248.2 s)
++TEST=BP02: RESULT BP02 PASS checks=1672182 errors=0 seed=1  [8635 cycles]  (13.1 s)
++TEST=BP03: RESULT BP03 PASS checks=4601512 errors=0 seed=1  [20723 cycles]  (30.8 s)
+seeds: BP05, BP06 +QUICK at seeds 1-3: 6 passed, 0 failed
+
+-- Other configurations on 4x4: the one run and BP05, BP06 +QUICK at seeds 1-3
+build 2 VCs: ok [] (207 s)
+default: RESULT BP01-BP10 PASS checks=2029175 errors=0 seed=1  [29469 cycles]  (12.9 s)
+seeds: BP05, BP06 +QUICK at seeds 1-3: 6 passed, 0 failed
+build B_MAX 5: ok [] (342 s)
+default: RESULT BP01-BP10 PASS checks=2454566 errors=0 seed=1  [26840 cycles]  (10.3 s)
+seeds: BP05, BP06 +QUICK at seeds 1-3: 6 passed, 0 failed
+build B_MAX 15: ok [] (322 s)
+default: RESULT BP01-BP10 PASS checks=2733460 errors=0 seed=1  [32893 cycles]  (21.5 s)
+seeds: BP05, BP06 +QUICK at seeds 1-3: 6 passed, 0 failed
+build SAFE subslots: ok [] (334 s)
+default: RESULT BP01-BP10 PASS checks=2772277 errors=0 seed=1  [33726 cycles]  (22.6 s)
+seeds: BP05, BP06 +QUICK at seeds 1-3: 6 passed, 0 failed
+build XY regular routing: ok [] (329 s)
+default: RESULT BP01-BP10 PASS checks=2574588 errors=0 seed=1  [29482 cycles]  (9.2 s)
+seeds: BP05, BP06 +QUICK at seeds 1-3: 6 passed, 0 failed
+
+-- B0-B4 regression at seed 1 (design A must not change)
+RESULT U01 PASS checks=310493 errors=0 seed=1
+RESULT U02 PASS checks=196864 errors=0 seed=1
+RESULT U03 PASS checks=856450 errors=0 seed=1
+RESULT U04 PASS checks=1121244 errors=0 seed=1
+RESULT R01-R04 PASS checks=357967 errors=0 seed=1
+N01 +QUICK: RESULT N01 PASS checks=4526 errors=0 seed=1
+N02 +QUICK: RESULT N02 PASS checks=1083 errors=0 seed=1
+N03 +QUICK: RESULT N03 PASS checks=124518 errors=0 seed=1
+N04 +QUICK: RESULT N04 PASS checks=97606 errors=0 seed=1
+N06 +QUICK: RESULT N06 PASS checks=96512 errors=0 seed=1
+N07 +QUICK: RESULT N07 PASS checks=37431 errors=0 seed=1
+N08 +QUICK: RESULT N08 PASS checks=76873 errors=0 seed=1
+N05: RESULT N05 PASS checks=1949 errors=0 seed=1
+tb_slot_table +QUICK: RESULT U05 PASS checks=24462 errors=0 seed=1
+tb_slot_counter +QUICK: RESULT U06 PASS checks=99202 errors=0 seed=1
+tb_group_to_router +QUICK: RESULT U07 PASS checks=423040 errors=0 seed=1
+tb_timetable_check +QUICK: RESULT U08-U09 PASS checks=756567 errors=0 seed=1
+tb_mesh +QUICK (one run): INFO   cycles simulated 14811 RESULT N01-N08 PASS checks=444704 errors=0 seed=1 
+Expected (README): U01 310493, U02 196864, U03 856450, U04 1121244, R01-R04 357967; QUICK N01 4526, N02 1083, N03 124518,
+N04 97606, N06 96512, N07 37431, N08 76873; N05 1949; QUICK U05 24462, U06 99202, U07 423040, U08-U09 756567
+
+-- D47 (area-lean bypass_source): the B4 tree with only bypass_source.sv replaced (cancel input tied to 0), the ten B4
+pre-check runs, every PHASE/INFO/COVER/RESULT line compared with B4's log; then the B4 and D47 sources side by side,
+random registered inputs, every output compared every cycle:
+b4_all: identical (RESULT BP01-BP05 PASS checks=355175 errors=0 seed=1)
+b2: identical (RESULT BP01-BP05 PASS checks=460506 errors=0 seed=1)
+bv1: identical (RESULT BP01-BP05 PASS checks=102092 errors=0 seed=1)
+bv2: identical (RESULT BP01-BP05 PASS checks=179030 errors=0 seed=1)
+bb5: identical (RESULT BP01-BP05 PASS checks=355810 errors=0 seed=1)
+bb15: identical (RESULT BP01-BP05 PASS checks=354522 errors=0 seed=1)
+bsafe: identical (RESULT BP01-BP05 PASS checks=354452 errors=0 seed=1)
+bxy: identical (RESULT BP01-BP05 PASS checks=355278 errors=0 seed=1)
+b8: identical (RESULT BP01-BP05 PASS checks=1956391 errors=0 seed=1) (8x8 rerun alone: the first 8x8 build was killed for memory)
+EQ MESH_N=4 NUM_VC=4 B_MAX=10: 200000 cycles, 83400 bursts (78669 of several packets), 184267 streaming cycles, 0 mismatches, 0 reference mismatches
+EQ MESH_N=8 NUM_VC=4 B_MAX=15: 200000 cycles, 83400 bursts (80481 of several packets), 191382 streaming cycles, 0 mismatches, 0 reference mismatches
+EQ MESH_N=4 NUM_VC=1 B_MAX=5: 200000 cycles, 18509 bursts (4350 of several packets), 41316 streaming cycles, 0 mismatches, 0 reference mismatches
+EQ MESH_N=4 NUM_VC=2 B_MAX=10: 200000 cycles, 24341 bursts (16522 of several packets), 64651 streaming cycles, 0 mismatches, 0 reference mismatches
+EQ MESH_N=2 NUM_VC=3 B_MAX=15: 200000 cycles, 77711 bursts (70116 of several packets), 186286 streaming cycles, 0 mismatches, 0 reference mismatches
+EQ MESH_N=16 NUM_VC=4 B_MAX=5: 200000 cycles, 82423 bursts (52437 of several packets), 156650 streaming cycles, 0 mismatches, 0 reference mismatches
+
+== 4. EDA Playground bundles (Riviera-PRO), regenerated: design.sv 96,791, design_part2.sv 11,350, testbench.sv 95,909,
+tb_part2.sv 39,671, tb_part3.sv 96,845, tb_part4.sv 45,408 characters (CRLF counted). Each test built from the bundle
+alone with its define (Verilator, -O0), like Riviera does:
++define+TEST_U10 +QUICK: RESULT U10 PASS checks=289930 errors=0 seed=1  (3.9 s)
++define+TEST_BP03 +QUICK: RESULT BP03 PASS checks=103930 errors=0 seed=1  [1623 cycles]  (1.9 s)
++define+TEST_BP06 +QUICK: RESULT BP06 PASS checks=88864 errors=0 seed=1  [1781 cycles]  (2.2 s)
++define+TEST_BP07 +QUICK: RESULT BP07 PASS checks=239570 errors=0 seed=1  [4839 cycles]  (5.4 s)
++define+TEST_BP08 +QUICK: RESULT BP08 PASS checks=379431 errors=0 seed=1  [5732 cycles]  (3.7 s)
++define+TEST_BP09 +QUICK: RESULT BP09 PASS checks=85066 errors=0 seed=1  [1623 cycles]  (1.8 s)
++define+TEST_BP10 +QUICK: RESULT BP10 PASS checks=199316 errors=0 seed=1  [1852 cycles]  (2.3 s)
++define+TEST_N05 : RESULT N05 PASS checks=1949 errors=0 seed=1  [4153 cycles]  (1.4 s)
++define+TEST_N05 +TEST=BP08: RESULT BP08 PASS checks=9551 errors=0 seed=1  [2616 cycles]  (0.9 s)
++define+TEST_N05 +TEST=BP08 +QUICK: RESULT BP08 PASS checks=9551 errors=0 seed=1  [3006 cycles]  (1.0 s)
++define+TEST_U01 +QUICK: RESULT U01 PASS checks=310493 errors=0 seed=1  (1.0 s)
++define+TEST_BP05 +QUICK: RESULT BP05 PASS checks=152566 errors=0 seed=1  [1305 cycles]  (1.6 s)
+
+== 5. Vivado runner (run.tcl) against xvlog/xelab/xsim stubs that split arguments like Windows batch files
+(the stub xsim runs the 4x4 binary whatever the define, so BP08 with TB_NUM_VC=1 fails there and BP03 with
+TB_MESH_N=8 prints 4x4's count; what this checks is the argument handling and the work folder names)
+--- set argv {-test U10}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_resv_ctrl         U10          PASS  checks=869821 errors=0   (4 s; warnings: compile 0, elaborate 0)
+tb_resv_ctrl
+--- set argv {-test tb_mesh_b}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_b            BP01 BP02 BP03 BP04 BP05 BP06 BP07 BP08 BP09 BP10 PASS  checks=2573286 errors=0, 29475 cycles in 9.3 s = 3184 cycles/s   (10 s; warnings: compile 0, elaborate 0)
+tb_mesh_b
+--- set argv {-test BP08 -define TB_NUM_VC=1}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1, defines TB_NUM_VC=1 ====================
+tb_mesh_b            BP01 BP02 BP03 BP04 BP05 BP06 BP07 BP08 BP09 BP10 FAIL  checks=0 errors=1, 5 cycles in 0.0 s = 238 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh_b__TB_NUM_VC_1
+--- set argv {-test tb_mesh_dl -plus {+TEST=BP08}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_dl           N05          PASS  checks=9551 errors=0, 2616 cycles in 0.2 s = 14065 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh_dl
+--- set argv {-test BP03 -define TB_MESH_N=8}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1, defines TB_MESH_N=8 ====================
+tb_mesh_b            BP01 BP02 BP03 BP04 BP05 BP06 BP07 BP08 BP09 BP10 PASS  checks=103930 errors=0, 1623 cycles in 0.6 s = 2760 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh_b__TB_MESH_N_8
+--- set argv {-test tb_mesh -plus {+QUICK}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=444704 errors=0, 14811 cycles in 2.7 s = 5587 cycles/s   (3 s; warnings: compile 0, elaborate 0)
+tb_mesh
+
+== 6. Synthesis: sv2v + Yosys 'synth' (generic gates), the fallback flow of D20; MESH_N 8, 4 VCs, B_MAX 10, TIGHT
+bypass_source MESH_N=8 NUM_VC=4 B_MAX=10: 7421 cells, 38 flip-flops
+bypass_relay MESH_N=8 B_MAX=10: 1100 cells, 156 flip-flops
+cancel_relay MESH_N=8: 588 cells, 40 flip-flops
+resv_ctrl B_MAX=10 SPACE=28 GAP0=15 GAPK=34: 323 cells, 28 flip-flops
+router MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=0: 38263 cells, 15450 flip-flops
+router MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=1: 50026 cells, 15699 flip-flops
+ni NUM_VC=4 BYPASS=0: 6935 cells, 3475 flip-flops
+ni NUM_VC=4 BYPASS=1 EJ_DEPTH=48 B_MAX=10 GAP0=15 GAPK=34: 13492 cells, 6590 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=0: 44882 cells, 18925 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=1: 63761 cells, 22356 flip-flops
+B4 for comparison: bypass_source 20,472 cells / 37 flip-flops; design-B router 62,326 / 15,658; ni BYPASS=1 6,985 / 3,500;
+design-B tile 69,427 / 19,225; design-A router 38,280 / 15,450; design-A tile 44,882 / 18,925
+
+== Review (by hand, 10 Nov)
+Section 0: the five calls in loop conditions are the B0-B2 ones reviewed on 8 Nov. The two "?:" hits in
+tb_resv_ctrl.sv were fixed with if/else after the first scan; the scan of the delivered sources (below) finds none.
+== 0. Portability scans (D30, D36, D41)
+Size casts inside indices: none
+?: between string literals of different lengths: none (PASS/FAIL and XY/YX have equal lengths)
+Recursive functions: none
+tb/common/run_ctrl.sv:58:    while (sb_pkg::outstanding() != 0) begin
+tb/common/tb_pkg.sv:73:    while (r.len() < w) r = {r, " "};
+tb/unit/tb_router.sv:489:    while (!(sb_left == 0 && all_idle()) && t < timeout) begin
+tb/unit/tb_router.sv:610:    while (sb_tsend.exists({32'h0, id} * 8) == 0 && t < 100) begin
+tb/mesh/tests_func.svh:303:        while (steps <= NN * NPORTS && waits(t, p)) begin
+Calls in loop conditions: FOUND (review each)
+Casts of a system function's result (rule 9, D45): none
+Simulation-only hooks the testbench writes or reads (tb_hold, turn and coverage counters), which must sit outside the synthesis-off pragmas:
+  rtl/router/router.sv: 4 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_source.sv: 10 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/cancel_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+  rtl/ni/resv_ctrl.sv: 1 hook lines (declarations and uses) outside, 0 inside
+translate_off/on outside the pragma form: none

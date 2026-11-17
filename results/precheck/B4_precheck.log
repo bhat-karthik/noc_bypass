@@ -1,0 +1,275 @@
+B4 pre-delivery checks, 2026-11-09 16:00 UTC
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v sv2v v0.0.12
+
+== 0. Portability scans (D30, D36, D41)
+Size casts inside indices: none
+?: between string literals of different lengths: none (PASS/FAIL and XY/YX have equal lengths)
+Recursive functions: none
+tb/common/run_ctrl.sv:58:    while (sb_pkg::outstanding() != 0) begin
+tb/common/tb_pkg.sv:73:    while (r.len() < w) r = {r, " "};
+tb/unit/tb_router.sv:483:    while (!(sb_left == 0 && all_idle()) && t < timeout) begin
+tb/unit/tb_router.sv:604:    while (sb_tsend.exists({32'h0, id} * 8) == 0 && t < 100) begin
+tb/mesh/tests_func.svh:302:        while (steps <= NN * NPORTS && waits(t, p)) begin
+Calls in loop conditions: FOUND (review each)
+Simulation-only hooks the testbench writes or reads (tb_hold, turn and coverage counters), which must sit outside the synthesis-off pragmas:
+  rtl/router/router.sv: 4 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_source.sv: 8 hook lines (declarations and uses) outside, 0 inside
+  rtl/router/bypass_relay.sv: 1 hook lines (declarations and uses) outside, 0 inside
+translate_off/on outside the pragma form: none
+
+== 1. RTL lint: verilator --lint-only -Wall, every module and parameter set
+RTL lint: 311 module/parameter sets (136 of them with the bypass), 0 with warnings
+
+== 2. Testbench lint and build: -Wall except the testbench style rules DECLFILENAME and BLKSEQ
+tb_rr_arbiter: clean, built
+tb_sync_fifo: clean, built
+tb_route_compute: clean, built
+tb_switch_allocator: clean, built
+tb_router: clean, built
+tb_slot_table: clean, built
+tb_slot_counter: clean, built
+tb_group_to_router: clean, built
+tb_timetable_check: clean, built
+tb_mesh : clean, built
+tb_mesh_dl : clean, built
+tb_mesh_b : clean, built
+tb_mesh_b +define+TB_MESH_N=8: clean, built
+tb_mesh_b +define+TB_MESH_N=2: clean, built
+tb_mesh_b +define+TB_NUM_VC=1: clean, built
+tb_mesh_b +define+TB_NUM_VC=2: clean, built
+tb_mesh_b +define+TB_B_MAX=5: clean, built
+tb_mesh_b +define+TB_B_MAX=15: clean, built
+tb_mesh_b +define+TB_SAFE: clean, built
+tb_mesh_b +define+TB_XY: clean, built
+
+== 3a. B4 tests at seed 1 on 4x4 (TIGHT, B_MAX 10, 4 VCs, adaptive): all four, then each alone, full and +QUICK
+tb_mesh_b                    RESULT BP01-BP05 PASS checks=355175 errors=0 seed=1   (1.6 s)
+tb_mesh_b +QUICK             RESULT BP01-BP05 PASS checks=91701 errors=0 seed=1   (0.9 s)
++TEST=BP01                   RESULT BP01 PASS checks=341 errors=0 seed=1   (0.2 s)
++TEST=BP01 +QUICK            RESULT BP01 PASS checks=341 errors=0 seed=1   (0.2 s)
++TEST=BP02                   RESULT BP02 PASS checks=1230 errors=0 seed=1   (0.2 s)
++TEST=BP02 +QUICK            RESULT BP02 PASS checks=1230 errors=0 seed=1   (0.2 s)
++TEST=BP04                   RESULT BP04 PASS checks=1109 errors=0 seed=1   (0.2 s)
++TEST=BP04 +QUICK            RESULT BP04 PASS checks=1109 errors=0 seed=1   (0.3 s)
++TEST=BP05                   RESULT BP05 PASS checks=352121 errors=0 seed=1   (1.3 s)
++TEST=BP05 +QUICK            RESULT BP05 PASS checks=88975 errors=0 seed=1   (0.3 s)
+
+All INFO and COVER lines of the full 4x4 run:
+PHASE  BP01 one bypass at the exact cycles: a 5-flit packet held at its source until its subslot
+INFO   BP01: R2 -> R9, 3 hops, slot 8 subslot 2 by XY; the subslot starts at cycle 680
+INFO   BP01: created at cycle 651, burst of 5 flits decided at 680, lookahead on link 1 at 682, flit 0 on link 1 at 683, tail in R9's NI at 693: latency 42 cycles (regular zero-load 21)
+PHASE  BP02 corner to corner, both ways: 6 hops, two-packet bursts
+INFO   BP02: R0 -> R15 in slot 0 subslot 3 by XY, at cycle 856: 5 + 5 flits
+INFO   BP02: R15 -> R0 in slot 0 subslot 1 by XY, at cycle 820: 5 + 1 flits
+INFO   BP02: R3 -> R12 in slot 7 subslot 3 by YX, at cycle 1409: 5 + 5 flits
+INFO   BP02: R12 -> R3 in slot 7 subslot 3 by XY, at cycle 1409: 5 + 1 flits
+INFO   BP02: R0 -> R15: 10 flits left at cycle 856, the last in R15's NI at cycle 880 (t + 24; the subslot has 18 cycles)
+INFO   BP02: R15 -> R0: 6 flits left at cycle 820, the last in R0's NI at cycle 840 (t + 20; the subslot has 18 cycles)
+INFO   BP02: R3 -> R12: 10 flits left at cycle 1409, the last in R12's NI at cycle 1433 (t + 24; the subslot has 18 cycles)
+INFO   BP02: R12 -> R3: 6 flits left at cycle 1409, the last in R3's NI at cycle 1429 (t + 20; the subslot has 18 cycles)
+INFO   BP02 back to back: no two bursts of consecutive subslots can meet back to back on a link in this timetable (4x4, T = 18)
+PHASE  BP04 the burst limit: more eligible flits than B_MAX = 10
+INFO   BP04 a: R10 -> R0 at cycle 1628 (slot 0 subslot 2, XY): 4 five-flit packets waiting
+INFO   BP04 a: 2 of 4 waiting packets sent, 10 flits; 0 of them from another router's packets
+INFO   BP04 a: the 2 packets left out arrived later, 2 of them by the regular path
+INFO   BP04 b: R13 -> R12 at cycle 1908; R14's packets for R12 wait in R13's East input
+INFO   BP04 b: 2 of 3 waiting packets sent, 6 flits; 2 of them from another router's packets
+COVER  BP04 packets bypassed from a mesh input of a router on their path 2
+INFO   BP04 c: slot 1 subslot 2 at cycle 2497: R0 -> R11 passes R1, entering on its W input, while R1 sends to R10 a packet from R0 waiting in that same input
+INFO   BP04 c: R0's burst of 10 flits crossed R1 at cycles 2500-2509 while R1's own flits left at 2498-2502
+COVER  BP04 cycles a source read a mesh input that a passing burst crossed (D38 rule) 3
+PHASE  BP05 bypass under heavy traffic: uniform at 0.9 x 0.257 packets/node/cycle, 4000 cycles
+INFO   BP05: 14654 packets measured, latency avg 25.69 p99 66 max 117, offered 0.5344 accepted 0.5328 flits/node/cycle
+INFO   BP05: 75 bursts in 1536 turns, 82 packets (114 flits) by bypass; 6 bursts of several packets, 1 of exactly B_MAX flits; 46 packets taken from mesh inputs; bypass share 0.4% of packets, 0.3% of flits
+INFO   BP05: the checker matched 454 lookahead, link and NI events at their D38 cycles
+COVER  BP05 bursts                                          75
+COVER  BP05 bursts of two or more packets                   6
+COVER  BP05 packets bypassed from a mesh input              46
+INFO   BP05: corner cases: a source read a mesh input while a passing burst crossed it in 0 cycles (D38 rule, allowed); 0 bursts arrived on a link the cycle the previous one's last flit crossed; 0 bursts were chosen while the source's previous burst sent its last flit
+INFO   cycles simulated 7601
+RESULT BP01-BP05 PASS checks=355175 errors=0 seed=1
+
+== 3b. Other mesh sizes and options, seed 1 (all four tests in one run)
+8x8                    RESULT BP01-BP05 PASS checks=1956391 errors=0 seed=1   (63.9 s)
+2x2                    RESULT BP01-BP05 PASS checks=460506 errors=0 seed=1   (0.4 s)
+1 VC                   RESULT BP01-BP05 PASS checks=102092 errors=0 seed=1   (0.4 s)
+2 VCs                  RESULT BP01-BP05 PASS checks=179030 errors=0 seed=1   (1.0 s)
+B_MAX 5                RESULT BP01-BP05 PASS checks=355810 errors=0 seed=1   (1.7 s)
+B_MAX 15               RESULT BP01-BP05 PASS checks=354522 errors=0 seed=1   (2.1 s)
+SAFE subslots          RESULT BP01-BP05 PASS checks=354452 errors=0 seed=1   (2.2 s)
+XY regular routing     RESULT BP01-BP05 PASS checks=355278 errors=0 seed=1   (1.9 s)
+8x8 INFO lines (BP02 is the tracker's stimulus there):
+INFO   BP01: R2 -> R17, 3 hops, slot 30 subslot 6 by XY; the subslot starts at cycle 8834
+INFO   BP01: created at cycle 8805, burst of 5 flits decided at 8834, lookahead on link 1 at 8836, flit 0 on link 1 at 8837, tail in R17's NI at 8847: latency 42 cycles (regular zero-load 21)
+INFO   BP02: R0 -> R63 in slot 0 subslot 7 by XY, at cycle 10590: 5 + 5 flits
+INFO   BP02: R63 -> R0 in slot 0 subslot 1 by XY, at cycle 10386: 5 + 1 flits
+INFO   BP02: R7 -> R56 in slot 29 subslot 7 by YX, at cycle 18913: 5 + 5 flits
+INFO   BP02: R56 -> R7 in slot 29 subslot 7 by XY, at cycle 18913: 5 + 1 flits
+INFO   BP02: R0 -> R63: 10 flits left at cycle 10590, the last in R63's NI at cycle 10630 (t + 40; the subslot has 34 cycles)
+INFO   BP02: R63 -> R0: 6 flits left at cycle 10386, the last in R0's NI at cycle 10422 (t + 36; the subslot has 34 cycles)
+INFO   BP02: R7 -> R56: 10 flits left at cycle 18913, the last in R56's NI at cycle 18953 (t + 40; the subslot has 34 cycles)
+INFO   BP02: R56 -> R7: 6 flits left at cycle 18913, the last in R7's NI at cycle 18949 (t + 36; the subslot has 34 cycles)
+INFO   BP02 back to back: no two bursts of consecutive subslots can meet back to back on a link in this timetable (8x8, T = 34)
+INFO   BP04 a: R36 -> R0 at cycle 20820 (slot 0 subslot 4, XY): 4 five-flit packets waiting
+INFO   BP04 a: 2 of 4 waiting packets sent, 10 flits; 0 of them from another router's packets
+INFO   BP04 a: the 2 packets left out arrived later, 2 of them by the regular path
+INFO   BP04 b: R57 -> R56 at cycle 21832; R58's packets for R56 wait in R57's East input
+INFO   BP04 b: 2 of 3 waiting packets sent, 6 flits; 2 of them from another router's packets
+COVER  BP04 packets bypassed from a mesh input of a router on their path 2
+INFO   BP04 c: slot 1 subslot 2 at cycle 31371: R0 -> R55 passes R1, entering on its W input, while R1 sends to R18 a packet from R0 waiting in that same input
+INFO   BP04 c: R0's burst of 10 flits crossed R1 at cycles 31374-31383 while R1's own flits left at 31372-31376
+COVER  BP04 cycles a source read a mesh input that a passing burst crossed (D38 rule) 3
+INFO   BP05: 81626 packets measured, latency avg 39.86 p99 110 max 267, offered 0.2884 accepted 0.2884 flits/node/cycle
+INFO   BP05: 88 bursts in 5000 turns, 95 packets (111 flits) by bypass; 7 bursts of several packets, 0 of exactly B_MAX flits; 87 packets taken from mesh inputs; bypass share 0.1% of packets, 0.0% of flits
+INFO   BP05: the checker matched 732 lookahead, link and NI events at their D38 cycles
+COVER  BP05 bursts                                          88
+COVER  BP05 bursts of two or more packets                   7
+COVER  BP05 packets bypassed from a mesh input              87
+INFO   BP05: corner cases: a source read a mesh input while a passing burst crossed it in 0 cycles (D38 rule, allowed); 0 bursts arrived on a link the cycle the previous one's last flit crossed; 0 bursts were chosen while the source's previous burst sent its last flit
+INFO   cycles simulated 44411
+2x2 INFO lines (a subslot is exactly B_MAX cycles: BP04 d):
+INFO   BP04 d: R0 sends 10 flits to R1 at cycle 307 and chooses its burst to R2 at cycle 317, as the last flit leaves
+INFO   BP04 d: the first burst's last flit left R0 at cycle 317
+INFO   BP05: 18963 packets measured, latency avg 24.42 p99 73 max 132, offered 0.6939 accepted 0.6937 flits/node/cycle
+INFO   BP05: 374 bursts in 3492 turns, 456 packets (592 flits) by bypass; 56 bursts of several packets, 0 of exactly B_MAX flits; 107 packets taken from mesh inputs; bypass share 1.9% of packets, 1.1% of flits
+INFO   BP05: the checker matched 1367 lookahead, link and NI events at their D38 cycles
+INFO   BP05: corner cases: a source read a mesh input while a passing burst crossed it in 0 cycles (D38 rule, allowed); 0 bursts arrived on a link the cycle the previous one's last flit crossed; 0 bursts were chosen while the source's previous burst sent its last flit
+
+== 3c. Seeds: BP05 (the only B4 test with random traffic) at seeds 1-12 and three large seeds, 4x4 +QUICK and full
+BP05 4x4: 30 passed, 0 failed
+BP05 +QUICK on 8x8, 2x2, 1 VC, SAFE, XY at seeds 1, 2, 3, 7: 20 passed, 0 failed
+
+Regular tests on design B with the bypass checker on (+TEST=N01, N03, N07; informative, not B4 exit tests):
+  N01 +QUICK: RESULT N01 PASS checks=4547 errors=0 seed=1
+  N03 +QUICK: RESULT N03 PASS checks=126749 errors=0 seed=1
+  N07 +QUICK: RESULT N07 PASS checks=37952 errors=0 seed=1
+
+== 3d. B0-B3 regression at seed 1 (the router, NI, tile and mesh gained the bypass ports; design A must not change)
+RESULT U01 PASS checks=310493 errors=0 seed=1
+RESULT U02 PASS checks=196864 errors=0 seed=1
+RESULT U03 PASS checks=856450 errors=0 seed=1
+RESULT U04 PASS checks=1121244 errors=0 seed=1
+RESULT R01-R04 PASS checks=357967 errors=0 seed=1
+N01 +QUICK: RESULT N01 PASS checks=4526 errors=0 seed=1
+N02 +QUICK: RESULT N02 PASS checks=1083 errors=0 seed=1
+N03 +QUICK: RESULT N03 PASS checks=124518 errors=0 seed=1
+N04 +QUICK: RESULT N04 PASS checks=97606 errors=0 seed=1
+N06 +QUICK: RESULT N06 PASS checks=96512 errors=0 seed=1
+N07 +QUICK: RESULT N07 PASS checks=37431 errors=0 seed=1
+N08 +QUICK: RESULT N08 PASS checks=76873 errors=0 seed=1
+N05: RESULT N05 PASS checks=1949 errors=0 seed=1
+tb_slot_table +QUICK: RESULT U05 PASS checks=24462 errors=0 seed=1
+tb_slot_counter +QUICK: RESULT U06 PASS checks=99202 errors=0 seed=1
+tb_group_to_router +QUICK: RESULT U07 PASS checks=423040 errors=0 seed=1
+tb_timetable_check +QUICK: RESULT U08-U09 PASS checks=756567 errors=0 seed=1
+Expected (README): U01 310493, U02 196864, U03 856450, U04 1121244, R01-R04 357967; QUICK N01 4526, N02 1083, N03 124518,
+N04 97606, N06 96512, N07 37431, N08 76873; N05 1949; QUICK U05 24462, U06 99202, U07 423040, U08-U09 756567
+
+== 4. EDA Playground bundles (Riviera-PRO): regenerated, every test selected by its define
+make_bundle: tests U01, U02, U03, U04, R01, R02, R03, R04, N01, N02, N03, N04, N06, N07, N08, PERF, N05, U05, U06, U07, U08, U09, BP01, BP02, BP04, BP05
+make_bundle: design pane    design.sv (96307 characters), design_part2.sv (43078 characters)
+make_bundle: testbench pane testbench.sv (88419 characters), tb_part2.sv (81149 characters), tb_part3.sv (96098 characters), tb_part4.sv (44827 characters)
+make_bundle: sizes counted with CRLF line ends; at most 99000 per file (EDA Playground: under 100,000)
+  design.sv: 94043 bytes
+  design_part2.sv: 42099 bytes
+  tb_part2.sv: 79223 bytes
+  tb_part3.sv: 94062 bytes
+  tb_part4.sv: 43836 bytes
+  testbench.sv: 86083 bytes
++define+TEST_U01 +QUICK: RESULT U01 PASS checks=310493 errors=0 seed=1
++define+TEST_U05 +QUICK: RESULT U05 PASS checks=24462 errors=0 seed=1
++define+TEST_U09 +QUICK: RESULT U09 PASS checks=87 errors=0 seed=1
++define+TEST_R01 +QUICK: RESULT R01 PASS checks=28058 errors=0 seed=1
++define+TEST_N01 +QUICK: RESULT N01 PASS checks=4526 errors=0 seed=1
++define+TEST_N03 +QUICK: RESULT N03 PASS checks=124518 errors=0 seed=1
++define+TEST_N05: RESULT N05 PASS checks=1949 errors=0 seed=1
++define+TEST_BP01 +QUICK: RESULT BP01 PASS checks=341 errors=0 seed=1
++define+TEST_BP02 +QUICK: RESULT BP02 PASS checks=1230 errors=0 seed=1
++define+TEST_BP04 +QUICK: RESULT BP04 PASS checks=1109 errors=0 seed=1
++define+TEST_BP05 +QUICK: RESULT BP05 PASS checks=88975 errors=0 seed=1
+Tops the bundle leaves for a simulator to find (should be exactly one per test):
+  TEST_U05: 3 MULTITOP warnings
+  TEST_N03: 0 MULTITOP warnings
+  TEST_N05: 0 MULTITOP warnings
+  TEST_BP01: 0 MULTITOP warnings
+
+== 5. Vivado runner (run.tcl) against xvlog/xelab/xsim stubs that split arguments like Windows batch files
+--- set argv {-test BP01}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_b            BP01 BP02 BP04 BP05 PASS  checks=341 errors=0, 707 cycles in 0.2 s = 4621 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh_b
+--- set argv {-test tb_mesh_b -plus {+QUICK}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_b            BP01 BP02 BP04 BP05 PASS  checks=91701 errors=0, 3837 cycles in 0.9 s = 4113 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+tb_mesh_b
+--- set argv {-test BP02 -define TB_MESH_N=8}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1, defines TB_MESH_N=8 ====================
+tb_mesh_b            BP01 BP02 BP04 BP05 PASS  checks=1230 errors=0, 854 cycles in 0.2 s = 4086 cycles/s   (1 s; warnings: compile 0, elaborate 0)
+tb_mesh_b__TB_MESH_N_8
+  defines passed in the options file: TB_MESH_N=8 
+--- set argv {-test N03 -plus {+QUICK}}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=124518 errors=0, 4629 cycles in 0.5 s = 8800 cycles/s   (0 s; warnings: compile 0, elaborate 0)
+tb_mesh
+--- set argv {-test U05}; source run.tcl
+==========================================================================
+==========================================================================
+==================== run.tcl summary, seed 1 ====================
+tb_slot_table        U05          PASS  checks=24462 errors=0   (0 s; warnings: compile 0, elaborate 0)
+tb_slot_table
+
+== 6. Synthesis: sv2v + Yosys 'synth' (generic gates), the fallback flow of D20; MESH_N 8, 4 VCs, B_MAX 10
+bypass_source MESH_N=8 NUM_VC=4 B_MAX=10: 20472 cells, 37 flip-flops
+bypass_relay MESH_N=8 B_MAX=10: 1034 cells, 156 flip-flops
+router MESH_N=8 NUM_VC=4 ALGO=0 DESIGN=0: 38111 cells, 15450 flip-flops
+router MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=0: 38280 cells, 15450 flip-flops
+router MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=1: 62326 cells, 15658 flip-flops
+ni NUM_VC=4 BYPASS=0: 6937 cells, 3475 flip-flops
+ni NUM_VC=4 BYPASS=1: 6985 cells, 3500 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=0 DESIGN=0: 44719 cells, 18925 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=0: 44882 cells, 18925 flip-flops
+tile MESH_N=8 NUM_VC=4 ALGO=1 DESIGN=1: 69427 cells, 19225 flip-flops
+
+== Review (by hand, 9 Nov)
+Section 0: the five calls in loop conditions are the B0-B2 ones reviewed on 8 Nov; tb_router.sv's two moved
+by 8 lines with B4's tie-offs (475 -> 483, 596 -> 604). B4's code has none: wait_delivered computes
+sb_pkg::outstanding() before its loop (D41). Every line that declares or uses a simulation-only hook
+(tb_hold, the turn and coverage counters) is under `ifndef SYNTHESIS and outside the synthesis-off pragmas,
+so every simulator keeps it and synthesis drops it (section 6 converts the RTL with sv2v -DSYNTHESIS).
+Section 3: BP05's counts of several-packet bursts and of packets taken from mesh inputs are coverage goals
+(tb_pkg::cover_goal): a short run may miss one (4x4 with +QUICK at seeds 4 and 12 has no several-packet
+burst) and then prints an INFO line instead of failing; BP02 and BP04 make both happen on purpose. BP05
+lasts at least one timetable round (8x8: 10,332 cycles; 4x4 and 2x2 keep their lengths).
+Design A, full form, run separately on the section-2 binary: tb_mesh on 4x4, N01-N04 and N06-N08 in one run,
+RESULT N01-N08 PASS checks=46273022 in 1,231,461 cycles (174 s), the README count; with +QUICK in one run
+444,704 checks in 14,811 cycles.
+Section 4: TEST_U05's MULTITOP lines are one warning (three lines), as in B2 and B3: the design pane's modules
+a test does not use are extra tops (README Section 3); the testbench pane adds only the chosen test's top.
+Section 6: bypass_source is 20,472 generic cells for 37 flip-flops. Most of it is select logic: each of the
+20 steps of the rotating scan reads rdy, dst and len through a 20-way variable index (about 10,000 cells), and
+the flit for crossbar input 4 goes through a 20-way, 134-bit mux (about 5,000). A 5-bit sum instead of int
+saves only 946 cells (19,535). Design B's router is 62,326 cells against design A's 38,280 (flip-flops
+15,658 against 15,450). Function is not affected; the area matters for E11 and is raised as an issue.
+
+== Fix after the xsim runs (9 Nov)
+R-1109-01 and R-1109-03 (xsim 2024.2) passed with the Verilator counts, and every output line matched but one:
+BP05's count of packets taken from mesh inputs (its INFO and COVER lines) was garbage on xsim
+(1911612530959056942 for 46 on 4x4, 16129901137854726251 for 107 on 2x2). Riviera-PRO (R-1109-BP05) and
+Verilator agree. The simulation-only counter n_remote in bypass_source.sv added $countones(take[15:0]); it now
+adds n_take_mesh, counted with a loop (README Section 2, rule 9; the pre-check scans for $countones of a bit
+range: none left). Checks after the fix:
+  sv2v -DSYNTHESIS of the whole RTL is byte-identical before and after: no synthesizable logic changed
+  RTL lint of bypass_source, 48 sets (NUM_VC 1-4, MESH_N 2-16, B_MAX 5/10/15), and of the router: clean
+  tb_mesh_b 4x4, 2x2 and 8x8 rebuilt with -Wall: clean; their output (4x4 all, 2x2 all, 8x8 +TEST=BP02,
+  4x4 +TEST=BP05 +QUICK) is identical, line for line, to the runs before the fix
+  EDA bundle regenerated: only design_part2.sv changed; +define+TEST_BP05 +QUICK from it gives the same lines
+Every other xsim and Riviera-PRO line equals Verilator's, except that tb_router (R-1109-04) prints the lines of
+its four parallel testers in another order (the same lines, as since B1).

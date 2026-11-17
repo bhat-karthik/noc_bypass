@@ -1,0 +1,34 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Sat Nov 14 16:04:11 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_mesh_c_snap/xsim_script.tcl
+# xsim {tb_mesh_c_snap} -testplusarg SEED=1 -testplusarg RUNID=S06_C_uniform_f0.70 -testplusarg TEST=PERF -testplusarg PATTERN=uniform -testplusarg RATE_FRAC=0.70 -testplusarg WARMUP=500 -testplusarg MEASURE=2000 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==========================================================================
+TEST   TL01-TL06  mesh 4x4, 4 VC, adaptive routing, design C, 2x2 regions, k_L 3 from reset, epoch 2048, B_MAX 10, TIGHT subslots of 18 (local 10) cycles
+SEED   1 (from +SEED)
+==========================================================================
+PHASE  PERF S06_C_uniform_f0.70: uniform at 0.1799 packets/node/cycle, p_data 0.333, stall 0.000, 500 + 2000 cycles
+INFO   PERF: 5547 packets measured, latency avg 20.52 p99 44 max 63, offered 0.4102 accepted 0.4111 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.29, jain 0.9983, worst flow 36.31
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting,k_mean,k_min,k_max,k_changes,share_L,turn_max_L,turn_max_G,kL_trace
+INFO   PERF: bypass share 0.50% of packets; 36 bursts in 1228 turns, 0 turns cancelled; k_L 3..3, 0 changes
+INFO   PERF: turns of one pair inside a region every 31..148 cycles (48 pairs), across regions every 1480..1480 (132 pairs)
+CSV,S06_C_uniform_f0.70,C,4,4,uniform,0.3333,10,TIGHT,fixed3,2048,0.1799,1,20.518,19,44,63,0.4102,0.4111,0.0050,0.0021,0.9983,36.308,0,0,5547,0,2542,1228,36,0,0,37,37,1244,1244,0,1192,568,3.000,3,3,0,0.4717,148,1480,3;3
+INFO   design C run: 106 local and 68 global subslots checked tile by tile, 856 local and 404 global turns, 17 local and 1 global rounds checked pair by pair
+INFO   design C run: 16 frames checked, 0 k_L changes, 1053 local-phase cycles checked for containment, 60 lookaheads followed on links and 36 at NIs
+INFO   design C run: 36 bursts (24 in local slots), 0 whose last flits landed in the other phase
+INFO   cycles simulated 2559
+==========================================================================
+RESULT PERF PASS checks=289148 errors=0 seed=1
+==========================================================================
+$finish called at time : 25595 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 136
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Nov 14 16:04:18 2026...

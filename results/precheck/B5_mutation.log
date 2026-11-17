@@ -1,0 +1,70 @@
+B5 mutation check, 2026-11-10 06:46 UTC
+Each mutant injects one bug into a copy of the repository. Mutants of resv_ctrl and sched_pkg run U10 first; then
+tb_mesh_b (4x4, design B) is rebuilt and BP06, BP03, BP07, BP01, BP04, BP09, BP05 +QUICK and BP10 +QUICK run at
+seed 1, in that order, until one fails. Every RTL $fatal is turned into $display, so the RTL assertions report but
+cannot stop the run: only the testbench (U10's model, router_checker, ni_checker, sinks, scoreboard, idle checks) can
+kill a mutant. A survivor is run again with the assertions on.
+Killed = a run fails (RESULT FAIL, $fatal, hang, or no RESULT line); the reason is the first error.
+An earlier run without U10 (stopped after C01) showed the mesh tests alone miss C01, the threshold one flit off:
+they never decide at exactly fill + res + B_MAX = SPACE; U10 catches it in its first cycle (the smallest space).
+
+C01   KILLED   resv_ctrl.sv         cancels one flit early
+      tb-only  by U10: ERROR  [31000] U10: U10 N=4 cycle 0: fill 0 reserved 0: the DUT cancels 1, the model accepts 1
+C02   KILLED   resv_ctrl.sv         accepts one flit beyond the space
+      tb-only  by U10: ERROR  [15291000] U10: U10 N=4 cycle 1526: fill 1 reserved 0: the DUT cancels 0, the model accepts 0
+C03   KILLED   resv_ctrl.sv         ignores the bypass flits in the FIFO
+      tb-only  by U10: ERROR  [15291000] U10: U10 N=4 cycle 1526: fill 1 reserved 0: the DUT cancels 0, the model accepts 0
+C04   KILLED   resv_ctrl.sv         ignores the reservations
+      tb-only  by U10: ERROR  [101000] U10: U10 N=4 cycle 7: fill 0 reserved 10: the DUT cancels 0, the model accepts 0
+C05   KILLED   resv_ctrl.sv         a no-show is never released
+      tb-only  by U10: ERROR  [130000] U10: U10 N=4 B_MAX=10 SPACE=22 cycle 10: DUT reserved 10 filled 0, model 0 and 0
+C06   KILLED   resv_ctrl.sv         a burst does not shrink to its length
+      tb-only  by U10: ERROR  [110000] U10: U10 N=2 B_MAX=5 SPACE=18 cycle 8: DUT reserved 10 filled 0, model 8 and 0
+C07   KILLED   resv_ctrl.sv         a bypass flit written does not leave the reservation
+      tb-only  by U10: ERROR  [140000] U10: U10 N=2 B_MAX=5 SPACE=18 cycle 11: DUT reserved 8 filled 1, model 7 and 1
+C08   KILLED   resv_ctrl.sv         flits the core takes stay counted
+      tb-only  by U10: ERROR  [150000] U10: U10 N=2 B_MAX=5 SPACE=18 cycle 12: DUT reserved 6 filled 2, model 6 and 1
+C09   KILLED   resv_ctrl.sv         the lookahead is expected one cycle late
+      tb-only  by U10: ERROR  [110000] U10: U10 N=2 B_MAX=5 SPACE=18 cycle 8: DUT reserved 10 filled 0, model 8 and 0
+C10   KILLED   resv_ctrl.sv         setup window and subslot swapped
+      tb-only  by U10: ERROR  [110000] U10: U10 N=2 B_MAX=5 SPACE=18 cycle 8: DUT reserved 10 filled 0, model 8 and 0
+C11   KILLED   resv_ctrl.sv         the token goes back in the same mode
+      tb-only  by U10: ERROR  [101000] U10: U10 N=4 cycle 7: token for R117 mode 1, expected R117 mode 0
+C12   KILLED   resv_ctrl.sv         the token goes to the wrong source
+      tb-only  by U10: ERROR  [101000] U10: U10 N=4 cycle 7: token for R116 mode 0, expected R117 mode 0
+C13   KILLED   cancel_relay.sv      a token never reaches its source
+      tb-only  by BP06: ERROR  [8580000] BP06: burst R0->R15 (slot 0 subslot 3, t=856, 6 hops): its destination cancelled it, but the source sent a burst of 10 flits
+C14   KILLED   cancel_relay.sv      tokens are forwarded in the wrong mode
+      tb-only  by BP06: ERROR  [8400000] BP06: cancel token for R0 expected on cancel link N of R11 at cycle 840 (reverse link 2), not there
+C15   KILLED   cancel_relay.sv      the NI's token is never launched
+      tb-only  by BP06: ERROR  [8390000] BP06: cancel token for R0 expected on cancel link N of R15 at cycle 839 (reverse link 1), not there
+C16   KILLED   cancel_relay.sv      tokens skip the register: no cycle per hop
+      tb-only  by BP06: ERROR  [8380000] BP06: unexpected cancel token on cancel link W of R1 at cycle 838: for R0 mode 1
+C17   KILLED   bypass_source.sv     the source ignores its cancel token
+      tb-only  by BP06: ERROR  [8580000] BP06: burst R0->R15 (slot 0 subslot 3, t=856, 6 hops): its destination cancelled it, but the source sent a burst of 10 flits
+C18   KILLED   bypass_source.sv     a cancel token is never cleared
+      tb-only  by BP06: ERROR  [17720000] BP06: BP06: 13 cancelled sources did not skip exactly one turn with their packets waiting
+C19   KILLED   bypass_source.sv     D47 choice: a burst stops one flit short of B_MAX
+      tb-only  by BP06: ERROR  [17700000] BP06: BP06: 30 packets delivered, 26 as expected (accepted ones by bypass in the turn, cancelled ones later); expected 30
+C20   KILLED   bypass_source.sv     D47 choice: scan rotated one VC off
+      tb-only  by BP06: ERROR  [8320000] BP06: burst R10->R15 (slot 0 subslot 1, t=820, 2 hops): flit 0 should start a whole packet for R15: type 00, length 0, destination 0, burst 10 flits
+C21   KILLED   bypass_source.sv     D47 choice: rotated back one VC off
+      tb-only  by BP06: ERROR  [8320000] BP06: burst R10->R15 (slot 0 subslot 1, t=820, 2 hops): flit 0 should start a whole packet for R15: type 00, length 0, destination 0, burst 10 flits
+C22   KILLED   bypass_source.sv     D47 streaming: VCs read in plain order, not the burst order
+      tb-only  by BP03: ERROR  [8450000] BP03: burst R0->R10 (slot 0 subslot 2, t=838, 4 hops): flit 0 should start a whole packet for R10: type 01, length 5, destination 15, burst 5 flits
+C23   KILLED   bypass_relay.sv      the NI never sees a lookahead for itself
+      tb-only  by BP06: ERROR  [8250000] BP06: NI R15 at cycle 825: reserved 10, bypass flits in the FIFO 0; the model says 20 and 0
+C24   KILLED   tile.sv              decisions for the current subslot, not the next
+      tb-only  by BP06: ERROR  [130000] BP06: NI R0 at cycle 13: reserved 0, bypass flits in the FIFO 0; the model says 10 and 0
+C25   KILLED   tile.sv              subslot 0 decided as if a subslot ahead
+      tb-only  by BP06: ERROR  [940000] BP06: NI R0 at cycle 94: reserved 20, bypass flits in the FIFO 0; the model says 10 and 0
+C26   KILLED   ni.sv                regular flits taken count as bypass flits taken
+      tb-only  by BP06: ERROR  [16320000] BP06: NI R15 at cycle 1632: reserved 10, bypass flits in the FIFO 31; the model says 10 and 0
+C27   KILLED   ni.sv                regular flits written count as bypass flits
+      tb-only  by BP06: ERROR  [16200000] BP06: NI R15 at cycle 1620: reserved 31, bypass flits in the FIFO 12; the model says 0 and 11
+C28   KILLED   sched_pkg.sv         bypass space without the TIGHT tail
+      tb-only  by U10: ERROR  [83021000] U10: U10 N=2 B_MAX=5: 74 turns cancelled while the core was always ready (D48 sizing)
+C29   KILLED   sched_pkg.sv         contract: tokens one cycle later per hop
+      tb-only  by BP06: ERROR  [8390000] BP06: unexpected cancel token on cancel link N of R15 at cycle 839: for R0 mode 1
+
+Killed: 29 of 29

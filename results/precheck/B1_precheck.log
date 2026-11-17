@@ -1,0 +1,130 @@
+B1 pre-delivery checks, 2026-11-06 17:51 UTC
+Tools: Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060); sv2v sv2v v0.0.12
+
+== 0. Portability scan: size casts inside array indices
+A size cast N'(x) keeps the signedness of x (IEEE 1800-2017 6.24.1): 3'(4) is -4, an index
+outside every array that Riviera-PRO and xsim drop, while Verilator 5.020 uses the bits (D30).
+Portability scan: none found
+
+== 1. RTL lint: verilator --lint-only -Wall, every module and parameter set
+RTL lint: 84 module/parameter sets, 0 with warnings
+
+== 2. Testbench lint and build: -Wall except the testbench style rules DECLFILENAME and BLKSEQ
+tb_rr_arbiter: clean, built
+tb_sync_fifo: clean, built
+tb_route_compute: clean, built
+tb_switch_allocator: clean, built
+tb_router: clean, built
+
+== 3. Seed sweep: seeds 1-25 and three large seeds, every testbench
+tb_rr_arbiter: 28 passed, 0 failed
+tb_sync_fifo: 28 passed, 0 failed
+tb_route_compute: 28 passed, 0 failed
+tb_switch_allocator: 28 passed, 0 failed
+tb_router: 28 passed, 0 failed
+
+Seed 1 result lines (the same numbers must appear on Riviera, xsim, VCS and Xcelium):
+RESULT U01 PASS checks=310493 errors=0 seed=1
+RESULT U02 PASS checks=196864 errors=0 seed=1
+RESULT U03 PASS checks=856450 errors=0 seed=1
+RESULT U04 PASS checks=1121244 errors=0 seed=1
+RESULT R01-R04 PASS checks=357967 errors=0 seed=1
+tb_router one test at a time (+TEST=<id>):
+RESULT R01 PASS checks=28058 errors=0 seed=1
+RESULT R02 PASS checks=282300 errors=0 seed=1
+RESULT R03 PASS checks=35513 errors=0 seed=1
+RESULT R04 PASS checks=12108 errors=0 seed=1
+
+tb_router seed 1, coverage and summary lines:
+INFO   T1 (V=4, XY): 2268 packets checked, 2268 VC-free credits
+INFO   T2 (V=4, adaptive): 2268 packets checked, 2268 VC-free credits
+INFO   T3 (V=2, adaptive): 1814 packets checked, 1814 VC-free credits
+INFO   T4 (V=1, XY): 1647 packets checked, 1647 VC-free credits
+COVER  T1 R01 input-output-VC-length cases                  200
+COVER  T1 R02 a packet found every input VC busy (cycles)   25140
+COVER  T1 R02 an output had every VC taken (cycles)         13132
+COVER  T1 R02 a sink held its reads (cycles)                9400
+COVER  T1 R02 a sink VC buffer filled to 5 flits            243
+COVER  T1 R03 flits of two packets interleaved on a link    592
+COVER  T1 R03 output VC 0 used                              72
+COVER  T1 R03 output VC 1 used                              84
+COVER  T1 R03 output VC 2 used                              71
+COVER  T1 R03 output VC 3 used                              73
+COVER  T1 R04 route kept while waiting for a VC             2
+COVER  T2 R01 input-output-VC-length cases                  200
+COVER  T2 R02 a packet found every input VC busy (cycles)   21704
+COVER  T2 R02 an output had every VC taken (cycles)         11887
+COVER  T2 R02 a sink held its reads (cycles)                8100
+COVER  T2 R02 a sink VC buffer filled to 5 flits            211
+COVER  T2 R03 flits of two packets interleaved on a link    586
+COVER  T2 R03 output VC 0 used                              79
+COVER  T2 R03 output VC 1 used                              71
+COVER  T2 R03 output VC 2 used                              74
+COVER  T2 R03 output VC 3 used                              76
+COVER  T2 R04 Y had more free VCs                           20
+COVER  T2 R04 tie, X taken                                  12
+COVER  T2 R04 X had more free VCs                           20
+COVER  T2 R04 route kept while waiting for a VC             2
+COVER  T3 R01 input-output-VC-length cases                  100
+COVER  T3 R02 a packet found every input VC busy (cycles)   29564
+COVER  T3 R02 an output had every VC taken (cycles)         13988
+COVER  T3 R02 a sink held its reads (cycles)                8100
+COVER  T3 R02 a sink VC buffer filled to 5 flits            136
+COVER  T3 R03 flits of two packets interleaved on a link    156
+COVER  T3 R03 output VC 0 used                              76
+COVER  T3 R03 output VC 1 used                              74
+COVER  T3 R04 Y had more free VCs                           6
+COVER  T3 R04 tie, X taken                                  8
+COVER  T3 R04 X had more free VCs                           6
+COVER  T3 R04 route kept while waiting for a VC             2
+COVER  T4 R01 input-output-VC-length cases                  50
+COVER  T4 R02 a packet found every input VC busy (cycles)   37501
+COVER  T4 R02 an output had every VC taken (cycles)         18044
+COVER  T4 R02 a sink held its reads (cycles)                10000
+COVER  T4 R02 a sink VC buffer filled to 5 flits            89
+COVER  T4 R03 output VC 0 used                              75
+COVER  T4 R04 route kept while waiting for a VC             2
+
+== 4. EDA Playground bundles (Riviera-PRO): every test selected by its define
+[design.sv testbench.sv] +define+TEST_U01: RESULT U01 PASS checks=310493 errors=0 seed=1
+[testbench.sv design.sv] +define+TEST_U01: RESULT U01 PASS checks=310493 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_U02: RESULT U02 PASS checks=196864 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_U03: RESULT U03 PASS checks=856450 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_U04: RESULT U04 PASS checks=1121244 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_R01: RESULT R01 PASS checks=28058 errors=0 seed=1
+[testbench.sv design.sv] +define+TEST_R01: RESULT R01 PASS checks=28058 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_R02: RESULT R02 PASS checks=282300 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_R03: RESULT R03 PASS checks=35513 errors=0 seed=1
+[design.sv testbench.sv] +define+TEST_R04: RESULT R04 PASS checks=12108 errors=0 seed=1
+[no define, top tb_rr_arbiter]: RESULT U01 PASS checks=310493 errors=0 seed=1
+
+== 5. Vivado runner (run.tcl) against xvlog/xelab/xsim stubs that split arguments like Windows batch files
+--- set argv {-test all}; source run.tcl
+tb_rr_arbiter        U01          PASS  checks=310493 errors=0   (1 s; warnings: compile 0, elaborate 0)
+tb_sync_fifo         U02          PASS  checks=196864 errors=0   (0 s; warnings: compile 0, elaborate 0)
+tb_route_compute     U03          PASS  checks=856450 errors=0   (0 s; warnings: compile 0, elaborate 0)
+tb_switch_allocator  U04          PASS  checks=1121244 errors=0   (1 s; warnings: compile 0, elaborate 0)
+tb_router            R01 R02 R03 R04 PASS  checks=357967 errors=0   (0 s; warnings: compile 0, elaborate 0)
+--- set argv {-test U04}; source run.tcl
+tb_switch_allocator  U04          PASS  checks=1121244 errors=0   (0 s; warnings: compile 0, elaborate 0)
+--- set argv {-test R02 -seed 3}; source run.tcl
+tb_router            R01 R02 R03 R04 PASS  checks=281832 errors=0   (0 s; warnings: compile 0, elaborate 0)
+--- set argv {-test tb_router}; source run.tcl
+tb_router            R01 R02 R03 R04 PASS  checks=357967 errors=0   (0 s; warnings: compile 0, elaborate 0)
+
+== 6. Synthesis: sv2v + Yosys 'synth' (generic gates), the fallback flow of D20
+input_unit NUM_VC=4 ALGO=1 MESH_N=8: 5642 cells, 2803 flip-flops
+output_unit NUM_VC=4: 245 cells, 150 flip-flops
+switch_allocator NUM_VC=4: 1826 cells, 25 flip-flops
+switch_allocator NUM_VC=1: 638 cells, 15 flip-flops
+crossbar: 8760 cells, 670 flip-flops
+router NUM_VC=4 ALGO=1 MESH_N=8: 38085 cells, 15450 flip-flops
+router NUM_VC=4 ALGO=0 MESH_N=8: 37927 cells, 15450 flip-flops
+router NUM_VC=1 ALGO=0 MESH_N=8: 15177 cells, 5380 flip-flops
+router NUM_VC=4 ALGO=1 MESH_N=16: 38101 cells, 15450 flip-flops
+Yosys warnings, router NUM_VC=4: 12 (all 'Replacing memory ... with list of registers')
+
+Changes since the 5 Nov pre-check (issue of 6 Nov): tb_router.sv indexes its port queue through pq()/pv(),
+which return unsigned values, and checks that every packet is queued (one more check per packet, so the
+R01-R04 counts above are higher than on 5 Nov). results/precheck/B1_mutation.log was run with the 5 Nov
+tb_router.sv; on Verilator the 6 Nov testbench behaves the same, so every mutant listed there is still caught.

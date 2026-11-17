@@ -1,0 +1,13 @@
+set argv {-test tb_mesh_b -define TB_MESH_N=2}; source -notrace sim/vivado/run.tcl
+run.tcl: tb_mesh_b (tests BP01 BP02 BP03 BP04 BP05 BP06 BP07 BP08 BP09 BP10), seed 1: compiling
+run.tcl: tb_mesh_b: elaborating
+run.tcl: tb_mesh_b: simulating
+Time: 345655 ns  Iteration: 0  Process: /tb_pkg/finish  Scope: tb_pkg.finish  File: D:/noc_bypass/tb/common/tb_pkg.sv Line: 135
+$finish called at time : 345655 ns
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:15 . Memory (MB): peak = 201.566 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 75052 KB (Peak: 75052 KB), Simulation CPU Usage: 15889 ms
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 17:13:15 2026...
+==================== run.tcl summary, seed 1, defines TB_MESH_N=2 ====================
+tb_mesh_b            BP01 BP02 BP03 BP04 BP05 BP06 BP07 BP08 BP09 BP10 FAIL  checks=1137611 errors=13, 34565 cycles in 20.3 s = 1701 cycles/s   (33 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

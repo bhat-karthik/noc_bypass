@@ -1,0 +1,545 @@
+=== E0_B_N4_V4_uniform_0.02 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.02: uniform at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3216 packets measured, latency avg 16.47 p99 29 max 37, offered 0.0472 accepted 0.0472 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.28, jain 0.9937, worst flow 30.47
+INFO   PERF: bypass share 0.09% of packets; 4 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.02,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.0200,1,16.466,17,29,37,0.0472,0.0472,0.0009,0.0004,0.9937,30.467,0,0,3216,0,12027,3644,4,0,0,4,4,3648,3648,0,3640,2672
+INFO   cycles simulated 12044
+RESULT PERF PASS checks=666117 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.05 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.05: uniform at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7980 packets measured, latency avg 17.00 p99 32 max 42, offered 0.1174 accepted 0.1172 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.36, jain 0.9948, worst flow 31.76
+INFO   PERF: bypass share 0.25% of packets; 23 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.05,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.0500,1,17.001,17,32,42,0.1174,0.1172,0.0025,0.0011,0.9948,31.761,0,0,7980,0,12025,3644,23,0,0,24,24,3648,3648,0,3621,2672
+INFO   cycles simulated 12042
+RESULT PERF PASS checks=774984 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.08 (3 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.08: uniform at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12829 packets measured, latency avg 17.43 p99 34 max 47, offered 0.1889 accepted 0.1888 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.30, jain 0.9961, worst flow 31.75
+INFO   PERF: bypass share 0.30% of packets; 42 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.08,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.0800,1,17.432,17,34,47,0.1889,0.1888,0.0030,0.0013,0.9961,31.754,0,0,12829,0,12026,3644,42,0,0,42,42,3648,3648,0,3602,2672
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=886779 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.11 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.11: uniform at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17696 packets measured, latency avg 18.08 p99 37 max 49, offered 0.2599 accepted 0.2599 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.30, jain 0.9971, worst flow 33.21
+INFO   PERF: bypass share 0.25% of packets; 55 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.11,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.1100,1,18.078,17,37,49,0.2599,0.2599,0.0025,0.0011,0.9971,33.212,0,0,17696,0,12022,3644,55,0,0,55,55,3648,3648,0,3589,2672
+INFO   cycles simulated 12039
+RESULT PERF PASS checks=997286 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.14 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.14: uniform at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22489 packets measured, latency avg 18.84 p99 39 max 59, offered 0.3288 accepted 0.3288 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.31, jain 0.9977, worst flow 33.60
+INFO   PERF: bypass share 0.24% of packets; 60 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.14,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.1400,1,18.837,18,39,59,0.3288,0.3288,0.0024,0.0011,0.9977,33.602,0,0,22489,0,12030,3644,60,0,0,66,62,3648,3648,0,3584,2672
+INFO   cycles simulated 12047
+RESULT PERF PASS checks=1104997 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.17 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.17: uniform at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27206 packets measured, latency avg 20.03 p99 43 max 73, offered 0.3992 accepted 0.3990 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.30, jain 0.9985, worst flow 35.10
+INFO   PERF: bypass share 0.25% of packets; 77 bursts in 3648 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.17,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.1700,1,20.028,19,43,73,0.3992,0.3990,0.0025,0.0011,0.9985,35.099,0,0,27206,0,12034,3648,77,0,0,83,79,3652,3652,0,3567,2676
+INFO   cycles simulated 12051
+RESULT PERF PASS checks=1214445 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.20 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.20: uniform at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32115 packets measured, latency avg 22.02 p99 49 max 89, offered 0.4713 accepted 0.4713 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.31, jain 0.9992, worst flow 36.98
+INFO   PERF: bypass share 0.27% of packets; 107 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.20,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.2000,1,22.023,21,49,89,0.4713,0.4713,0.0027,0.0012,0.9992,36.984,0,0,32115,0,12031,3644,107,0,0,130,110,3648,3648,0,3537,2672
+INFO   cycles simulated 12048
+RESULT PERF PASS checks=1326327 errors=0 seed=1
+=== E0_B_N4_V4_uniform_0.23 (4 s)
+PHASE  PERF E0_B_N4_V4_uniform_0.23: uniform at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36857 packets measured, latency avg 25.95 p99 65 max 131, offered 0.5383 accepted 0.5384 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.28, jain 0.9990, worst flow 40.96
+INFO   PERF: bypass share 0.56% of packets; 214 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_uniform_0.23,B,4,4,uniform,0.3333,10,TIGHT,-,-,0.2300,1,25.947,24,65,131,0.5383,0.5384,0.0056,0.0032,0.9990,40.957,0,0,36857,0,12033,3644,214,0,0,318,242,3648,3648,0,3430,2672
+INFO   cycles simulated 12050
+RESULT PERF PASS checks=1435667 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.02 (3 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.02: transpose at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3222 packets measured, latency avg 16.34 p99 33 max 43, offered 0.0467 accepted 0.0466 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.20, jain 0.9966, worst flow 30.74
+INFO   PERF: bypass share 0.40% of packets; 15 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.02,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.0200,1,16.336,14,33,43,0.0467,0.0466,0.0040,0.0017,0.9966,30.745,0,0,3222,0,12024,3644,15,0,0,15,15,3648,3648,0,3629,2672
+INFO   cycles simulated 12041
+RESULT PERF PASS checks=665704 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.05 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.05: transpose at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7961 packets measured, latency avg 16.73 p99 35 max 40, offered 0.1154 accepted 0.1152 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.34, jain 0.9980, worst flow 30.89
+INFO   PERF: bypass share 0.31% of packets; 26 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.05,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.0500,1,16.730,17,35,40,0.1154,0.1152,0.0031,0.0014,0.9980,30.886,0,0,7961,0,12033,3644,26,0,0,26,26,3648,3648,0,3618,2672
+INFO   cycles simulated 12050
+RESULT PERF PASS checks=773564 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.08 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.08: transpose at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12816 packets measured, latency avg 17.18 p99 37 max 48, offered 0.1872 accepted 0.1873 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.45, jain 0.9983, worst flow 31.38
+INFO   PERF: bypass share 0.18% of packets; 26 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.08,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.0800,1,17.184,17,37,48,0.1872,0.1873,0.0018,0.0008,0.9983,31.376,0,0,12816,0,12027,3644,26,0,0,26,26,3648,3648,0,3618,2672
+INFO   cycles simulated 12044
+RESULT PERF PASS checks=884840 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.11 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.11: transpose at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17733 packets measured, latency avg 17.56 p99 39 max 61, offered 0.2587 accepted 0.2587 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.46, jain 0.9985, worst flow 31.93
+INFO   PERF: bypass share 0.28% of packets; 55 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.11,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.1100,1,17.565,17,39,61,0.2587,0.2587,0.0028,0.0012,0.9985,31.933,0,0,17733,0,12026,3644,55,0,0,56,56,3648,3648,0,3589,2672
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=995778 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.14 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.14: transpose at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22515 packets measured, latency avg 18.04 p99 41 max 56, offered 0.3276 accepted 0.3277 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.44, jain 0.9987, worst flow 32.72
+INFO   PERF: bypass share 0.21% of packets; 55 bursts in 3648 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.14,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.1400,1,18.045,17,41,56,0.3276,0.3277,0.0021,0.0009,0.9987,32.719,0,0,22515,0,12034,3648,55,0,0,56,56,3652,3652,0,3589,2676
+INFO   cycles simulated 12051
+RESULT PERF PASS checks=1103854 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.17 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.17: transpose at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27285 packets measured, latency avg 18.66 p99 43 max 59, offered 0.3969 accepted 0.3967 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.40, jain 0.9989, worst flow 33.74
+INFO   PERF: bypass share 0.29% of packets; 89 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.17,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.1700,1,18.662,17,43,59,0.3969,0.3967,0.0029,0.0012,0.9989,33.743,0,0,27285,0,12031,3644,89,0,0,94,94,3648,3648,0,3555,2672
+INFO   cycles simulated 12048
+RESULT PERF PASS checks=1211994 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.20 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.20: transpose at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32206 packets measured, latency avg 19.73 p99 47 max 70, offered 0.4668 accepted 0.4666 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.37, jain 0.9989, worst flow 35.09
+INFO   PERF: bypass share 0.27% of packets; 95 bursts in 3648 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.20,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.2000,1,19.728,19,47,70,0.4668,0.4666,0.0027,0.0012,0.9989,35.088,0,0,32206,0,12036,3648,95,0,0,103,99,3652,3652,0,3549,2676
+INFO   cycles simulated 12053
+RESULT PERF PASS checks=1321946 errors=0 seed=1
+=== E0_B_N4_V4_transpose_0.23 (4 s)
+PHASE  PERF E0_B_N4_V4_transpose_0.23: transpose at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36876 packets measured, latency avg 21.51 p99 53 max 88, offered 0.5357 accepted 0.5355 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.40, jain 0.9990, worst flow 37.13
+INFO   PERF: bypass share 0.33% of packets; 124 bursts in 3648 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_transpose_0.23,B,4,4,transpose,0.3333,10,TIGHT,-,-,0.2300,1,21.511,21,53,88,0.5357,0.5355,0.0033,0.0014,0.9990,37.133,0,0,36876,0,12039,3648,124,0,0,141,137,3652,3652,0,3522,2676
+INFO   cycles simulated 12056
+RESULT PERF PASS checks=1431142 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.02 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.02: bitrot at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3222 packets measured, latency avg 14.40 p99 25 max 32, offered 0.0467 accepted 0.0466 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.30, jain 0.9966, worst flow 22.61
+INFO   PERF: bypass share 0.19% of packets; 9 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.02,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.0200,1,14.400,13,25,32,0.0467,0.0466,0.0019,0.0008,0.9966,22.609,0,0,3222,0,12015,3644,9,0,0,9,9,3644,3644,0,3635,2672
+INFO   cycles simulated 12032
+RESULT PERF PASS checks=665145 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.05 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.05: bitrot at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7961 packets measured, latency avg 14.62 p99 26 max 32, offered 0.1154 accepted 0.1154 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9980, worst flow 22.73
+INFO   PERF: bypass share 0.13% of packets; 13 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.05,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.0500,1,14.624,13,26,32,0.1154,0.1154,0.0013,0.0005,0.9980,22.731,0,0,7961,0,12025,3644,13,0,0,13,13,3648,3648,0,3631,2672
+INFO   cycles simulated 12042
+RESULT PERF PASS checks=772954 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.08 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.08: bitrot at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12816 packets measured, latency avg 14.84 p99 28 max 40, offered 0.1872 accepted 0.1873 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.32, jain 0.9983, worst flow 23.08
+INFO   PERF: bypass share 0.20% of packets; 29 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.08,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.0800,1,14.836,13,28,40,0.1872,0.1873,0.0020,0.0008,0.9983,23.076,0,0,12816,0,12026,3644,29,0,0,29,29,3648,3648,0,3615,2672
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=884729 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.11 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.11: bitrot at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17733 packets measured, latency avg 15.10 p99 30 max 48, offered 0.2587 accepted 0.2589 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.32, jain 0.9985, worst flow 23.60
+INFO   PERF: bypass share 0.19% of packets; 37 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.11,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.1100,1,15.105,15,30,48,0.2587,0.2589,0.0019,0.0008,0.9985,23.596,0,0,17733,0,12023,3644,37,0,0,37,37,3648,3648,0,3607,2672
+INFO   cycles simulated 12040
+RESULT PERF PASS checks=995256 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.14 (3 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.14: bitrot at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22515 packets measured, latency avg 15.42 p99 31 max 49, offered 0.3276 accepted 0.3276 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.33, jain 0.9987, worst flow 24.22
+INFO   PERF: bypass share 0.20% of packets; 52 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.14,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.1400,1,15.421,16,31,49,0.3276,0.3276,0.0020,0.0009,0.9987,24.218,0,0,22515,0,12026,3644,52,0,0,53,53,3648,3648,0,3592,2672
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=1103150 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.17 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.17: bitrot at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27285 packets measured, latency avg 15.86 p99 33 max 63, offered 0.3969 accepted 0.3968 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9989, worst flow 25.05
+INFO   PERF: bypass share 0.18% of packets; 55 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.17,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.1700,1,15.863,17,33,63,0.3969,0.3968,0.0018,0.0008,0.9989,25.053,0,0,27285,0,12026,3644,55,0,0,55,55,3648,3648,0,3589,2672
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=1210985 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.20 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.20: bitrot at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32206 packets measured, latency avg 16.44 p99 36 max 63, offered 0.4668 accepted 0.4668 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.32, jain 0.9989, worst flow 26.09
+INFO   PERF: bypass share 0.21% of packets; 77 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.20,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.2000,1,16.438,17,36,63,0.4668,0.4668,0.0021,0.0009,0.9989,26.090,0,0,32206,0,12027,3644,77,0,0,80,80,3648,3648,0,3567,2672
+INFO   cycles simulated 12044
+RESULT PERF PASS checks=1320964 errors=0 seed=1
+=== E0_B_N4_V4_bitrot_0.23 (4 s)
+PHASE  PERF E0_B_N4_V4_bitrot_0.23: bitrot at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36876 packets measured, latency avg 17.33 p99 42 max 79, offered 0.5357 accepted 0.5354 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.33, jain 0.9990, worst flow 27.70
+INFO   PERF: bypass share 0.23% of packets; 88 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_bitrot_0.23,B,4,4,bitrot,0.3333,10,TIGHT,-,-,0.2300,1,17.331,17,42,79,0.5357,0.5354,0.0023,0.0010,0.9990,27.701,0,0,36876,0,12028,3644,88,0,0,103,95,3648,3648,0,3556,2672
+INFO   cycles simulated 12045
+RESULT PERF PASS checks=1429582 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.02 (3 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.02: shuffle at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3222 packets measured, latency avg 14.47 p99 25 max 29, offered 0.0467 accepted 0.0466 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.33, jain 0.9966, worst flow 22.45
+INFO   PERF: bypass share 0.16% of packets; 7 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.02,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.0200,1,14.470,13,25,29,0.0467,0.0466,0.0016,0.0007,0.9966,22.451,0,0,3222,0,12019,3644,7,0,0,7,7,3648,3648,0,3637,2672
+INFO   cycles simulated 12036
+RESULT PERF PASS checks=665329 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.05 (4 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.05: shuffle at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7961 packets measured, latency avg 14.71 p99 27 max 34, offered 0.1154 accepted 0.1152 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9980, worst flow 23.03
+INFO   PERF: bypass share 0.14% of packets; 14 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.05,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.0500,1,14.711,13,27,34,0.1154,0.1152,0.0014,0.0006,0.9980,23.034,0,0,7961,0,12023,3644,14,0,0,14,14,3648,3648,0,3630,2672
+INFO   cycles simulated 12040
+RESULT PERF PASS checks=772883 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.08 (4 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.08: shuffle at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12816 packets measured, latency avg 15.06 p99 29 max 41, offered 0.1872 accepted 0.1874 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.39, jain 0.9983, worst flow 23.52
+INFO   PERF: bypass share 0.20% of packets; 27 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.08,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.0800,1,15.055,14,29,41,0.1872,0.1874,0.0020,0.0009,0.9983,23.518,0,0,12816,0,12023,3644,27,0,0,27,27,3648,3648,0,3617,2672
+INFO   cycles simulated 12040
+RESULT PERF PASS checks=884563 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.11 (3 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.11: shuffle at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17733 packets measured, latency avg 15.46 p99 31 max 44, offered 0.2587 accepted 0.2588 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.40, jain 0.9985, worst flow 24.21
+INFO   PERF: bypass share 0.15% of packets; 33 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.11,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.1100,1,15.457,16,31,44,0.2587,0.2588,0.0015,0.0007,0.9985,24.209,0,0,17733,0,12019,3644,33,0,0,33,33,3648,3648,0,3611,2672
+INFO   cycles simulated 12036
+RESULT PERF PASS checks=994950 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.14 (3 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.14: shuffle at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22515 packets measured, latency avg 15.88 p99 34 max 50, offered 0.3276 accepted 0.3277 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.36, jain 0.9987, worst flow 25.00
+INFO   PERF: bypass share 0.24% of packets; 61 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.14,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.1400,1,15.878,17,34,50,0.3276,0.3277,0.0024,0.0010,0.9987,25.002,0,0,22515,0,12022,3644,61,0,0,61,61,3648,3648,0,3583,2672
+INFO   cycles simulated 12039
+RESULT PERF PASS checks=1103088 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.17 (5 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.17: shuffle at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27285 packets measured, latency avg 16.50 p99 37 max 63, offered 0.3969 accepted 0.3968 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9989, worst flow 25.96
+INFO   PERF: bypass share 0.16% of packets; 55 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.17,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.1700,1,16.495,17,37,63,0.3969,0.3968,0.0016,0.0008,0.9989,25.963,0,0,27285,0,12028,3644,55,0,0,61,57,3648,3648,0,3589,2672
+INFO   cycles simulated 12045
+RESULT PERF PASS checks=1211164 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.20 (4 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.20: shuffle at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32206 packets measured, latency avg 17.62 p99 43 max 82, offered 0.4668 accepted 0.4667 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.31, jain 0.9989, worst flow 28.70
+INFO   PERF: bypass share 0.27% of packets; 92 bursts in 3648 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.20,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.2000,1,17.620,17,43,82,0.4668,0.4667,0.0027,0.0013,0.9989,28.703,0,0,32206,0,12040,3648,92,0,0,107,99,3652,3652,0,3554,2676
+INFO   cycles simulated 12057
+RESULT PERF PASS checks=1322012 errors=0 seed=1
+=== E0_B_N4_V4_shuffle_0.23 (4 s)
+PHASE  PERF E0_B_N4_V4_shuffle_0.23: shuffle at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36876 packets measured, latency avg 19.65 p99 56 max 99, offered 0.5357 accepted 0.5355 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9990, worst flow 34.53
+INFO   PERF: bypass share 0.33% of packets; 124 bursts in 3644 turns, 0 turns cancelled
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting
+CSV,E0_B_N4_V4_shuffle_0.23,B,4,4,shuffle,0.3333,10,TIGHT,-,-,0.2300,1,19.653,17,56,99,0.5357,0.5355,0.0033,0.0017,0.9990,34.527,0,0,36876,0,12033,3644,124,0,0,167,143,3648,3648,0,3520,2672
+INFO   cycles simulated 12050
+RESULT PERF PASS checks=1430652 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.02 (1 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.02: uniform at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3216 packets measured, latency avg 16.48 p99 29 max 37, offered 0.0472 accepted 0.0472 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.28, jain 0.9937, worst flow 30.47
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.02,A,4,4,uniform,0.3333,-,-,-,-,0.0200,1,16.476,17,29,37,0.0472,0.0472,0,0,0.9937,30.467,0,0,3216,0,12027
+INFO   cycles simulated 12044
+RESULT PERF PASS checks=73600 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.05 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.05: uniform at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7980 packets measured, latency avg 17.01 p99 32 max 46, offered 0.1174 accepted 0.1172 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.37, jain 0.9948, worst flow 31.87
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.05,A,4,4,uniform,0.3333,-,-,-,-,0.0500,1,17.005,17,32,46,0.1174,0.1172,0,0,0.9948,31.870,0,0,7980,0,12025
+INFO   cycles simulated 12042
+RESULT PERF PASS checks=182291 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.08 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.08: uniform at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12829 packets measured, latency avg 17.39 p99 34 max 43, offered 0.1889 accepted 0.1888 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.32, jain 0.9961, worst flow 31.62
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.08,A,4,4,uniform,0.3333,-,-,-,-,0.0800,1,17.387,17,34,43,0.1889,0.1888,0,0,0.9961,31.623,0,0,12829,0,12026
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=293723 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.11 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.11: uniform at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17696 packets measured, latency avg 18.07 p99 37 max 54, offered 0.2599 accepted 0.2599 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.31, jain 0.9971, worst flow 33.89
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.11,A,4,4,uniform,0.3333,-,-,-,-,0.1100,1,18.067,17,37,54,0.2599,0.2599,0,0,0.9971,33.894,0,0,17696,0,12022
+INFO   cycles simulated 12039
+RESULT PERF PASS checks=404293 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.14 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.14: uniform at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22489 packets measured, latency avg 18.84 p99 40 max 63, offered 0.3288 accepted 0.3288 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.33, jain 0.9977, worst flow 33.85
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.14,A,4,4,uniform,0.3333,-,-,-,-,0.1400,1,18.837,18,40,63,0.3288,0.3288,0,0,0.9977,33.849,0,0,22489,0,12030
+INFO   cycles simulated 12047
+RESULT PERF PASS checks=511519 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.17 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.17: uniform at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27206 packets measured, latency avg 20.10 p99 46 max 91, offered 0.3992 accepted 0.3990 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.32, jain 0.9985, worst flow 36.19
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.17,A,4,4,uniform,0.3333,-,-,-,-,0.1700,1,20.096,19,46,91,0.3992,0.3990,0,0,0.9985,36.188,0,0,27206,0,12034
+INFO   cycles simulated 12051
+RESULT PERF PASS checks=620472 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.20 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.20: uniform at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32115 packets measured, latency avg 22.16 p99 54 max 97, offered 0.4713 accepted 0.4713 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.33, jain 0.9992, worst flow 37.50
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.20,A,4,4,uniform,0.3333,-,-,-,-,0.2000,1,22.161,21,54,97,0.4713,0.4713,0,0,0.9992,37.500,0,0,32115,0,12032
+INFO   cycles simulated 12049
+RESULT PERF PASS checks=731885 errors=0 seed=1
+=== E0_A_N4_V4_uniform_0.23 (2 s)
+PHASE  PERF E0_A_N4_V4_uniform_0.23: uniform at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36857 packets measured, latency avg 26.76 p99 80 max 181, offered 0.5383 accepted 0.5383 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.32, jain 0.9990, worst flow 49.67
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_uniform_0.23,A,4,4,uniform,0.3333,-,-,-,-,0.2300,1,26.762,24,80,181,0.5383,0.5383,0,0,0.9990,49.671,0,0,36857,0,12045
+INFO   cycles simulated 12062
+RESULT PERF PASS checks=838828 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.02 (2 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.02: transpose at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3222 packets measured, latency avg 16.39 p99 33 max 42, offered 0.0467 accepted 0.0466 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.23, jain 0.9966, worst flow 30.80
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.02,A,4,4,transpose,0.3333,-,-,-,-,0.0200,1,16.391,13,33,42,0.0467,0.0466,0,0,0.9966,30.797,0,0,3222,0,12024
+INFO   cycles simulated 12041
+RESULT PERF PASS checks=73151 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.05 (1 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.05: transpose at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7961 packets measured, latency avg 16.90 p99 36 max 48, offered 0.1154 accepted 0.1152 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.37, jain 0.9980, worst flow 31.19
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.05,A,4,4,transpose,0.3333,-,-,-,-,0.0500,1,16.896,17,36,48,0.1154,0.1152,0,0,0.9980,31.190,0,0,7961,0,12033
+INFO   cycles simulated 12050
+RESULT PERF PASS checks=180422 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.08 (2 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.08: transpose at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12816 packets measured, latency avg 17.75 p99 43 max 74, offered 0.1872 accepted 0.1873 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.47, jain 0.9983, worst flow 33.04
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.08,A,4,4,transpose,0.3333,-,-,-,-,0.0800,1,17.748,17,43,74,0.1872,0.1873,0,0,0.9983,33.038,0,0,12816,0,12027
+INFO   cycles simulated 12044
+RESULT PERF PASS checks=291940 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.11 (2 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.11: transpose at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17733 packets measured, latency avg 20.17 p99 66 max 106, offered 0.2587 accepted 0.2587 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.49, jain 0.9985, worst flow 42.34
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.11,A,4,4,transpose,0.3333,-,-,-,-,0.1100,1,20.169,17,66,106,0.2587,0.2587,0,0,0.9985,42.338,0,0,17733,0,12040
+INFO   cycles simulated 12057
+RESULT PERF PASS checks=402443 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.14 (2 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.14: transpose at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22515 packets measured, latency avg 155.14 p99 1576 max 1747, offered 0.3276 accepted 0.3206 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.46, jain 0.9987, worst flow 979.46
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.14,A,4,4,transpose,0.3333,-,-,-,-,0.1400,1,155.136,20,1576,1747,0.3276,0.3206,0,0,0.9987,979.462,0,0,22515,0,13142
+INFO   cycles simulated 13159
+RESULT PERF PASS checks=510066 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.17 (2 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.17: transpose at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27285 packets measured, latency avg 713.20 p99 4095 max 4606, offered 0.3969 accepted 0.3633 flits/node/cycle, saturated
+INFO   PERF: zero-load latency of the measured packets 16.42, jain 0.9989, worst flow 3406.93
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.17,A,4,4,transpose,0.3333,-,-,-,-,0.1700,1,713.199,21,4095,4606,0.3969,0.3633,0,0,0.9989,3406.929,0,0,27285,1,15853
+INFO   cycles simulated 15870
+RESULT PERF PASS checks=617822 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.20 (3 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.20: transpose at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32206 packets measured, latency avg 1307.75 p99 4095 max 6820, offered 0.4668 accepted 0.4060 flits/node/cycle, saturated
+INFO   PERF: zero-load latency of the measured packets 16.39, jain 0.9989, worst flow 5489.51
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.20,A,4,4,transpose,0.3333,-,-,-,-,0.2000,1,1307.754,56,4095,6820,0.4668,0.4060,0,0,0.9989,5489.514,0,0,32206,1,18552
+INFO   cycles simulated 18569
+RESULT PERF PASS checks=727465 errors=0 seed=1
+=== E0_A_N4_V4_transpose_0.23 (3 s)
+PHASE  PERF E0_A_N4_V4_transpose_0.23: transpose at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36876 packets measured, latency avg 2109.58 p99 4095 max 9487, offered 0.5357 accepted 0.4323 flits/node/cycle, saturated
+INFO   PERF: zero-load latency of the measured packets 16.42, jain 0.9990, worst flow 7395.45
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_transpose_0.23,A,4,4,transpose,0.3333,-,-,-,-,0.2300,1,2109.584,775,4095,9487,0.5357,0.4323,0,0,0.9990,7395.449,0,0,36876,1,21180
+INFO   cycles simulated 21197
+RESULT PERF PASS checks=835868 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.02 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.02: bitrot at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3222 packets measured, latency avg 14.43 p99 25 max 32, offered 0.0467 accepted 0.0466 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.31, jain 0.9966, worst flow 22.69
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.02,A,4,4,bitrot,0.3333,-,-,-,-,0.0200,1,14.428,13,25,32,0.0467,0.0466,0,0,0.9966,22.693,0,0,3222,0,12016
+INFO   cycles simulated 12033
+RESULT PERF PASS checks=73151 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.05 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.05: bitrot at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7961 packets measured, latency avg 14.69 p99 27 max 36, offered 0.1154 accepted 0.1154 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.35, jain 0.9980, worst flow 22.80
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.05,A,4,4,bitrot,0.3333,-,-,-,-,0.0500,1,14.695,13,27,36,0.1154,0.1154,0,0,0.9980,22.803,0,0,7961,0,12025
+INFO   cycles simulated 12042
+RESULT PERF PASS checks=180422 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.08 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.08: bitrot at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12816 packets measured, latency avg 15.05 p99 30 max 44, offered 0.1872 accepted 0.1873 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.33, jain 0.9983, worst flow 23.38
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.08,A,4,4,bitrot,0.3333,-,-,-,-,0.0800,1,15.047,14,30,44,0.1872,0.1873,0,0,0.9983,23.383,0,0,12816,0,12026
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=291940 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.11 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.11: bitrot at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17733 packets measured, latency avg 15.56 p99 34 max 53, offered 0.2587 accepted 0.2589 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9985, worst flow 24.59
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.11,A,4,4,bitrot,0.3333,-,-,-,-,0.1100,1,15.564,16,34,53,0.2587,0.2589,0,0,0.9985,24.587,0,0,17733,0,12019
+INFO   cycles simulated 12036
+RESULT PERF PASS checks=402443 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.14 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.14: bitrot at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22515 packets measured, latency avg 16.53 p99 41 max 73, offered 0.3276 accepted 0.3276 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9987, worst flow 27.33
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.14,A,4,4,bitrot,0.3333,-,-,-,-,0.1400,1,16.534,17,41,73,0.3276,0.3276,0,0,0.9987,27.328,0,0,22515,0,12026
+INFO   cycles simulated 12043
+RESULT PERF PASS checks=510066 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.17 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.17: bitrot at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27285 packets measured, latency avg 18.93 p99 59 max 122, offered 0.3969 accepted 0.3969 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.35, jain 0.9989, worst flow 33.97
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.17,A,4,4,bitrot,0.3333,-,-,-,-,0.1700,1,18.929,17,59,122,0.3969,0.3969,0,0,0.9989,33.970,0,0,27285,0,12029
+INFO   cycles simulated 12046
+RESULT PERF PASS checks=617822 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.20 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.20: bitrot at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32206 packets measured, latency avg 53.43 p99 509 max 611, offered 0.4668 accepted 0.4645 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.33, jain 0.9989, worst flow 280.04
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.20,A,4,4,bitrot,0.3333,-,-,-,-,0.2000,1,53.434,21,509,611,0.4668,0.4645,0,0,0.9989,280.037,0,0,32206,0,12390
+INFO   cycles simulated 12407
+RESULT PERF PASS checks=727465 errors=0 seed=1
+=== E0_A_N4_V4_bitrot_0.23 (2 s)
+PHASE  PERF E0_A_N4_V4_bitrot_0.23: bitrot at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36876 packets measured, latency avg 479.80 p99 1883 max 2251, offered 0.5357 accepted 0.5041 flits/node/cycle, saturated
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9990, worst flow 1163.14
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_bitrot_0.23,A,4,4,bitrot,0.3333,-,-,-,-,0.2300,1,479.799,32,1883,2251,0.5357,0.5041,0,0,0.9990,1163.137,0,0,36876,1,13985
+INFO   cycles simulated 14002
+RESULT PERF PASS checks=835868 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.02 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.02: shuffle at 0.0200 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 3222 packets measured, latency avg 14.47 p99 25 max 32, offered 0.0467 accepted 0.0466 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.34, jain 0.9966, worst flow 22.51
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.02,A,4,4,shuffle,0.3333,-,-,-,-,0.0200,1,14.475,13,25,32,0.0467,0.0466,0,0,0.9966,22.513,0,0,3222,0,12019
+INFO   cycles simulated 12036
+RESULT PERF PASS checks=73151 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.05 (1 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.05: shuffle at 0.0500 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 7961 packets measured, latency avg 14.72 p99 27 max 34, offered 0.1154 accepted 0.1152 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.35, jain 0.9980, worst flow 22.89
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.05,A,4,4,shuffle,0.3333,-,-,-,-,0.0500,1,14.719,13,27,34,0.1154,0.1152,0,0,0.9980,22.894,0,0,7961,0,12022
+INFO   cycles simulated 12039
+RESULT PERF PASS checks=180422 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.08 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.08: shuffle at 0.0800 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 12816 packets measured, latency avg 15.09 p99 29 max 40, offered 0.1872 accepted 0.1874 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.40, jain 0.9983, worst flow 23.40
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.08,A,4,4,shuffle,0.3333,-,-,-,-,0.0800,1,15.090,15,29,40,0.1872,0.1874,0,0,0.9983,23.400,0,0,12816,0,12027
+INFO   cycles simulated 12044
+RESULT PERF PASS checks=291940 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.11 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.11: shuffle at 0.1100 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 17733 packets measured, latency avg 15.62 p99 33 max 60, offered 0.2587 accepted 0.2588 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.41, jain 0.9985, worst flow 24.40
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.11,A,4,4,shuffle,0.3333,-,-,-,-,0.1100,1,15.621,17,33,60,0.2587,0.2588,0,0,0.9985,24.403,0,0,17733,0,12020
+INFO   cycles simulated 12037
+RESULT PERF PASS checks=402443 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.14 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.14: shuffle at 0.1400 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 22515 packets measured, latency avg 16.47 p99 40 max 82, offered 0.3276 accepted 0.3277 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.37, jain 0.9987, worst flow 26.09
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.14,A,4,4,shuffle,0.3333,-,-,-,-,0.1400,1,16.465,17,40,82,0.3276,0.3277,0,0,0.9987,26.089,0,0,22515,0,12022
+INFO   cycles simulated 12039
+RESULT PERF PASS checks=510066 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.17 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.17: shuffle at 0.1700 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 27285 packets measured, latency avg 18.59 p99 57 max 99, offered 0.3969 accepted 0.3967 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.35, jain 0.9989, worst flow 30.19
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.17,A,4,4,shuffle,0.3333,-,-,-,-,0.1700,1,18.594,17,57,99,0.3969,0.3967,0,0,0.9989,30.192,0,0,27285,0,12058
+INFO   cycles simulated 12075
+RESULT PERF PASS checks=617822 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.20 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.20: shuffle at 0.2000 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 32206 packets measured, latency avg 48.12 p99 339 max 451, offered 0.4668 accepted 0.4643 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 14.33, jain 0.9989, worst flow 178.73
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.20,A,4,4,shuffle,0.3333,-,-,-,-,0.2000,1,48.125,21,339,451,0.4668,0.4643,0,0,0.9989,178.730,0,0,32206,0,12317
+INFO   cycles simulated 12334
+RESULT PERF PASS checks=727465 errors=0 seed=1
+=== E0_A_N4_V4_shuffle_0.23 (2 s)
+PHASE  PERF E0_A_N4_V4_shuffle_0.23: shuffle at 0.2300 packets/node/cycle, p_data 0.333, stall 0.000, 2000 + 10000 cycles
+INFO   PERF: 36876 packets measured, latency avg 500.58 p99 1946 max 2140, offered 0.5357 accepted 0.5031 flits/node/cycle, saturated
+INFO   PERF: zero-load latency of the measured packets 14.36, jain 0.9990, worst flow 1147.87
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles
+CSV,E0_A_N4_V4_shuffle_0.23,A,4,4,shuffle,0.3333,-,-,-,-,0.2300,1,500.584,178,1946,2140,0.5357,0.5031,0,0,0.9990,1147.870,0,0,36876,1,13822
+INFO   cycles simulated 13839
+RESULT PERF PASS checks=835868 errors=0 seed=1
+done

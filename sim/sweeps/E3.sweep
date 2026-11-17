@@ -1,0 +1,145 @@
+# E3: 144 points (written by make_sweeps.tcl; run with sweep.tcl -sweep E3)
+E3_4x4_A_V1_uniform_k0.30                    tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01806
+E3_4x4_A_V1_uniform_k0.60                    tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03612
+E3_4x4_A_V1_uniform_k0.90                    tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05418
+E3_4x4_A_V1_uniform_k1.10                    tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06622
+E3_4x4_A_V1_transpose_k0.30                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02601
+E3_4x4_A_V1_transpose_k0.60                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05202
+E3_4x4_A_V1_transpose_k0.90                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07803
+E3_4x4_A_V1_transpose_k1.10                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.09537
+E3_4x4_A_V2_uniform_k0.30                    tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.04830
+E3_4x4_A_V2_uniform_k0.60                    tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09660
+E3_4x4_A_V2_uniform_k0.90                    tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.14490
+E3_4x4_A_V2_uniform_k1.10                    tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.17710
+E3_4x4_A_V2_transpose_k0.30                  tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05724
+E3_4x4_A_V2_transpose_k0.60                  tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.11448
+E3_4x4_A_V2_transpose_k0.90                  tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.17172
+E3_4x4_A_V2_transpose_k1.10                  tb_mesh    -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.20988
+E3_4x4_A_V4_uniform_k0.30                    tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.08289
+E3_4x4_A_V4_uniform_k0.60                    tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.16578
+E3_4x4_A_V4_uniform_k0.90                    tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.24867
+E3_4x4_A_V4_uniform_k1.10                    tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.30393
+E3_4x4_A_V4_transpose_k0.30                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.09378
+E3_4x4_A_V4_transpose_k0.60                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18756
+E3_4x4_A_V4_transpose_k0.90                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.28134
+E3_4x4_A_V4_transpose_k1.10                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34386
+E3_4x4_B_V1_uniform_k0.30                    tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01806
+E3_4x4_B_V1_uniform_k0.60                    tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03612
+E3_4x4_B_V1_uniform_k0.90                    tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05418
+E3_4x4_B_V1_uniform_k1.10                    tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06622
+E3_4x4_B_V1_transpose_k0.30                  tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02601
+E3_4x4_B_V1_transpose_k0.60                  tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05202
+E3_4x4_B_V1_transpose_k0.90                  tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07803
+E3_4x4_B_V1_transpose_k1.10                  tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.09537
+E3_4x4_B_V2_uniform_k0.30                    tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.04830
+E3_4x4_B_V2_uniform_k0.60                    tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09660
+E3_4x4_B_V2_uniform_k0.90                    tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.14490
+E3_4x4_B_V2_uniform_k1.10                    tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.17710
+E3_4x4_B_V2_transpose_k0.30                  tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05724
+E3_4x4_B_V2_transpose_k0.60                  tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.11448
+E3_4x4_B_V2_transpose_k0.90                  tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.17172
+E3_4x4_B_V2_transpose_k1.10                  tb_mesh_b  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.20988
+E3_4x4_B_V4_uniform_k0.30                    tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.08289
+E3_4x4_B_V4_uniform_k0.60                    tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.16578
+E3_4x4_B_V4_uniform_k0.90                    tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.24867
+E3_4x4_B_V4_uniform_k1.10                    tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.30393
+E3_4x4_B_V4_transpose_k0.30                  tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.09378
+E3_4x4_B_V4_transpose_k0.60                  tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18756
+E3_4x4_B_V4_transpose_k0.90                  tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.28134
+E3_4x4_B_V4_transpose_k1.10                  tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34386
+E3_4x4_D_V1_uniform_k0.30                    tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01806
+E3_4x4_D_V1_uniform_k0.60                    tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03612
+E3_4x4_D_V1_uniform_k0.90                    tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05418
+E3_4x4_D_V1_uniform_k1.10                    tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06622
+E3_4x4_D_V1_transpose_k0.30                  tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02601
+E3_4x4_D_V1_transpose_k0.60                  tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05202
+E3_4x4_D_V1_transpose_k0.90                  tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07803
+E3_4x4_D_V1_transpose_k1.10                  tb_mesh_d  -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.09537
+E3_4x4_D_V2_uniform_k0.30                    tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.04830
+E3_4x4_D_V2_uniform_k0.60                    tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09660
+E3_4x4_D_V2_uniform_k0.90                    tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.14490
+E3_4x4_D_V2_uniform_k1.10                    tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.17710
+E3_4x4_D_V2_transpose_k0.30                  tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.05724
+E3_4x4_D_V2_transpose_k0.60                  tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.11448
+E3_4x4_D_V2_transpose_k0.90                  tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.17172
+E3_4x4_D_V2_transpose_k1.10                  tb_mesh_d  -seed 1 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.20988
+E3_4x4_D_V4_uniform_k0.30                    tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.08289
+E3_4x4_D_V4_uniform_k0.60                    tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.16578
+E3_4x4_D_V4_uniform_k0.90                    tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.24867
+E3_4x4_D_V4_uniform_k1.10                    tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.30393
+E3_4x4_D_V4_transpose_k0.30                  tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.09378
+E3_4x4_D_V4_transpose_k0.60                  tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18756
+E3_4x4_D_V4_transpose_k0.90                  tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.28134
+E3_4x4_D_V4_transpose_k1.10                  tb_mesh_d  -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34386
+E3_8x8_A_V1_uniform_k0.30                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.00816
+E3_8x8_A_V1_uniform_k0.60                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01632
+E3_8x8_A_V1_uniform_k0.90                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02448
+E3_8x8_A_V1_uniform_k1.10                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02992
+E3_8x8_A_V1_transpose_k0.30                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.01020
+E3_8x8_A_V1_transpose_k0.60                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02040
+E3_8x8_A_V1_transpose_k0.90                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03060
+E3_8x8_A_V1_transpose_k1.10                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03740
+E3_8x8_A_V2_uniform_k0.30                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02142
+E3_8x8_A_V2_uniform_k0.60                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.04284
+E3_8x8_A_V2_uniform_k0.90                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06426
+E3_8x8_A_V2_uniform_k1.10                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07854
+E3_8x8_A_V2_transpose_k0.30                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02397
+E3_8x8_A_V2_transpose_k0.60                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.04794
+E3_8x8_A_V2_transpose_k0.90                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07191
+E3_8x8_A_V2_transpose_k1.10                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08789
+E3_8x8_A_V4_uniform_k0.30                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03996
+E3_8x8_A_V4_uniform_k0.60                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07992
+E3_8x8_A_V4_uniform_k0.90                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.11988
+E3_8x8_A_V4_uniform_k1.10                    tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.14652
+E3_8x8_A_V4_transpose_k0.30                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.04068
+E3_8x8_A_V4_transpose_k0.60                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08136
+E3_8x8_A_V4_transpose_k0.90                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.12204
+E3_8x8_A_V4_transpose_k1.10                  tb_mesh    -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14916
+E3_8x8_B_V1_uniform_k0.30                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.00816
+E3_8x8_B_V1_uniform_k0.60                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01632
+E3_8x8_B_V1_uniform_k0.90                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02448
+E3_8x8_B_V1_uniform_k1.10                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02992
+E3_8x8_B_V1_transpose_k0.30                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.01020
+E3_8x8_B_V1_transpose_k0.60                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02040
+E3_8x8_B_V1_transpose_k0.90                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03060
+E3_8x8_B_V1_transpose_k1.10                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03740
+E3_8x8_B_V2_uniform_k0.30                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02142
+E3_8x8_B_V2_uniform_k0.60                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.04284
+E3_8x8_B_V2_uniform_k0.90                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06426
+E3_8x8_B_V2_uniform_k1.10                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07854
+E3_8x8_B_V2_transpose_k0.30                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02397
+E3_8x8_B_V2_transpose_k0.60                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.04794
+E3_8x8_B_V2_transpose_k0.90                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07191
+E3_8x8_B_V2_transpose_k1.10                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08789
+E3_8x8_B_V4_uniform_k0.30                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03996
+E3_8x8_B_V4_uniform_k0.60                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07992
+E3_8x8_B_V4_uniform_k0.90                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.11988
+E3_8x8_B_V4_uniform_k1.10                    tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.14652
+E3_8x8_B_V4_transpose_k0.30                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.04068
+E3_8x8_B_V4_transpose_k0.60                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08136
+E3_8x8_B_V4_transpose_k0.90                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.12204
+E3_8x8_B_V4_transpose_k1.10                  tb_mesh_b  -seed 1 -define TB_MESH_N=8 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14916
+E3_8x8_D_V1_uniform_k0.30                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.00816
+E3_8x8_D_V1_uniform_k0.60                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.01632
+E3_8x8_D_V1_uniform_k0.90                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02448
+E3_8x8_D_V1_uniform_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02584
+E3_8x8_D_V1_transpose_k0.30                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.01020
+E3_8x8_D_V1_transpose_k0.60                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02040
+E3_8x8_D_V1_transpose_k0.90                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03060
+E3_8x8_D_V1_transpose_k0.95                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.03230
+E3_8x8_D_V2_uniform_k0.30                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.02142
+E3_8x8_D_V2_uniform_k0.60                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.04284
+E3_8x8_D_V2_uniform_k0.90                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06426
+E3_8x8_D_V2_uniform_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.06783
+E3_8x8_D_V2_transpose_k0.30                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02397
+E3_8x8_D_V2_transpose_k0.60                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.04794
+E3_8x8_D_V2_transpose_k0.90                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07191
+E3_8x8_D_V2_transpose_k0.95                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=2 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.07591
+E3_8x8_D_V4_uniform_k0.30                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.03996
+E3_8x8_D_V4_uniform_k0.60                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.07992
+E3_8x8_D_V4_uniform_k0.90                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.11988
+E3_8x8_D_V4_uniform_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E3_8x8_D_V4_transpose_k0.30                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.04068
+E3_8x8_D_V4_transpose_k0.60                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.08136
+E3_8x8_D_V4_transpose_k0.90                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.12204
+E3_8x8_D_V4_transpose_k0.95                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.12882

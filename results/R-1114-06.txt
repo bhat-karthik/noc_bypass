@@ -1,0 +1,10 @@
+set argv {-list b7 -only CT04}; source -notrace sim/vivado/regress.tcl
+regress.tcl: 1 entries from b7, seed 1
+regress.tcl: CT04: building tb_mesh_d 
+regress.tcl: CT04: tb_mesh_d: up to date (0 warnings)
+regress.tcl: CT04: simulating
+CT04           CT04   tb_mesh_d              PASS    checks=3,062,877 errors=0 (expected 3,062,877), 34,863 cycles, 44 s
+==================== regress.tcl summary: b7, seed 1 ====================
+CT04           CT04   tb_mesh_d              PASS    checks=3,062,877 errors=0 (expected 3,062,877), 34,863 cycles, 44 s
+1 entries: 1 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 1 min
+Summary file: D:/noc_bypass/sim/vivado/work/regress_b7_seed1.txt

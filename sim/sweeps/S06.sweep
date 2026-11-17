@@ -1,0 +1,17 @@
+# S06: 16 points (written by make_sweeps.tcl; run with sweep.tcl -sweep S06)
+S06_A_uniform_f0.30                          tb_mesh    -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_A_uniform_f0.70                          tb_mesh    -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_A_transpose_f0.30                        tb_mesh    -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_A_transpose_f0.70                        tb_mesh    -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_B_uniform_f0.30                          tb_mesh_b  -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_B_uniform_f0.70                          tb_mesh_b  -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_B_transpose_f0.30                        tb_mesh_b  -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_B_transpose_f0.70                        tb_mesh_b  -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_C_uniform_f0.30                          tb_mesh_c  -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_C_uniform_f0.70                          tb_mesh_c  -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_C_transpose_f0.30                        tb_mesh_c  -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_C_transpose_f0.70                        tb_mesh_c  -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_D_uniform_f0.30                          tb_mesh_d  -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_D_uniform_f0.70                          tb_mesh_d  -seed 1 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_D_transpose_f0.30                        tb_mesh_d  -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.30 -plus +WARMUP=500 -plus +MEASURE=2000
+S06_D_transpose_f0.70                        tb_mesh_d  -seed 1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE_FRAC=0.70 -plus +WARMUP=500 -plus +MEASURE=2000

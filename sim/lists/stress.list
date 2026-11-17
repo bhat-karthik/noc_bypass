@@ -1,0 +1,15 @@
+# S01-S03 and S05 in their short forms (+QUICK) on every design they apply to (4x4)
+S01_A_q   tb_mesh     7808915 -plus +TEST=S01 -plus +QUICK
+S01_B_q   tb_mesh_b   17741895 -plus +TEST=S01 -plus +QUICK
+S01_C_q   tb_mesh_c   20035432 -plus +TEST=S01 -plus +QUICK
+S01_D_q   tb_mesh_d   19920852 -plus +TEST=S01 -plus +QUICK
+S02_B_q   tb_mesh_b   1245842 -plus +TEST=S02 -plus +QUICK
+S02_C_q   tb_mesh_c   1409802 -plus +TEST=S02 -plus +QUICK
+S02_D_q   tb_mesh_d   1404594 -plus +TEST=S02 -plus +QUICK
+S03_B_q   tb_mesh_b   1151346 -define TB_NUM_VC=1 -plus +TEST=S03 -plus +QUICK
+S03_C_q   tb_mesh_c   1335771 -define TB_NUM_VC=1 -plus +TEST=S03 -plus +QUICK
+S03_D_q   tb_mesh_d   1368403 -define TB_NUM_VC=1 -plus +TEST=S03 -plus +QUICK
+S05_A_q   tb_mesh     145256 -plus +TEST=S05 -plus +QUICK
+S05_B_q   tb_mesh_b   207433 -plus +TEST=S05 -plus +QUICK
+S05_C_q   tb_mesh_c   222333 -plus +TEST=S05 -plus +QUICK
+S05_D_q   tb_mesh_d   222337 -plus +TEST=S05 -plus +QUICK

@@ -1,0 +1,78 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Sun Nov  8 18:05:37 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_mesh_snap/xsim_script.tcl
+# xsim {tb_mesh_snap} -testplusarg SEED=1 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==========================================================================
+TEST   N01-N08  mesh 8x8, 4 VC, XY routing, design A
+SEED   1 (from +SEED)
+==========================================================================
+PHASE  N01 all pairs: 64 x 64 nodes, one packet per ordered pair, all at once
+INFO   N01: 4096 packets delivered by cycle 551
+PHASE  N02 zero-load latency: 1 packet/node every 500 cycles, 1-flit, 7 periods
+INFO   N02 transpose: average latency 26.002 cycles, expected 26.000; 99.8% of 448 packets at exactly zero-load
+INFO   N02 bitrot: average latency 21.000 cycles, expected 21.000; 100.0% of 448 packets at exactly zero-load
+INFO   N02 shuffle: average latency 21.007 cycles, expected 21.000; 99.3% of 448 packets at exactly zero-load
+PHASE  N03 random traffic: 10 patterns x 3 loads (0.034 0.069 0.123 packets/node/cycle) x 5, 250 cycles each
+COVER  N03 uniform packets delivered                        18008
+INFO   N03 uniform: 18008 packets, worst latency 184 cycles
+COVER  N03 transpose packets delivered                      18131
+INFO   N03 transpose: 18131 packets, worst latency 467 cycles
+COVER  N03 bitcomp packets delivered                        18139
+INFO   N03 bitcomp: 18139 packets, worst latency 365 cycles
+COVER  N03 bitrot packets delivered                         18179
+INFO   N03 bitrot: 18179 packets, worst latency 289 cycles
+COVER  N03 shuffle packets delivered                        18046
+INFO   N03 shuffle: 18046 packets, worst latency 242 cycles
+COVER  N03 tornado packets delivered                        18126
+INFO   N03 tornado: 18126 packets, worst latency 355 cycles
+COVER  N03 neighbor packets delivered                       18215
+INFO   N03 neighbor: 18215 packets, worst latency 74 cycles
+COVER  N03 hotspot packets delivered                        18145
+INFO   N03 hotspot: 18145 packets, worst latency 1090 cycles
+COVER  N03 region packets delivered                         18099
+INFO   N03 region: 18099 packets, worst latency 102 cycles
+COVER  N03 phase packets delivered                          18023
+INFO   N03 phase: 18023 packets, worst latency 300 cycles
+PHASE  N04 saturation: uniform at 0.5 and 1.2 x 0.137 packets/node/cycle, 250 + 500 cycles
+INFO   N04 0.5 x saturation: 2198 packets measured, latency avg 29.41 p99 62 max 82, offered 0.1619 accepted 0.1597 flits/node/cycle
+INFO   N04 1.2 x saturation: 5330 packets measured, latency avg 131.53 p99 454 max 517, offered 0.3861 accepted 0.3239 flits/node/cycle, saturated
+PHASE  N06 back-pressure: uniform at 0.069, 10% sink stalls; node 36 stops for 1000 cycles, then every node for 1508
+COVER  N06 packets delivered while one sink was stopped     2326
+INFO   N06: every sink stopped: 776 packets (1452 flits) inside the mesh, at most 1408 fit (one per VC); every source blocked, 96243 cycles in all
+COVER  N06 source cycles blocked while every sink was stopped 96243
+COVER  N06 sink stall cycles                                155818
+INFO   N06 steps 1-2: 8863 packets measured, latency avg 578.17 p99 2436 max 2579, offered 0.1611 accepted 0.1195 flits/node/cycle, saturated
+PHASE  N07 data packets only: uniform, bitcomp, hotspot at 0.041 packets/node/cycle, 375 cycles each
+INFO   N07 uniform: 974 packets measured, latency avg 36.37 p99 71 max 98, offered 0.2029 accepted 0.1858 flits/node/cycle, saturated
+INFO   N07 bitcomp: 970 packets measured, latency avg 57.63 p99 110 max 146, offered 0.2021 accepted 0.1709 flits/node/cycle, saturated
+INFO   N07 hotspot: 950 packets measured, latency avg 220.85 p99 905 max 991, offered 0.1979 accepted 0.1217 flits/node/cycle, saturated
+COVER  N07 packets interleaved at a sink                    3695
+PHASE  N08 endurance: 1000000 cycles, uniform at 0.069 packets/node/cycle, then drain
+INFO   N08: 100000 of 1000000 cycles, 744241 packets delivered
+INFO   N08: 200000 of 1000000 cycles, 1182200 packets delivered
+INFO   N08: 300000 of 1000000 cycles, 1620934 packets delivered
+INFO   N08: 400000 of 1000000 cycles, 2058791 packets delivered
+INFO   N08: 500000 of 1000000 cycles, 2496667 packets delivered
+INFO   N08: 600000 of 1000000 cycles, 2935058 packets delivered
+INFO   N08: 700000 of 1000000 cycles, 3373660 packets delivered
+INFO   N08: 800000 of 1000000 cycles, 3811404 packets delivered
+INFO   N08: 900000 of 1000000 cycles, 4249832 packets delivered
+INFO   N08: 4377888 packets measured, latency avg 29.45 p99 61 max 118, offered 0.1597 accepted 0.1597 flits/node/cycle
+INFO   cycles simulated 1085257
+==========================================================================
+RESULT N01-N08 PASS checks=88332937 errors=0 seed=1
+==========================================================================
+$finish called at time : 10852575 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+run: Time (s): cpu = 00:00:13 ; elapsed = 02:56:33 . Memory (MB): peak = 266.621 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 88196 KB (Peak: 88196 KB), Simulation CPU Usage: 10549421 ms
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 21:02:13 2026...

@@ -1,0 +1,108 @@
+[2026-11-04 17:08:43 UTC] vlib work && vlog '-timescale' '1ns/1ns' design.sv testbench.sv  && vsim -c -do "vsim +define+TEST_U01; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: sync_fifo route_compute tb_rr_arbiter."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 0[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.1 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.5 [s]
+# SLP: Finished : 0.6 [s]
+# SLP: 0 primitives and 120 (100.00%) other processes in SLP
+# SLP: 1008 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 1.1 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4727 kB (elbread=427 elab2=4286 kernel=13 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U01  rr_arbiter: one grant, mask, rotation, hold
+# KERNEL: SEED   1
+# KERNEL: ==========================================================================
+# KERNEL: COVER  N=1 hold decides the grant                           1126
+# KERNEL: COVER  N=1 mask changes the winner                          1228
+# KERNEL: COVER  N=1 nobody eligible                                  6307
+# KERNEL: COVER  N=1 grants accepted                                  2794
+# KERNEL: INFO   N=1 longest run of grants to others: 0 (bound 0)
+# KERNEL: COVER  N=2 hold decides the grant                           1151
+# KERNEL: COVER  N=2 mask changes the winner                          1703
+# KERNEL: COVER  N=2 grant wraps around past N-1                      691
+# KERNEL: COVER  N=2 nobody eligible                                  4494
+# KERNEL: COVER  N=2 grants accepted                                  4202
+# KERNEL: INFO   N=2 longest run of grants to others: 1 (bound 1)
+# KERNEL: COVER  N=12 hold decides the grant                          1114
+# KERNEL: COVER  N=12 mask changes the winner                         2389
+# KERNEL: COVER  N=12 grant wraps around past N-1                     1294
+# KERNEL: COVER  N=12 nobody eligible                                 835
+# KERNEL: COVER  N=12 grants accepted                                 6960
+# KERNEL: INFO   N=12 longest run of grants to others: 11 (bound 11)
+# KERNEL: COVER  N=3 hold decides the grant                           1226
+# KERNEL: COVER  N=3 mask changes the winner                          2092
+# KERNEL: COVER  N=3 grant wraps around past N-1                      1018
+# KERNEL: COVER  N=3 nobody eligible                                  3651
+# KERNEL: COVER  N=3 grants accepted                                  4966
+# KERNEL: INFO   N=3 longest run of grants to others: 2 (bound 2)
+# KERNEL: COVER  N=4 hold decides the grant                           1377
+# KERNEL: COVER  N=4 mask changes the winner                          3198
+# KERNEL: COVER  N=4 grant wraps around past N-1                      1458
+# KERNEL: COVER  N=4 nobody eligible                                  3515
+# KERNEL: COVER  N=4 grants accepted                                  5495
+# KERNEL: INFO   N=4 longest run of grants to others: 3 (bound 3)
+# KERNEL: COVER  N=6 hold decides the grant                           1956
+# KERNEL: COVER  N=6 mask changes the winner                          3018
+# KERNEL: COVER  N=6 grant wraps around past N-1                      1707
+# KERNEL: COVER  N=6 nobody eligible                                  1979
+# KERNEL: COVER  N=6 grants accepted                                  6110
+# KERNEL: INFO   N=6 longest run of grants to others: 5 (bound 5)
+# KERNEL: COVER  N=7 hold decides the grant                           2928
+# KERNEL: COVER  N=7 mask changes the winner                          4268
+# KERNEL: COVER  N=7 grant wraps around past N-1                      2104
+# KERNEL: COVER  N=7 nobody eligible                                  1671
+# KERNEL: COVER  N=7 grants accepted                                  6265
+# KERNEL: INFO   N=7 longest run of grants to others: 6 (bound 6)
+# KERNEL: COVER  N=5 hold decides the grant                           2424
+# KERNEL: COVER  N=5 mask changes the winner                          7997
+# KERNEL: COVER  N=5 grant wraps around past N-1                      3014
+# KERNEL: COVER  N=5 nobody eligible                                  5226
+# KERNEL: COVER  N=5 grants accepted                                  5807
+# KERNEL: INFO   N=5 longest run of grants to others: 4 (bound 4)
+# KERNEL: COVER  N=8 hold decides the grant                           5199
+# KERNEL: COVER  N=8 mask changes the winner                          6863
+# KERNEL: COVER  N=8 grant wraps around past N-1                      2901
+# KERNEL: COVER  N=8 nobody eligible                                  1528
+# KERNEL: COVER  N=8 grants accepted                                  6461
+# KERNEL: INFO   N=8 longest run of grants to others: 7 (bound 7)
+# KERNEL: COVER  N=20 hold decides the grant                          2259
+# KERNEL: COVER  N=20 mask changes the winner                         4986
+# KERNEL: COVER  N=20 grant wraps around past N-1                     2359
+# KERNEL: COVER  N=20 nobody eligible                                 623
+# KERNEL: COVER  N=20 grants accepted                                 14596
+# KERNEL: INFO   N=20 longest run of grants to others: 19 (bound 19)
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U01 PASS checks=310493 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (174): $finish called.
+# KERNEL: Time: 200730 ns,  Iteration: 2,  Instance: /tb_rr_arbiter,  Process: @INITIAL#591_3@.
+# KERNEL: stopped at time: 200730 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

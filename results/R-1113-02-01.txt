@@ -1,0 +1,15 @@
+set argv {-test U11}
+-test U11
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_phase_sequencer (tests U11), seed 1: compiling
+run.tcl: tb_phase_sequencer: elaborating
+run.tcl: tb_phase_sequencer: simulating
+==========================================================================
+$finish called at time : 6000010 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 136
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:45 . Memory (MB): peak = 195.180 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 31764 KB (Peak: 31764 KB), Simulation CPU Usage: 44999 ms
+INFO: [Common 17-206] Exiting xsim at Fri Nov 13 09:04:52 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_phase_sequencer   U11          PASS  checks=21000067 errors=0   (62 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

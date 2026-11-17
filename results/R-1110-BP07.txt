@@ -1,0 +1,54 @@
+[2026-11-10 11:58:47 UTC] vlib work && vlog '+define+TEST_BP07' design.sv testbench.sv  && vsim -c -do "vsim ; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_mesh_b."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.7 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.1 [s]
+# SLP: Finished : 1.8 [s]
+# SLP: 0 primitives and 15767 (99.77%) other processes in SLP
+# SLP: 25346 (90.44%) signals in SLP and 457 (1.63%) interface signals
+# ELAB2: Elaboration final pass complete - time: 2.7 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 23423 kB (elbread=522 elab2=10136 kernel=12765 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   BP01-BP10  mesh 4x4, 4 VC, adaptive routing, design B, B_MAX 10, TIGHT subslots of 18 cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  BP07 release: an idle round, then a long sink stall with bursts and regular packets coming
+# KERNEL: INFO   BP07 a: one idle round: 240 decisions, all accepted, all released as no-shows; no reservation held at any of the 11 slot boundaries
+# KERNEL: INFO   BP07 b: R15 stalled for 1126 cycles: its NI cancelled 20 turns; its FIFO held up to 40 of 48 flits (20 regular at most, bypass space 28)
+# KERNEL: INFO   BP07 b: after the stall R15 accepted R0's turn at cycle 4806 and the burst landed on time; the largest FIFO occupancy the model saw anywhere was 40
+# KERNEL: INFO   cycles simulated 4839
+# KERNEL: ==========================================================================
+# KERNEL: RESULT BP07 PASS checks=239570 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (407): $finish called.
+# KERNEL: Time: 48395 ns,  Iteration: 1,  Instance: /tb_mesh_b/u_bench,  Process: @INITIAL#1957_5@.
+# KERNEL: stopped at time: 48395 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

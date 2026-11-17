@@ -1,0 +1,7 @@
+# B3 timetable: U05-U07, then U08 and U09 alone and together
+U05      U05                  24462
+U06      U06                  837406
+U07      U07                  2269472
+U08      U08                  4786435
+U09      U09                  129
+U08-U09  tb_timetable_check   4786564

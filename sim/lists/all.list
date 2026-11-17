@@ -1,0 +1,23 @@
+# Every batch's main 4x4 regression in one list: the README Section 4 counts (about two hours on xsim)
+U01        U01                  310493
+U02        U02                  196864
+U03        U03                  856450
+U04        U04                  1121244
+R01-R04    tb_router            357967
+N01-N08    tb_mesh              46273022
+N05        N05                  1949
+U05        U05                  24462
+U06        U06                  837406
+U07        U07                  2269472
+U08-U09    tb_timetable_check   4786564
+BP01-10    tb_mesh_b            2573286
+BP08_B     BP08                 1173542   -define TB_NUM_VC=1
+BP08_A     tb_mesh_dl           9551      -plus +TEST=BP08
+U10        U10                  869821
+U11        U11                  21000067
+TL01-06    tb_mesh_c            1634484
+TL05       TL05                 500649
+U12        U12                  1320015
+U13        U13                  3358679
+U14        U14                  3044
+CT01-05    tb_mesh_d            11075837

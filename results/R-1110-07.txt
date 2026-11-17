@@ -1,0 +1,13 @@
+set argv {-test tb_mesh -plus {+QUICK}}; source -notrace sim/vivado/run.tcl
+run.tcl: tb_mesh (tests N01 N02 N03 N04 N06 N07 N08 PERF), seed 1: compiling
+run.tcl: tb_mesh: elaborating
+run.tcl: tb_mesh: simulating
+==========================================================================
+$finish called at time : 148115 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 136
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:15 . Memory (MB): peak = 221.434 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 50304 KB (Peak: 50304 KB), Simulation CPU Usage: 16171 ms
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 17:17:37 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=444704 errors=0, 14811 cycles in 21.2 s = 697 cycles/s   (37 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

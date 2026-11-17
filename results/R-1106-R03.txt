@@ -1,0 +1,93 @@
+[2026-11-06 17:36:20 UTC] vlib work && vlog '-timescale' '1ns/1ns' design.sv testbench.sv  && vsim -c -do "vsim +define+TEST_R03; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: tb_router."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.3 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.7 [s]
+# SLP: Finished : 1.0 [s]
+# SLP: 0 primitives and 2077 (99.62%) other processes in SLP
+# SLP: 3746 (79.84%) signals in SLP and 126 (2.69%) interface signals
+# ELAB2: Elaboration final pass complete - time: 1.2 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 7347 kB (elbread=463 elab2=6828 kernel=55 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   R01-R04  router: ports, VCs, timing, back-pressure, interleaving, adaptive choice
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  T1 R03: all inputs and VCs to one output, mixed lengths
+# KERNEL: PHASE  T2 R03: all inputs and VCs to one output, mixed lengths
+# KERNEL: PHASE  T3 R03: all inputs and VCs to one output, mixed lengths
+# KERNEL: PHASE  T4 R03: all inputs and VCs to one output, mixed lengths
+# KERNEL: ERROR  [50035000] R03: T1 R03: not idle after 5000 cycles, 12 packets still in flight
+# KERNEL: ERROR  [50035000] R03: T2 R03: not idle after 5000 cycles, 12 packets still in flight
+# KERNEL: ERROR  [50035000] R03: T3 R03: not idle after 5000 cycles, 6 packets still in flight
+# KERNEL: ERROR  [50035000] R03: T4 R03: not idle after 5000 cycles, 3 packets still in flight
+# KERNEL: ERROR  [100035000] R03: T1 R03: not idle after 5000 cycles, 24 packets still in flight
+# KERNEL: ERROR  [100035000] R03: T2 R03: not idle after 5000 cycles, 24 packets still in flight
+# KERNEL: ERROR  [100035000] R03: T3 R03: not idle after 5000 cycles, 12 packets still in flight
+# KERNEL: ERROR  [100035000] R03: T4 R03: not idle after 5000 cycles, 6 packets still in flight
+# KERNEL: ERROR  [150035000] R03: T1 R03: not idle after 5000 cycles, 36 packets still in flight
+# KERNEL: ERROR  [150035000] R03: T2 R03: not idle after 5000 cycles, 36 packets still in flight
+# KERNEL: ERROR  [150035000] R03: T3 R03: not idle after 5000 cycles, 18 packets still in flight
+# KERNEL: ERROR  [150035000] R03: T4 R03: not idle after 5000 cycles, 9 packets still in flight
+# KERNEL: ERROR  [200035000] R03: T1 R03: not idle after 5000 cycles, 48 packets still in flight
+# KERNEL: ERROR  [200035000] R03: T2 R03: not idle after 5000 cycles, 48 packets still in flight
+# KERNEL: ERROR  [200035000] R03: T3 R03: not idle after 5000 cycles, 24 packets still in flight
+# KERNEL: ERROR  [200035000] R03: T4 R03: not idle after 5000 cycles, 12 packets still in flight
+# KERNEL: ERROR  [250035000] R03: T1 R03: not idle after 5000 cycles, 60 packets still in flight
+# KERNEL: COVER  T1 R03 flits of two packets interleaved on a link    480
+# KERNEL: COVER  T1 R03 output VC 0 used                              60
+# KERNEL: COVER  T1 R03 output VC 1 used                              60
+# KERNEL: COVER  T1 R03 output VC 2 used                              60
+# KERNEL: COVER  T1 R03 output VC 3 used                              60
+# KERNEL: INFO   T1 (V=4, XY): 300 packets checked, 240 VC-free credits
+# KERNEL: ERROR  [250035000] R03: T1: 300 packets but 240 VC-free credits
+# KERNEL: ERROR  [250035000] R03: T2 R03: not idle after 5000 cycles, 60 packets still in flight
+# KERNEL: COVER  T2 R03 flits of two packets interleaved on a link    480
+# KERNEL: COVER  T2 R03 output VC 0 used                              60
+# KERNEL: COVER  T2 R03 output VC 1 used                              60
+# KERNEL: COVER  T2 R03 output VC 2 used                              60
+# KERNEL: COVER  T2 R03 output VC 3 used                              60
+# KERNEL: INFO   T2 (V=4, adaptive): 300 packets checked, 240 VC-free credits
+# KERNEL: ERROR  [250035000] R03: T2: 300 packets but 240 VC-free credits
+# KERNEL: ERROR  [250035000] R03: later errors are counted, not printed
+# KERNEL: COVER  T3 R03 flits of two packets interleaved on a link    240
+# KERNEL: COVER  T3 R03 output VC 0 used                              60
+# KERNEL: COVER  T3 R03 output VC 1 used                              60
+# KERNEL: INFO   T3 (V=2, adaptive): 150 packets checked, 120 VC-free credits
+# KERNEL: COVER  T4 R03 output VC 0 used                              60
+# KERNEL: INFO   T4 (V=1, XY): 75 packets checked, 60 VC-free credits
+# KERNEL: ==========================================================================
+# KERNEL: RESULT R03 FAIL checks=27923 errors=24 seed=1
+# KERNEL: ==========================================================================
+# KERNEL: Fatal Error: testbench.sv (235): R03 failed
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (235): $finish called.
+# KERNEL: Time: 250035 ns,  Iteration: 1,  Instance: /tb_router,  Process: @INITIAL#2302_3@.
+# KERNEL: stopped at time: 250035 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

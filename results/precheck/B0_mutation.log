@@ -1,0 +1,44 @@
+B0 mutation check, 2026-11-03 15:54 UTC
+Each mutant injects one bug into a copy of the RTL; the named test runs with seed 1.
+Killed = the test fails (error count, RESULT FAIL, or a DUT $fatal).
+
+M01 KILLED   U01 rr_arbiter.sv      pointer does not move past the winner
+             RESULT U01 FAIL checks=310493 errors=38914 seed=1
+M02 KILLED   U01 rr_arbiter.sv      hold ignores the mask
+             RESULT U01 FAIL checks=310493 errors=19013 seed=1
+M03 KILLED   U01 rr_arbiter.sv      no wrap-around search
+             RESULT U01 FAIL checks=310493 errors=22726 seed=1
+M04 KILLED   U01 rr_arbiter.sv      valid ignores the mask
+             RESULT U01 FAIL checks=310493 errors=11836 seed=1
+M05 KILLED   U01 rr_arbiter.sv      hold remembers the wrong winner
+             RESULT U01 FAIL checks=310493 errors=21188 seed=1
+M06 KILLED   U01 rr_arbiter.sv      state moves without update_i
+             RESULT U01 FAIL checks=310493 errors=47187 seed=1
+M07 KILLED   U02 sync_fifo.sv       full one entry early
+             [45000] %Fatal: sync_fifo.sv:89: Assertion failed in TOP.tb_sync_fifo.t_d1.dut: TOP.tb_sync_fifo.t_d1.dut: pus
+M08 KILLED   U02 sync_fifo.sv       push lost when full with a pop
+             [105000] %Fatal: sync_fifo.sv:91: Assertion failed in TOP.tb_sync_fifo.t_d1.dut: TOP.tb_sync_fifo.t_d1.dut: po
+M09 KILLED   U02 sync_fifo.sv       pointers wrap at a power of two, not at DEPTH
+             RESULT U02 FAIL checks=196864 errors=21592 seed=1
+M10 KILLED   U02 sync_fifo.sv       count drops on push and pop together
+             [105000] %Fatal: sync_fifo.sv:91: Assertion failed in TOP.tb_sync_fifo.t_d1.dut: TOP.tb_sync_fifo.t_d1.dut: po
+M11 KILLED   U02 sync_fifo.sv       pop while empty corrupts state
+             RESULT U02 FAIL checks=196864 errors=28877 seed=1
+M12 KILLED   U03 route_compute.sv   adaptive tie goes to Y
+             RESULT U03 FAIL checks=856450 errors=52101 seed=1
+M13 KILLED   U03 route_compute.sv   YX mode routes XY
+             RESULT U03 FAIL checks=856450 errors=70536 seed=1
+M14 KILLED   U03 route_compute.sv   adaptive reads the free count of the wrong port
+             RESULT U03 FAIL checks=856450 errors=83805 seed=1
+M15 KILLED   U03 route_compute.sv   north and south swapped
+             RESULT U03 FAIL checks=856450 errors=292749 seed=1
+M16 KILLED   U03 noc_pkg.sv         id_x returns y
+             RESULT U03 FAIL checks=856450 errors=178091 seed=1
+M17 KILLED   U03 noc_pkg.sv         opposite(E) wrong
+             RESULT U03 FAIL checks=856450 errors=312 seed=1
+M18 KILLED   U03 noc_pkg.sv         has_nbr allows a south link off the mesh
+             RESULT U03 FAIL checks=856450 errors=30 seed=1
+M19 KILLED   U03 noc_pkg.sv         head fields reordered
+             RESULT U03 FAIL checks=856450 errors=1 seed=1
+
+Mutants killed: 19 of 19

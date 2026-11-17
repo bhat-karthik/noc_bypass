@@ -1,0 +1,4 @@
+# Store and check out every file byte for byte, as delivered: no line-ending
+# conversion on Windows or Linux. This keeps the md5 checks of deliveries valid,
+# the Vivado logs (CRLF) and the scripts (LF) exactly as written, and git add quiet.
+* -text

@@ -1,0 +1,10 @@
+# B2 network (4x4): N01-N08 one at a time, then in one run; N05 on the design-A deadlock mesh
+N01      N01        4526
+N02      N02        13227
+N03      N03        6436890
+N04      N04        396571
+N06      N06        150814
+N07      N07        190766
+N08      N08        39069420
+N01-N08  tb_mesh    46273022
+N05      N05        1949

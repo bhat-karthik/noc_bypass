@@ -1,0 +1,125 @@
+[2026-11-04 17:29:28 UTC] vlib work && vlog '-timescale' '1ns/1ns' design.sv testbench.sv  && vsim -c -do "vsim +define+TEST_U03; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: rr_arbiter sync_fifo tb_route_compute."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 0[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.1 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.3 [s]
+# SLP: Finished : 0.4 [s]
+# SLP: 0 primitives and 131 (100.00%) other processes in SLP
+# SLP: 650 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.5 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4830 kB (elbread=427 elab2=4385 kernel=17 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U03  route_compute: minimal ports; adaptive by free VCs, ties to X; XY and YX exact
+# KERNEL: SEED   1
+# KERNEL: ==========================================================================
+# KERNEL: COVER  2x2 XY chooses N                                     2
+# KERNEL: COVER  2x2 YX chooses N                                     4
+# KERNEL: COVER  2x2 adaptive chooses N                               3
+# KERNEL: COVER  2x2 XY chooses E                                     4
+# KERNEL: COVER  2x2 YX chooses E                                     2
+# KERNEL: COVER  2x2 adaptive chooses E                               3
+# KERNEL: COVER  2x2 XY chooses S                                     2
+# KERNEL: COVER  2x2 YX chooses S                                     4
+# KERNEL: COVER  2x2 adaptive chooses S                               2
+# KERNEL: COVER  2x2 XY chooses W                                     4
+# KERNEL: COVER  2x2 YX chooses W                                     2
+# KERNEL: COVER  2x2 adaptive chooses W                               4
+# KERNEL: COVER  2x2 XY chooses L                                     4
+# KERNEL: COVER  2x2 YX chooses L                                     4
+# KERNEL: COVER  2x2 adaptive chooses L                               4
+# KERNEL: COVER  2x2 adaptive: Y has more free VCs                    40
+# KERNEL: COVER  2x2 adaptive: tie goes to X                          20
+# KERNEL: COVER  2x2 adaptive: X has more free VCs                    40
+# KERNEL: COVER  2x2 only one productive direction                    8
+# KERNEL: COVER  4x4 XY chooses N                                     24
+# KERNEL: COVER  4x4 YX chooses N                                     96
+# KERNEL: COVER  4x4 adaptive chooses N                               52
+# KERNEL: COVER  4x4 XY chooses E                                     96
+# KERNEL: COVER  4x4 YX chooses E                                     24
+# KERNEL: COVER  4x4 adaptive chooses E                               68
+# KERNEL: COVER  4x4 XY chooses S                                     24
+# KERNEL: COVER  4x4 YX chooses S                                     96
+# KERNEL: COVER  4x4 adaptive chooses S                               55
+# KERNEL: COVER  4x4 XY chooses W                                     96
+# KERNEL: COVER  4x4 YX chooses W                                     24
+# KERNEL: COVER  4x4 adaptive chooses W                               65
+# KERNEL: COVER  4x4 XY chooses L                                     16
+# KERNEL: COVER  4x4 YX chooses L                                     16
+# KERNEL: COVER  4x4 adaptive chooses L                               16
+# KERNEL: COVER  4x4 adaptive: Y has more free VCs                    1440
+# KERNEL: COVER  4x4 adaptive: tie goes to X                          720
+# KERNEL: COVER  4x4 adaptive: X has more free VCs                    1440
+# KERNEL: COVER  4x4 only one productive direction                    96
+# KERNEL: COVER  8x8 XY chooses N                                     224
+# KERNEL: COVER  8x8 YX chooses N                                     1792
+# KERNEL: COVER  8x8 adaptive chooses N                               830
+# KERNEL: COVER  8x8 XY chooses E                                     1792
+# KERNEL: COVER  8x8 YX chooses E                                     224
+# KERNEL: COVER  8x8 adaptive chooses E                               1208
+# KERNEL: COVER  8x8 XY chooses S                                     224
+# KERNEL: COVER  8x8 YX chooses S                                     1792
+# KERNEL: COVER  8x8 adaptive chooses S                               821
+# KERNEL: COVER  8x8 XY chooses W                                     1792
+# KERNEL: COVER  8x8 YX chooses W                                     224
+# KERNEL: COVER  8x8 adaptive chooses W                               1173
+# KERNEL: COVER  8x8 XY chooses L                                     64
+# KERNEL: COVER  8x8 YX chooses L                                     64
+# KERNEL: COVER  8x8 adaptive chooses L                               64
+# KERNEL: COVER  8x8 adaptive: Y has more free VCs                    31360
+# KERNEL: COVER  8x8 adaptive: tie goes to X                          15680
+# KERNEL: COVER  8x8 adaptive: X has more free VCs                    31360
+# KERNEL: COVER  8x8 only one productive direction                    896
+# KERNEL: COVER  16x16 XY chooses N                                   1920
+# KERNEL: COVER  16x16 YX chooses N                                   30720
+# KERNEL: COVER  16x16 adaptive chooses N                             13495
+# KERNEL: COVER  16x16 XY chooses E                                   30720
+# KERNEL: COVER  16x16 YX chooses E                                   1920
+# KERNEL: COVER  16x16 adaptive chooses E                             19206
+# KERNEL: COVER  16x16 XY chooses S                                   1920
+# KERNEL: COVER  16x16 YX chooses S                                   30720
+# KERNEL: COVER  16x16 adaptive chooses S                             13500
+# KERNEL: COVER  16x16 XY chooses W                                   30720
+# KERNEL: COVER  16x16 YX chooses W                                   1920
+# KERNEL: COVER  16x16 adaptive chooses W                             19079
+# KERNEL: COVER  16x16 XY chooses L                                   256
+# KERNEL: COVER  16x16 YX chooses L                                   256
+# KERNEL: COVER  16x16 adaptive chooses L                             256
+# KERNEL: COVER  16x16 adaptive: Y has more free VCs                  23155
+# KERNEL: COVER  16x16 adaptive: tie goes to X                        11443
+# KERNEL: COVER  16x16 adaptive: X has more free VCs                  23002
+# KERNEL: COVER  16x16 only one productive direction                  7680
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U03 PASS checks=856450 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (174): $finish called.
+# KERNEL: Time: 188672 ns,  Iteration: 0,  Instance: /tb_route_compute,  Process: @INITIAL#1197_2@.
+# KERNEL: stopped at time: 188672 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

@@ -1,0 +1,77 @@
+B7 mutation check, 2026-11-13
+Each mutant changes one line of the B7 RTL (or of sched_pkg, tile or mesh_top where design D uses them) in a
+copy of the repository; the copy is rebuilt with Verilator and the test that targets the block runs at seed 1
+with +QUICK: U12 for demand_counter, U13 for sched_ctrl and the package tables, U14 for ctrl_node, and the
+design-D mesh (tb_mesh_d, 4x4, CT04) for the wiring in tile and mesh_top. Killed = the run fails (a RESULT FAIL
+line, a $fatal, a hang or no RESULT line). 'tb' = killed by the testbench's own checks (RESULT FAIL with
+errors > 0); 'rtl' = stopped by an RTL assertion first.
+
+M01   KILLED   demand_counter.sv  bypass heads counted
+      tb       u12: RESULT U12 FAIL checks=210015 errors=149091 seed=1
+M02   KILLED   demand_counter.sv  any credit frees a VC
+      tb       u12: RESULT U12 FAIL checks=210015 errors=149903 seed=1
+M03   KILLED   demand_counter.sv  region test on x only
+      tb       u12: RESULT U12 FAIL checks=210015 errors=189241 seed=1
+M04   KILLED   demand_counter.sv  samples one cycle late
+      tb       u12: RESULT U12 FAIL checks=210015 errors=171160 seed=1
+M05   KILLED   demand_counter.sv  local sum wraps instead of saturating
+      tb       u12: RESULT U12 FAIL checks=210015 errors=16400 seed=1
+M06   KILLED   demand_counter.sv  latch includes the tick's sample
+      tb       u12: RESULT U12 FAIL checks=210015 errors=188670 seed=1
+M07   KILLED   demand_counter.sv  local sum not restarted at a tick
+      tb       u12: RESULT U12 FAIL checks=210015 errors=167171 seed=1
+M08   KILLED   ctrl_node.sv       every node one cycle late
+      tb       u14: RESULT U14 FAIL checks=407 errors=247 seed=1
+M09   KILLED   ctrl_node.sv       column 0 drops its south input
+      tb       u14: RESULT U14 FAIL checks=407 errors=245 seed=1
+M10   KILLED   ctrl_node.sv       local carry loses its upper bit
+      tb       u14: RESULT U14 FAIL checks=407 errors=209 seed=1
+M11   KILLED   ctrl_node.sv       own sum's top bit dropped
+      tb       u14: RESULT U14 FAIL checks=407 errors=156 seed=1
+M12   KILLED   sched_ctrl.sv      C_G = 0 never seen
+      tb       u13: RESULT U13 FAIL checks=419900 errors=39800 seed=1
+M13   KILLED   sched_ctrl.sv      damping always rounds down
+      tb       u13: RESULT U13 FAIL checks=419900 errors=46531 seed=1
+M14   KILLED   sched_ctrl.sv      policy select inverted
+      tb       u13: RESULT U13 FAIL checks=419900 errors=161416 seed=1
+M15   KILLED   sched_ctrl.sv      no demand sets K_MIN
+      tb       u13: RESULT U13 FAIL checks=419900 errors=15846 seed=1
+M16   KILLED   sched_ctrl.sv      final clamp too high
+      tb       u13: RESULT U13 FAIL checks=419900 errors=72 seed=1
+M17   SURVIVED sched_ctrl.sv      sums shifted in one cycle early
+      equiv.   u13: RESULT U13 PASS checks=419900 errors=0 seed=1
+M18   KILLED   sched_ctrl.sv      plan set before the last division step
+      tb       u13: RESULT U13 FAIL checks=419900 errors=199307 seed=1
+M19   KILLED   sched_ctrl.sv      PROP table read one bin up
+      tb       u13: RESULT U13 FAIL checks=419900 errors=112377 seed=1
+M20   KILLED   sched_pkg.sv       PROP rounds down
+      tb       u13: RESULT U13 FAIL checks=419900 errors=43286 seed=1
+M21   KILLED   tile.sv            sequencer ignores the forwarded plan
+      tb       d4: RESULT CT04 FAIL checks=2614911 errors=24 seed=1
+M22   KILLED   mesh_top.sv        mesh drops column 0's south links
+      tb       d4: RESULT CT04 FAIL checks=2688476 errors=13 seed=1
+
+21 of 22 mutants killed, all by the testbench's own checks; M17 is equivalent (below).
+
+First run: M16 (the clamp after damping, made too high) survived. U13's 8x8/2 controller was meant to start
+above K_MAX but took k_fixed(8, 2, 10, TIGHT), which is 12, and its epoch 0 was damped only by chance. It now
+starts at 19 and epoch 0 always damps (B7_precheck.log section 7); M16 run again: killed, 72 errors.
+
+M17 (the sums shifted in from cycle 2N - 1 instead of 2N) is equivalent: the shift register takes one more
+bit, the zero that the tree's last node sends in cycle 2N - 1, and that zero leaves the register again with
+the last bit, so the controller sees the same sums. Tile (0, 0) sends nothing before its window (cycle 2N), in
+U13's stimulus and in the mesh. The mutant in the design-D mesh, 4x4:
+  M17 mesh: RESULT CT01-CT05 PASS checks=9043644 errors=0 seed=1
+  M17 mesh full: RESULT CT01-CT05 PASS checks=11075837 errors=0 seed=1
+  The delivered RTL gives the same counts: 9,043,644 with +QUICK and 11,075,837 in full.
+
+14 Nov, after U12's stimulus changed (no random draw on the right of &&; B7_precheck.log addendum): the
+demand_counter mutants rerun against the new U12 (+QUICK, seed 1):
+M01   KILLED   demand_counter.sv  bypass heads counted                      U12 FAIL, 149,061 errors
+M02   KILLED   demand_counter.sv  any credit frees a VC                     U12 FAIL, 149,913 errors
+M03   KILLED   demand_counter.sv  region test on x only                     U12 FAIL, 189,291 errors
+M04   KILLED   demand_counter.sv  samples one cycle late                    U12 FAIL, 172,077 errors
+M05   KILLED   demand_counter.sv  local sum wraps instead of saturating     U12 FAIL, 16,400 errors
+M06   KILLED   demand_counter.sv  latch includes the tick's sample          U12 FAIL, 188,312 errors
+M07   KILLED   demand_counter.sv  local sum not restarted at a tick         U12 FAIL, 167,451 errors
+Still 21 of 22 killed, M17 equivalent.

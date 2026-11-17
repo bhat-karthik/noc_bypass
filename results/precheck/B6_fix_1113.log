@@ -1,0 +1,55 @@
+B6 fixes of 13 Nov 2026 (tracker: the two issues of 13 Nov), checked on Verilator 5.020
+=====================================================================================
+
+1. U11 hung on xsim 2024.2 (R-1111-01: banner, then nothing for 37 h)
+   Cause   sched_pkg::epoch_len computed longint'(n_slots(n)) * frame_len(...) and
+           doubled e while e < r. As a constant function at elaboration (the RTL's
+           use) it is right; U11 also calls it at run time, where xsim misreads a
+           cast of a call inside an expression (README rule 9), so the loop never
+           ended. The restart then failed (XSIM 43-3356) because the hung xsimk.exe
+           still held xsim.dir/tb_phase_sequencer_snap.
+   Fix     rtl/pkg/sched_pkg.sv     epoch_len: casts into plain variables, a doubling
+                                    loop of fixed bound (40 steps); same values
+           tb/unit/tb_phase_sequencer.sv   casts into variables before use
+           tb/common/sched_ref.sv   frame_ref.sample() and at(): casts into variables;
+                                    at()'s cursor loop bounded and broken off early
+                                    (each call O(1) again: U11 3 s instead of 23 s)
+
+2. Same-edge races in the mesh bench (counts differed by simulator; every run passed)
+   TL05    reset released by a blocking assignment at a falling edge, where the
+           always @(negedge clk) comparison tests rst_n: Verilator ran the bench
+           first and compared once more (500,650 / 146,658 / 7,545,943 against
+           xsim's and Riviera-PRO's 500,649 / 146,657 / 7,545,942)
+   TL04    $finish at a falling edge: Riviera-PRO ran that edge's negedge checkers
+           first (EDA bundle 246,084 against Verilator's 246,013)
+   Fix     tb/mesh/mesh_bench.sv    g_shadow: sh_on <= rst_n at the rising edge,
+                                    compare only when sh_on; designs C and D finish
+                                    on a rising edge
+           README rule 10 (Section 2), D53
+
+Lint: every build below is verilator --binary -Wall (warnings fatal): clean.
+
+Counts after the fixes (seed 1)                         Verilator   your logs
+-------------------------------------------------------------------------------------
+U11            tb_phase_sequencer                       21,000,067  (xsim rerun pending)
+U11 +QUICK                                               2,625,053  R-1113-U11  2,625,053
+TL01           4x4 / +QUICK                     121,888 /   68,078  R-1113-TL01    68,078
+TL02           4x4 (= +QUICK)                              209,153  R-1113-TL02   209,153
+TL03           4x4 / +QUICK                     173,700 /   82,787  R-1113-TL03    82,787
+TL04           4x4 (= +QUICK)                    713,502 (was 713,431)
+TL06           4x4 / +QUICK                     442,714 /  296,594  R-1113-TL06   296,594
+TL01-TL04,TL06 one run 4x4 / +QUICK          1,634,484 / 1,461,178  R-1111-02 1,634,484
+TL05           4x4 / +QUICK                     500,649 /  146,657  R-1111-03   500,649
+                                                                     R-1113-TL05  146,657
+TL01-TL04,TL06 one run 8x8                              55,587,325  R-1111-05 55,587,325
+TL04           8x8 alone                     10,367,854 (was 10,367,590)
+TL05           8x8                                       7,545,942  R-1111-06  7,545,942
+TL01           16x16                         (Verilator: 8 GB too small)  R-1111-07 8,813,898
+
+EDA bundle (sim/eda/*.sv of 13 Nov, 477,913 characters), Verilator build per define, +QUICK:
+  TEST_U11 2,625,053   TEST_TL01 68,078   TEST_TL02 209,153   TEST_TL03 82,787
+  TEST_TL04 246,084    TEST_TL06 296,594  TEST_TL05 146,657   TEST_U10 289,930 (unchanged)
+  Each equals the Riviera-PRO log of R-1113 (bundle of 11 Nov; the fixes do not change
+  Riviera's counts).
+
+Every other B0-B6 count is unchanged.

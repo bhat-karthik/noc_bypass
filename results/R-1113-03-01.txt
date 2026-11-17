@@ -1,0 +1,16 @@
+cd D:/noc_bypass
+pwd
+D:/noc_bypass
+set argv {-test U12}; source -notrace sim/vivado/run.tcl
+run.tcl: tb_demand_counter (tests U12), seed 1: compiling
+run.tcl: tb_demand_counter: elaborating
+run.tcl: tb_demand_counter: simulating
+==========================================================================
+$finish called at time : 2000070 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 136
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:57 . Memory (MB): peak = 195.816 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 32940 KB (Peak: 32940 KB), Simulation CPU Usage: 57937 ms
+INFO: [Common 17-206] Exiting xsim at Fri Nov 13 23:22:57 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_demand_counter    U12          PASS  checks=1320015 errors=0   (74 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

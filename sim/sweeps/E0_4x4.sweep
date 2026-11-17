@@ -1,0 +1,481 @@
+# E0_4x4: 480 points (written by make_sweeps.tcl; run with sweep.tcl -sweep E0_4x4)
+E0_A_bitrot_V1_p0.000_r0.02                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b5_r0.02               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b10_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b15_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_A_bitrot_V1_p0.000_r0.06                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b5_r0.06               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b10_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b15_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_A_bitrot_V1_p0.000_r0.10                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b5_r0.10               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b10_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b15_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_A_bitrot_V1_p0.000_r0.14                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b5_r0.14               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b10_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b15_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_A_bitrot_V1_p0.000_r0.18                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b5_r0.18               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b10_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b15_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_A_bitrot_V1_p0.000_r0.22                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b5_r0.22               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b10_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_bitrot_V1_p0.000_b15_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_A_bitrot_V1_p0.333_r0.02                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b5_r0.02               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b10_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b15_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_A_bitrot_V1_p0.333_r0.06                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b5_r0.06               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b10_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b15_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_A_bitrot_V1_p0.333_r0.10                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b5_r0.10               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b10_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b15_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_A_bitrot_V1_p0.333_r0.14                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b5_r0.14               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b10_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b15_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_A_bitrot_V1_p0.333_r0.18                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b5_r0.18               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b10_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b15_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_A_bitrot_V1_p0.333_r0.22                  tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b5_r0.22               tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b10_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_bitrot_V1_p0.333_b15_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.000_r0.02                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.02               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.06                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.06               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.10                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.10               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.14                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.14               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.18                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.18               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.22                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.22               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.26                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.26               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.26              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.26              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.30                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.30               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.30              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.30              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.34                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.34               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.34              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.34              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.38                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.38               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.38              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.38              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.42                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.42               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.42              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.42              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.46                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.46               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.46              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.46              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.50                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.50               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.50              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.50              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.000_r0.52                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b5_r0.52               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b10_r0.52              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_bitrot_V4_p0.000_b15_r0.52              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.000
+E0_A_bitrot_V4_p0.333_r0.02                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.02               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.02 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.06                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.06               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.06 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.10                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.10               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.10 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.14                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.14               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.14 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.18                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.18               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.18 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.22                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.22               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.22 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.26                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.26               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.26              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.26              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.26 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.30                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.30               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.30              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.30              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.30 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.34                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.34               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.34              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.34              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.34 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.38                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.38               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.38              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.38              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.38 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.42                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.42               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.42              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.42              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.42 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.46                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.46               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.46              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.46              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.46 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.50                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.50               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.50              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.50              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.50 -plus +PDATA=0.333
+E0_A_bitrot_V4_p0.333_r0.52                  tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b5_r0.52               tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b10_r0.52              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_bitrot_V4_p0.333_b15_r0.52              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=bitrot -plus +RATE=0.52 -plus +PDATA=0.333
+E0_A_transpose_V1_p0.000_r0.02               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b5_r0.02            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b10_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b15_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_A_transpose_V1_p0.000_r0.06               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b5_r0.06            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b10_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b15_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_A_transpose_V1_p0.000_r0.10               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b5_r0.10            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b10_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b15_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_A_transpose_V1_p0.000_r0.14               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b5_r0.14            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b10_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b15_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_A_transpose_V1_p0.000_r0.18               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b5_r0.18            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b10_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b15_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_A_transpose_V1_p0.000_r0.22               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b5_r0.22            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b10_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_transpose_V1_p0.000_b15_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_A_transpose_V1_p0.333_r0.02               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b5_r0.02            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b10_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b15_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_A_transpose_V1_p0.333_r0.06               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b5_r0.06            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b10_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b15_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_A_transpose_V1_p0.333_r0.10               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b5_r0.10            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b10_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b15_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_A_transpose_V1_p0.333_r0.14               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b5_r0.14            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b10_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b15_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_A_transpose_V1_p0.333_r0.18               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b5_r0.18            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b10_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b15_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_A_transpose_V1_p0.333_r0.22               tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b5_r0.22            tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b10_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_transpose_V1_p0.333_b15_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.000_r0.02               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.02            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.06               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.06            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.10               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.10            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.14               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.14            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.18               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.18            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.22               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.22            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.26               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.26            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.26           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.26           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.30               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.30            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.30           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.30           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.34               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.34            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.34           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.34           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.38               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.38            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.38           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.38           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.42               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.42            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.42           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.42           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.46               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.46            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.46           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.46           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.50               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.50            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.50           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.50           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.000_r0.52               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b5_r0.52            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b10_r0.52           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_transpose_V4_p0.000_b15_r0.52           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.000
+E0_A_transpose_V4_p0.333_r0.02               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.02            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.02           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.02 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.06               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.06            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.06           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.06 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.10               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.10            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.10           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.10 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.14               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.14            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.14           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.14 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.18               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.18            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.18           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.18 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.22               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.22            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.22           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.22 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.26               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.26            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.26           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.26           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.26 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.30               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.30            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.30           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.30           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.30 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.34               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.34            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.34           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.34           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.34 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.38               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.38            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.38           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.38           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.38 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.42               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.42            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.42           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.42           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.42 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.46               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.46            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.46           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.46           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.46 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.50               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.50            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.50           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.50           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.50 -plus +PDATA=0.333
+E0_A_transpose_V4_p0.333_r0.52               tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b5_r0.52            tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b10_r0.52           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_transpose_V4_p0.333_b15_r0.52           tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=transpose -plus +RATE=0.52 -plus +PDATA=0.333
+E0_A_shuffle_V1_p0.000_r0.02                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b5_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b10_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b15_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_A_shuffle_V1_p0.000_r0.06                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b5_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b10_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b15_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_A_shuffle_V1_p0.000_r0.10                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b5_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b10_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b15_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_A_shuffle_V1_p0.000_r0.14                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b5_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b10_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b15_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_A_shuffle_V1_p0.000_r0.18                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b5_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b10_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b15_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_A_shuffle_V1_p0.000_r0.22                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b5_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b10_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_shuffle_V1_p0.000_b15_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_A_shuffle_V1_p0.333_r0.02                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b5_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b10_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b15_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_A_shuffle_V1_p0.333_r0.06                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b5_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b10_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b15_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_A_shuffle_V1_p0.333_r0.10                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b5_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b10_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b15_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_A_shuffle_V1_p0.333_r0.14                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b5_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b10_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b15_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_A_shuffle_V1_p0.333_r0.18                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b5_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b10_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b15_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_A_shuffle_V1_p0.333_r0.22                 tb_mesh    -seed 1 -define TB_NUM_VC=1 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b5_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b10_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_shuffle_V1_p0.333_b15_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=1 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.000_r0.02                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.06                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.10                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.14                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.18                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.22                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.26                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.26              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.26             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.26             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.30                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.30              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.30             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.30             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.34                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.34              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.34             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.34             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.38                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.38              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.38             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.38             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.42                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.42              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.42             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.42             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.46                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.46              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.46             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.46             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.50                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.50              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.50             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.50             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.000_r0.52                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b5_r0.52              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b10_r0.52             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.000
+E0_B_shuffle_V4_p0.000_b15_r0.52             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.000
+E0_A_shuffle_V4_p0.333_r0.02                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.02              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.02             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.02 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.06                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.06              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.06             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.06 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.10                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.10              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.10             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.10 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.14                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.14              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.14             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.14 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.18                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.18              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.18             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.18 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.22                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.22              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.22             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.22 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.26                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.26              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.26             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.26             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.26 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.30                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.30              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.30             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.30             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.30 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.34                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.34              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.34             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.34             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.34 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.38                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.38              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.38             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.38             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.38 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.42                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.42              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.42             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.42             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.42 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.46                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.46              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.46             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.46             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.46 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.50                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.50              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.50             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.50             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.50 -plus +PDATA=0.333
+E0_A_shuffle_V4_p0.333_r0.52                 tb_mesh    -seed 1 -define TB_NUM_VC=4 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b5_r0.52              tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b10_r0.52             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=10 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.333
+E0_B_shuffle_V4_p0.333_b15_r0.52             tb_mesh_b  -seed 1 -define TB_NUM_VC=4 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=shuffle -plus +RATE=0.52 -plus +PDATA=0.333

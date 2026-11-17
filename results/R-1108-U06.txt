@@ -1,0 +1,168 @@
+[2026-11-08 17:38:32 UTC] vlib work && vlog '+define+TEST_U06' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top slot_table group_to_router tb_slot_counter."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.4 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.1 [s]
+# SLP: Finished : 2.6 [s]
+# SLP: 0 primitives and 44927 (100.00%) other processes in SLP
+# SLP: 75855 (99.88%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 4.0 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 13917 kB (elbread=619 elab2=13275 kernel=22 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U06  slot_counter: setup, subslots, cycles, slot number and enable equal the reference every cycle
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: COVER  2x2 T=10 subslot 0                                   40
+# KERNEL: COVER  2x2 T=10 subslot 1                                   40
+# KERNEL: COVER  2x2 T=10 slot number wraps to 0                      1
+# KERNEL: COVER  2x2 T=10 last cycle of a slot                        4
+# KERNEL: COVER  2x2 T=10 pause at a slot boundary                    2
+# KERNEL: COVER  2x2 T=10 pause inside a setup window or subslot      10
+# KERNEL: COVER  2x2 T=10 cancel decision in the setup window         4
+# KERNEL: COVER  2x2 T=10 cancel decision in a subslot                4
+# KERNEL: COVER  4x4 T=7 subslot 0                                    77
+# KERNEL: COVER  4x4 T=7 subslot 1                                    77
+# KERNEL: COVER  4x4 T=7 subslot 2                                    77
+# KERNEL: COVER  4x4 T=7 subslot 3                                    77
+# KERNEL: COVER  4x4 T=7 slot number wraps to 0                       1
+# KERNEL: COVER  4x4 T=7 last cycle of a slot                         11
+# KERNEL: COVER  4x4 T=7 pause at a slot boundary                     4
+# KERNEL: COVER  4x4 T=7 pause inside a setup window or subslot       50
+# KERNEL: COVER  4x4 T=7 cancel decision in the setup window          11
+# KERNEL: COVER  4x4 T=7 cancel decision in a subslot                 33
+# KERNEL: COVER  4x4 T=13 subslot 0                                   143
+# KERNEL: COVER  4x4 T=13 subslot 1                                   143
+# KERNEL: COVER  4x4 T=13 subslot 2                                   143
+# KERNEL: COVER  4x4 T=13 subslot 3                                   143
+# KERNEL: COVER  4x4 T=13 slot number wraps to 0                      1
+# KERNEL: COVER  4x4 T=13 last cycle of a slot                        11
+# KERNEL: COVER  4x4 T=13 pause at a slot boundary                    4
+# KERNEL: COVER  4x4 T=13 pause inside a setup window or subslot      101
+# KERNEL: COVER  4x4 T=13 cancel decision in the setup window         11
+# KERNEL: COVER  4x4 T=13 cancel decision in a subslot                33
+# KERNEL: COVER  4x4 T=24 subslot 0                                   264
+# KERNEL: COVER  4x4 T=24 subslot 1                                   264
+# KERNEL: COVER  4x4 T=24 subslot 2                                   264
+# KERNEL: COVER  4x4 T=24 subslot 3                                   264
+# KERNEL: COVER  4x4 T=24 slot number wraps to 0                      1
+# KERNEL: COVER  4x4 T=24 last cycle of a slot                        11
+# KERNEL: COVER  4x4 T=24 pause at a slot boundary                    1
+# KERNEL: COVER  4x4 T=24 pause inside a setup window or subslot      191
+# KERNEL: COVER  4x4 T=24 cancel decision in the setup window         11
+# KERNEL: COVER  4x4 T=24 cancel decision in a subslot                33
+# KERNEL: COVER  4x4 T=18 subslot 0                                   198
+# KERNEL: COVER  4x4 T=18 subslot 1                                   198
+# KERNEL: COVER  4x4 T=18 subslot 2                                   198
+# KERNEL: COVER  4x4 T=18 subslot 3                                   198
+# KERNEL: COVER  4x4 T=18 slot number wraps to 0                      1
+# KERNEL: COVER  4x4 T=18 last cycle of a slot                        11
+# KERNEL: COVER  4x4 T=18 pause at a slot boundary                    4
+# KERNEL: COVER  4x4 T=18 pause inside a setup window or subslot      126
+# KERNEL: COVER  4x4 T=18 cancel decision in the setup window         11
+# KERNEL: COVER  4x4 T=18 cancel decision in a subslot                33
+# KERNEL: COVER  16x16 T=66 subslot 0                                 264
+# KERNEL: COVER  16x16 T=66 subslot 1                                 264
+# KERNEL: COVER  16x16 T=66 subslot 2                                 264
+# KERNEL: COVER  16x16 T=66 subslot 3                                 264
+# KERNEL: COVER  16x16 T=66 subslot 4                                 264
+# KERNEL: COVER  16x16 T=66 subslot 5                                 264
+# KERNEL: COVER  16x16 T=66 subslot 6                                 264
+# KERNEL: COVER  16x16 T=66 subslot 7                                 264
+# KERNEL: COVER  16x16 T=66 subslot 8                                 264
+# KERNEL: COVER  16x16 T=66 subslot 9                                 264
+# KERNEL: COVER  16x16 T=66 subslot 10                                264
+# KERNEL: COVER  16x16 T=66 subslot 11                                264
+# KERNEL: COVER  16x16 T=66 subslot 12                                264
+# KERNEL: COVER  16x16 T=66 subslot 13                                264
+# KERNEL: COVER  16x16 T=66 subslot 14                                264
+# KERNEL: COVER  16x16 T=66 subslot 15                                264
+# KERNEL: COVER  16x16 T=66 last cycle of a slot                      4
+# KERNEL: COVER  16x16 T=66 pause at a slot boundary                  1
+# KERNEL: COVER  16x16 T=66 pause inside a setup window or subslot    756
+# KERNEL: COVER  16x16 T=66 cancel decision in the setup window       4
+# KERNEL: COVER  16x16 T=66 cancel decision in a subslot              60
+# KERNEL: COVER  16x16 T=72 subslot 0                                 288
+# KERNEL: COVER  16x16 T=72 subslot 1                                 288
+# KERNEL: COVER  16x16 T=72 subslot 2                                 288
+# KERNEL: COVER  16x16 T=72 subslot 3                                 288
+# KERNEL: COVER  16x16 T=72 subslot 4                                 288
+# KERNEL: COVER  16x16 T=72 subslot 5                                 288
+# KERNEL: COVER  16x16 T=72 subslot 6                                 288
+# KERNEL: COVER  16x16 T=72 subslot 7                                 288
+# KERNEL: COVER  16x16 T=72 subslot 8                                 288
+# KERNEL: COVER  16x16 T=72 subslot 9                                 288
+# KERNEL: COVER  16x16 T=72 subslot 10                                288
+# KERNEL: COVER  16x16 T=72 subslot 11                                288
+# KERNEL: COVER  16x16 T=72 subslot 12                                288
+# KERNEL: COVER  16x16 T=72 subslot 13                                288
+# KERNEL: COVER  16x16 T=72 subslot 14                                288
+# KERNEL: COVER  16x16 T=72 subslot 15                                288
+# KERNEL: COVER  16x16 T=72 last cycle of a slot                      4
+# KERNEL: COVER  16x16 T=72 pause at a slot boundary                  1
+# KERNEL: COVER  16x16 T=72 pause inside a setup window or subslot    798
+# KERNEL: COVER  16x16 T=72 cancel decision in the setup window       4
+# KERNEL: COVER  16x16 T=72 cancel decision in a subslot              60
+# KERNEL: COVER  8x8 T=34 subslot 0                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 1                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 2                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 3                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 4                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 5                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 6                                   1258
+# KERNEL: COVER  8x8 T=34 subslot 7                                   1258
+# KERNEL: COVER  8x8 T=34 slot number wraps to 0                      1
+# KERNEL: COVER  8x8 T=34 last cycle of a slot                        37
+# KERNEL: COVER  8x8 T=34 pause at a slot boundary                    12
+# KERNEL: COVER  8x8 T=34 pause inside a setup window or subslot      1912
+# KERNEL: COVER  8x8 T=34 cancel decision in the setup window         37
+# KERNEL: COVER  8x8 T=34 cancel decision in a subslot                259
+# KERNEL: COVER  8x8 T=45 subslot 0                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 1                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 2                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 3                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 4                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 5                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 6                                   1665
+# KERNEL: COVER  8x8 T=45 subslot 7                                   1665
+# KERNEL: COVER  8x8 T=45 slot number wraps to 0                      1
+# KERNEL: COVER  8x8 T=45 last cycle of a slot                        37
+# KERNEL: COVER  8x8 T=45 pause at a slot boundary                    13
+# KERNEL: COVER  8x8 T=45 pause inside a setup window or subslot      2402
+# KERNEL: COVER  8x8 T=45 cancel decision in the setup window         37
+# KERNEL: COVER  8x8 T=45 cancel decision in a subslot                259
+# KERNEL: INFO   U06 counters: 2x2 T=10; 4x4 T=18, 24, 13, 7; 8x8 T=34, 45; 16x16 T=66, 72 (one round plus one slot each)
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U06 PASS checks=99202 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (377): $finish called.
+# KERNEL: Time: 179651 ns,  Iteration: 0,  Instance: /tb_slot_counter,  Process: @INITIAL#1355_2@.
+# KERNEL: stopped at time: 179651 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

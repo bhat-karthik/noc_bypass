@@ -1,0 +1,64 @@
+start_gui
+open_project D:/noc_bypass/noc_bypass.xpr
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'D:/noc_bypass/noc_bypass.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2024.2/data/ip'.
+cd D:/noc_bypass
+set argv {-test all}
+-test all
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_rr_arbiter (tests U01), seed 1: compiling
+run.tcl: tb_rr_arbiter: elaborating
+run.tcl: tb_rr_arbiter: simulating
+==========================================================================
+RESULT U01 PASS checks=310493 errors=0 seed=1
+==========================================================================
+$finish called at time : 200730 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov  6 23:38:10 2026...
+run.tcl: tb_sync_fifo (tests U02), seed 1: compiling
+run.tcl: tb_sync_fifo: elaborating
+run.tcl: tb_sync_fifo: simulating
+==========================================================================
+RESULT U02 PASS checks=196864 errors=0 seed=1
+==========================================================================
+$finish called at time : 102660 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov  6 23:38:25 2026...
+run.tcl: tb_route_compute (tests U03), seed 1: compiling
+run.tcl: tb_route_compute: elaborating
+run.tcl: tb_route_compute: simulating
+==========================================================================
+RESULT U03 PASS checks=856450 errors=0 seed=1
+==========================================================================
+$finish called at time : 188672 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov  6 23:38:42 2026...
+run.tcl: tb_switch_allocator (tests U04), seed 1: compiling
+run.tcl: tb_switch_allocator: elaborating
+run.tcl: tb_switch_allocator: simulating
+==========================================================================
+RESULT U04 PASS checks=1121244 errors=0 seed=1
+==========================================================================
+$finish called at time : 108040 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov  6 23:39:02 2026...
+run.tcl: tb_router (tests R01 R02 R03 R04), seed 1: compiling
+run.tcl: tb_router: elaborating
+run.tcl: tb_router: simulating
+==========================================================================
+RESULT R01-R04 PASS checks=357967 errors=0 seed=1
+==========================================================================
+$finish called at time : 94985 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov  6 23:39:19 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_rr_arbiter        U01          PASS  checks=310493 errors=0   (18 s; warnings: compile 0, elaborate 0)
+tb_sync_fifo         U02          PASS  checks=196864 errors=0   (14 s; warnings: compile 0, elaborate 0)
+tb_route_compute     U03          PASS  checks=856450 errors=0   (17 s; warnings: compile 0, elaborate 0)
+tb_switch_allocator  U04          PASS  checks=1121244 errors=0   (20 s; warnings: compile 0, elaborate 0)
+tb_router            R01 R02 R03 R04 PASS  checks=357967 errors=0   (18 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

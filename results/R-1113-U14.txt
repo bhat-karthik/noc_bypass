@@ -1,0 +1,65 @@
+[2026-11-13 19:30:19 UTC] vlib work && vlog '+define+TEST_U14' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top tb_ctrl_chain."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 2.5 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 2.9 [s]
+# SLP: Finished : 5.5 [s]
+# SLP: 0 primitives and 58369 (100.00%) other processes in SLP
+# SLP: 91838 (99.65%) signals in SLP and 11 (0.01%) interface signals
+# ELAB2: Elaboration final pass complete - time: 7.4 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 17223 kB (elbread=665 elab2=16505 kernel=51 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U14  ctrl_node network and sched_ctrl: bit-serial sums, the plan, and its arrival at every node before the sample
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: INFO   U14 4x4: 40 epochs, 26 plan changes, the last node had each new plan by cycle 40 (bound 40, sample at 255); 4 epochs with every sum at 2^14 - 1
+# KERNEL: COVER  U14 4x4 epochs at the largest sums                   4
+# KERNEL: COVER  U14 4x4 epochs without demand                        3
+# KERNEL: COVER  U14 4x4 epochs without cross-region demand           3
+# KERNEL: COVER  U14 4x4 plan changes timed                           26
+# KERNEL: INFO   U14 8x8: 40 epochs, 14 plan changes, the last node had each new plan by cycle 58 (bound 58, sample at 255); 4 epochs with every sum at 2^14 - 1
+# KERNEL: COVER  U14 8x8 epochs at the largest sums                   4
+# KERNEL: COVER  U14 8x8 epochs without demand                        2
+# KERNEL: COVER  U14 8x8 epochs without cross-region demand           4
+# KERNEL: COVER  U14 8x8 plan changes timed                           14
+# KERNEL: INFO   U14 16x16: 40 epochs, 8 plan changes, the last node had each new plan by cycle 92 (bound 92, sample at 255); 5 epochs with every sum at 2^14 - 1
+# KERNEL: COVER  U14 16x16 epochs at the largest sums                 5
+# KERNEL: COVER  U14 16x16 epochs without demand                      3
+# KERNEL: COVER  U14 16x16 epochs without cross-region demand         2
+# KERNEL: COVER  U14 16x16 plan changes timed                         8
+# KERNEL: INFO   U14 networks: 4x4, 8x8, 16x16
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U14 PASS checks=420 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (527): $finish called.
+# KERNEL: Time: 120030 ns,  Iteration: 1,  Instance: /tb_ctrl_chain,  Process: @INITIAL#1961_2@.
+# KERNEL: stopped at time: 120030 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

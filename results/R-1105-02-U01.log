@@ -1,0 +1,82 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Thu Nov  5 23:12:56 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_rr_arbiter_snap/xsim_script.tcl
+# xsim {tb_rr_arbiter_snap} -testplusarg SEED=1 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==========================================================================
+TEST   U01  rr_arbiter: one grant, mask, rotation, hold
+SEED   1 (from +SEED)
+==========================================================================
+COVER  N=1 hold decides the grant                           1126
+COVER  N=1 mask changes the winner                          1228
+COVER  N=1 nobody eligible                                  6307
+COVER  N=1 grants accepted                                  2794
+INFO   N=1 longest run of grants to others: 0 (bound 0)
+COVER  N=2 hold decides the grant                           1151
+COVER  N=2 mask changes the winner                          1703
+COVER  N=2 grant wraps around past N-1                      691
+COVER  N=2 nobody eligible                                  4494
+COVER  N=2 grants accepted                                  4202
+INFO   N=2 longest run of grants to others: 1 (bound 1)
+COVER  N=12 hold decides the grant                          1114
+COVER  N=12 mask changes the winner                         2389
+COVER  N=12 grant wraps around past N-1                     1294
+COVER  N=12 nobody eligible                                 835
+COVER  N=12 grants accepted                                 6960
+INFO   N=12 longest run of grants to others: 11 (bound 11)
+COVER  N=3 hold decides the grant                           1226
+COVER  N=3 mask changes the winner                          2092
+COVER  N=3 grant wraps around past N-1                      1018
+COVER  N=3 nobody eligible                                  3651
+COVER  N=3 grants accepted                                  4966
+INFO   N=3 longest run of grants to others: 2 (bound 2)
+COVER  N=4 hold decides the grant                           1377
+COVER  N=4 mask changes the winner                          3198
+COVER  N=4 grant wraps around past N-1                      1458
+COVER  N=4 nobody eligible                                  3515
+COVER  N=4 grants accepted                                  5495
+INFO   N=4 longest run of grants to others: 3 (bound 3)
+COVER  N=6 hold decides the grant                           1956
+COVER  N=6 mask changes the winner                          3018
+COVER  N=6 grant wraps around past N-1                      1707
+COVER  N=6 nobody eligible                                  1979
+COVER  N=6 grants accepted                                  6110
+INFO   N=6 longest run of grants to others: 5 (bound 5)
+COVER  N=7 hold decides the grant                           2928
+COVER  N=7 mask changes the winner                          4268
+COVER  N=7 grant wraps around past N-1                      2104
+COVER  N=7 nobody eligible                                  1671
+COVER  N=7 grants accepted                                  6265
+INFO   N=7 longest run of grants to others: 6 (bound 6)
+COVER  N=5 hold decides the grant                           2424
+COVER  N=5 mask changes the winner                          7997
+COVER  N=5 grant wraps around past N-1                      3014
+COVER  N=5 nobody eligible                                  5226
+COVER  N=5 grants accepted                                  5807
+INFO   N=5 longest run of grants to others: 4 (bound 4)
+COVER  N=8 hold decides the grant                           5199
+COVER  N=8 mask changes the winner                          6863
+COVER  N=8 grant wraps around past N-1                      2901
+COVER  N=8 nobody eligible                                  1528
+COVER  N=8 grants accepted                                  6461
+INFO   N=8 longest run of grants to others: 7 (bound 7)
+COVER  N=20 hold decides the grant                          2259
+COVER  N=20 mask changes the winner                         4986
+COVER  N=20 grant wraps around past N-1                     2359
+COVER  N=20 nobody eligible                                 623
+COVER  N=20 grants accepted                                 14596
+INFO   N=20 longest run of grants to others: 19 (bound 19)
+==========================================================================
+RESULT U01 PASS checks=310493 errors=0 seed=1
+==========================================================================
+$finish called at time : 200730 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 109
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Nov  5 23:13:01 2026...

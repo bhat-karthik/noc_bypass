@@ -1,0 +1,15 @@
+set argv {-test N05};
+-test N05
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_mesh_dl (tests N05), seed 1: compiling
+run.tcl: tb_mesh_dl: elaborating
+run.tcl: tb_mesh_dl: simulating
+==========================================================================
+RESULT N05 PASS checks=1949 errors=0 seed=1
+==========================================================================
+$finish called at time : 41535 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 18:02:09 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_mesh_dl           N05          PASS  checks=1949 errors=0, 4153 cycles in 5.3 s = 784 cycles/s   (14 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

@@ -1,0 +1,14 @@
+# B4-B5 bypass and reservation (design B, 4x4): BP01-BP10 one at a time, in one run, BP08 (1 VC and design A), U10
+BP01      BP01        34722
+BP02      BP02        42758
+BP03      BP03        103930
+BP04      BP04        47496
+BP05      BP05        599829
+BP06      BP06        88864
+BP07      BP07        239570
+BP09      BP09        85066
+BP10      BP10        1326332
+BP01-10   tb_mesh_b   2573286
+BP08_B    BP08        1173542   -define TB_NUM_VC=1
+BP08_A    tb_mesh_dl  9551      -plus +TEST=BP08
+U10       U10         869821

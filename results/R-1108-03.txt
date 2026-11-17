@@ -1,0 +1,15 @@
+set argv {-test N01 -define TB_MESH_N=2};
+-test N01 -define TB_MESH_N=2
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_mesh (tests N01 N02 N03 N04 N06 N07 N08 PERF), seed 1: compiling
+run.tcl: tb_mesh: elaborating
+run.tcl: tb_mesh: simulating
+==========================================================================
+RESULT N01 PASS checks=374 errors=0 seed=1
+==========================================================================
+$finish called at time : 465 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 18:03:06 2026...
+==================== run.tcl summary, seed 1, defines TB_MESH_N=2 ====================
+tb_mesh              N01 N02 N03 N04 N06 N07 N08 PERF PASS  checks=374 errors=0, 46 cycles in 4.0 s = 12 cycles/s   (13 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

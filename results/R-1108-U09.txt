@@ -1,0 +1,100 @@
+[2026-11-08 17:41:51 UTC] vlib work && vlog '+define+TEST_U09' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top slot_table slot_counter group_to_router tb_timetable_check."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.2 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.1 [s]
+# SLP: Finished : 2.3 [s]
+# SLP: 0 primitives and 44820 (100.00%) other processes in SLP
+# SLP: 75378 (99.39%) signals in SLP and 10 (0.01%) interface signals
+# ELAB2: Elaboration final pass complete - time: 3.6 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 14022 kB (elbread=623 elab2=13357 kernel=41 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U08-U09  timetable: disjoint paths per subslot; no collision in any cycle; the TIGHT minimum
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  U09 step 1: the TIGHT minimum of each timetable, full rounds at B_MAX
+# KERNEL: INFO   U09 2x2 B_MAX=5: TIGHT = 5 cycles (SAFE 11, Hmax 2); slot 13, round 39 cycles
+# KERNEL: INFO   U09 2x2 B_MAX=5: at T=4, bypass read of R0 (0,0) used twice at cycle +19, by R0->R1 (slot 1, subslot 0) and R0->R2 (slot 1, subslot 1)
+# KERNEL: COVER  U09 2x2 B_MAX=5 late cancel token caught at T=Hmax   2
+# KERNEL: COVER  U09 2x2 B_MAX=5 collision caught at T=TIGHT-1        1
+# KERNEL: INFO   U09 2x2 B_MAX=5: no collision for any T = 5..11
+# KERNEL: INFO   U09 2x2 B_MAX=10: TIGHT = 10 cycles (SAFE 16, Hmax 2); slot 23, round 69 cycles
+# KERNEL: INFO   U09 2x2 B_MAX=10: at T=9, bypass read of R0 (0,0) used twice at cycle +34, by R0->R1 (slot 1, subslot 0) and R0->R2 (slot 1, subslot 1)
+# KERNEL: COVER  U09 2x2 B_MAX=10 late cancel token caught at T=Hmax  2
+# KERNEL: COVER  U09 2x2 B_MAX=10 collision caught at T=TIGHT-1       1
+# KERNEL: INFO   U09 2x2 B_MAX=10: no collision for any T = 10..16
+# KERNEL: INFO   U09 2x2 B_MAX=15: TIGHT = 15 cycles (SAFE 21, Hmax 2); slot 33, round 99 cycles
+# KERNEL: INFO   U09 2x2 B_MAX=15: at T=14, bypass read of R0 (0,0) used twice at cycle +49, by R0->R1 (slot 1, subslot 0) and R0->R2 (slot 1, subslot 1)
+# KERNEL: COVER  U09 2x2 B_MAX=15 late cancel token caught at T=Hmax  2
+# KERNEL: COVER  U09 2x2 B_MAX=15 collision caught at T=TIGHT-1       1
+# KERNEL: INFO   U09 2x2 B_MAX=15: no collision for any T = 15..21
+# KERNEL: INFO   U09 4x4 B_MAX=5: TIGHT = 13 cycles (SAFE 19, Hmax 6); slot 59, round 590 cycles
+# KERNEL: INFO   U09 4x4 B_MAX=5: at T=12, NI write port of R4 (0,1) used twice at cycle +378, by R15->R4 (slot 6, subslot 2) and R0->R4 (slot 6, subslot 3)
+# KERNEL: COVER  U09 4x4 B_MAX=5 late cancel token caught at T=Hmax   1
+# KERNEL: COVER  U09 4x4 B_MAX=5 collision caught at T=TIGHT-1        1
+# KERNEL: INFO   U09 4x4 B_MAX=5: no collision for any T = 13..19
+# KERNEL: INFO   U09 4x4 B_MAX=10: TIGHT = 18 cycles (SAFE 24, Hmax 6); slot 79, round 790 cycles
+# KERNEL: INFO   U09 4x4 B_MAX=10: at T=17, NI write port of R4 (0,1) used twice at cycle +513, by R15->R4 (slot 6, subslot 2) and R0->R4 (slot 6, subslot 3)
+# KERNEL: COVER  U09 4x4 B_MAX=10 late cancel token caught at T=Hmax  1
+# KERNEL: COVER  U09 4x4 B_MAX=10 collision caught at T=TIGHT-1       1
+# KERNEL: INFO   U09 4x4 B_MAX=10: no collision for any T = 18..24
+# KERNEL: INFO   U09 4x4 B_MAX=15: TIGHT = 23 cycles (SAFE 29, Hmax 6); slot 99, round 990 cycles
+# KERNEL: INFO   U09 4x4 B_MAX=15: at T=22, NI write port of R4 (0,1) used twice at cycle +648, by R15->R4 (slot 6, subslot 2) and R0->R4 (slot 6, subslot 3)
+# KERNEL: COVER  U09 4x4 B_MAX=15 late cancel token caught at T=Hmax  1
+# KERNEL: COVER  U09 4x4 B_MAX=15 collision caught at T=TIGHT-1       1
+# KERNEL: INFO   U09 4x4 B_MAX=15: no collision for any T = 23..29
+# KERNEL: INFO   U09 8x8 B_MAX=5: TIGHT = 29 cycles (SAFE 35, Hmax 14); slot 247, round 8892 cycles
+# KERNEL: INFO   U09 8x8 B_MAX=5: at T=28, NI write port of R8 (0,1) used twice at cycle +6908, by R63->R8 (slot 28, subslot 6) and R0->R8 (slot 28, subslot 7)
+# KERNEL: COVER  U09 8x8 B_MAX=5 late cancel token caught at T=Hmax   1
+# KERNEL: COVER  U09 8x8 B_MAX=5 collision caught at T=TIGHT-1        1
+# KERNEL: INFO   U09 8x8 B_MAX=5: no collision for any T = 29..35
+# KERNEL: INFO   U09 8x8 B_MAX=10: TIGHT = 34 cycles (SAFE 40, Hmax 14); slot 287, round 10332 cycles
+# KERNEL: INFO   U09 8x8 B_MAX=10: at T=33, NI write port of R8 (0,1) used twice at cycle +8063, by R63->R8 (slot 28, subslot 6) and R0->R8 (slot 28, subslot 7)
+# KERNEL: COVER  U09 8x8 B_MAX=10 late cancel token caught at T=Hmax  1
+# KERNEL: COVER  U09 8x8 B_MAX=10 collision caught at T=TIGHT-1       1
+# KERNEL: INFO   U09 8x8 B_MAX=10: no collision for any T = 34..40
+# KERNEL: INFO   U09 8x8 B_MAX=15: TIGHT = 39 cycles (SAFE 45, Hmax 14); slot 327, round 11772 cycles
+# KERNEL: INFO   U09 8x8 B_MAX=15: at T=38, NI write port of R8 (0,1) used twice at cycle +9218, by R63->R8 (slot 28, subslot 6) and R0->R8 (slot 28, subslot 7)
+# KERNEL: COVER  U09 8x8 B_MAX=15 late cancel token caught at T=Hmax  1
+# KERNEL: COVER  U09 8x8 B_MAX=15 collision caught at T=TIGHT-1       1
+# KERNEL: INFO   U09 8x8 B_MAX=15: no collision for any T = 39..45
+# KERNEL: PHASE  U09 step 2: frames, every local/global slot boundary
+# KERNEL: INFO   U09 8x8 frames, 4x4 regions, B_MAX=10, TIGHT (local T=18, global T=34): rounds and all 720 local/global slot boundaries collision-free
+# KERNEL: COVER  U09 8x8/4 B_MAX=10 TIGHT slot boundaries checked     720
+# KERNEL: INFO   U09 8x8 frames, 4x4 regions, B_MAX=10, SAFE (local T=24, global T=40): rounds and all 720 local/global slot boundaries collision-free
+# KERNEL: COVER  U09 8x8/4 B_MAX=10 SAFE slot boundaries checked      720
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U09 PASS checks=87 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (377): $finish called.
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /tb_timetable_check,  Process: @INITIAL#2066_2@.
+# KERNEL: stopped at time: 0 ps
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

@@ -1,0 +1,82 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Thu Nov  5 23:13:10 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_sync_fifo_snap/xsim_script.tcl
+# xsim {tb_sync_fifo_snap} -testplusarg SEED=1 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==========================================================================
+TEST   U02  sync_fifo: order and count under simultaneous push and pop
+SEED   1 (from +SEED)
+==========================================================================
+COVER  D=1 W=16 legal: cycles full                          6951
+COVER  D=1 W=16 legal: drained to empty                     1081
+COVER  D=1 W=16 legal: push and pop while full              2762
+COVER  D=1 W=16 legal: pointer wraps                        3844
+COVER  D=1 W=16 illegal: cycles full                        6965
+COVER  D=1 W=16 illegal: drained to empty                   1096
+COVER  D=1 W=16 illegal: push and pop while full            2789
+COVER  D=1 W=16 illegal: pointer wraps                      3885
+COVER  D=1 W=16 illegal: push while full ignored            2133
+COVER  D=1 W=16 illegal: pop while empty ignored            2184
+COVER  D=2 W=16 legal: cycles full                          4520
+COVER  D=2 W=16 legal: drained to empty                     773
+COVER  D=2 W=16 legal: push and pop while full              1581
+COVER  D=2 W=16 legal: push and pop part full               1331
+COVER  D=2 W=16 legal: pointer wraps                        2078
+COVER  D=3 W=16 legal: cycles full                          3744
+COVER  D=3 W=16 legal: drained to empty                     660
+COVER  D=3 W=16 legal: push and pop while full              1045
+COVER  D=3 W=16 legal: push and pop part full               1939
+COVER  D=3 W=16 legal: pointer wraps                        1418
+COVER  D=4 W=16 legal: cycles full                          3474
+COVER  D=4 W=16 legal: drained to empty                     590
+COVER  D=4 W=16 legal: push and pop while full              982
+COVER  D=4 W=16 legal: push and pop part full               1955
+COVER  D=4 W=16 legal: pointer wraps                        1071
+COVER  D=5 W=134 legal: cycles full                         3579
+COVER  D=5 W=134 legal: drained to empty                    496
+COVER  D=5 W=134 legal: push and pop while full             1107
+COVER  D=5 W=134 legal: push and pop part full              1986
+COVER  D=5 W=134 legal: pointer wraps                       875
+COVER  D=5 W=16 legal: cycles full                          3173
+COVER  D=5 W=16 legal: drained to empty                     534
+COVER  D=5 W=16 legal: push and pop while full              793
+COVER  D=5 W=16 legal: push and pop part full               2281
+COVER  D=5 W=16 legal: pointer wraps                        880
+COVER  D=5 W=16 illegal: cycles full                        3124
+COVER  D=5 W=16 illegal: drained to empty                   564
+COVER  D=5 W=16 illegal: push and pop while full            753
+COVER  D=5 W=16 illegal: push and pop part full             2317
+COVER  D=5 W=16 illegal: pointer wraps                      884
+COVER  D=5 W=16 illegal: push while full ignored            1599
+COVER  D=5 W=16 illegal: pop while empty ignored            1678
+COVER  D=8 W=16 legal: cycles full                          2975
+COVER  D=8 W=16 legal: drained to empty                     471
+COVER  D=8 W=16 legal: push and pop while full              725
+COVER  D=8 W=16 legal: push and pop part full               2413
+COVER  D=8 W=16 legal: pointer wraps                        566
+COVER  D=25 W=16 legal: cycles full                         2145
+COVER  D=25 W=16 legal: drained to empty                    442
+COVER  D=25 W=16 legal: push and pop while full             394
+COVER  D=25 W=16 legal: push and pop part full              2812
+COVER  D=25 W=16 legal: pointer wraps                       192
+COVER  D=25 W=16 illegal: cycles full                       2460
+COVER  D=25 W=16 illegal: drained to empty                  414
+COVER  D=25 W=16 illegal: push and pop while full           525
+COVER  D=25 W=16 illegal: push and pop part full            2736
+COVER  D=25 W=16 illegal: pointer wraps                     192
+COVER  D=25 W=16 illegal: push while full ignored           1448
+COVER  D=25 W=16 illegal: pop while empty ignored           1345
+==========================================================================
+RESULT U02 PASS checks=196864 errors=0 seed=1
+==========================================================================
+$finish called at time : 102660 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 109
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Nov  5 23:13:15 2026...

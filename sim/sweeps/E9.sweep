@@ -1,0 +1,13 @@
+# E9: 12 points (written by make_sweeps.tcl; run with sweep.tcl -sweep E9)
+E9_B_hotspot_k0.50_s1                        tb_mesh_b  -seed 1 -define TB_MESH_N=8 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.01515 -plus +MEASURE=200000
+E9_B_hotspot_k0.50_s2                        tb_mesh_b  -seed 2 -define TB_MESH_N=8 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.01515 -plus +MEASURE=200000
+E9_B_hotspot_k0.90_s1                        tb_mesh_b  -seed 1 -define TB_MESH_N=8 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.02727 -plus +MEASURE=200000
+E9_B_hotspot_k0.90_s2                        tb_mesh_b  -seed 2 -define TB_MESH_N=8 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.02727 -plus +MEASURE=200000
+E9_C_hotspot_k0.50_s1                        tb_mesh_c  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.01515 -plus +MEASURE=200000
+E9_C_hotspot_k0.50_s2                        tb_mesh_c  -seed 2 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.01515 -plus +MEASURE=200000
+E9_C_hotspot_k0.90_s1                        tb_mesh_c  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.02727 -plus +MEASURE=200000
+E9_C_hotspot_k0.90_s2                        tb_mesh_c  -seed 2 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.02727 -plus +MEASURE=200000
+E9_D_hotspot_k0.50_s1                        tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.01515 -plus +MEASURE=200000
+E9_D_hotspot_k0.50_s2                        tb_mesh_d  -seed 2 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.01515 -plus +MEASURE=200000
+E9_D_hotspot_k0.90_s1                        tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.02727 -plus +MEASURE=200000
+E9_D_hotspot_k0.90_s2                        tb_mesh_d  -seed 2 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=hotspot -plus +RATE=0.02727 -plus +MEASURE=200000

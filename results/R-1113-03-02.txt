@@ -1,0 +1,13 @@
+set argv {-test U13}; source -notrace sim/vivado/run.tcl
+run.tcl: tb_sched_ctrl (tests U13), seed 1: compiling
+run.tcl: tb_sched_ctrl: elaborating
+run.tcl: tb_sched_ctrl: simulating
+==========================================================================
+RESULT U13 PASS checks=3358679 errors=0 seed=1
+==========================================================================
+$finish called at time : 7805150 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 136
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov 13 23:25:15 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_sched_ctrl        U13          PASS  checks=3358679 errors=0   (19 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

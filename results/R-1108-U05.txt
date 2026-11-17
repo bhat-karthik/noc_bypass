@@ -1,0 +1,96 @@
+[2026-11-08 17:34:20 UTC] vlib work && vlog '+define+TEST_U05' design.sv testbench.sv  && vsim -c -do "vsim ; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top slot_counter group_to_router tb_slot_table."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 1[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.3 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.4 [s]
+# SLP: Finished : 2.7 [s]
+# SLP: 0 primitives and 44945 (100.00%) other processes in SLP
+# SLP: 75823 (99.88%) signals in SLP and 7 (0.01%) interface signals
+# ELAB2: Elaboration final pass complete - time: 4.1 [s].
+# KERNEL: SLP loading done - time: 0.1 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 13916 kB (elbread=620 elab2=13273 kernel=22 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U05  slot_table: lookup tables equal Table II for every group, n = 2, 4, 8, 16
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: INFO   U05 4x4 group 0 table S0..S3 = {0, 1, 3, 6} (Table II of [1]: {0, 1, 3, 6})
+# KERNEL: COVER  2x2 router active in its slot                        8
+# KERNEL: COVER  2x2 router idle in another group's slot              4
+# KERNEL: COVER  2x2 same-group slot                                  4
+# KERNEL: COVER  2x2 slot value beyond the round matches nothing      1012
+# KERNEL: COVER  2x2 target group 0                                   4
+# KERNEL: COVER  2x2 target group 1                                   4
+# KERNEL: COVER  4x4 router active in its slot                        32
+# KERNEL: COVER  4x4 router idle in another group's slot              48
+# KERNEL: COVER  4x4 same-group slot                                  8
+# KERNEL: COVER  4x4 slot value beyond the round matches nothing      1968
+# KERNEL: COVER  4x4 target group 0                                   8
+# KERNEL: COVER  4x4 target group 1                                   8
+# KERNEL: COVER  4x4 target group 2                                   8
+# KERNEL: COVER  4x4 target group 3                                   8
+# KERNEL: COVER  8x8 router active in its slot                        128
+# KERNEL: COVER  8x8 router idle in another group's slot              448
+# KERNEL: COVER  8x8 same-group slot                                  16
+# KERNEL: COVER  8x8 slot value beyond the round matches nothing      3520
+# KERNEL: COVER  8x8 target group 0                                   16
+# KERNEL: COVER  8x8 target group 1                                   16
+# KERNEL: COVER  8x8 target group 2                                   16
+# KERNEL: COVER  8x8 target group 3                                   16
+# KERNEL: COVER  8x8 target group 4                                   16
+# KERNEL: COVER  8x8 target group 5                                   16
+# KERNEL: COVER  8x8 target group 6                                   16
+# KERNEL: COVER  8x8 target group 7                                   16
+# KERNEL: COVER  16x16 router active in its slot                      512
+# KERNEL: COVER  16x16 router idle in another group's slot            3840
+# KERNEL: COVER  16x16 same-group slot                                32
+# KERNEL: COVER  16x16 slot value beyond the round matches nothing    3840
+# KERNEL: COVER  16x16 target group 0                                 32
+# KERNEL: COVER  16x16 target group 1                                 32
+# KERNEL: COVER  16x16 target group 2                                 32
+# KERNEL: COVER  16x16 target group 3                                 32
+# KERNEL: COVER  16x16 target group 4                                 32
+# KERNEL: COVER  16x16 target group 5                                 32
+# KERNEL: COVER  16x16 target group 6                                 32
+# KERNEL: COVER  16x16 target group 7                                 32
+# KERNEL: COVER  16x16 target group 8                                 32
+# KERNEL: COVER  16x16 target group 9                                 32
+# KERNEL: COVER  16x16 target group 10                                32
+# KERNEL: COVER  16x16 target group 11                                32
+# KERNEL: COVER  16x16 target group 12                                32
+# KERNEL: COVER  16x16 target group 13                                32
+# KERNEL: COVER  16x16 target group 14                                32
+# KERNEL: COVER  16x16 target group 15                                32
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U05 PASS checks=24462 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (377): $finish called.
+# KERNEL: Time: 816 ns,  Iteration: 0,  Instance: /tb_slot_table,  Process: @INITIAL#1175_2@.
+# KERNEL: stopped at time: 816 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

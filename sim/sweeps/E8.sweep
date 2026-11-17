@@ -1,0 +1,61 @@
+# E8: 60 points (written by make_sweeps.tcl; run with sweep.tcl -sweep E8)
+E8_D_ep8192_uniform_k0.40                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=8192 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_ep8192_uniform_k0.70                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=8192 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_ep8192_uniform_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=8192 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_ep8192_region_k0.40                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=8192 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_ep8192_region_k0.70                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=8192 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_ep8192_region_k0.95                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=8192 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_ep16384_uniform_k0.40                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=16384 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_ep16384_uniform_k0.70                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=16384 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_ep16384_uniform_k0.95                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=16384 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_ep16384_region_k0.40                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=16384 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_ep16384_region_k0.70                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=16384 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_ep16384_region_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=16384 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_ep32768_uniform_k0.40                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_ep32768_uniform_k0.70                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_ep32768_uniform_k0.95                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_ep32768_region_k0.40                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_ep32768_region_k0.70                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_ep32768_region_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_ep65536_uniform_k0.40                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=65536 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_ep65536_uniform_k0.70                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=65536 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_ep65536_uniform_k0.95                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=65536 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_ep65536_region_k0.40                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=65536 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_ep65536_region_k0.70                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=65536 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_ep65536_region_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=65536 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_ep131072_uniform_k0.40                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=131072 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_ep131072_uniform_k0.70                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=131072 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_ep131072_uniform_k0.95                  tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=131072 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_ep131072_region_k0.40                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=131072 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_ep131072_region_k0.70                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=131072 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_ep131072_region_k0.95                   tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=131072 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_kmax7_uniform_k0.40                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=7 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_kmax7_uniform_k0.70                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=7 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_kmax7_uniform_k0.95                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=7 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_kmax7_region_k0.40                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=7 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_kmax7_region_k0.70                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=7 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_kmax7_region_k0.95                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=7 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_kmax31_uniform_k0.40                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=31 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_kmax31_uniform_k0.70                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=31 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_kmax31_uniform_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=31 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_kmax31_region_k0.40                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=31 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_kmax31_region_k0.70                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=31 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_kmax31_region_k0.95                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_K_MAX=31 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_reg2_uniform_k0.40                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_REGION_N=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_reg2_uniform_k0.70                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_REGION_N=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_reg2_uniform_k0.95                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_REGION_N=2 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_reg2_region_k0.40                       tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_REGION_N=2 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_reg2_region_k0.70                       tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_REGION_N=2 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_reg2_region_k0.95                       tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_REGION_N=2 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_bmax5_uniform_k0.40                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_bmax5_uniform_k0.70                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_bmax5_uniform_k0.95                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_bmax5_region_k0.40                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_bmax5_region_k0.70                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_bmax5_region_k0.95                      tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=5 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5
+E8_D_bmax15_uniform_k0.40                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.05328
+E8_D_bmax15_uniform_k0.70                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.09324
+E8_D_bmax15_uniform_k0.95                    tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=uniform -plus +RATE=0.12654
+E8_D_bmax15_region_k0.40                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.06600 -plus +PLOCAL=0.5
+E8_D_bmax15_region_k0.70                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.11550 -plus +PLOCAL=0.5
+E8_D_bmax15_region_k0.95                     tb_mesh_d  -seed 1 -define TB_MESH_N=8 -define TB_EPOCH=32768 -define TB_B_MAX=15 -plus +TEST=PERF -plus +PATTERN=region -plus +RATE=0.15675 -plus +PLOCAL=0.5

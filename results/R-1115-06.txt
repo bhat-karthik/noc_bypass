@@ -1,0 +1,20 @@
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Sun Nov 15 00:42:17 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source sim/vivado/regress.tcl -notrace
+regress.tcl: 1 entries from stress_long, seed 1
+regress.tcl: S01_D: building tb_mesh_d 
+regress.tcl: S01_D: tb_mesh_d: up to date (0 warnings)
+regress.tcl: S01_D: simulating
+S01_D          tb_mesh_d tb_mesh_d              PASS    checks=997,285,610 errors=0, 10,000,046 cycles, 28192 s
+==================== regress.tcl summary: stress_long, seed 1 ====================
+S01_D          tb_mesh_d tb_mesh_d              PASS    checks=997,285,610 errors=0, 10,000,046 cycles, 28192 s
+1 entries: 1 PASS, 0 COUNT, 0 FAIL, 0 NONE, 0 BUILD in 470 min
+Summary file: D:/noc_bypass/sim/vivado/work/regress_stress_long_seed1.txt
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 15 08:32:10 2026...

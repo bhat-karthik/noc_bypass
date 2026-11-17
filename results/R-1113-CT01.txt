@@ -1,0 +1,46 @@
+[2026-11-13 19:31:48 UTC] vlib work && vlog '+define+TEST_CT01' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+WARNING VCP2910 "Conditional expression 4<=4 at ?: operator is constant." "tb_part5.sv" 2005  1
+MESSAGE "Unit top modules: tb_mesh_d."
+SUCCESS "Compile success 0 Errors 1 Warnings  Analysis time: 3[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.1 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.1 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.6 [s]
+# SLP: Finished : 2.7 [s]
+# SLP: 0 primitives and 18322 (99.78%) other processes in SLP
+# SLP: 29146 (89.26%) signals in SLP and 479 (1.47%) interface signals
+# ELAB2: Elaboration final pass complete - time: 4.0 [s].
+# KERNEL: SLP loading done - time: 0.1 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 32391 kB (elbread=542 elab2=11512 kernel=20337 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   CT01-CT05  mesh 4x4, 4 VC, adaptive routing, design D, 2x2 regions, k_L 3 from reset and by demand every epoch of 512, B_MAX 10, TIGHT subslots of 18 (local 10) cycles
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: INFO   design D controller: policy PROP, damping 1, epochs of 512 cycles, k_L 1..15 from 3
+# KERNEL: PHASE  CT01 epoch timing: uniform traffic for 6 epochs; every k_L switch at a frame start, at least A_DELAY after its tick
+Execution interrupted or reached maximum runtime.
+Exit code expected: 0, received: 137
+Done

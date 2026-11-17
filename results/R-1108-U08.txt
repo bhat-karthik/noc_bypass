@@ -1,0 +1,74 @@
+[2026-11-08 17:40:41 UTC] vlib work && vlog '+define+TEST_U08' design.sv testbench.sv  && vsim -c -do "vsim +QUICK; run -all; exit"  
+VSIMSA: Configuration file changed: `/home/runner/library.cfg'
+ALIB: Library "work" attached.
+work = ./work/work.lib
+MESSAGE "Unit top modules: mesh_top slot_table slot_counter group_to_router tb_timetable_check."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 0[s]."
+done
+# Aldec, Inc. Riviera-PRO version 2025.04.139.9738 built for Linux64 on May 30, 2025.
+# HDL, SystemC, and Assertions simulator, debugger, and design environment.
+# (c) 1999-2025 Aldec, Inc. All rights reserved.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library '/usr/share/Riviera-PRO/bin/libsystf.so'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 1.2 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 1.1 [s]
+# SLP: Finished : 2.3 [s]
+# SLP: 0 primitives and 44820 (100.00%) other processes in SLP
+# SLP: 75378 (99.39%) signals in SLP and 10 (0.01%) interface signals
+# ELAB2: Elaboration final pass complete - time: 3.7 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Riviera-PRO EDU Edition. The performance of simulation is reduced.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.1 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 14022 kB (elbread=623 elab2=13357 kernel=41 sdf=0)
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: ==========================================================================
+# KERNEL: TEST   U08-U09  timetable: disjoint paths per subslot; no collision in any cycle; the TIGHT minimum
+# KERNEL: SEED   1 (default)
+# KERNEL: ==========================================================================
+# KERNEL: PHASE  U08 spatial: every subslot of every timetable
+# KERNEL: INFO   U08 2x2 mesh, 2x2 timetable in 1 region(s): 3 slots x 2 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 2x2/2 links checked                              32
+# KERNEL: COVER  U08 2x2/2 same-group bursts                          8
+# KERNEL: INFO   U08 4x4 mesh, 4x4 timetable in 1 region(s): 10 slots x 4 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 4x4/4 links checked                              1280
+# KERNEL: COVER  U08 4x4/4 same-group bursts                          96
+# KERNEL: INFO   U08 8x8 mesh, 8x8 timetable in 1 region(s): 36 slots x 8 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 8x8/8 links checked                              43008
+# KERNEL: COVER  U08 8x8/8 same-group bursts                          896
+# KERNEL: INFO   U08 8x8 mesh, 4x4 timetable in 4 region(s): 10 slots x 4 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 8x8/4 links checked                              5120
+# KERNEL: COVER  U08 8x8/4 same-group bursts                          384
+# KERNEL: INFO   U08 16x16 mesh, 4x4 timetable in 16 region(s): 10 slots x 4 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 16x16/4 links checked                            20480
+# KERNEL: COVER  U08 16x16/4 same-group bursts                        1536
+# KERNEL: INFO   U08 8x8 mesh, 2x2 timetable in 16 region(s): 3 slots x 2 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 8x8/2 links checked                              512
+# KERNEL: COVER  U08 8x8/2 same-group bursts                          128
+# KERNEL: INFO   U08 16x16 mesh, 2x2 timetable in 64 region(s): 3 slots x 2 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 16x16/2 links checked                            2048
+# KERNEL: COVER  U08 16x16/2 same-group bursts                        512
+# KERNEL: INFO   U08 16x16 mesh, 8x8 timetable in 4 region(s): 36 slots x 8 subslots; paths disjoint (same-group bursts by XY and by YX); every pair once per round
+# KERNEL: COVER  U08 16x16/8 links checked                            172032
+# KERNEL: COVER  U08 16x16/8 same-group bursts                        3584
+# KERNEL: ==========================================================================
+# KERNEL: RESULT U08 PASS checks=756480 errors=0 seed=1
+# KERNEL: ==========================================================================
+# RUNTIME: Info: RUNTIME_0068 testbench.sv (377): $finish called.
+# KERNEL: Time: 0 ps,  Iteration: 0,  Instance: /tb_timetable_check,  Process: @INITIAL#2066_2@.
+# KERNEL: stopped at time: 0 ps
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# VSIM: Simulation has finished.
+Done

@@ -1,0 +1,15 @@
+set argv {-test tb_timetable_check};
+-test tb_timetable_check
+source -notrace sim/vivado/run.tcl
+run.tcl: tb_timetable_check (tests U08 U09), seed 1: compiling
+run.tcl: tb_timetable_check: elaborating
+run.tcl: tb_timetable_check: simulating
+==========================================================================
+$finish called at time : 0 fs : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 128
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:23 . Memory (MB): peak = 195.305 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 5614760 KB (Peak: 5614760 KB), Simulation CPU Usage: 83437 ms
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 23:03:39 2026...
+==================== run.tcl summary, seed 1 ====================
+tb_timetable_check   U08 U09      PASS  checks=4786564 errors=0   (92 s; warnings: compile 0, elaborate 0)
+Logs: D:/noc_bypass/sim/vivado/work/<testbench>/

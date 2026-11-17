@@ -1,0 +1,29 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Sat Nov 14 16:03:20 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_mesh_snap/xsim_script.tcl
+# xsim {tb_mesh_snap} -testplusarg SEED=1 -testplusarg RUNID=S06_A_uniform_f0.70 -testplusarg TEST=PERF -testplusarg PATTERN=uniform -testplusarg RATE_FRAC=0.70 -testplusarg WARMUP=500 -testplusarg MEASURE=2000 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==========================================================================
+TEST   N01-N08  mesh 4x4, 4 VC, XY routing, design A
+SEED   1 (from +SEED)
+==========================================================================
+PHASE  PERF S06_A_uniform_f0.70: uniform at 0.1799 packets/node/cycle, p_data 0.333, stall 0.000, 500 + 2000 cycles
+INFO   PERF: 5547 packets measured, latency avg 20.57 p99 47 max 82, offered 0.4102 accepted 0.4111 flits/node/cycle
+INFO   PERF: zero-load latency of the measured packets 16.32, jain 0.9983, worst flow 37.54
+CSV,run_id,design,N,V,pattern,p_data,b_max,t_mode,policy,epoch,rate,seed,lat_avg,lat_p50,lat_p99,lat_max,thr_off,thr_acc,byp_pkt,byp_flit,jain,lat_flow_max,stalls,t_stall,pkts,sat,cycles,turns,bursts,src_cancels,lost,byp_flits,byp_pkts,decisions,accepted,dst_cancels,noshows,two_waiting,k_mean,k_min,k_max,k_changes,share_L,turn_max_L,turn_max_G,kL_trace
+CSV,S06_A_uniform_f0.70,A,4,4,uniform,0.3333,-,-,-,-,0.1799,1,20.565,19,47,82,0.4102,0.4111,0,0,0.9983,37.538,0,0,5547,0,2543,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+INFO   cycles simulated 2560
+==========================================================================
+RESULT PERF PASS checks=133484 errors=0 seed=1
+==========================================================================
+$finish called at time : 25605 ns : File "D:/noc_bypass/tb/common/tb_pkg.sv" Line 136
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Nov 14 16:03:26 2026...

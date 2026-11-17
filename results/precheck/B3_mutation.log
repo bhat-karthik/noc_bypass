@@ -1,0 +1,64 @@
+B3 mutation check, 2026-11-08 15:45 UTC
+Each mutant injects one bug into a copy of the repository; the testbenches that compile the mutated file run at seed 1,
+fastest first, until one fails (U08-U09 with +QUICK: n = 2, 4, 8). RTL and package mutants run with the RTL assertions
+compiled out (+define+SYNTHESIS), so only the testbenches can kill them; a mutant that survived would be run again
+with the assertions on. Mutants of the reference model (sched_ref) show that the tests notice a wrong reference too.
+Killed = a run fails (RESULT FAIL, $fatal, hang, or no RESULT line); the reason is the first error.
+
+M01   KILLED   sched_pkg.sv         Table II numbered by the smaller group
+      tb-only  by tb_slot_table: ERROR  [276000] U05: 4x4 group 0 meets group 2 in slot 3; reference 3, slot_of 2
+M02   KILLED   slot_table.sv        slot_table compares with the next slot
+      tb-only  by tb_slot_table: ERROR  [21000] U05: 2x2 table of group 0, slot 0: target 1, expected 0
+M03   KILLED   slot_table.sv        slot_table names the wrong target group
+      tb-only  by tb_slot_table: ERROR  [21000] U05: 2x2 table of group 0, slot 0: target 1, expected 0
+M04   KILLED   slot_table.sv        slot_table reloads every cycle, not only in reset
+      tb-only  by tb_slot_table: ERROR  [286000] U05: 4x4 table of group 1, slot 5: active 1, expected 0
+M04b  KILLED   sched_pkg.sv         one triangular number wrong (group 5 row of Table II)
+      tb-only  by tb_slot_table: ERROR  [36000] U05: 8x8 table of group 0, slot 15: active 0, expected 1
+M05   KILLED   slot_counter.sv      setup window one cycle short
+      tb-only  by tb_slot_counter: ERROR  [41000] U06: 2x2 T=10 after 2 enabled cycles: setup 0 subslot 0 cycle 0 slot 0, expected 1 0 2 0
+M06   KILLED   slot_counter.sv      slot number wraps one slot late
+      tb-only  by tb_slot_counter: ERROR  [1621000] U06: 2x2 T=10 after 69 enabled cycles: setup 1 subslot 0 cycle 0 slot 3, expected 1 0 0 0
+M07   KILLED   slot_counter.sv      counter ignores the enable
+      tb-only  by tb_slot_counter: ERROR  [31000] U06: 4x4 T=24 after 0 enabled cycles: setup 1 subslot 0 cycle 1 slot 0, expected 1 0 0 0
+M08   KILLED   slot_counter.sv      sub_go also fires at the start of the setup window
+      tb-only  by tb_slot_counter: ERROR  [21000] U06: 2x2 T=10 after 0 enabled cycles (en 1): sub_go 1 slot_last 0 nxt_go 1, expected 0 0 1
+M09   KILLED   slot_counter.sv      no cancel decision for subslot 0
+      tb-only  by tb_slot_counter: ERROR  [21000] U06: 2x2 T=10 after 0 enabled cycles (en 1): sub_go 0 slot_last 0 nxt_go 0, expected 0 0 1
+M10   KILLED   slot_counter.sv      cancel decision names the current subslot
+      tb-only  by tb_slot_counter: ERROR  [51000] U06: 2x2 T=10 after 3 enabled cycles: nxt_sub 0, expected 1
+M11   KILLED   slot_counter.sv      slot_last fires while disabled
+      tb-only  by tb_slot_counter: ERROR  [3711000] U06: 4x4 T=7 after 104 enabled cycles (en 0): sub_go 0 slot_last 1 nxt_go 0, expected 0 0 0
+M12   KILLED   sched_pkg.sv         lower group sends to row j + s (subslot order reversed)
+      tb-only  by tb_group_to_router: ERROR  [105000] U07: 4x4/4 router 0 slot 1 subslot 1: sends to 6 mode 0 in 3 hops, expected 12 mode 0 in 3
+M13   KILLED   sched_pkg.sv         higher group sends by XY
+      tb-only  by tb_group_to_router: ERROR  [15000] U07: 2x2/2 router 1 slot 1 subslot 0: sends to 0 mode 0 in 1 hops, expected 0 mode 1 in 1
+M14   KILLED   sched_pkg.sv         same-group slot not idle in subslot 0
+      tb-only  by tb_group_to_router: ERROR  [1000] U07: 2x2/2 router 0 slot 0 subslot 0: tx_vld 1 rx_vld 0, expected 0 0
+M15   KILLED   sched_pkg.sv         same-group receive partner in the wrong direction
+      tb-only  by tb_group_to_router: ERROR  [21000] U07: 4x4/4 router 0 slot 0 subslot 1: receives from 5 mode 0 in 2 hops, expected 15 mode 0 in 6
+M16   KILLED   group_to_router.sv   transmit hop count one too many
+      tb-only  by tb_group_to_router: ERROR  [7000] U07: 2x2/2 router 0 slot 0 subslot 1: sends to 3 mode 0 in 3 hops, expected 3 mode 0 in 2
+M17   KILLED   group_to_router.sv   local timetable ignores the region column
+      tb-only  by tb_group_to_router: ERROR  [86000] U07: 8x8/4 router 4 slot 0 subslot 1: sends to 9 mode 0 in 4 hops, expected 13 mode 0 in 2
+M18   KILLED   sched_pkg.sv         groups on the other diagonal (Eq. 1 mirrored)
+      tb-only  by tb_group_to_router: ERROR  [178000] U07: 4x4/4 router 1 slot 2 subslot 0: tx_vld 1 rx_vld 1, expected 0 0
+M19   KILLED   sched_pkg.sv         Eq. 2 walks the diagonal the wrong way
+      tb-only  by tb_group_to_router: ERROR  [21000] U07: 4x4/4 router 0 slot 0 subslot 1: sends to 7 mode 0 in 4 hops, expected 5 mode 0 in 2
+M20   KILLED   sched_pkg.sv         TIGHT one cycle too short
+      tb-only  by tb_timetable_check: ERROR  [0] U08-U09: U09 2x2 B_MAX=5: the shortest collision-free subslot is 5 cycles, sched_pkg::t_tight says 4
+M21   SURVIVED sched_pkg.sv         timing contract with 1-cycle hops
+      tb-only  every test passed: tb_slot_table, tb_group_to_router, tb_slot_counter, tb_timetable_check
+      full     every test passed: tb_slot_table, tb_group_to_router, tb_slot_counter, tb_timetable_check
+M22   KILLED   sched_ref.sv         reference: higher group sends by XY
+      full     by tb_group_to_router: ERROR  [13000] U07: 2x2/2 router 0 slot 1 subslot 0: receives from 1 mode 1 in 1 hops, expected 1 mode 0 in 1
+M23   KILLED   sched_ref.sv         reference: the same pairs in every subslot
+      full     by tb_group_to_router: ERROR  [21000] U07: 2x2/2 router 0 slot 1 subslot 1: sends to 2 mode 0 in 1 hops, expected 1 mode 0 in 1
+
+Killed: 23 of 24 (22 RTL and package mutants with the RTL assertions compiled out, 2 reference mutants)
+
+M21 survives because no B3 block uses the link times of the timing contract, and U09's verdicts do not depend on them:
+the mutant also passes the full U08-U09 with +U09_ALL (16x16, every subslot length up to SAFE, every region frame;
+checks=4786633, run by hand on 8 Nov). With one-cycle hops the link uses move earlier but still never collide, and the
+NI write port, not a link, sets TIGHT. Only the bypass datapath can show wrong link times, so B4's tests compare every
+flit's cycle on each link and at the NI with tc_link and tc_eject (tracker: B4 exit check).
